@@ -25,9 +25,9 @@
       "direction": "down"
     },
     {
-      "map": "MAP_ROUTE8",
-      "offset": 0,
-      "direction": "left"
+      "map": "MAP_ROUTE1",
+      "offset": -6,
+      "direction": "right"
     }
   ],
   "object_events": [
@@ -118,7 +118,9 @@
       "dest_warp_id": "1"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+
+  ],
   "bg_events": [
     {
       "type": "sign",

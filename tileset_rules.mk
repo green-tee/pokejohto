@@ -7,7 +7,7 @@ $(TILESETGFXDIR)/primary/general/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 640
 
 $(TILESETGFXDIR)/secondary/pallet_town/tiles.4bpp: %.4bpp: %.png
-	$(GFX) $< $@ -num_tiles 76
+	$(GFX) $< $@ -num_tiles 160
 
 $(TILESETGFXDIR)/secondary/lavender_town/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 256

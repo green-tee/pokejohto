@@ -1,0 +1,31 @@
+mapscripts PalletTown_MapScripts {}
+
+script PalletTown_EventScript_FatMan {
+    lockall
+    faceplayer
+    if (flag(FLAG_SYS_POKEMON_GET)) {
+        msgbox(PalletTown_Text_FatManPlayerHasPokemon)
+    } else {
+        msgbox(PalletTown_Text_FatManPlayerHasNoPokemon)
+        givemon(SPECIES_ABSOL, 5, ITEM_NONE)
+        playfanfare(MUS_OBTAIN_ITEM)
+        msgbox("Absol obtained!")
+        waitfanfare
+        setflag(FLAG_SYS_POKEMON_GET)
+        setflag(FLAG_SYS_POKEDEX_GET)
+        msgbox(PalletTown_Text_FatManJustGavePokemon)
+    }
+    releaseall
+}
+
+text PalletTown_Text_FatManPlayerHasNoPokemon {
+    format("Hey there! You have no Pokémon with you, am I right?\pHere, take this one!")
+}
+
+text PalletTown_Text_FatManJustGavePokemon {
+    format("Don't mention it! Stay safe out there!")
+}
+
+text PalletTown_Text_FatManPlayerHasPokemon {
+    format("Technology is incredible! Some guys managed to reverse-engineer old Pokémon games for the GBA!\pI... I can't even fathom.")
+}

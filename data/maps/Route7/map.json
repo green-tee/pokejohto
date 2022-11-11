@@ -23,11 +23,6 @@
       "map": "MAP_SAFFRON_CITY_CONNECTION",
       "offset": -10,
       "direction": "right"
-    },
-    {
-      "map": "MAP_SAFFRON_CITY",
-      "offset": -10,
-      "direction": "right"
     }
   ],
   "object_events": [
@@ -56,9 +51,7 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [
-
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",

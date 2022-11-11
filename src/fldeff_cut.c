@@ -34,6 +34,7 @@ static void SpriteCallback_CutGrass_Cleanup(struct Sprite *sprite);
 static void FieldMoveCallback_CutTree(void);
 
 static const u16 sCutGrassMetatileMapping[][2] = {
+    /*
     {
         METATILE_ID(General, Plain_Grass),
         METATILE_ID(General, Plain_Mowed)
@@ -46,7 +47,7 @@ static const u16 sCutGrassMetatileMapping[][2] = {
     }, {
         METATILE_ID(General, WideTreeTopRight_Grass),
         METATILE_ID(General, WideTreeTopRight_Mowed)
-    }, {
+    },*/ {
         METATILE_ID(CeladonCity, CyclingRoad_Grass),
         METATILE_ID(CeladonCity, CyclingRoad_Mowed)
     }, {
@@ -137,6 +138,7 @@ bool8 SetUpFieldMove_Cut(void)
     
     else
     {
+        /*
         PlayerGetDestCoords(&gPlayerFacingPosition.x, &gPlayerFacingPosition.y);
     
         for (i = 0; i < CUT_SIDE; i++)
@@ -156,6 +158,7 @@ bool8 SetUpFieldMove_Cut(void)
                 }
             }
         }
+        */
         return FALSE;
     }
 }

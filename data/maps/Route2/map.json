@@ -15,13 +15,13 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "map": "MAP_PEWTER_CITY",
-      "offset": -12,
+      "map": "MAP_ROUTE3",
+      "offset": -30,
       "direction": "up"
     },
     {
-      "map": "MAP_VIRIDIAN_CITY",
-      "offset": -12,
+      "map": "MAP_LAVENDER_TOWN",
+      "offset": -28,
       "direction": "down"
     }
   ],
@@ -142,15 +142,15 @@
       "dest_warp_id": "1"
     },
     {
-      "x": 17,
-      "y": 11,
+      "x": 28,
+      "y": 5,
       "elevation": 3,
       "dest_map": "MAP_DIGLETTS_CAVE_NORTH_ENTRANCE",
       "dest_warp_id": "1"
     },
     {
-      "x": 17,
-      "y": 22,
+      "x": 15,
+      "y": 67,
       "elevation": 0,
       "dest_map": "MAP_ROUTE2_HOUSE",
       "dest_warp_id": "1"

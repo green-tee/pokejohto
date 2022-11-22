@@ -207,7 +207,7 @@ static void _InitSecondaryTilesetAnimation(void)
 
 static void QueueAnimTiles_General_Flower(u16 timer)
 {
-    AppendTilesetAnimToBuffer(sTilesetAnims_General_Flower[timer % NELEMS(sTilesetAnims_General_Flower)], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(508)), 4 * TILE_SIZE_4BPP);
+    AppendTilesetAnimToBuffer(sTilesetAnims_General_Flower[timer % NELEMS(sTilesetAnims_General_Flower)], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(488)), 8 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_General_Water_Current_LandWatersEdge(u16 timer)

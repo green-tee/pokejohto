@@ -16,12 +16,12 @@
   "connections": [
     {
       "map": "MAP_ROUTE3",
-      "offset": -30,
+      "offset": -28,
       "direction": "up"
     },
     {
       "map": "MAP_LAVENDER_TOWN",
-      "offset": -28,
+      "offset": -26,
       "direction": "down"
     }
   ],

@@ -109,7 +109,7 @@ $(TILESETGFXDIR)/secondary/hall_of_fame/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 208
 
 $(TILESETGFXDIR)/secondary/pewter_city/tiles.4bpp: %.4bpp: %.png
-	$(GFX) $< $@ -num_tiles 280
+	$(GFX) $< $@ -num_tiles 352
 
 $(TILESETGFXDIR)/secondary/celadon_city/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 244

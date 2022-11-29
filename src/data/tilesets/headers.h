@@ -39,7 +39,7 @@ const struct Tileset gTileset_PewterCity =
     .palettes = gTilesetPalettes_PewterCity,
     .metatiles = gMetatiles_PewterCity,
     .metatileAttributes = gMetatileAttributes_PewterCity,
-    .callback = NULL,
+    .callback = InitTilesetAnim_PewterCity,
 };
 
 const struct Tileset gTileset_CeruleanCity =

@@ -23,6 +23,11 @@
       "map": "MAP_VERMILION_CITY",
       "offset": -12,
       "direction": "down"
+    },
+    {
+      "map": "MAP_SAFFRON_CITY",
+      "offset": -12,
+      "direction": "up"
     }
   ],
   "object_events": [

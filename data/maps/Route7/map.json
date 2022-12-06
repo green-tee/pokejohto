@@ -21,12 +21,12 @@
     },
     {
       "map": "MAP_SAFFRON_CITY_CONNECTION",
-      "offset": -10,
+      "offset": 11,
       "direction": "right"
     },
     {
       "map": "MAP_SAFFRON_CITY",
-      "offset": -10,
+      "offset": -40,
       "direction": "right"
     }
   ],

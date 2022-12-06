@@ -760,10 +760,10 @@
     {
       "id": "LAYOUT_CERULEAN_CITY",
       "name": "CeruleanCity_Layout",
-      "width": 48,
-      "height": 40,
+      "width": 68,
+      "height": 32,
       "border_width": 2,
-      "border_height": 2,
+      "border_height": 4,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_CeruleanCity",
       "border_filepath": "data/layouts/CeruleanCity/border.bin",

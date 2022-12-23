@@ -13,7 +13,7 @@
   "show_map_name": false,
   "floor_number": 0,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": 0,
   "object_events": [
     {
       "type": "object",
@@ -83,7 +83,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PalletTown_ProfessorOaksLab_EventScript_BulbasaurBall",
-      "flag": "FLAG_HIDE_BULBASAUR_BALL"
+      "flag": "0"
     },
     {
       "type": "object",
@@ -97,7 +97,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PalletTown_ProfessorOaksLab_EventScript_SquirtleBall",
-      "flag": "FLAG_HIDE_SQUIRTLE_BALL"
+      "flag": "0"
     },
     {
       "type": "object",
@@ -111,7 +111,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PalletTown_ProfessorOaksLab_EventScript_CharmanderBall",
-      "flag": "FLAG_HIDE_CHARMANDER_BALL"
+      "flag": "0"
     },
     {
       "type": "object",

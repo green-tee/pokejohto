@@ -8,7 +8,7 @@ EventScript_SetDefeatedEliteFourFlagsVars::
 	return
 
 EventScript_SetReadyTryGiveNationalDexScene::
-	setvar VAR_MAP_SCENE_PALLET_TOWN_OAK, 2
+	@setvar VAR_MAP_SCENE_PALLET_TOWN_OAK, 2 @ This var doesn't exist anymore
 	return
 
 EventScript_ResetLegendaries::

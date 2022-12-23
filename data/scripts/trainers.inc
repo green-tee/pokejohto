@@ -286,77 +286,77 @@ Route25_EventScript_FlintRematch::
 	msgbox Route25_Text_FlintPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route6_EventScript_Keigo::
-	trainerbattle_single TRAINER_BUG_CATCHER_KEIGO, Route6_Text_KeigoIntro, Route6_Text_KeigoDefeat
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route6_EventScript_KeigoRematch
-	msgbox Route6_Text_KeigoPostBattle, MSGBOX_AUTOCLOSE
-	end
+@Route6_EventScript_Keigo::
+@	trainerbattle_single TRAINER_BUG_CATCHER_KEIGO, Route6_Text_KeigoIntro, Route6_Text_KeigoDefeat
+@	specialvar VAR_RESULT, ShouldTryRematchBattle
+@	goto_if_eq VAR_RESULT, TRUE, Route6_EventScript_KeigoRematch
+@	msgbox Route6_Text_KeigoPostBattle, MSGBOX_AUTOCLOSE
+@	end
 
-Route6_EventScript_KeigoRematch::
-	trainerbattle_rematch TRAINER_BUG_CATCHER_KEIGO, Route6_Text_KeigoRematchIntro, Route6_Text_KeigoDefeat
-	msgbox Route6_Text_KeigoPostBattle, MSGBOX_AUTOCLOSE
-	end
+@Route6_EventScript_KeigoRematch::
+@	trainerbattle_rematch TRAINER_BUG_CATCHER_KEIGO, Route6_Text_KeigoRematchIntro, Route6_Text_KeigoDefeat
+@	msgbox Route6_Text_KeigoPostBattle, MSGBOX_AUTOCLOSE
+@	end
 
-Route6_EventScript_Elijah::
-	trainerbattle_single TRAINER_BUG_CATCHER_ELIJAH, Route6_Text_ElijahIntro, Route6_Text_ElijahDefeat
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route6_EventScript_ElijahRematch
-	msgbox Route6_Text_ElijahPostBattle, MSGBOX_AUTOCLOSE
-	end
+@Route6_EventScript_Elijah::
+@	trainerbattle_single TRAINER_BUG_CATCHER_ELIJAH, Route6_Text_ElijahIntro, Route6_Text_ElijahDefeat
+@	specialvar VAR_RESULT, ShouldTryRematchBattle
+@	goto_if_eq VAR_RESULT, TRUE, Route6_EventScript_ElijahRematch
+@	msgbox Route6_Text_ElijahPostBattle, MSGBOX_AUTOCLOSE
+@	end
 
-Route6_EventScript_ElijahRematch::
-	trainerbattle_rematch TRAINER_BUG_CATCHER_ELIJAH, Route6_Text_ElijahRematchIntro, Route6_Text_ElijahDefeat
-	msgbox Route6_Text_ElijahPostBattle, MSGBOX_AUTOCLOSE
-	end
+@Route6_EventScript_ElijahRematch::
+@	trainerbattle_rematch TRAINER_BUG_CATCHER_ELIJAH, Route6_Text_ElijahRematchIntro, Route6_Text_ElijahDefeat
+@	msgbox Route6_Text_ElijahPostBattle, MSGBOX_AUTOCLOSE
+@	end
 
-Route6_EventScript_Ricky::
-	trainerbattle_single TRAINER_CAMPER_RICKY, Route6_Text_RickyIntro, Route6_Text_RickyDefeat
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route6_EventScript_RickyRematch
-	msgbox Route6_Text_RickyPostBattle, MSGBOX_AUTOCLOSE
-	end
+@Route6_EventScript_Ricky::
+@	trainerbattle_single TRAINER_CAMPER_RICKY, Route6_Text_RickyIntro, Route6_Text_RickyDefeat
+@	specialvar VAR_RESULT, ShouldTryRematchBattle
+@	goto_if_eq VAR_RESULT, TRUE, Route6_EventScript_RickyRematch
+@	msgbox Route6_Text_RickyPostBattle, MSGBOX_AUTOCLOSE
+@	end
 
-Route6_EventScript_RickyRematch::
-	trainerbattle_rematch TRAINER_CAMPER_RICKY, Route6_Text_RickyRematchIntro, Route6_Text_RickyDefeat
-	msgbox Route6_Text_RickyPostBattle, MSGBOX_AUTOCLOSE
-	end
+@Route6_EventScript_RickyRematch::
+@	trainerbattle_rematch TRAINER_CAMPER_RICKY, Route6_Text_RickyRematchIntro, Route6_Text_RickyDefeat
+@	msgbox Route6_Text_RickyPostBattle, MSGBOX_AUTOCLOSE
+@	end
 
-Route6_EventScript_Jeff::
-	trainerbattle_single TRAINER_CAMPER_JEFF, Route6_Text_JeffIntro, Route6_Text_JeffDefeat
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route6_EventScript_JeffRematch
-	msgbox Route6_Text_JeffPostBattle, MSGBOX_AUTOCLOSE
-	end
+@Route6_EventScript_Jeff::
+@	trainerbattle_single TRAINER_CAMPER_JEFF, Route6_Text_JeffIntro, Route6_Text_JeffDefeat
+@	specialvar VAR_RESULT, ShouldTryRematchBattle
+@	goto_if_eq VAR_RESULT, TRUE, Route6_EventScript_JeffRematch
+@	msgbox Route6_Text_JeffPostBattle, MSGBOX_AUTOCLOSE
+@	end
 
-Route6_EventScript_JeffRematch::
-	trainerbattle_rematch TRAINER_CAMPER_JEFF, Route6_Text_JeffRematchIntro, Route6_Text_JeffDefeat
-	msgbox Route6_Text_JeffPostBattle, MSGBOX_AUTOCLOSE
-	end
+@Route6_EventScript_JeffRematch::
+@	trainerbattle_rematch TRAINER_CAMPER_JEFF, Route6_Text_JeffRematchIntro, Route6_Text_JeffDefeat
+@	msgbox Route6_Text_JeffPostBattle, MSGBOX_AUTOCLOSE
+@	end
 
-Route6_EventScript_Nancy::
-	trainerbattle_single TRAINER_PICNICKER_NANCY, Route6_Text_NancyIntro, Route6_Text_NancyDefeat
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route6_EventScript_NancyRematch
-	msgbox Route6_Text_NancyPostBattle, MSGBOX_AUTOCLOSE
-	end
+@Route6_EventScript_Nancy::
+@	trainerbattle_single TRAINER_PICNICKER_NANCY, Route6_Text_NancyIntro, Route6_Text_NancyDefeat
+@	specialvar VAR_RESULT, ShouldTryRematchBattle
+@	goto_if_eq VAR_RESULT, TRUE, Route6_EventScript_NancyRematch
+@	msgbox Route6_Text_NancyPostBattle, MSGBOX_AUTOCLOSE
+@	end
 
-Route6_EventScript_NancyRematch::
-	trainerbattle_rematch TRAINER_PICNICKER_NANCY, Route6_Text_NancyRematchIntro, Route6_Text_NancyDefeat
-	msgbox Route6_Text_NancyPostBattle, MSGBOX_AUTOCLOSE
-	end
+@Route6_EventScript_NancyRematch::
+@	trainerbattle_rematch TRAINER_PICNICKER_NANCY, Route6_Text_NancyRematchIntro, Route6_Text_NancyDefeat
+@	msgbox Route6_Text_NancyPostBattle, MSGBOX_AUTOCLOSE
+@	end
 
-Route6_EventScript_Isabelle::
-	trainerbattle_single TRAINER_PICNICKER_ISABELLE, Route6_Text_IsabelleIntro, Route6_Text_IsabelleDefeat
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route6_EventScript_IsabelleRematch
-	msgbox Route6_Text_IsabellePostBattle, MSGBOX_AUTOCLOSE
-	end
+@Route6_EventScript_Isabelle::
+@	trainerbattle_single TRAINER_PICNICKER_ISABELLE, Route6_Text_IsabelleIntro, Route6_Text_IsabelleDefeat
+@	specialvar VAR_RESULT, ShouldTryRematchBattle
+@	goto_if_eq VAR_RESULT, TRUE, Route6_EventScript_IsabelleRematch
+@	msgbox Route6_Text_IsabellePostBattle, MSGBOX_AUTOCLOSE
+@	end
 
-Route6_EventScript_IsabelleRematch::
-	trainerbattle_rematch TRAINER_PICNICKER_ISABELLE, Route6_Text_IsabelleRematchIntro, Route6_Text_IsabelleDefeat
-	msgbox Route6_Text_IsabellePostBattle, MSGBOX_AUTOCLOSE
-	end
+@Route6_EventScript_IsabelleRematch::
+@	trainerbattle_rematch TRAINER_PICNICKER_ISABELLE, Route6_Text_IsabelleRematchIntro, Route6_Text_IsabelleDefeat
+@	msgbox Route6_Text_IsabellePostBattle, MSGBOX_AUTOCLOSE
+@	end
 
 Route11_EventScript_Eddie::
 	trainerbattle_single TRAINER_YOUNGSTER_EDDIE, Route11_Text_EddieIntro, Route11_Text_EddieDefeat

@@ -81,7 +81,7 @@ static void ClearBattleTower(void)
 
 static void WarpToPlayersRoom(void)
 {
-    SetWarpDestination(MAP_GROUP(PALLET_TOWN_PLAYERS_HOUSE_2F), MAP_NUM(PALLET_TOWN_PLAYERS_HOUSE_2F), -1, 6, 6);
+    SetWarpDestination(MAP_GROUP(ROUTE_OASIS), MAP_NUM(ROUTE_OASIS), -1, 26, 31);
     WarpIntoMap();
 }
 
@@ -146,7 +146,7 @@ void NewGameInitData(void)
     InitMEventData();
     SetAllRenewableItemFlags();
     WarpToPlayersRoom();
-    // RunScriptImmediately(EventScript_ResetAllMapFlags);
+    RunScriptImmediately(EventScript_ResetAllMapFlags);
     StringCopy(gSaveBlock1Ptr->rivalName, rivalName);
     ResetTrainerTowerResults();
 }

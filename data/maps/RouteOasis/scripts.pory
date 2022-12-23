@@ -1,0 +1,276 @@
+# Characters
+const LOCALID_JOEY = 1
+const LOCALID_BUGSY = 2
+
+# Starter balls
+const LOCALID_CHIKORITA_BALL = 3
+const LOCALID_CYNDAQUIL_BALL = 4
+const LOCALID_TOTODILE_BALL = 5
+
+# Variables' aliases
+const PLAYER_INTERACTED_STARTER = VAR_TEMP_1
+
+# Colors
+// const TEXT_COLOR_TRANSPARENT = 0
+// const TEXT_COLOR_WHITE = 1
+// const TEXT_COLOR_DARK_GRAY = 2
+// const TEXT_COLOR_LIGHT_GRAY = 3
+const TEXT_COLOR_RED = 4
+// const TEXT_COLOR_LIGHT_RED = 5
+const TEXT_COLOR_GREEN = 6
+// const TEXT_COLOR_LIGHT_GREEN = 7
+const TEXT_COLOR_BLUE = 8
+// const TEXT_COLOR_LIGHT_BLUE = 9
+
+mapscripts RouteOasis_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION: RouteOasis_EventScript_OnTransition
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [VAR_MAP_SCENE_ROUTE_OASIS, 0: RouteOasis_EventScript_AdjustPlayerOnStart]
+    MAP_SCRIPT_ON_FRAME_TABLE [VAR_MAP_SCENE_ROUTE_OASIS, 0: RouteOasis_EventScript_BugsyIntro]
+}
+
+script RouteOasis_EventScript_OnTransition {
+    if (var(VAR_MAP_SCENE_ROUTE_OASIS) == 1) {
+        call(RouteOasis_EventScript_AdjustBugsyAndJoey)
+    }
+}
+
+script RouteOasis_EventScript_AdjustPlayerOnStart {
+    turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+}
+
+script RouteOasis_EventScript_BugsyIntro {
+    lockall
+    call(RouteOasis_EventScript_BugsyIntroSpeech)
+    call(RouteOasis_EventScript_BugsyIntroLayPokeballs)
+    call(RouteOasis_EventScript_BugsyIntroExplainStarters)
+    setvar(VAR_MAP_SCENE_ROUTE_OASIS, 1)
+    releaseall
+}
+
+script(local) RouteOasis_EventScript_BugsyIntroSpeech {
+    msgbox(RouteOasis_Text_Bugsy_YouWantToBecomeATrainer)
+    closemessage
+    applymovement(LOCALID_BUGSY, Movement_FaceJoey)
+    waitmovement(LOCALID_BUGSY)
+    msgbox(RouteOasis_Text_Bugsy_JoeyNewGymLeader)
+    closemessage
+    applymovement(LOCALID_JOEY, Movement_Surprised)
+    playse(SE_PIN)
+    waitmovement(LOCALID_JOEY)
+    delay(120)
+    msgbox(RouteOasis_Text_Joey_BugsyDidNotNeedTo)
+    closemessage
+    delay(30)
+    msgbox(RouteOasis_Text_Bugsy_TheseMonsAreRare)
+    closemessage
+    applymovement(LOCALID_BUGSY, Movement_FacePlayer)
+    waitmovement(LOCALID_BUGSY)
+    msgbox(RouteOasis_Text_Bugsy_LastChallenger)
+    closemessage
+    applymovement(OBJ_EVENT_ID_PLAYER, Movement_Player_OutOfTheWay)
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+}
+
+script(local) RouteOasis_EventScript_BugsyIntroLayPokeballs {
+    applymovement(LOCALID_BUGSY, Movement_GoLayingFirstBall)
+    delay(60)
+    turnobject(LOCALID_JOEY, DIR_WEST)
+    waitmovement(LOCALID_BUGSY)
+    addobject(LOCALID_CHIKORITA_BALL)
+    clearflag(FLAG_HIDE_CHIKORITA_BALL)
+    playse(SE_BALL)
+    waitse
+    delay(30)
+    applymovement(LOCALID_BUGSY, Movement_GoLayingNextBall)
+    waitmovement(LOCALID_BUGSY)
+    addobject(LOCALID_CYNDAQUIL_BALL)
+    clearflag(FLAG_HIDE_CYNDAQUIL_BALL)
+    playse(SE_BALL)
+    waitse
+    delay(30)
+    applymovement(LOCALID_BUGSY, Movement_GoLayingNextBall)
+    waitmovement(LOCALID_BUGSY)
+    addobject(LOCALID_TOTODILE_BALL)
+    clearflag(FLAG_HIDE_TOTODILE_BALL)
+    playse(SE_BALL)
+    waitse
+    delay(30)
+}
+
+script(local) RouteOasis_EventScript_BugsyIntroExplainStarters {
+    applymovement(LOCALID_BUGSY, Movement_GoExplainStartersToPlayer)
+    waitmovement(LOCALID_BUGSY)
+    msgbox(RouteOasis_Text_Bugsy_PlayerPickMon)
+    closemessage
+    applymovement(LOCALID_BUGSY, Movement_Bugsy_FaceJoeyFromLeft)
+    waitmovement(LOCALID_BUGSY)
+    msgbox(RouteOasis_Text_Bugsy_JoeyWillPickSecond)
+    closemessage
+    applymovement(LOCALID_BUGSY, Movement_FacePokeballs)
+    waitmovement(LOCALID_BUGSY)
+    msgbox(RouteOasis_Text_Bugsy_IWillPickLast)
+    closemessage
+    applymovement(LOCALID_BUGSY, Movement_FacePlayerFromAbove)
+    waitmovement(LOCALID_BUGSY)
+    msgbox(RouteOasis_Text_Bugsy_GoAheadPickOne)
+    closemessage
+    delay(30)
+    applymovement(LOCALID_BUGSY, Movement_WaitPlayerPickStarter)
+    waitmovement(LOCALID_BUGSY)
+    call(RouteOasis_EventScript_AdjustBugsyAndJoey)
+}
+
+script(local) RouteOasis_EventScript_AdjustBugsyAndJoey {
+    setobjectxyperm(LOCALID_BUGSY, 23, 31)
+    setobjectmovementtype(LOCALID_BUGSY, MOVEMENT_TYPE_FACE_RIGHT)
+    setobjectmovementtype(LOCALID_JOEY, MOVEMENT_TYPE_FACE_LEFT)
+}
+
+script RouteOasis_EventScript_BugsyPreventPlayerFromGoingAway {
+    lockall
+    turnobject(LOCALID_BUGSY, DIR_SOUTH)
+    msgbox(RouteOasis_Text_Bugsy_DoNotGoAway)
+    closemessage
+    applymovement(OBJ_EVENT_ID_PLAYER, Movement_Player_WalkToPokeballsFromLeft)
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+    turnobject(LOCALID_BUGSY, DIR_EAST)
+    releaseall
+}
+
+script RouteOasis_EventScript_JoeyPreventPlayerFromGoingAway {
+    lockall
+    turnobject(LOCALID_JOEY, DIR_EAST)
+    msgbox(RouteOasis_Text_Joey_DoNotGoAway)
+    closemessage
+    applymovement(OBJ_EVENT_ID_PLAYER, Movement_Player_WalkToPokeballsFromRight)
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+    turnobject(LOCALID_JOEY, DIR_WEST)
+    releaseall
+}
+
+movement Movement_FaceJoey {
+    walk_in_place_fast_up
+}
+
+movement Movement_Surprised {
+    emote_exclamation_mark
+}
+
+movement Movement_FacePlayer {
+    walk_in_place_left
+}
+
+movement Movement_Player_OutOfTheWay {
+    walk_down
+    walk_left
+    face_up
+}
+
+movement Movement_GoLayingFirstBall {
+    walk_left * 3
+    walk_in_place_fast_up
+}
+
+movement Movement_GoLayingNextBall {
+    walk_right
+    walk_in_place_fast_up
+}
+
+movement Movement_GoExplainStartersToPlayer {
+    walk_left
+    walk_in_place_fast_down
+}
+
+movement Movement_Bugsy_FaceJoeyFromLeft {
+    walk_in_place_right
+}
+
+movement Movement_FacePokeballs {
+    walk_in_place_slow_up
+}
+
+movement Movement_FacePlayerFromAbove {
+    walk_in_place_down
+}
+
+movement Movement_WaitPlayerPickStarter {
+    walk_left
+    walk_left
+    face_right
+}
+
+movement Movement_Player_WalkToPokeballsFromLeft {
+    walk_right * 2
+}
+
+movement Movement_Player_WalkToPokeballsFromRight {
+    walk_left * 2
+}
+
+script RouteOasis_EventScript_Bugsy {
+    msgbox(RouteOasis_Text_Bugsy_CheckOutPokeballs, MSGBOX_NPC)
+}
+
+script RouteOasis_EventScript_Joey {
+    msgbox(RouteOasis_Text_Joey_CheckOutPokeballs, MSGBOX_NPC)
+}
+
+script RouteOasis_EventScript_StarterBall {
+    lockall
+    call(RouteOasis_EventScript_SetupInteractedStarterInfo)
+    if (var(VAR_RESULT) == YES) {
+        call(RouteOasis_EventScript_GiveStarterToPlayer)
+        call(RouteOasis_EventScript_PositionCharactersAfterSelection)
+        // TODO: Adjust player position and proceed with event
+        setvar(VAR_MAP_SCENE_ROUTE_OASIS, 2)
+    }
+    textcolor(NPC_TEXT_COLOR_DEFAULT)
+    hidemonpic
+    releaseall
+}
+
+script(local) RouteOasis_EventScript_SetupInteractedStarterInfo {
+    switch (var(VAR_LAST_TALKED)) {
+        case LOCALID_CHIKORITA_BALL:
+            setvar(PLAYER_INTERACTED_STARTER, SPECIES_CHIKORITA)
+            bufferstring(STR_VAR_2, "Grass")
+            setvar(VAR_TEXT_COLOR, TEXT_COLOR_GREEN)
+        case LOCALID_CYNDAQUIL_BALL:
+            setvar(PLAYER_INTERACTED_STARTER, SPECIES_CYNDAQUIL)
+            bufferstring(STR_VAR_2, "Fire")
+            setvar(VAR_TEXT_COLOR, TEXT_COLOR_RED)
+        case LOCALID_TOTODILE_BALL:
+            setvar(PLAYER_INTERACTED_STARTER, SPECIES_TOTODILE)
+            bufferstring(STR_VAR_2, "Water")
+            setvar(VAR_TEXT_COLOR, TEXT_COLOR_BLUE)
+    }
+    playmoncry(PLAYER_INTERACTED_STARTER, CRY_MODE_NORMAL)
+    showmonpic(PLAYER_INTERACTED_STARTER, 10, 3)
+    bufferspeciesname(STR_VAR_1, PLAYER_INTERACTED_STARTER)
+    msgbox(RouteOasis_Text_Ball_WantToPickThisOne, MSGBOX_YESNO)
+    waitmoncry
+}
+
+script(local) RouteOasis_EventScript_GiveStarterToPlayer {
+    givemon(PLAYER_INTERACTED_STARTER, 5)
+    setflag(FLAG_SYS_POKEMON_GET)
+    msgbox(RouteOasis_Text_Ball_StarterHasBecomeCompanion, MSGBOX_DEFAULT)
+    playmoncry(PLAYER_INTERACTED_STARTER, CRY_MODE_NORMAL)
+    waitmoncry
+    delay(10)
+    playfanfare(MUS_CAUGHT_INTRO)
+    waitfanfare
+    closemessage
+}
+
+script(local) RouteOasis_EventScript_PositionCharactersAfterSelection {
+    fadescreenspeed(FADE_TO_BLACK, 15)
+    hidemonpic
+    setobjectxy(OBJ_EVENT_ID_PLAYER, 24, 32)
+    setobjectxy(LOCALID_JOEY, 25, 31)
+    turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+    turnobject(LOCALID_JOEY, DIR_NORTH)
+    removeobject(VAR_LAST_TALKED)
+    delay(60)
+    fadescreenspeed(FADE_FROM_BLACK, 15)
+}

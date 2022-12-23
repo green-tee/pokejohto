@@ -224,7 +224,7 @@
 #define MAP_ROUTE3                               (21 | (3 << 8))
 #define MAP_ROUTE4                               (22 | (3 << 8))
 #define MAP_ROUTE5                               (23 | (3 << 8))
-#define MAP_ROUTE6                               (24 | (3 << 8))
+#define MAP_ROUTE_OASIS                          (24 | (3 << 8))
 #define MAP_ROUTE7                               (25 | (3 << 8))
 #define MAP_ROUTE8                               (26 | (3 << 8))
 #define MAP_ROUTE9                               (27 | (3 << 8))

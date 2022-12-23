@@ -17293,7 +17293,7 @@
           }
         },
         {
-          "map": "MAP_ROUTE6",
+          "map": "MAP_ROUTE_OASIS",
           "base_label": "sRoute6_FireRed",
           "land_mons": {
             "encounter_rate": 21,
@@ -17447,7 +17447,7 @@
           }
         },
         {
-          "map": "MAP_ROUTE6",
+          "map": "MAP_ROUTE_OASIS",
           "base_label": "sRoute6_LeafGreen",
           "land_mons": {
             "encounter_rate": 21,

@@ -1,81 +1,157 @@
 text RouteOasis_Text_Bugsy_YouWantToBecomeATrainer {
-    format("{COLOR GREEN}Bugsy: So, {PLAYER}...\p"
-           "Since you want to take on the\n"
-           "Gyms' Challenge, it's time\lyou're given your first\lcompanion.\p"
-           "Which is why I asked you\nto come here!"
-    )
+    "{COLOR GREEN}Bugsy: So, {PLAYER}...\p"
+    "Since you want to take on the\n"
+    "Gyms' Challenge, it's time\l"
+    "you're given your first\l"
+    "companion.\p"
+    "Which is why I asked you\n"
+    "to come here!"
 }
 
 text RouteOasis_Text_Bugsy_JoeyNewGymLeader {
-    format("{COLOR GREEN}Bugsy: And since you're going to\nbecome Azalea Town's new\l"
-           "Gym Leader, Joey, I have\la present for you too."
-    )
+    "{COLOR GREEN}Bugsy: And since you're going to\n"
+    "become Azalea Town's new\l"
+    "Gym Leader, Joey, I have\l"
+    "a present for you too."
 }
 
 text RouteOasis_Text_Joey_BugsyDidNotNeedTo {
-    format("{COLOR BLUE}Joey: Dear Bugsy, you didn't\nhave to!\p"
-           "As you know, I've been a Pokémon\nTrainer since my childhood,\ljust like you!\p"
-           "I even won the Hive Badge\nfrom you!"
-    )
+    "{COLOR BLUE}Joey: Dear Bugsy, you didn't\n"
+    "have to!\p"
+    "As you know, I've been a Pokémon\n"
+    "Trainer since my childhood,\l"
+    "just like you!\p"
+    "I even won the Hive Badge\n"
+    "from you!"
 }
 
 text RouteOasis_Text_Bugsy_TheseMonsAreRare {
-    format("{COLOR GREEN}Bugsy: A bit shy, aren't we?\p"
-           "These Pokémon are rare.\nYou have to look very hard\lto find one in the wild!\p"
-           "Come on, bud! Let's\njust celebrate your new job as a\lGym Leader!"
-    )
+    "{COLOR GREEN}Bugsy: A bit shy, aren't we?\p"
+    "These Pokémon are rare.\n"
+    "You have to look very hard\l"
+    "to find one in the wild!\p"
+    "Come on, bud! Let's\n"
+    "just celebrate your new job as a\l"
+    "Gym Leader!"
 }
 
 text RouteOasis_Text_Bugsy_LastChallenger {
-    format("{COLOR GREEN}Bugsy: And by the way, {PLAYER},\nI want you to be my last\lchallenger, agreed?\p"
-           "Anyway, enough chitty-chatting.\nExcuse me, {PLAYER}."
-    )
+    "{COLOR GREEN}Bugsy: And by the way, {PLAYER},\n"
+    "I want you to be my last\l"
+    "challenger, agreed?\p"
+    "Anyway, enough chitty-chatting.\n"
+    "Excuse me, {PLAYER}."
 }
 
 text RouteOasis_Text_Bugsy_PlayerPickMon {
-    format("{COLOR GREEN}Bugsy: There!\nYou go first, {PLAYER}.\p"
-           "These Poké Balls carry three\nrare Pokémon.\lAnd there's three of us!\lDo you know what that means?\p"
-           "It means we'll take one each!\p"
-           "And since it will be your first\nown Pokémon, {PLAYER},\lyou get to choose first."
-    )
+    "{COLOR GREEN}Bugsy: There!\n"
+    "You go first, {PLAYER}.\p"
+    "These Poké Balls carry three\n"
+    "rare Pokémon.\l"
+    "And there's three of us!\l"
+    "Do you know what that means?\p"
+    "It means we'll take one each!\p"
+    "And since it will be your first\n"
+    "own Pokémon, {PLAYER},\l"
+    "you get to choose first."
 }
 
 text RouteOasis_Text_Bugsy_JoeyWillPickSecond {
-    format("{COLOR GREEN}Bugsy: Next, Joey will pick one\nof the remaining Pokémon.")
+    "{COLOR GREEN}Bugsy: Next, Joey will pick one\n"
+    "of the remaining Pokémon."
 }
 
 text RouteOasis_Text_Bugsy_IWillPickLast {
-    format("{COLOR GREEN}Bugsy: And whichever is left,\nI'll take it with me!")
+    "{COLOR GREEN}Bugsy: And whichever is left,\n"
+    "I'll take it with me!"
 }
 
 text RouteOasis_Text_Bugsy_GoAheadPickOne {
-    format("{COLOR GREEN}Bugsy: Go ahead, {PLAYER},\ncheck out the Poké Balls.\lTake your time.")
+    "{COLOR GREEN}Bugsy: Go ahead, {PLAYER},\n"
+    "check out the Poké Balls.\l"
+    "Take your time."
 }
 
 text RouteOasis_Text_Bugsy_DoNotGoAway {
-    format("{COLOR GREEN}Bugsy: Slow down, {PLAYER}!\nAre you walking away without my\lpresent?\p"
-           "Check out the Poké Balls.\nTake your time."
-    )
+    "{COLOR GREEN}Bugsy: Slow down, {PLAYER}!\n"
+    "Are you walking away without my\l"
+    "present?\p"
+    "Check out the Poké Balls.\n"
+    "Take your time."
 }
 
 text RouteOasis_Text_Joey_DoNotGoAway {
-    format("{COLOR BLUE}Joey: Hey, {PLAYER}, are you\ngoing away without Bugsy's\lpresent?\p"
-           "Check out those Poké Balls.\nDon't keep us waiting too long!"
-    )
+    "{COLOR BLUE}Joey: Hey, {PLAYER}, are you\n"
+    "going away without Bugsy's\l"
+    "present?\p"
+    "Check out those Poké Balls.\n"
+    "Don't keep us waiting too long!"
 }
 
 text RouteOasis_Text_Bugsy_CheckOutPokeballs {
-    format("{COLOR GREEN}Bugsy: Check out the Poké Balls.\nTake your time.")
+    "{COLOR GREEN}Bugsy: Check out the Poké Balls.\n"
+    "Take your time."
 }
 
 text RouteOasis_Text_Joey_CheckOutPokeballs {
-    format("{COLOR BLUE}Joey: Check out those\nPoké Balls. Don't keep us\lwaiting too long!")
+    "{COLOR BLUE}Joey: Check out those\n"
+    "Poké Balls. Don't keep us\l"
+    "waiting too long!"
 }
 
 text RouteOasis_Text_Ball_WantToPickThisOne {
-    format("This is the {STR_VAR_2}-type Pokémon\n{STR_VAR_1}.\pIs this the one you want\nto keep?")
+    "{STR_VAR_3}This is the {STR_VAR_2}-type Pokémon\n"
+    "{STR_VAR_1}.\pIs this the one you want"
+    "\nto keep?"
 }
 
 text RouteOasis_Text_Ball_StarterHasBecomeCompanion {
-    format("{STR_VAR_1} has become\nyour first companion\lin this adventure!")
+    "{STR_VAR_3}{STR_VAR_1} has become\n"
+    "your first companion\l"
+    "in this adventure!"
+}
+
+text RouteOasis_Text_Bugsy_YourTurnJoey {
+    "{COLOR GREEN}Bugsy: It's your turn, Joey!\p"
+    "{PLAYER} has chosen {STR_VAR_1}.\n"
+    "Now there are two Pokémon left.\l"
+    "You may take whichever one you\l"
+    "like!"
+}
+
+text RouteOasis_Text_Joey_Dots {
+    "{COLOR BLUE}Joey: .{PAUSE 60} .{PAUSE 60} .{PAUSE 60}\n"
+}
+
+text RouteOasis_Text_Joey_WhichOneShouldIPick {
+    "{COLOR BLUE}Joey: So, which one should I\n"
+    "pick?"
+}
+
+text RouteOasis_Text_Joey_AdvantageOverPlayerOrOverBugsy {
+    "{COLOR BLUE}Joey: If I pick {STR_VAR_2}, I'll\n"
+    "have an advantage over\l"
+    "{PLAYER}'s {STR_VAR_1}...\p"
+    "But if I go with {STR_VAR_3},\n"
+    "I can knock out Bugsy's\l"
+    "{STR_VAR_2} with ease..."
+}
+
+text RouteOasis_Text_Joey_IllTakeThisOne {
+    "{COLOR BLUE}Joey: Do I even need to ask?\n"
+    "{STR_VAR_3}, I choose you!"
+}
+
+text RouteOasis_Text_Ball2_JoeyPicked {
+    "Joey decided to take {STR_VAR_3}\n"
+    "with him!"
+}
+
+text RouteOasis_Text_Bugsy_ThatLeavesOneForMe {
+    "{COLOR GREEN}Bugsy: That leaves {STR_VAR_2}\n"
+    "for me to take!"
+}
+
+text RouteOasis_Text_Ball3_BugsyPicked {
+    "Bugsy is keeping {STR_VAR_2}."
 }

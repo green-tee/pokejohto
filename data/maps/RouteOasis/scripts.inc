@@ -45,9 +45,7 @@ RouteOasis_EventScript_BugsyIntroSpeech:
 	waitmovement 2
 	msgbox RouteOasis_Text_Bugsy_JoeyNewGymLeader
 	closemessage
-	applymovement 1, Movement_Surprised
-	playse SE_PIN
-	waitmovement 1
+	call RouteOasis_EventScript_JoeyExclamationEmote
 	delay 120
 	msgbox RouteOasis_Text_Joey_BugsyDidNotNeedTo
 	closemessage
@@ -60,6 +58,14 @@ RouteOasis_EventScript_BugsyIntroSpeech:
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Movement_Player_OutOfTheWay
 	waitmovement OBJ_EVENT_ID_PLAYER
+	return
+
+
+RouteOasis_EventScript_JoeyExclamationEmote:
+	applymovement 1, Movement_Surprised
+	playse SE_PIN
+	waitmovement 1
+	waitse
 	return
 
 
@@ -223,9 +229,8 @@ RouteOasis_EventScript_StarterBall::
 	call RouteOasis_EventScript_SetupInteractedStarterInfo
 	compare VAR_RESULT, YES
 	goto_if_eq RouteOasis_EventScript_StarterBall_2
-RouteOasis_EventScript_StarterBall_1:
-	textcolor NPC_TEXT_COLOR_DEFAULT
 	hidemonpic
+RouteOasis_EventScript_StarterBall_1:
 	releaseall
 	return
 
@@ -233,6 +238,8 @@ RouteOasis_EventScript_StarterBall_2:
 	call RouteOasis_EventScript_GiveStarterToPlayer
 	call RouteOasis_EventScript_PositionCharactersAfterSelection
 	setvar VAR_MAP_SCENE_ROUTE_OASIS, 2
+	call RouteOasis_EventScript_JoeyStarterSelection
+	call RouteOasis_EventScript_BugsyStarterSelection
 	goto RouteOasis_EventScript_StarterBall_1
 
 
@@ -252,27 +259,33 @@ RouteOasis_EventScript_SetupInteractedStarterInfo_1:
 RouteOasis_EventScript_SetupInteractedStarterInfo_3:
 	setvar VAR_TEMP_1, SPECIES_CHIKORITA
 	bufferstring STR_VAR_2, RouteOasis_EventScript_SetupInteractedStarterInfo_Text_0
-	setvar VAR_TEXT_COLOR, 6
+	bufferstring STR_VAR_3, RouteOasis_EventScript_SetupInteractedStarterInfo_Text_1
 	goto RouteOasis_EventScript_SetupInteractedStarterInfo_1
 
 RouteOasis_EventScript_SetupInteractedStarterInfo_4:
 	setvar VAR_TEMP_1, SPECIES_CYNDAQUIL
-	bufferstring STR_VAR_2, RouteOasis_EventScript_SetupInteractedStarterInfo_Text_1
-	setvar VAR_TEXT_COLOR, 4
+	bufferstring STR_VAR_2, RouteOasis_EventScript_SetupInteractedStarterInfo_Text_2
+	bufferstring STR_VAR_3, RouteOasis_EventScript_SetupInteractedStarterInfo_Text_3
 	goto RouteOasis_EventScript_SetupInteractedStarterInfo_1
 
 RouteOasis_EventScript_SetupInteractedStarterInfo_5:
 	setvar VAR_TEMP_1, SPECIES_TOTODILE
-	bufferstring STR_VAR_2, RouteOasis_EventScript_SetupInteractedStarterInfo_Text_2
-	setvar VAR_TEXT_COLOR, 8
+	bufferstring STR_VAR_2, RouteOasis_EventScript_SetupInteractedStarterInfo_Text_4
+	bufferstring STR_VAR_3, RouteOasis_EventScript_SetupInteractedStarterInfo_Text_5
 	goto RouteOasis_EventScript_SetupInteractedStarterInfo_1
 
 
 RouteOasis_EventScript_GiveStarterToPlayer:
 	givemon VAR_TEMP_1, 5
 	setflag FLAG_SYS_POKEMON_GET
+	copyvar VAR_STARTER_MON, VAR_TEMP_1
 	msgbox RouteOasis_Text_Ball_StarterHasBecomeCompanion, MSGBOX_DEFAULT
 	playmoncry VAR_TEMP_1, CRY_MODE_NORMAL
+	call RouteOasis_EventScript_FanfareStarterAfterCry
+	return
+
+
+RouteOasis_EventScript_FanfareStarterAfterCry:
 	waitmoncry
 	delay 10
 	playfanfare MUS_CAUGHT_INTRO
@@ -282,23 +295,220 @@ RouteOasis_EventScript_GiveStarterToPlayer:
 
 
 RouteOasis_EventScript_PositionCharactersAfterSelection:
-	fadescreenspeed FADE_TO_BLACK, 15
+	fadescreenspeed FADE_TO_BLACK, 6
 	hidemonpic
 	setobjectxy OBJ_EVENT_ID_PLAYER, 24, 32
 	setobjectxy 1, 25, 31
+	special SpawnCameraObject
+	switch VAR_LAST_TALKED
+	case 3, RouteOasis_EventScript_PositionCharactersAfterSelection_3
+	case 4, RouteOasis_EventScript_PositionCharactersAfterSelection_4
+	case 5, RouteOasis_EventScript_PositionCharactersAfterSelection_5
+RouteOasis_EventScript_PositionCharactersAfterSelection_1:
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	turnobject 1, DIR_NORTH
 	removeobject VAR_LAST_TALKED
 	delay 60
-	fadescreenspeed FADE_FROM_BLACK, 15
+	fadescreenspeed FADE_FROM_BLACK, 6
 	return
 
+RouteOasis_EventScript_PositionCharactersAfterSelection_3:
+	applymovement OBJ_EVENT_ID_CAMERA, Movement_Camera_FromChikoritaBall
+	goto RouteOasis_EventScript_PositionCharactersAfterSelection_1
+
+RouteOasis_EventScript_PositionCharactersAfterSelection_4:
+	applymovement OBJ_EVENT_ID_CAMERA, Movement_Camera_FromCyndaquilBall
+	goto RouteOasis_EventScript_PositionCharactersAfterSelection_1
+
+RouteOasis_EventScript_PositionCharactersAfterSelection_5:
+	applymovement OBJ_EVENT_ID_CAMERA, Movement_Camera_FromTotodileBall
+	goto RouteOasis_EventScript_PositionCharactersAfterSelection_1
+
+
+Movement_Camera_FromChikoritaBall:
+	walk_faster_down
+	step_end
+
+Movement_Camera_FromCyndaquilBall:
+	walk_faster_left
+	walk_faster_down
+	step_end
+
+Movement_Camera_FromTotodileBall:
+	walk_faster_left
+	walk_faster_left
+	walk_faster_down
+	step_end
+
+RouteOasis_EventScript_JoeyStarterSelection:
+	call RouteOasis_EventScript_SetupBuffersAccordingToStarter
+	msgbox RouteOasis_Text_Bugsy_YourTurnJoey
+	closemessage
+	delay 60
+	applymovement 1, Movement_TurnToCamera
+	waitmovement 1
+	msgbox RouteOasis_Text_Joey_Dots
+	closemessage
+	delay 120
+	msgbox RouteOasis_Text_Joey_WhichOneShouldIPick
+	closemessage
+	delay 60
+	applymovement 1, Movement_FacePokeballs
+	waitmovement 1
+	msgbox RouteOasis_Text_Joey_AdvantageOverPlayerOrOverBugsy
+	closemessage
+	call RouteOasis_EventScript_JoeyExclamationEmote
+	msgbox RouteOasis_Text_Joey_IllTakeThisOne
+	closemessage
+	call RouteOasis_EventScript_JoeyWalkToPokeball
+	msgbox RouteOasis_Text_Ball2_JoeyPicked, MSGBOX_DEFAULT
+	playmoncry VAR_TEMP_2, CRY_MODE_NORMAL
+	call RouteOasis_EventScript_FanfareStarterAfterCry
+	removeobject VAR_TEMP_4
+	delay 60
+	return
+
+
+RouteOasis_EventScript_SetupBuffersAccordingToStarter:
+	switch VAR_STARTER_MON
+	case SPECIES_CHIKORITA, RouteOasis_EventScript_SetupBuffersAccordingToStarter_3
+	case SPECIES_CYNDAQUIL, RouteOasis_EventScript_SetupBuffersAccordingToStarter_4
+	case SPECIES_TOTODILE, RouteOasis_EventScript_SetupBuffersAccordingToStarter_5
+RouteOasis_EventScript_SetupBuffersAccordingToStarter_1:
+	bufferspeciesname STR_VAR_2, VAR_TEMP_3
+	bufferspeciesname STR_VAR_3, VAR_TEMP_2
+	return
+
+RouteOasis_EventScript_SetupBuffersAccordingToStarter_3:
+	setvar VAR_TEMP_2, SPECIES_TOTODILE
+	setvar VAR_TEMP_4, 5
+	setvar VAR_TEMP_3, SPECIES_CYNDAQUIL
+	setvar VAR_TEMP_5, 4
+	goto RouteOasis_EventScript_SetupBuffersAccordingToStarter_1
+
+RouteOasis_EventScript_SetupBuffersAccordingToStarter_4:
+	setvar VAR_TEMP_2, SPECIES_CHIKORITA
+	setvar VAR_TEMP_4, 3
+	setvar VAR_TEMP_3, SPECIES_TOTODILE
+	setvar VAR_TEMP_5, 5
+	goto RouteOasis_EventScript_SetupBuffersAccordingToStarter_1
+
+RouteOasis_EventScript_SetupBuffersAccordingToStarter_5:
+	setvar VAR_TEMP_2, SPECIES_CYNDAQUIL
+	setvar VAR_TEMP_4, 4
+	setvar VAR_TEMP_3, SPECIES_CHIKORITA
+	setvar VAR_TEMP_5, 3
+	goto RouteOasis_EventScript_SetupBuffersAccordingToStarter_1
+
+
+Movement_TurnToCamera:
+	walk_in_place_slow_down
+	step_end
+
+RouteOasis_EventScript_JoeyWalkToPokeball:
+	switch VAR_TEMP_2
+	case SPECIES_CHIKORITA, RouteOasis_EventScript_JoeyWalkToPokeball_3
+	case SPECIES_CYNDAQUIL, RouteOasis_EventScript_JoeyWalkToPokeball_4
+	case SPECIES_TOTODILE, RouteOasis_EventScript_JoeyWalkToPokeball_5
+RouteOasis_EventScript_JoeyWalkToPokeball_1:
+	waitmovement 1
+	return
+
+RouteOasis_EventScript_JoeyWalkToPokeball_3:
+	applymovement 1, Movement_Joey_RunToChikoritaBall
+	goto RouteOasis_EventScript_JoeyWalkToPokeball_1
+
+RouteOasis_EventScript_JoeyWalkToPokeball_4:
+	applymovement 1, Movement_Joey_RunToCyndaquilBall
+	goto RouteOasis_EventScript_JoeyWalkToPokeball_1
+
+RouteOasis_EventScript_JoeyWalkToPokeball_5:
+	applymovement 1, Movement_Joey_RunToTotodileBall
+	goto RouteOasis_EventScript_JoeyWalkToPokeball_1
+
+
+Movement_Joey_RunToChikoritaBall:
+	walk_fast_left
+	walk_in_place_fast_up
+	step_end
+
+Movement_Joey_RunToCyndaquilBall:
+	walk_in_place_fast_up
+	step_end
+
+Movement_Joey_RunToTotodileBall:
+	walk_fast_right
+	walk_in_place_fast_up
+	step_end
+
+RouteOasis_EventScript_BugsyStarterSelection:
+	applymovement 2, Movement_Bugsy_FaceJoeyFromLeft
+	waitmovement 2
+	msgbox RouteOasis_Text_Bugsy_ThatLeavesOneForMe
+	closemessage
+	call RouteOasis_EventScript_BugsyWalkToPokeball
+	msgbox RouteOasis_Text_Ball3_BugsyPicked, MSGBOX_DEFAULT
+	playmoncry VAR_TEMP_3, CRY_MODE_NORMAL
+	call RouteOasis_EventScript_FanfareStarterAfterCry
+	removeobject VAR_TEMP_5
+	delay 60
+	return
+
+
+RouteOasis_EventScript_BugsyWalkToPokeball:
+	switch VAR_TEMP_3
+	case SPECIES_CHIKORITA, RouteOasis_EventScript_BugsyWalkToPokeball_3
+	case SPECIES_CYNDAQUIL, RouteOasis_EventScript_BugsyWalkToPokeball_4
+	case SPECIES_TOTODILE, RouteOasis_EventScript_BugsyWalkToPokeball_5
+RouteOasis_EventScript_BugsyWalkToPokeball_1:
+	waitmovement 2
+	return
+
+RouteOasis_EventScript_BugsyWalkToPokeball_3:
+	applymovement 2, Movement_Bugsy_WalkToChikoritaBall
+	goto RouteOasis_EventScript_BugsyWalkToPokeball_1
+
+RouteOasis_EventScript_BugsyWalkToPokeball_4:
+	applymovement 2, Movement_Bugsy_WalkToCyndaquilBall
+	goto RouteOasis_EventScript_BugsyWalkToPokeball_1
+
+RouteOasis_EventScript_BugsyWalkToPokeball_5:
+	applymovement 2, Movement_Bugsy_WalkToTotodileBall
+	goto RouteOasis_EventScript_BugsyWalkToPokeball_1
+
+
+Movement_Bugsy_WalkToChikoritaBall:
+	walk_up
+	walk_in_place_right
+	step_end
+
+Movement_Bugsy_WalkToCyndaquilBall:
+	walk_up
+	walk_right
+	step_end
+
+Movement_Bugsy_WalkToTotodileBall:
+	walk_up
+	walk_right
+	walk_right
+	step_end
 
 RouteOasis_EventScript_SetupInteractedStarterInfo_Text_0:
 	.string "Grass$"
 
 RouteOasis_EventScript_SetupInteractedStarterInfo_Text_1:
-	.string "Fire$"
+	.string "{COLOR GREEN}$"
 
 RouteOasis_EventScript_SetupInteractedStarterInfo_Text_2:
+	.string "Fire$"
+
+RouteOasis_EventScript_SetupInteractedStarterInfo_Text_3:
+	.string "{COLOR RED}$"
+
+RouteOasis_EventScript_SetupInteractedStarterInfo_Text_4:
 	.string "Water$"
+
+RouteOasis_EventScript_SetupInteractedStarterInfo_Text_5:
+	.string "{COLOR BLUE}$"

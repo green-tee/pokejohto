@@ -1,26 +1,19 @@
-# Characters
+// Characters
 const LOCALID_JOEY = 1
 const LOCALID_BUGSY = 2
 
-# Starter balls
+// Starter balls
 const LOCALID_CHIKORITA_BALL = 3
 const LOCALID_CYNDAQUIL_BALL = 4
 const LOCALID_TOTODILE_BALL = 5
 
-# Variables' aliases
+// Variables' aliases
 const PLAYER_INTERACTED_STARTER = VAR_TEMP_1
+const JOEY_STARTER = VAR_TEMP_2
+const BUGSY_STARTER = VAR_TEMP_3
+const VARID_JOEY_BALL = VAR_TEMP_4
+const VARID_BUGSY_BALL = VAR_TEMP_5
 
-# Colors
-// const TEXT_COLOR_TRANSPARENT = 0
-// const TEXT_COLOR_WHITE = 1
-// const TEXT_COLOR_DARK_GRAY = 2
-// const TEXT_COLOR_LIGHT_GRAY = 3
-const TEXT_COLOR_RED = 4
-// const TEXT_COLOR_LIGHT_RED = 5
-const TEXT_COLOR_GREEN = 6
-// const TEXT_COLOR_LIGHT_GREEN = 7
-const TEXT_COLOR_BLUE = 8
-// const TEXT_COLOR_LIGHT_BLUE = 9
 
 mapscripts RouteOasis_MapScripts {
     MAP_SCRIPT_ON_TRANSITION: RouteOasis_EventScript_OnTransition
@@ -30,14 +23,19 @@ mapscripts RouteOasis_MapScripts {
 
 script RouteOasis_EventScript_OnTransition {
     if (var(VAR_MAP_SCENE_ROUTE_OASIS) == 1) {
+        # Make sure Joey and Bugsy stay in place after control is given to the player
         call(RouteOasis_EventScript_AdjustBugsyAndJoey)
     }
 }
 
+// Make Player face Bugsy at the start of the game, without making it visible to the player
 script RouteOasis_EventScript_AdjustPlayerOnStart {
     turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
 }
 
+// Intro, initial dialogues.
+// Bugsy spawns Poké Balls containing starters.
+// After this script ends, control is given to the player for the first time.
 script RouteOasis_EventScript_BugsyIntro {
     lockall
     call(RouteOasis_EventScript_BugsyIntroSpeech)
@@ -47,6 +45,7 @@ script RouteOasis_EventScript_BugsyIntro {
     releaseall
 }
 
+// Dialogue before Bugsy spawns the Poké Balls.
 script(local) RouteOasis_EventScript_BugsyIntroSpeech {
     msgbox(RouteOasis_Text_Bugsy_YouWantToBecomeATrainer)
     closemessage
@@ -54,9 +53,7 @@ script(local) RouteOasis_EventScript_BugsyIntroSpeech {
     waitmovement(LOCALID_BUGSY)
     msgbox(RouteOasis_Text_Bugsy_JoeyNewGymLeader)
     closemessage
-    applymovement(LOCALID_JOEY, Movement_Surprised)
-    playse(SE_PIN)
-    waitmovement(LOCALID_JOEY)
+    call(RouteOasis_EventScript_JoeyExclamationEmote)
     delay(120)
     msgbox(RouteOasis_Text_Joey_BugsyDidNotNeedTo)
     closemessage
@@ -71,6 +68,17 @@ script(local) RouteOasis_EventScript_BugsyIntroSpeech {
     waitmovement(OBJ_EVENT_ID_PLAYER)
 }
 
+// Makes an exclamation mark appear over Joey's head, with sound and waits.
+// This script is isolated because it is called more than once.
+script(local) RouteOasis_EventScript_JoeyExclamationEmote {
+    applymovement(LOCALID_JOEY, Movement_Surprised)
+    playse(SE_PIN)
+    waitmovement(LOCALID_JOEY)
+    waitse
+}
+
+// Bugsy walks to the metatiles where the Poké Balls should appear and makes them visible.
+// Every Poké Ball is laid down separately, with movement, sound and delay.
 script(local) RouteOasis_EventScript_BugsyIntroLayPokeballs {
     applymovement(LOCALID_BUGSY, Movement_GoLayingFirstBall)
     delay(60)
@@ -97,6 +105,7 @@ script(local) RouteOasis_EventScript_BugsyIntroLayPokeballs {
     delay(30)
 }
 
+// Dialogue after Bugsy spawns Poké Balls.
 script(local) RouteOasis_EventScript_BugsyIntroExplainStarters {
     applymovement(LOCALID_BUGSY, Movement_GoExplainStartersToPlayer)
     waitmovement(LOCALID_BUGSY)
@@ -120,12 +129,15 @@ script(local) RouteOasis_EventScript_BugsyIntroExplainStarters {
     call(RouteOasis_EventScript_AdjustBugsyAndJoey)
 }
 
+// This script changes Bugsy's position and Bugsy's and Joey's facing.
 script(local) RouteOasis_EventScript_AdjustBugsyAndJoey {
     setobjectxyperm(LOCALID_BUGSY, 23, 31)
     setobjectmovementtype(LOCALID_BUGSY, MOVEMENT_TYPE_FACE_RIGHT)
     setobjectmovementtype(LOCALID_JOEY, MOVEMENT_TYPE_FACE_LEFT)
 }
 
+// This script is triggered when the player attempts to go away to the left of the Poké Balls.
+// It ensures the player cannot go away without a Pokémon.
 script RouteOasis_EventScript_BugsyPreventPlayerFromGoingAway {
     lockall
     turnobject(LOCALID_BUGSY, DIR_SOUTH)
@@ -137,6 +149,8 @@ script RouteOasis_EventScript_BugsyPreventPlayerFromGoingAway {
     releaseall
 }
 
+// This script is triggered when the player attempts to go away to the right of the Poké Balls.
+// It ensures the player cannot go away without a Pokémon.
 script RouteOasis_EventScript_JoeyPreventPlayerFromGoingAway {
     lockall
     turnobject(LOCALID_JOEY, DIR_EAST)
@@ -207,42 +221,58 @@ movement Movement_Player_WalkToPokeballsFromRight {
     walk_left * 2
 }
 
+// This script is executed when the player talks to Bugsy before selecting a Pokémon.
 script RouteOasis_EventScript_Bugsy {
     msgbox(RouteOasis_Text_Bugsy_CheckOutPokeballs, MSGBOX_NPC)
 }
 
+// This script is executed when the player talks to Joey before selecting a Pokémon.
 script RouteOasis_EventScript_Joey {
     msgbox(RouteOasis_Text_Joey_CheckOutPokeballs, MSGBOX_NPC)
 }
 
+// This script is executed when the player interacts with one of the Poké Balls.
+// Depending on the Poké Ball's ID, the player is shown a different Pokémon.
+// The player is asked if they want to pick the selected Pokémon as starter.
+// If not, the script ends and the player can move freely again.
+// If the player confirms the Pokémon, the intro is carried on.
 script RouteOasis_EventScript_StarterBall {
     lockall
     call(RouteOasis_EventScript_SetupInteractedStarterInfo)
     if (var(VAR_RESULT) == YES) {
+        # A starter is given to the player and the intro is carried on.
         call(RouteOasis_EventScript_GiveStarterToPlayer)
         call(RouteOasis_EventScript_PositionCharactersAfterSelection)
-        // TODO: Adjust player position and proceed with event
         setvar(VAR_MAP_SCENE_ROUTE_OASIS, 2)
+        call(RouteOasis_EventScript_JoeyStarterSelection)
+        # TODO: proceed with Bugsy's selection.
+        call(RouteOasis_EventScript_BugsyStarterSelection)
+    } else {
+        # RouteOasis_EventScript_SetupInteractedStarterInfo shows a picture of the interacted Pokémon.
+        # It needs to be hidden here if the Pokémon hasn't been taken.
+        # Otherwise, it's hidden by RouteOasis_EventScript_PositionCharactersAfterSelection.
+        hidemonpic
     }
-    textcolor(NPC_TEXT_COLOR_DEFAULT)
-    hidemonpic
     releaseall
 }
 
+// This script depends on the Poké Ball the player has interacted with.
+// The Pokémon's cry is played, it's picture is shown.
+// Text color, type and name are buffered to be displayed correctly in textboxes.
 script(local) RouteOasis_EventScript_SetupInteractedStarterInfo {
     switch (var(VAR_LAST_TALKED)) {
         case LOCALID_CHIKORITA_BALL:
             setvar(PLAYER_INTERACTED_STARTER, SPECIES_CHIKORITA)
             bufferstring(STR_VAR_2, "Grass")
-            setvar(VAR_TEXT_COLOR, TEXT_COLOR_GREEN)
+            bufferstring(STR_VAR_3, "{COLOR GREEN}")
         case LOCALID_CYNDAQUIL_BALL:
             setvar(PLAYER_INTERACTED_STARTER, SPECIES_CYNDAQUIL)
             bufferstring(STR_VAR_2, "Fire")
-            setvar(VAR_TEXT_COLOR, TEXT_COLOR_RED)
+            bufferstring(STR_VAR_3, "{COLOR RED}")
         case LOCALID_TOTODILE_BALL:
             setvar(PLAYER_INTERACTED_STARTER, SPECIES_TOTODILE)
             bufferstring(STR_VAR_2, "Water")
-            setvar(VAR_TEXT_COLOR, TEXT_COLOR_BLUE)
+            bufferstring(STR_VAR_3, "{COLOR BLUE}")
     }
     playmoncry(PLAYER_INTERACTED_STARTER, CRY_MODE_NORMAL)
     showmonpic(PLAYER_INTERACTED_STARTER, 10, 3)
@@ -251,11 +281,20 @@ script(local) RouteOasis_EventScript_SetupInteractedStarterInfo {
     waitmoncry
 }
 
+// This script gives the player their first Pokémon.
+// It sets the system flag that enables the Pokémon menu.
 script(local) RouteOasis_EventScript_GiveStarterToPlayer {
     givemon(PLAYER_INTERACTED_STARTER, 5)
     setflag(FLAG_SYS_POKEMON_GET)
+    copyvar(VAR_STARTER_MON, PLAYER_INTERACTED_STARTER)
     msgbox(RouteOasis_Text_Ball_StarterHasBecomeCompanion, MSGBOX_DEFAULT)
     playmoncry(PLAYER_INTERACTED_STARTER, CRY_MODE_NORMAL)
+    call(RouteOasis_EventScript_FanfareStarterAfterCry)
+}
+
+// This script plays the fanfare after the Pokémon has been given to the player, Joey or Bugsy.
+// It is isolated because it is called more than once.
+script(local) RouteOasis_EventScript_FanfareStarterAfterCry {
     waitmoncry
     delay(10)
     playfanfare(MUS_CAUGHT_INTRO)
@@ -263,14 +302,170 @@ script(local) RouteOasis_EventScript_GiveStarterToPlayer {
     closemessage
 }
 
+// This script is called after the starter has been given to the player.
+// The Pokémon's picture is hidden here.
+// After that, the player is moved to a fixed position and the camera is centered.
+// Player's and Joey's facing are changed.
 script(local) RouteOasis_EventScript_PositionCharactersAfterSelection {
-    fadescreenspeed(FADE_TO_BLACK, 15)
+    fadescreenspeed(FADE_TO_BLACK, 6)
     hidemonpic
     setobjectxy(OBJ_EVENT_ID_PLAYER, 24, 32)
     setobjectxy(LOCALID_JOEY, 25, 31)
+    special(SpawnCameraObject)
+    switch (var(VAR_LAST_TALKED)) {
+        # Adjust camera depending on Player's current position.
+        # The position is known because each Pokémon is only interactable from one side.
+        case LOCALID_CHIKORITA_BALL:
+            applymovement(OBJ_EVENT_ID_CAMERA, Movement_Camera_FromChikoritaBall)
+        case LOCALID_CYNDAQUIL_BALL:
+            applymovement(OBJ_EVENT_ID_CAMERA, Movement_Camera_FromCyndaquilBall)
+        case LOCALID_TOTODILE_BALL:
+            applymovement(OBJ_EVENT_ID_CAMERA, Movement_Camera_FromTotodileBall)
+    }
+    waitmovement(OBJ_EVENT_ID_CAMERA)
+    special(RemoveCameraObject)
     turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
     turnobject(LOCALID_JOEY, DIR_NORTH)
     removeobject(VAR_LAST_TALKED)
     delay(60)
-    fadescreenspeed(FADE_FROM_BLACK, 15)
+    fadescreenspeed(FADE_FROM_BLACK, 6)
+}
+
+movement Movement_Camera_FromChikoritaBall {
+    walk_faster_down
+}
+
+movement Movement_Camera_FromCyndaquilBall {
+    walk_faster_left
+    walk_faster_down
+}
+
+movement Movement_Camera_FromTotodileBall {
+    walk_faster_left * 2
+    walk_faster_down
+}
+
+// Dialogue after starter selection, before Joey chooses his.
+// Joey walks to the Poké Ball and picks it up, despawning it.
+script(local) RouteOasis_EventScript_JoeyStarterSelection {
+    call(RouteOasis_EventScript_SetupBuffersAccordingToStarter)
+    msgbox(RouteOasis_Text_Bugsy_YourTurnJoey)
+    closemessage
+    delay(60)
+    applymovement(LOCALID_JOEY, Movement_TurnToCamera)
+    waitmovement(LOCALID_JOEY)
+    msgbox(RouteOasis_Text_Joey_Dots)
+    closemessage
+    delay(120)
+    msgbox(RouteOasis_Text_Joey_WhichOneShouldIPick)
+    closemessage
+    delay(60)
+    applymovement(LOCALID_JOEY, Movement_FacePokeballs)
+    waitmovement(LOCALID_JOEY)
+    msgbox(RouteOasis_Text_Joey_AdvantageOverPlayerOrOverBugsy)
+    closemessage
+    call(RouteOasis_EventScript_JoeyExclamationEmote)
+    msgbox(RouteOasis_Text_Joey_IllTakeThisOne)
+    closemessage
+    call(RouteOasis_EventScript_JoeyWalkToPokeball)
+    msgbox(RouteOasis_Text_Ball2_JoeyPicked, MSGBOX_DEFAULT)
+    playmoncry(JOEY_STARTER, CRY_MODE_NORMAL)
+    call(RouteOasis_EventScript_FanfareStarterAfterCry)
+    removeobject(VARID_JOEY_BALL)
+    delay(60)
+}
+
+// This script sets variables so that they contain IDs of the remaining Poké Balls.
+// Names are buffered to be later displayed correctly in textboxes.
+script(local) RouteOasis_EventScript_SetupBuffersAccordingToStarter {
+    switch (var(VAR_STARTER_MON)) {
+        case SPECIES_CHIKORITA:
+            setvar(JOEY_STARTER, SPECIES_TOTODILE)
+            setvar(VARID_JOEY_BALL, LOCALID_TOTODILE_BALL)
+            setvar(BUGSY_STARTER, SPECIES_CYNDAQUIL)
+            setvar(VARID_BUGSY_BALL, LOCALID_CYNDAQUIL_BALL)
+        case SPECIES_CYNDAQUIL:
+            setvar(JOEY_STARTER, SPECIES_CHIKORITA)
+            setvar(VARID_JOEY_BALL, LOCALID_CHIKORITA_BALL)
+            setvar(BUGSY_STARTER, SPECIES_TOTODILE)
+            setvar(VARID_BUGSY_BALL, LOCALID_TOTODILE_BALL)
+        case SPECIES_TOTODILE:
+            setvar(JOEY_STARTER, SPECIES_CYNDAQUIL)
+            setvar(VARID_JOEY_BALL, LOCALID_CYNDAQUIL_BALL)
+            setvar(BUGSY_STARTER, SPECIES_CHIKORITA)
+            setvar(VARID_BUGSY_BALL, LOCALID_CHIKORITA_BALL)
+    }
+    bufferspeciesname(STR_VAR_2, BUGSY_STARTER)
+    bufferspeciesname(STR_VAR_3, JOEY_STARTER)
+}
+
+movement Movement_TurnToCamera {
+    walk_in_place_slow_down
+}
+
+// Apply the correct movement to Joey, depending on which Pokémon he's going to take.
+script(local) RouteOasis_EventScript_JoeyWalkToPokeball {
+    switch (var(JOEY_STARTER)) {
+        case SPECIES_CHIKORITA:
+            applymovement(LOCALID_JOEY, Movement_Joey_RunToChikoritaBall)
+        case SPECIES_CYNDAQUIL:
+            applymovement(LOCALID_JOEY, Movement_Joey_RunToCyndaquilBall)
+        case SPECIES_TOTODILE:
+            applymovement(LOCALID_JOEY, Movement_Joey_RunToTotodileBall)
+    }
+    waitmovement(LOCALID_JOEY)
+}
+
+movement Movement_Joey_RunToChikoritaBall {
+    walk_fast_left
+    walk_in_place_fast_up
+}
+
+movement Movement_Joey_RunToCyndaquilBall {
+    walk_in_place_fast_up
+}
+
+movement Movement_Joey_RunToTotodileBall {
+    walk_fast_right
+    walk_in_place_fast_up
+}
+
+script(local) RouteOasis_EventScript_BugsyStarterSelection {
+    applymovement(LOCALID_BUGSY, Movement_Bugsy_FaceJoeyFromLeft)
+    waitmovement(LOCALID_BUGSY)
+    msgbox(RouteOasis_Text_Bugsy_ThatLeavesOneForMe)
+    closemessage
+    call(RouteOasis_EventScript_BugsyWalkToPokeball)
+    msgbox(RouteOasis_Text_Ball3_BugsyPicked, MSGBOX_DEFAULT)
+    playmoncry(BUGSY_STARTER, CRY_MODE_NORMAL)
+    call(RouteOasis_EventScript_FanfareStarterAfterCry)
+    removeobject(VARID_BUGSY_BALL)
+    delay(60)
+}
+
+script(local) RouteOasis_EventScript_BugsyWalkToPokeball {
+    switch (var(BUGSY_STARTER)) {
+        case SPECIES_CHIKORITA:
+            applymovement(LOCALID_BUGSY, Movement_Bugsy_WalkToChikoritaBall)
+        case SPECIES_CYNDAQUIL:
+            applymovement(LOCALID_BUGSY, Movement_Bugsy_WalkToCyndaquilBall)
+        case SPECIES_TOTODILE:
+            applymovement(LOCALID_BUGSY, Movement_Bugsy_WalkToTotodileBall)
+    }
+    waitmovement(LOCALID_BUGSY)
+}
+
+movement Movement_Bugsy_WalkToChikoritaBall {
+    walk_up
+    walk_in_place_right
+}
+
+movement Movement_Bugsy_WalkToCyndaquilBall {
+    walk_up
+    walk_right
+}
+
+movement Movement_Bugsy_WalkToTotodileBall {
+    walk_up
+    walk_right * 2
 }

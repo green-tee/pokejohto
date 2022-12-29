@@ -87,13 +87,48 @@ RouteOasis_Text_Joey_CheckOutPokeballs::
 	.string "waiting too long!$"
 
 RouteOasis_Text_Ball_WantToPickThisOne::
-	.string "This is the {STR_VAR_2}-type\n"
-	.string "Pokémon\n"
-	.string "{STR_VAR_1}.\p"
-	.string "Is this the one you want\n"
-	.string "to keep?$"
+	.string "{STR_VAR_3}This is the {STR_VAR_2}-type Pokémon\n"
+	.string "{STR_VAR_1}.\pIs this the one you want"
+	.string "\nto keep?$"
 
 RouteOasis_Text_Ball_StarterHasBecomeCompanion::
-	.string "{STR_VAR_1} has become\n"
+	.string "{STR_VAR_3}{STR_VAR_1} has become\n"
 	.string "your first companion\l"
 	.string "in this adventure!$"
+
+RouteOasis_Text_Bugsy_YourTurnJoey::
+	.string "{COLOR GREEN}Bugsy: It's your turn, Joey!\p"
+	.string "{PLAYER} has chosen {STR_VAR_1}.\n"
+	.string "Now there are two Pokémon left.\l"
+	.string "You may take whichever one you\l"
+	.string "like!$"
+
+RouteOasis_Text_Joey_Dots::
+	.string "{COLOR BLUE}Joey: .{PAUSE 60} .{PAUSE 60} .{PAUSE 60}\n$"
+
+RouteOasis_Text_Joey_WhichOneShouldIPick::
+	.string "{COLOR BLUE}Joey: So, which one should I\n"
+	.string "pick?$"
+
+RouteOasis_Text_Joey_AdvantageOverPlayerOrOverBugsy::
+	.string "{COLOR BLUE}Joey: If I pick {STR_VAR_2}, I'll\n"
+	.string "have an advantage over\l"
+	.string "{PLAYER}'s {STR_VAR_1}...\p"
+	.string "But if I go with {STR_VAR_3},\n"
+	.string "I can knock out Bugsy's\l"
+	.string "{STR_VAR_2} with ease...$"
+
+RouteOasis_Text_Joey_IllTakeThisOne::
+	.string "{COLOR BLUE}Joey: Do I even need to ask?\n"
+	.string "{STR_VAR_3}, I choose you!$"
+
+RouteOasis_Text_Ball2_JoeyPicked::
+	.string "Joey decided to take {STR_VAR_3}\n"
+	.string "with him!$"
+
+RouteOasis_Text_Bugsy_ThatLeavesOneForMe::
+	.string "{COLOR GREEN}Bugsy: That leaves {STR_VAR_2}\n"
+	.string "for me to take!$"
+
+RouteOasis_Text_Ball3_BugsyPicked::
+	.string "Bugsy is keeping {STR_VAR_2}.$"

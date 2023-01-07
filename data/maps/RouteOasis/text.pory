@@ -72,6 +72,11 @@ text RouteOasis_Text_Bugsy_GoAheadPickOne {
     "Take your time."
 }
 
+text RouteOasis_Text_Tutorial_WalkAndRun {
+    "Use {DPAD_ANY} to walk.\n"
+    "Hold down {B_BUTTON} to run."
+}
+
 text RouteOasis_Text_Bugsy_DoNotGoAway {
     "{COLOR GREEN}Bugsy: Slow down, {PLAYER}!\n"
     "Are you walking away without my\l"
@@ -154,4 +159,159 @@ text RouteOasis_Text_Bugsy_ThatLeavesOneForMe {
 
 text RouteOasis_Text_Ball3_BugsyPicked {
     "Bugsy is keeping {STR_VAR_2}."
+}
+
+text RouteOasis_Text_Bugsy_OneThingLeftToDo {
+    "{COLOR GREEN}Bugsy: There's only one thing\n"
+    "left to do now.\l"
+    "Joey, can I count on you?"
+}
+
+text RouteOasis_Text_Joey_AnswerBugsySure {
+    "{COLOR BLUE}Joey: Sure thing!"
+}
+
+text RouteOasis_Text_Joey_WeNeedToShowPlayerHowToBattle {
+    "{COLOR BLUE}Joey: We need to show {PLAYER} how\n"
+    "to have a Pokémon Battle!\p"
+    "And the best way to do that is,\n"
+    "well, to battle!\l"
+    "This way, you and {STR_VAR_1} will\l"
+    "get to know each other a little!"
+}
+
+text RouteOasis_Text_Bugsy_FairBattlesAreGood {
+    "{COLOR GREEN}Bugsy: That's right!\p"
+    "{PLAYER}, I know you're a nice\n"
+    "person, and Joey is a good guy.\l"
+    "You don't need to worry about\l"
+    "hurting {STR_VAR_1}. Fair battles\l"
+    "are the best recipe for a tight\l"
+    "bond with your Pokémon!"
+}
+
+text RouteOasis_Text_Joey_IllGoEasyOnYou {
+    "{COLOR BLUE}Joey: Then it's settled!\p"
+    "Don't worry, {PLAYER}, I'll go\n"
+    "easy on you and {STR_VAR_1}.\p"
+    "Let's go!"
+}
+
+text RouteOasis_Text_Joey_TextWhenHeLoses {
+    "Not bad! Not bad at all!"
+}
+
+text RouteOasis_Text_Joey_TextWhenHeWins {
+    "That means, I win!"
+}
+
+text RouteOasis_Text_Joey_AfterHeLoses {
+    "{COLOR BLUE}Joey: Hey, you aced it!\p"
+    "Did you notice that your Pokémon\n"
+    "has become stronger?\l"
+    "That's right, defeating other\l"
+    "Pokémon is the key to... well,\l"
+    "defeat even more Pokémon!\p"
+    "To win battles more easily, you\n"
+    "have to win battles that you can\l"
+    "already win. Sounds complicated?\p"
+    "Don't wrap your head about it,\n"
+    "you'll understand everything as\l"
+    "you keep battling."
+}
+
+text RouteOasis_Text_Bugsy_AfterJoeyLoses {
+    "{COLOR GREEN}Bugsy: That's right!\p"
+    "And the stronger the Pokémon you\n"
+    "defeat, the faster your Pokémon\l"
+    "matures."
+}
+
+text RouteOasis_Text_Joey_AfterHeWins {
+    "{COLOR BLUE}Joey: Too bad!\p"
+    "But don't feel ashamed. It was\n"
+    "your first battle after all.\p"
+    "Anyway, once you start winning,\n"
+    "winning more fights becomes\l"
+    "progressively easier.\l"
+    "A Pokémon grows stronger by\l"
+    "defeating other Pokémon.\p"
+    "It may sound a bit complicated,\n"
+    "but I promise it'll become clear\l"
+    "very soon."
+}
+
+text RouteOasis_Text_Bugsy_AfterJoeyWins {
+    "{COLOR GREEN}Bugsy: That's right!\p"
+    "Stronger opponents will make\n"
+    "your Pokémon mature faster, if\l"
+    "you manage to take them down.\p"
+    "If you find yourself losing a\n"
+    "lot, you just have to train!"
+}
+
+text RouteOasis_Text_Bugsy_IHaveRemedies {
+    "{COLOR GREEN}Bugsy: Hold on, {PLAYER}. I have\n"
+    "a bunch of remedies in my bag.\l"
+    "Let me use a few to fully heal\l"
+    "your Pokémon."
+}
+
+text RouteOasis_Text_HealExplanation {
+    "Your party has been fully\n"
+    "healed!\p"
+    "When your party is healed,\n"
+    "all your Pokémon get all their\l"
+    "Health Points back, and every\l"
+    "Status Condition is removed.\l"
+    "Power Points are also refilled."
+}
+
+text RouteOasis_Text_Bugsy_MyTurn {
+    "{COLOR GREEN}Bugsy: Okay, my turn!"
+}
+
+text RouteOasis_Text_Bugsy_TextWhenHeLoses {
+    "Nice! I bet winning my Badge is\n"
+    "going to be a walk in the park!"
+}
+
+text RouteOasis_Text_Bugsy_TextWhenHeWins {
+    "It's okay, {PLAYER}. You just\n"
+    "need to train a little."
+}
+
+text RouteOasis_Text_Bugsy_AfterHeLoses {
+    "{COLOR GREEN}Bugsy: Well done!\n"
+    "Your Pokémon has grown a little\l"
+    "stronger!\p"
+    "But remember, the weaker your\n"
+    "opponents are, the slower your\l"
+    "Pokémon grow."
+}
+
+text RouteOasis_Text_Bugsy_AfterHeWins {
+    "{COLOR GREEN}Bugsy: Aw, too bad!\n"
+    "I was hoping for you to win this\l"
+    "one!\p"
+    "Well, anyway, remember what we\n"
+    "said earlier about Pokémon\l"
+    "growing stronger by fighting?\p"
+    "Note this: the weaker your\n"
+    "opponents are, the slower your\l"
+    "Pokémon grow."
+}
+
+text RouteOasis_Text_Bugsy_LetMeHealAgain {
+    "{COLOR GREEN}Bugsy: Now, let me heal your\n"
+    "Pokémon again!"
+}
+
+text RouteOasis_Text_Bugsy_HealJoeysPokemon {
+    "{COLOR GREEN}Bugsy: Joey, let me quickly heal\n"
+    "yours too!"
+}
+
+text RouteOasis_Text_Joey_ThanksBugsy {
+    "{COLOR BLUE}Joey: Thank you, Bugsy!"
 }

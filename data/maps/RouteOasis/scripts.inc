@@ -34,6 +34,7 @@ RouteOasis_EventScript_BugsyIntro::
 	call RouteOasis_EventScript_BugsyIntroLayPokeballs
 	call RouteOasis_EventScript_BugsyIntroExplainStarters
 	setvar VAR_MAP_SCENE_ROUTE_OASIS, 1
+	msgbox RouteOasis_Text_Tutorial_WalkAndRun, MSGBOX_DEFAULT
 	releaseall
 	return
 
@@ -240,6 +241,9 @@ RouteOasis_EventScript_StarterBall_2:
 	setvar VAR_MAP_SCENE_ROUTE_OASIS, 2
 	call RouteOasis_EventScript_JoeyStarterSelection
 	call RouteOasis_EventScript_BugsyStarterSelection
+	call RouteOasis_EventScript_PositionCharactersBeforeFirstBattle
+	call RouteOasis_EventScript_BattleSequences
+	call RouteOasis_EventScript_AfterBattleSequences
 	goto RouteOasis_EventScript_StarterBall_1
 
 
@@ -493,6 +497,199 @@ Movement_Bugsy_WalkToTotodileBall:
 	walk_up
 	walk_right
 	walk_right
+	step_end
+
+RouteOasis_EventScript_PositionCharactersBeforeFirstBattle:
+	fadescreenspeed FADE_TO_BLACK, 6
+	setobjectxy 1, 27, 30
+	setobjectxy 2, 25, 31
+	setobjectxy OBJ_EVENT_ID_PLAYER, 27, 31
+	turnobject 1, DIR_WEST
+	turnobject 2, DIR_EAST
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, Movement_Camera_BeforeFirstBattle
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	delay 120
+	fadescreenspeed FADE_FROM_BLACK, 6
+	return
+
+
+Movement_Camera_BeforeFirstBattle:
+	walk_faster_up
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	step_end
+
+RouteOasis_EventScript_BattleSequences:
+	call RouteOasis_EventScript_JoeyBattleSequence
+	delay 120
+	call RouteOasis_EventScript_BugsyBattleSequence
+	return
+
+
+RouteOasis_EventScript_JoeyBattleSequence:
+	msgbox RouteOasis_Text_Bugsy_OneThingLeftToDo
+	closemessage
+	msgbox RouteOasis_Text_Joey_AnswerBugsySure
+	applymovement 1, Movement_FacePlayerFromAbove
+	waitmovement 1
+	msgbox RouteOasis_Text_Joey_WeNeedToShowPlayerHowToBattle
+	closemessage
+	delay 60
+	msgbox RouteOasis_Text_Bugsy_FairBattlesAreGood
+	closemessage
+	delay 60
+	applymovement OBJ_EVENT_ID_PLAYER, Movement_FacePokeballs
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox RouteOasis_Text_Joey_IllGoEasyOnYou
+	closemessage
+	call RouteOasis_EventScript_SetupBattleVariables
+	call RouteOasis_EventScript_DoFirstJoeyBattle
+	checktrainerflag VAR_TEMP_6
+	goto_if 1, RouteOasis_EventScript_JoeyBattleSequence_2
+	msgbox RouteOasis_Text_Joey_AfterHeWins
+	closemessage
+	delay 60
+	msgbox RouteOasis_Text_Bugsy_AfterJoeyWins
+RouteOasis_EventScript_JoeyBattleSequence_1:
+	closemessage
+	return
+
+RouteOasis_EventScript_JoeyBattleSequence_2:
+	msgbox RouteOasis_Text_Joey_AfterHeLoses
+	closemessage
+	delay 60
+	msgbox RouteOasis_Text_Bugsy_AfterJoeyLoses
+	goto RouteOasis_EventScript_JoeyBattleSequence_1
+
+
+RouteOasis_EventScript_DoFirstJoeyBattle:
+	switch VAR_STARTER_MON
+	case SPECIES_CHIKORITA, RouteOasis_EventScript_DoFirstJoeyBattle_2
+	case SPECIES_CYNDAQUIL, RouteOasis_EventScript_DoFirstJoeyBattle_3
+	case SPECIES_TOTODILE, RouteOasis_EventScript_DoFirstJoeyBattle_4
+	return
+
+RouteOasis_EventScript_DoFirstJoeyBattle_2:
+	trainerbattle_earlyrival TRAINER_JOEY_FIRST_BATTLE_TOTODILE, RIVAL_BATTLE_TUTORIAL, RouteOasis_Text_Joey_TextWhenHeLoses, RouteOasis_Text_Joey_TextWhenHeWins
+	return
+
+RouteOasis_EventScript_DoFirstJoeyBattle_3:
+	trainerbattle_earlyrival TRAINER_JOEY_FIRST_BATTLE_CHIKORITA, RIVAL_BATTLE_TUTORIAL, RouteOasis_Text_Joey_TextWhenHeLoses, RouteOasis_Text_Joey_TextWhenHeWins
+	return
+
+RouteOasis_EventScript_DoFirstJoeyBattle_4:
+	trainerbattle_earlyrival TRAINER_JOEY_FIRST_BATTLE_CYNDAQUIL, RIVAL_BATTLE_TUTORIAL, RouteOasis_Text_Joey_TextWhenHeLoses, RouteOasis_Text_Joey_TextWhenHeWins
+	return
+
+
+RouteOasis_EventScript_SetupBattleVariables:
+	switch VAR_STARTER_MON
+	case SPECIES_CHIKORITA, RouteOasis_EventScript_SetupBattleVariables_2
+	case SPECIES_CYNDAQUIL, RouteOasis_EventScript_SetupBattleVariables_3
+	case SPECIES_TOTODILE, RouteOasis_EventScript_SetupBattleVariables_4
+	return
+
+RouteOasis_EventScript_SetupBattleVariables_2:
+	setvar VAR_TEMP_6, TRAINER_JOEY_FIRST_BATTLE_TOTODILE
+	setvar VAR_TEMP_7, TRAINER_BUGSY_FIRST_BATTLE_CYNDAQUIL
+	return
+
+RouteOasis_EventScript_SetupBattleVariables_3:
+	setvar VAR_TEMP_6, TRAINER_JOEY_FIRST_BATTLE_CHIKORITA
+	setvar VAR_TEMP_7, TRAINER_BUGSY_FIRST_BATTLE_TOTODILE
+	return
+
+RouteOasis_EventScript_SetupBattleVariables_4:
+	setvar VAR_TEMP_6, TRAINER_JOEY_FIRST_BATTLE_CYNDAQUIL
+	setvar VAR_TEMP_7, TRAINER_BUGSY_FIRST_BATTLE_CHIKORITA
+	return
+
+
+RouteOasis_EventScript_BugsyBattleSequence:
+	applymovement 2, Movement_Bugsy_WalkToHealPlayer
+	waitmovement 2
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	delay 30
+	msgbox RouteOasis_Text_Bugsy_IHaveRemedies
+	closemessage
+	call RouteOasis_EventScript_HealWaitFanfareNoFadescreen
+	msgbox RouteOasis_Text_HealExplanation, MSGBOX_DEFAULT
+	closemessage
+	delay 60
+	msgbox RouteOasis_Text_Bugsy_MyTurn
+	closemessage
+	call RouteOasis_EventScript_DoFirstBugsyBattle
+	checktrainerflag VAR_TEMP_7
+	goto_if 1, RouteOasis_EventScript_BugsyBattleSequence_2
+	msgbox RouteOasis_Text_Bugsy_AfterHeWins
+RouteOasis_EventScript_BugsyBattleSequence_1:
+	closemessage
+	delay 60
+	return
+
+RouteOasis_EventScript_BugsyBattleSequence_2:
+	msgbox RouteOasis_Text_Bugsy_AfterHeLoses
+	goto RouteOasis_EventScript_BugsyBattleSequence_1
+
+
+RouteOasis_EventScript_HealWaitFanfareNoFadescreen:
+	special HealPlayerParty
+	call RouteOasis_EventScript_PlayAndWaitHealingFanfare
+	return
+
+
+RouteOasis_EventScript_PlayAndWaitHealingFanfare:
+	playfanfare MUS_HEAL
+	waitfanfare
+	return
+
+
+Movement_Bugsy_WalkToHealPlayer:
+	walk_right
+	step_end
+
+RouteOasis_EventScript_DoFirstBugsyBattle:
+	switch VAR_STARTER_MON
+	case SPECIES_CHIKORITA, RouteOasis_EventScript_DoFirstBugsyBattle_2
+	case SPECIES_CYNDAQUIL, RouteOasis_EventScript_DoFirstBugsyBattle_3
+	case SPECIES_TOTODILE, RouteOasis_EventScript_DoFirstBugsyBattle_4
+	return
+
+RouteOasis_EventScript_DoFirstBugsyBattle_2:
+	trainerbattle_earlyrival TRAINER_BUGSY_FIRST_BATTLE_CYNDAQUIL, RIVAL_BATTLE_TUTORIAL, RouteOasis_Text_Bugsy_TextWhenHeLoses, RouteOasis_Text_Bugsy_TextWhenHeWins
+	return
+
+RouteOasis_EventScript_DoFirstBugsyBattle_3:
+	trainerbattle_earlyrival TRAINER_BUGSY_FIRST_BATTLE_TOTODILE, RIVAL_BATTLE_TUTORIAL, RouteOasis_Text_Bugsy_TextWhenHeLoses, RouteOasis_Text_Bugsy_TextWhenHeWins
+	return
+
+RouteOasis_EventScript_DoFirstBugsyBattle_4:
+	trainerbattle_earlyrival TRAINER_BUGSY_FIRST_BATTLE_CHIKORITA, RIVAL_BATTLE_TUTORIAL, RouteOasis_Text_Bugsy_TextWhenHeLoses, RouteOasis_Text_Bugsy_TextWhenHeWins
+	return
+
+
+RouteOasis_EventScript_AfterBattleSequences:
+	msgbox RouteOasis_Text_Bugsy_LetMeHealAgain
+	closemessage
+	call RouteOasis_EventScript_HealWaitFanfareNoFadescreen
+	applymovement 2, Movement_Bugsy_WalkToHealJoey
+	waitmovement 2
+	turnobject 1, DIR_WEST
+	msgbox RouteOasis_Text_Bugsy_HealJoeysPokemon
+	closemessage
+	call RouteOasis_EventScript_PlayAndWaitHealingFanfare
+	msgbox RouteOasis_Text_Joey_ThanksBugsy
+	closemessage
+	return
+
+
+Movement_Bugsy_WalkToHealJoey:
+	walk_up
+	face_right
 	step_end
 
 RouteOasis_EventScript_SetupInteractedStarterInfo_Text_0:

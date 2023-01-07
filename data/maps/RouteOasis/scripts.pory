@@ -13,6 +13,8 @@ const JOEY_STARTER = VAR_TEMP_2
 const BUGSY_STARTER = VAR_TEMP_3
 const VARID_JOEY_BALL = VAR_TEMP_4
 const VARID_BUGSY_BALL = VAR_TEMP_5
+const TRAINER_JOEY_FIRST_BATTLE = VAR_TEMP_6
+const TRAINER_BUGSY_FIRST_BATTLE = VAR_TEMP_7
 
 
 mapscripts RouteOasis_MapScripts {
@@ -42,6 +44,8 @@ script RouteOasis_EventScript_BugsyIntro {
     call(RouteOasis_EventScript_BugsyIntroLayPokeballs)
     call(RouteOasis_EventScript_BugsyIntroExplainStarters)
     setvar(VAR_MAP_SCENE_ROUTE_OASIS, 1)
+    msgbox(RouteOasis_Text_Tutorial_WalkAndRun, MSGBOX_DEFAULT)
+    # This textbox should stay open until the player interacts with something.
     releaseall
 }
 
@@ -245,8 +249,10 @@ script RouteOasis_EventScript_StarterBall {
         call(RouteOasis_EventScript_PositionCharactersAfterSelection)
         setvar(VAR_MAP_SCENE_ROUTE_OASIS, 2)
         call(RouteOasis_EventScript_JoeyStarterSelection)
-        # TODO: proceed with Bugsy's selection.
         call(RouteOasis_EventScript_BugsyStarterSelection)
+        call(RouteOasis_EventScript_PositionCharactersBeforeFirstBattle)
+        call(RouteOasis_EventScript_BattleSequences)
+        call(RouteOasis_EventScript_AfterBattleSequences)
     } else {
         # RouteOasis_EventScript_SetupInteractedStarterInfo shows a picture of the interacted Pokémon.
         # It needs to be hidden here if the Pokémon hasn't been taken.
@@ -404,6 +410,7 @@ movement Movement_TurnToCamera {
 }
 
 // Apply the correct movement to Joey, depending on which Pokémon he's going to take.
+// Joey will take the Starter which is weak against Player's.
 script(local) RouteOasis_EventScript_JoeyWalkToPokeball {
     switch (var(JOEY_STARTER)) {
         case SPECIES_CHIKORITA:
@@ -430,6 +437,7 @@ movement Movement_Joey_RunToTotodileBall {
     walk_in_place_fast_up
 }
 
+// This script handles the sequence in which Bugsy takes his Poké Ball.
 script(local) RouteOasis_EventScript_BugsyStarterSelection {
     applymovement(LOCALID_BUGSY, Movement_Bugsy_FaceJoeyFromLeft)
     waitmovement(LOCALID_BUGSY)
@@ -443,6 +451,8 @@ script(local) RouteOasis_EventScript_BugsyStarterSelection {
     delay(60)
 }
 
+// Make Bugsy walk to the correct Poké Ball according to which one the player picked.
+// Bugsy will take the starter which is strong agains Player's.
 script(local) RouteOasis_EventScript_BugsyWalkToPokeball {
     switch (var(BUGSY_STARTER)) {
         case SPECIES_CHIKORITA:
@@ -468,4 +478,168 @@ movement Movement_Bugsy_WalkToCyndaquilBall {
 movement Movement_Bugsy_WalkToTotodileBall {
     walk_up
     walk_right * 2
+}
+
+// This script positions Player, Joey and Bugsy after selection and before first battle.
+// The positioning occurs while the screen is black.
+script(local) RouteOasis_EventScript_PositionCharactersBeforeFirstBattle {
+    fadescreenspeed(FADE_TO_BLACK, 6)
+    setobjectxy(LOCALID_JOEY, 27, 30)
+    setobjectxy(LOCALID_BUGSY, 25, 31)
+    setobjectxy(OBJ_EVENT_ID_PLAYER, 27, 31)
+    turnobject(LOCALID_JOEY, DIR_WEST)
+    turnobject(LOCALID_BUGSY, DIR_EAST)
+    turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+    special(SpawnCameraObject)
+    applymovement(OBJ_EVENT_ID_CAMERA, Movement_Camera_BeforeFirstBattle)
+    waitmovement(OBJ_EVENT_ID_CAMERA)
+    special(RemoveCameraObject)
+    delay(120)
+    fadescreenspeed(FADE_FROM_BLACK, 6)
+}
+
+movement Movement_Camera_BeforeFirstBattle {
+    walk_faster_up
+    walk_faster_right * 3
+}
+
+script(local) RouteOasis_EventScript_BattleSequences {
+    call(RouteOasis_EventScript_JoeyBattleSequence)
+    delay(120)
+    call(RouteOasis_EventScript_BugsyBattleSequence)
+}
+
+// This script carries the first battle agains Joey, along with dialogues before and after the fight.
+script(local) RouteOasis_EventScript_JoeyBattleSequence {
+    msgbox(RouteOasis_Text_Bugsy_OneThingLeftToDo)
+    closemessage
+    msgbox(RouteOasis_Text_Joey_AnswerBugsySure)
+    applymovement(LOCALID_JOEY, Movement_FacePlayerFromAbove)
+    waitmovement(LOCALID_JOEY)
+    msgbox(RouteOasis_Text_Joey_WeNeedToShowPlayerHowToBattle)
+    closemessage
+    delay(60)
+    msgbox(RouteOasis_Text_Bugsy_FairBattlesAreGood)
+    closemessage
+    delay(60)
+    applymovement(OBJ_EVENT_ID_PLAYER, Movement_FacePokeballs)
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+    msgbox(RouteOasis_Text_Joey_IllGoEasyOnYou)
+    closemessage
+    call(RouteOasis_EventScript_SetupBattleVariables)
+    call(RouteOasis_EventScript_DoFirstJoeyBattle)
+    # Joey and Bugsy will now have different lines if Player loses
+    if (defeated(TRAINER_JOEY_FIRST_BATTLE)) {
+        msgbox(RouteOasis_Text_Joey_AfterHeLoses)
+        closemessage
+        delay(60)
+        msgbox(RouteOasis_Text_Bugsy_AfterJoeyLoses)
+    } else {
+        msgbox(RouteOasis_Text_Joey_AfterHeWins)
+        closemessage
+        delay(60)
+        msgbox(RouteOasis_Text_Bugsy_AfterJoeyWins)
+    }
+    closemessage
+}
+
+// This script starts the first battle against Joey with the correct Pokémon.
+// Joey has the one that is weak against Player's.
+script(local) RouteOasis_EventScript_DoFirstJoeyBattle {
+    switch(var(VAR_STARTER_MON)) {
+        case SPECIES_CHIKORITA:
+            trainerbattle_earlyrival(TRAINER_JOEY_FIRST_BATTLE_TOTODILE, RIVAL_BATTLE_TUTORIAL, RouteOasis_Text_Joey_TextWhenHeLoses, RouteOasis_Text_Joey_TextWhenHeWins)
+        case SPECIES_CYNDAQUIL:
+            trainerbattle_earlyrival(TRAINER_JOEY_FIRST_BATTLE_CHIKORITA, RIVAL_BATTLE_TUTORIAL, RouteOasis_Text_Joey_TextWhenHeLoses, RouteOasis_Text_Joey_TextWhenHeWins)
+        case SPECIES_TOTODILE:
+            trainerbattle_earlyrival(TRAINER_JOEY_FIRST_BATTLE_CYNDAQUIL, RIVAL_BATTLE_TUTORIAL, RouteOasis_Text_Joey_TextWhenHeLoses, RouteOasis_Text_Joey_TextWhenHeWins)
+    }
+}
+
+// This script sets temporary variables to know which battle took place agains the right trainer.
+// The player will fight Joey, who has the weaker starter.
+// Then the player will fight Bugsy, who has the stronger starter.
+script(local) RouteOasis_EventScript_SetupBattleVariables {
+    switch (var(VAR_STARTER_MON)) {
+        case SPECIES_CHIKORITA:
+            setvar(TRAINER_JOEY_FIRST_BATTLE, TRAINER_JOEY_FIRST_BATTLE_TOTODILE)
+            setvar(TRAINER_BUGSY_FIRST_BATTLE, TRAINER_BUGSY_FIRST_BATTLE_CYNDAQUIL)
+        case SPECIES_CYNDAQUIL:
+            setvar(TRAINER_JOEY_FIRST_BATTLE, TRAINER_JOEY_FIRST_BATTLE_CHIKORITA)
+            setvar(TRAINER_BUGSY_FIRST_BATTLE, TRAINER_BUGSY_FIRST_BATTLE_TOTODILE)
+        case SPECIES_TOTODILE:
+            setvar(TRAINER_JOEY_FIRST_BATTLE, TRAINER_JOEY_FIRST_BATTLE_CYNDAQUIL)
+            setvar(TRAINER_BUGSY_FIRST_BATTLE, TRAINER_BUGSY_FIRST_BATTLE_CHIKORITA)
+    }
+}
+
+// This script carries the first battle against Bugsy, along with dialogues before and after the fight
+script(local) RouteOasis_EventScript_BugsyBattleSequence {
+    applymovement(LOCALID_BUGSY, Movement_Bugsy_WalkToHealPlayer)
+    waitmovement(LOCALID_BUGSY)
+    turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+    delay(30)
+    msgbox(RouteOasis_Text_Bugsy_IHaveRemedies)
+    closemessage
+    call(RouteOasis_EventScript_HealWaitFanfareNoFadescreen)
+    msgbox(RouteOasis_Text_HealExplanation, MSGBOX_DEFAULT)
+    closemessage
+    delay(60)
+    msgbox(RouteOasis_Text_Bugsy_MyTurn)
+    closemessage
+    call(RouteOasis_EventScript_DoFirstBugsyBattle)
+    # Bugsy will have different lines if Player lost
+    if (defeated(TRAINER_BUGSY_FIRST_BATTLE)) {
+        msgbox(RouteOasis_Text_Bugsy_AfterHeLoses)
+    } else {
+        msgbox(RouteOasis_Text_Bugsy_AfterHeWins)
+    }
+    closemessage
+    delay(60)
+}
+
+script(local) RouteOasis_EventScript_HealWaitFanfareNoFadescreen {
+    special(HealPlayerParty)
+    call(RouteOasis_EventScript_PlayAndWaitHealingFanfare)
+}
+
+script(local) RouteOasis_EventScript_PlayAndWaitHealingFanfare {
+    playfanfare(MUS_HEAL)
+    waitfanfare
+}
+
+movement Movement_Bugsy_WalkToHealPlayer {
+    walk_right
+}
+
+// This script starts the first battle against Bugsy with the correct Pokémon.
+// Bugsy has the one that is strong against Player's.
+script(local) RouteOasis_EventScript_DoFirstBugsyBattle {
+    switch(var(VAR_STARTER_MON)) {
+        case SPECIES_CHIKORITA:
+            trainerbattle_earlyrival(TRAINER_BUGSY_FIRST_BATTLE_CYNDAQUIL, RIVAL_BATTLE_TUTORIAL, RouteOasis_Text_Bugsy_TextWhenHeLoses, RouteOasis_Text_Bugsy_TextWhenHeWins)
+        case SPECIES_CYNDAQUIL:
+            trainerbattle_earlyrival(TRAINER_BUGSY_FIRST_BATTLE_TOTODILE, RIVAL_BATTLE_TUTORIAL, RouteOasis_Text_Bugsy_TextWhenHeLoses, RouteOasis_Text_Bugsy_TextWhenHeWins)
+        case SPECIES_TOTODILE:
+            trainerbattle_earlyrival(TRAINER_BUGSY_FIRST_BATTLE_CHIKORITA, RIVAL_BATTLE_TUTORIAL, RouteOasis_Text_Bugsy_TextWhenHeLoses, RouteOasis_Text_Bugsy_TextWhenHeWins)
+    }
+}
+
+script(local) RouteOasis_EventScript_AfterBattleSequences {
+    msgbox(RouteOasis_Text_Bugsy_LetMeHealAgain)
+    closemessage
+    call(RouteOasis_EventScript_HealWaitFanfareNoFadescreen)
+    applymovement(LOCALID_BUGSY, Movement_Bugsy_WalkToHealJoey)
+    waitmovement(LOCALID_BUGSY)
+    turnobject(LOCALID_JOEY, DIR_WEST)
+    msgbox(RouteOasis_Text_Bugsy_HealJoeysPokemon)
+    closemessage
+    call(RouteOasis_EventScript_PlayAndWaitHealingFanfare)
+    msgbox(RouteOasis_Text_Joey_ThanksBugsy)
+    closemessage
+}
+
+movement Movement_Bugsy_WalkToHealJoey {
+    walk_up
+    face_right
 }

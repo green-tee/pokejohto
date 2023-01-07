@@ -63,6 +63,10 @@ RouteOasis_Text_Bugsy_GoAheadPickOne::
 	.string "check out the Poké Balls.\l"
 	.string "Take your time.$"
 
+RouteOasis_Text_Tutorial_WalkAndRun::
+	.string "Use {DPAD_ANY} to walk.\n"
+	.string "Hold down {B_BUTTON} to run.$"
+
 RouteOasis_Text_Bugsy_DoNotGoAway::
 	.string "{COLOR GREEN}Bugsy: Slow down, {PLAYER}!\n"
 	.string "Are you walking away without my\l"
@@ -132,3 +136,137 @@ RouteOasis_Text_Bugsy_ThatLeavesOneForMe::
 
 RouteOasis_Text_Ball3_BugsyPicked::
 	.string "Bugsy is keeping {STR_VAR_2}.$"
+
+RouteOasis_Text_Bugsy_OneThingLeftToDo::
+	.string "{COLOR GREEN}Bugsy: There's only one thing\n"
+	.string "left to do now.\l"
+	.string "Joey, can I count on you?$"
+
+RouteOasis_Text_Joey_AnswerBugsySure::
+	.string "{COLOR BLUE}Joey: Sure thing!$"
+
+RouteOasis_Text_Joey_WeNeedToShowPlayerHowToBattle::
+	.string "{COLOR BLUE}Joey: We need to show {PLAYER} how\n"
+	.string "to have a Pokémon Battle!\p"
+	.string "And the best way to do that is,\n"
+	.string "well, to battle!\l"
+	.string "This way, you and {STR_VAR_1} will\l"
+	.string "get to know each other a little!$"
+
+RouteOasis_Text_Bugsy_FairBattlesAreGood::
+	.string "{COLOR GREEN}Bugsy: That's right!\p"
+	.string "{PLAYER}, I know you're a nice\n"
+	.string "person, and Joey is a good guy.\l"
+	.string "You don't need to worry about\l"
+	.string "hurting {STR_VAR_1}. Fair battles\l"
+	.string "are the best recipe for a tight\l"
+	.string "bond with your Pokémon!$"
+
+RouteOasis_Text_Joey_IllGoEasyOnYou::
+	.string "{COLOR BLUE}Joey: Then it's settled!\p"
+	.string "Don't worry, {PLAYER}, I'll go\n"
+	.string "easy on you and {STR_VAR_1}.\p"
+	.string "Let's go!$"
+
+RouteOasis_Text_Joey_TextWhenHeLoses::
+	.string "Not bad! Not bad at all!$"
+
+RouteOasis_Text_Joey_TextWhenHeWins::
+	.string "That means, I win!$"
+
+RouteOasis_Text_Joey_AfterHeLoses::
+	.string "{COLOR BLUE}Joey: Hey, you aced it!\p"
+	.string "Did you notice that your Pokémon\n"
+	.string "has become stronger?\l"
+	.string "That's right, defeating other\l"
+	.string "Pokémon is the key to... well,\l"
+	.string "defeat even more Pokémon!\p"
+	.string "To win battles more easily, you\n"
+	.string "have to win battles that you can\l"
+	.string "already win. Sounds complicated?\p"
+	.string "Don't wrap your head about it,\n"
+	.string "you'll understand everything as\l"
+	.string "you keep battling.$"
+
+RouteOasis_Text_Bugsy_AfterJoeyLoses::
+	.string "{COLOR GREEN}Bugsy: That's right!\p"
+	.string "And the stronger the Pokémon you\n"
+	.string "defeat, the faster your Pokémon\l"
+	.string "matures.$"
+
+RouteOasis_Text_Joey_AfterHeWins::
+	.string "{COLOR BLUE}Joey: Too bad!\p"
+	.string "But don't feel ashamed. It was\n"
+	.string "your first battle after all.\p"
+	.string "Anyway, once you start winning,\n"
+	.string "winning more fights becomes\l"
+	.string "progressively easier.\l"
+	.string "A Pokémon grows stronger by\l"
+	.string "defeating other Pokémon.\p"
+	.string "It may sound a bit complicated,\n"
+	.string "but I promise it'll become clear\l"
+	.string "very soon.$"
+
+RouteOasis_Text_Bugsy_AfterJoeyWins::
+	.string "{COLOR GREEN}Bugsy: That's right!\p"
+	.string "Stronger opponents will make\n"
+	.string "your Pokémon mature faster, if\l"
+	.string "you manage to take them down.\p"
+	.string "If you find yourself losing a\n"
+	.string "lot, you just have to train!$"
+
+RouteOasis_Text_Bugsy_IHaveRemedies::
+	.string "{COLOR GREEN}Bugsy: Hold on, {PLAYER}. I have\n"
+	.string "a bunch of remedies in my bag.\l"
+	.string "Let me use a few to fully heal\l"
+	.string "your Pokémon.$"
+
+RouteOasis_Text_HealExplanation::
+	.string "Your party has been fully\n"
+	.string "healed!\p"
+	.string "When your party is healed,\n"
+	.string "all your Pokémon get all their\l"
+	.string "Health Points back, and every\l"
+	.string "Status Condition is removed.\l"
+	.string "Power Points are also refilled.$"
+
+RouteOasis_Text_Bugsy_MyTurn::
+	.string "{COLOR GREEN}Bugsy: Okay, my turn!$"
+
+RouteOasis_Text_Bugsy_TextWhenHeLoses::
+	.string "Nice! I bet winning my Badge is\n"
+	.string "going to be a walk in the park!$"
+
+RouteOasis_Text_Bugsy_TextWhenHeWins::
+	.string "It's okay, {PLAYER}. You just\n"
+	.string "need to train a little.$"
+
+RouteOasis_Text_Bugsy_AfterHeLoses::
+	.string "{COLOR GREEN}Bugsy: Well done!\n"
+	.string "Your Pokémon has grown a little\l"
+	.string "stronger!\p"
+	.string "But remember, the weaker your\n"
+	.string "opponents are, the slower your\l"
+	.string "Pokémon grow.$"
+
+RouteOasis_Text_Bugsy_AfterHeWins::
+	.string "{COLOR GREEN}Bugsy: Aw, too bad!\n"
+	.string "I was hoping for you to win this\l"
+	.string "one!\p"
+	.string "Well, anyway, remember what we\n"
+	.string "said earlier about Pokémon\l"
+	.string "growing stronger by fighting?\p"
+	.string "Note this: the weaker your\n"
+	.string "opponents are, the slower your\l"
+	.string "Pokémon grow.$"
+
+RouteOasis_Text_Bugsy_LetMeHealAgain::
+	.string "{COLOR GREEN}Bugsy: Now, let me heal your\n"
+	.string "Pokémon again!$"
+
+RouteOasis_Text_Bugsy_HealJoeysPokemon::
+	.string "{COLOR GREEN}Bugsy: Joey, let me quickly heal\n"
+	.string "yours too!$"
+
+RouteOasis_Text_Joey_ThanksBugsy::
+	.string "{COLOR BLUE}Joey: Thank you, Bugsy!$"

@@ -882,10 +882,21 @@ void ClearTrainerFlag(u16 trainerId)
     FlagClear(TRAINER_FLAGS_START + trainerId);
 }
 
+static bool8 IsBattleFirstBattle(void) {
+    switch (gTrainerBattleOpponent_A) {
+        case TRAINER_JOEY_FIRST_BATTLE_CHIKORITA:
+        case TRAINER_JOEY_FIRST_BATTLE_CYNDAQUIL:
+        case TRAINER_JOEY_FIRST_BATTLE_TOTODILE:
+            return TRUE;
+        default: return FALSE;
+    }
+}
+
 void StartTrainerBattle(void)
 {
     gBattleTypeFlags = BATTLE_TYPE_TRAINER;
-    if (GetTrainerBattleMode() == TRAINER_BATTLE_EARLY_RIVAL && GetRivalBattleFlags() & RIVAL_BATTLE_TUTORIAL)
+    // if (GetTrainerBattleMode() == TRAINER_BATTLE_EARLY_RIVAL && GetRivalBattleFlags() & RIVAL_BATTLE_TUTORIAL)
+    if (IsBattleFirstBattle())
         gBattleTypeFlags |= BATTLE_TYPE_FIRST_BATTLE;
     gMain.savedCallback = CB2_EndTrainerBattle;
     DoTrainerBattle();
@@ -909,7 +920,7 @@ static void CB2_EndTrainerBattle(void)
                 return;
             }
             SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
-            SetBattledTrainerFlag();
+            // SetBattledTrainerFlag();
             QuestLogEvents_HandleEndTrainerBattle();
         }
         else

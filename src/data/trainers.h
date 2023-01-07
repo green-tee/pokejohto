@@ -2,77 +2,77 @@ const struct Trainer gTrainers[] = {
     [TRAINER_NONE] = {
         .trainerName = _(""),
     },
-    [TRAINER_AQUA_LEADER] = {
+    [TRAINER_JOEY_FIRST_BATTLE_CHIKORITA] = {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_AQUA_LEADER,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_AQUA,
-        .trainerPic = TRAINER_PIC_AQUA_LEADER_ARCHIE,
-        .trainerName = _(""),
+        .trainerClass = TRAINER_CLASS_PKMN_TRAINER,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_COOL,
+        .trainerPic = TRAINER_PIC_RIVAL_EARLY,
+        .trainerName = _("Joey"),
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = NELEMS(sParty_AquaLeader),
-        .party = {.NoItemDefaultMoves = sParty_AquaLeader}
+        .partySize = NELEMS(sParty_JoeyFirstBattleChikorita),
+        .party = {.NoItemDefaultMoves = sParty_JoeyFirstBattleChikorita}
     },
-    [TRAINER_AQUA_GRUNT_M] = {
+    [TRAINER_JOEY_FIRST_BATTLE_CYNDAQUIL] = {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_TEAM_AQUA,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_AQUA,
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
-        .trainerName = _(""),
+        .trainerClass = TRAINER_CLASS_PKMN_TRAINER,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_COOL,
+        .trainerPic = TRAINER_PIC_RIVAL_EARLY,
+        .trainerName = _("Joey"),
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = NELEMS(sParty_AquaGruntM),
-        .party = {.NoItemDefaultMoves = sParty_AquaGruntM}
+        .partySize = NELEMS(sParty_JoeyFirstBattleCyndaquil),
+        .party = {.NoItemDefaultMoves = sParty_JoeyFirstBattleCyndaquil}
     },
-    [TRAINER_AQUA_GRUNT_F] = {
+    [TRAINER_JOEY_FIRST_BATTLE_TOTODILE] = {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_TEAM_AQUA,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_AQUA,
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
-        .trainerName = _(""),
+        .trainerClass = TRAINER_CLASS_PKMN_TRAINER,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_COOL,
+        .trainerPic = TRAINER_PIC_RIVAL_EARLY,
+        .trainerName = _("Joey"),
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = NELEMS(sParty_AquaGruntF),
-        .party = {.NoItemDefaultMoves = sParty_AquaGruntF}
+        .partySize = NELEMS(sParty_JoeyFirstBattleTotodile),
+        .party = {.NoItemDefaultMoves = sParty_JoeyFirstBattleTotodile}
     },
-    [TRAINER_RS_AROMA_LADY] = {
+    [TRAINER_BUGSY_FIRST_BATTLE_CHIKORITA] = {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_RS_AROMA_LADY,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_FEMALE,
-        .trainerPic = TRAINER_PIC_RS_AROMA_LADY,
-        .trainerName = _(""),
+        .trainerClass = TRAINER_CLASS_PKMN_TRAINER,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_COOL,
+        .trainerPic = TRAINER_PIC_LEADER_BROCK,
+        .trainerName = _("Bugsy"),
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = NELEMS(sParty_RSAromaLady),
-        .party = {.NoItemDefaultMoves = sParty_RSAromaLady}
+        .partySize = NELEMS(sParty_BugsyFirstBattleChikorita),
+        .party = {.NoItemDefaultMoves = sParty_BugsyFirstBattleChikorita}
     },
-    [TRAINER_RS_RUIN_MANIAC] = {
+    [TRAINER_BUGSY_FIRST_BATTLE_CYNDAQUIL] = {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_RS_RUIN_MANIAC,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HIKER,
-        .trainerPic = TRAINER_PIC_RS_RUIN_MANIAC,
-        .trainerName = _(""),
+        .trainerClass = TRAINER_CLASS_PKMN_TRAINER,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_COOL,
+        .trainerPic = TRAINER_PIC_LEADER_BROCK,
+        .trainerName = _("Bugsy"),
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = NELEMS(sParty_RSRuinManiac),
-        .party = {.NoItemDefaultMoves = sParty_RSRuinManiac}
+        .partySize = NELEMS(sParty_BugsyFirstBattleCyndaquil),
+        .party = {.NoItemDefaultMoves = sParty_BugsyFirstBattleCyndaquil}
     },
-    [TRAINER_INTERVIEWER] = {
+    [TRAINER_BUGSY_FIRST_BATTLE_TOTODILE] = {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_INTERVIEWER,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_INTERVIEWER,
-        .trainerPic = TRAINER_PIC_INTERVIEWER,
-        .trainerName = _(""),
+        .trainerClass = TRAINER_CLASS_PKMN_TRAINER,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_COOL,
+        .trainerPic = TRAINER_PIC_LEADER_BROCK,
+        .trainerName = _("Bugsy"),
         .items = {},
-        .doubleBattle = TRUE,
+        .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = NELEMS(sParty_Interviewer),
-        .party = {.NoItemDefaultMoves = sParty_Interviewer}
+        .partySize = NELEMS(sParty_BugsyFirstBattleTotodile),
+        .party = {.NoItemDefaultMoves = sParty_BugsyFirstBattleTotodile}
     },
     [TRAINER_RS_TUBER_F] = {
         .partyFlags = 0,

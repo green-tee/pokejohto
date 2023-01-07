@@ -21,12 +21,54 @@
         .species = SPECIES_STARMIE, \
     }
 
-static const struct TrainerMonNoItemDefaultMoves sParty_AquaLeader[] = {DUMMY_TRAINER_MON};
-static const struct TrainerMonNoItemDefaultMoves sParty_AquaGruntM[] = {DUMMY_TRAINER_MON};
-static const struct TrainerMonNoItemDefaultMoves sParty_AquaGruntF[] = {DUMMY_TRAINER_MON};
-static const struct TrainerMonNoItemDefaultMoves sParty_RSAromaLady[] = {DUMMY_TRAINER_MON};
-static const struct TrainerMonNoItemDefaultMoves sParty_RSRuinManiac[] = {DUMMY_TRAINER_MON};
-static const struct TrainerMonNoItemDefaultMoves sParty_Interviewer[] = {DUMMY_TRAINER_MON};
+static const struct TrainerMonNoItemDefaultMoves sParty_JoeyFirstBattleChikorita[] = {
+    {
+        .iv = 0,
+        .lvl = 5,
+        .species = SPECIES_CHIKORITA
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_JoeyFirstBattleCyndaquil[] = {
+    {
+        .iv = 0,
+        .lvl = 5,
+        .species = SPECIES_CYNDAQUIL
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_JoeyFirstBattleTotodile[] = {
+    {
+        .iv = 0,
+        .lvl = 5,
+        .species = SPECIES_TOTODILE
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_BugsyFirstBattleChikorita[] = {
+    {
+        .iv = 0,
+        .lvl = 5,
+        .species = SPECIES_CHIKORITA
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_BugsyFirstBattleCyndaquil[] = {
+    {
+        .iv = 0,
+        .lvl = 5,
+        .species = SPECIES_CYNDAQUIL
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_BugsyFirstBattleTotodile[] = {
+    {
+        .iv = 0,
+        .lvl = 5,
+        .species = SPECIES_TOTODILE
+    }
+};
+
 static const struct TrainerMonNoItemDefaultMoves sParty_RSTuberF[] = {DUMMY_TRAINER_STARMIE};
 static const struct TrainerMonNoItemDefaultMoves sParty_RSTuberM[] = {DUMMY_TRAINER_STARMIE};
 static const struct TrainerMonNoItemDefaultMoves sParty_RSCooltrainerM[] = {DUMMY_TRAINER_MON_IV};

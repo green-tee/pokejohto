@@ -2549,7 +2549,7 @@ extern const u32 gTrainerFrontPic_Juggler[];
 extern const u32 gTrainerFrontPic_Tamer[];
 extern const u32 gTrainerFrontPic_BirdKeeper[];
 extern const u32 gTrainerFrontPic_BlackBelt[];
-extern const u32 gTrainerFrontPic_RivalEarly[];
+// extern const u32 gTrainerFrontPic_RivalEarly[];
 extern const u32 gTrainerFrontPic_Scientist[];
 extern const u32 gTrainerFrontPic_LeaderGiovanni[];
 extern const u32 gTrainerFrontPic_RocketGruntM[];
@@ -2559,7 +2559,12 @@ extern const u32 gTrainerFrontPic_EliteFourLorelei[];
 extern const u32 gTrainerFrontPic_EliteFourBruno[];
 extern const u32 gTrainerFrontPic_EliteFourAgatha[];
 extern const u32 gTrainerFrontPic_EliteFourLance[];
-extern const u32 gTrainerFrontPic_LeaderBrock[];
+
+// Gym Leaders start here
+extern const u32 gTrainerFrontPic_LeaderBugsy[];
+extern const u32 gTrainerFrontPic_LeaderJoey[];
+
+// extern const u32 gTrainerFrontPic_LeaderBrock[];
 extern const u32 gTrainerFrontPic_LeaderMisty[];
 extern const u32 gTrainerFrontPic_LeaderLtSurge[];
 extern const u32 gTrainerFrontPic_LeaderErika[];
@@ -2702,7 +2707,7 @@ extern const u32 gTrainerPalette_Juggler[];
 extern const u32 gTrainerPalette_Tamer[];
 extern const u32 gTrainerPalette_BirdKeeper[];
 extern const u32 gTrainerPalette_BlackBelt[];
-extern const u32 gTrainerPalette_RivalEarly[];
+// extern const u32 gTrainerPalette_RivalEarly[];
 extern const u32 gTrainerPalette_Scientist[];
 extern const u32 gTrainerPalette_LeaderGiovanni[];
 extern const u32 gTrainerPalette_RocketGruntM[];
@@ -2712,7 +2717,12 @@ extern const u32 gTrainerPalette_EliteFourLorelei[];
 extern const u32 gTrainerPalette_EliteFourBruno[];
 extern const u32 gTrainerPalette_EliteFourAgatha[];
 extern const u32 gTrainerPalette_EliteFourLance[];
-extern const u32 gTrainerPalette_LeaderBrock[];
+
+// Gym Leaders' palettes start here
+extern const u32 gTrainerPalette_LeaderBugsy[];
+extern const u32 gTrainerPalette_LeaderJoey[];
+
+// extern const u32 gTrainerPalette_LeaderBrock[];
 extern const u32 gTrainerPalette_LeaderMisty[];
 extern const u32 gTrainerPalette_LeaderLtSurge[];
 extern const u32 gTrainerPalette_LeaderErika[];

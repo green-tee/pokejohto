@@ -16,8 +16,11 @@ $(OBJEVENTGFXDIR)/misc/ss_anne.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/misc/town_map.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
 
-$(OBJEVENTGFXDIR)/people/agatha.4bpp: %.4bpp: %.png
-	$(GFX) $< $@ -mwidth 2 -mheight 4
+#$(OBJEVENTGFXDIR)/people/agatha.4bpp: %.4bpp: %.png
+#	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/clair.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/balding_man.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
@@ -31,26 +34,41 @@ $(OBJEVENTGFXDIR)/people/beauty.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/biker.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/bill.4bpp: %.4bpp: %.png
+#$(OBJEVENTGFXDIR)/people/bill.4bpp: %.4bpp: %.png
+#	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/silver.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/blackbelt.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/blaine.4bpp: %.4bpp: %.png
+#$(OBJEVENTGFXDIR)/people/blaine.4bpp: %.4bpp: %.png
+#	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/fuchs.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/blue.4bpp: %.4bpp: %.png
+#$(OBJEVENTGFXDIR)/people/blue.4bpp: %.4bpp: %.png
+#	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/joey.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/boy.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/brock.4bpp: %.4bpp: %.png
+#$(OBJEVENTGFXDIR)/people/brock.4bpp: %.4bpp: %.png
+#	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/bugsy.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/bruno.4bpp: %.4bpp: %.png
-	$(GFX) $< $@ -mwidth 2 -mheight 4
+#$(OBJEVENTGFXDIR)/people/bruno.4bpp: %.4bpp: %.png
+#	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/chuck.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/bug_catcher.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
@@ -85,10 +103,16 @@ $(OBJEVENTGFXDIR)/people/cooltrainer_f.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/cooltrainer_m.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/daisy.4bpp: %.4bpp: %.png
+#$(OBJEVENTGFXDIR)/people/daisy.4bpp: %.4bpp: %.png
+#	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/katze.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/erika.4bpp: %.4bpp: %.png
+#$(OBJEVENTGFXDIR)/people/erika.4bpp: %.4bpp: %.png
+#	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/morty.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/fat_man.4bpp: %.4bpp: %.png
@@ -103,7 +127,10 @@ $(OBJEVENTGFXDIR)/people/gba_kid.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/gentleman.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/giovanni.4bpp: %.4bpp: %.png
+#$(OBJEVENTGFXDIR)/people/giovanni.4bpp: %.4bpp: %.png
+#	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/karen.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/green_bike.4bpp: %.4bpp: %.png
@@ -134,10 +161,10 @@ $(OBJEVENTGFXDIR)/people/hiker.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/koga.4bpp: %.4bpp: %.png
-	$(GFX) $< $@ -mwidth 2 -mheight 4
+	$(GFX) $< $@ -mwidth 4 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/lance.4bpp: %.4bpp: %.png
-	$(GFX) $< $@ -mwidth 2 -mheight 4
+	$(GFX) $< $@ -mwidth 4 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/lass.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
@@ -148,10 +175,16 @@ $(OBJEVENTGFXDIR)/people/little_boy.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/little_girl.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
 
-$(OBJEVENTGFXDIR)/people/lorelei.4bpp: %.4bpp: %.png
+#$(OBJEVENTGFXDIR)/people/lorelei.4bpp: %.4bpp: %.png
+#	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/will.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/lt_surge.4bpp: %.4bpp: %.png
+#$(OBJEVENTGFXDIR)/people/lt_surge.4bpp: %.4bpp: %.png
+#	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/falkner.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/man.4bpp: %.4bpp: %.png
@@ -160,7 +193,10 @@ $(OBJEVENTGFXDIR)/people/man.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/mg_deliveryman.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/misty.4bpp: %.4bpp: %.png
+#$(OBJEVENTGFXDIR)/people/misty.4bpp: %.4bpp: %.png
+#	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/whitney.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/mom.4bpp: %.4bpp: %.png
@@ -187,7 +223,10 @@ $(OBJEVENTGFXDIR)/people/picnicker.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/policeman.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/prof_oak.4bpp: %.4bpp: %.png
+#$(OBJEVENTGFXDIR)/people/prof_oak.4bpp: %.4bpp: %.png
+#	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/elm.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/red_bike.4bpp: %.4bpp: %.png
@@ -229,7 +268,10 @@ $(OBJEVENTGFXDIR)/people/rs_brendan.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/rs_may.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/sabrina.4bpp: %.4bpp: %.png
+#$(OBJEVENTGFXDIR)/people/sabrina.4bpp: %.4bpp: %.png
+#	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/jasmine.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/sailor.4bpp: %.4bpp: %.png
@@ -274,7 +316,10 @@ $(OBJEVENTGFXDIR)/people/tuber_m_water.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/union_room_receptionist.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/unused_male_receptionist.4bpp: %.4bpp: %.png
+#$(OBJEVENTGFXDIR)/people/unused_male_receptionist.4bpp: %.4bpp: %.png
+#	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/eusine.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/unused_man.4bpp: %.4bpp: %.png

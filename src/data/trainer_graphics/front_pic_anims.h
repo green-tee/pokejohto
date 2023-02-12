@@ -528,7 +528,7 @@ static const union AnimCmd *const sAnims_BlackBelt[] =
     sAnim_GeneralFrame0,
 };
 
-static const union AnimCmd *const sAnims_RivalEarly[] =
+static const union AnimCmd *const sAnims_LeaderJoey[] =
 {
     sAnim_GeneralFrame0,
 };
@@ -578,7 +578,7 @@ static const union AnimCmd *const sAnims_EliteFourLance[] =
     sAnim_GeneralFrame0,
 };
 
-static const union AnimCmd *const sAnims_LeaderBrock[] =
+static const union AnimCmd *const sAnims_LeaderBugsy[] =
 {
     sAnim_GeneralFrame0,
 };
@@ -846,7 +846,7 @@ const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
     [TRAINER_PIC_TAMER]                 = sAnims_Tamer,
     [TRAINER_PIC_BIRD_KEEPER]           = sAnims_BirdKeeper,
     [TRAINER_PIC_BLACK_BELT]            = sAnims_BlackBelt,
-    [TRAINER_PIC_RIVAL_EARLY]           = sAnims_RivalEarly,
+    [TRAINER_PIC_LEADER_JOEY]           = sAnims_LeaderJoey,
     [TRAINER_PIC_SCIENTIST]             = sAnims_Scientist,
     [TRAINER_PIC_LEADER_GIOVANNI]       = sAnims_LeaderGiovanni,
     [TRAINER_PIC_ROCKET_GRUNT_M]        = sAnims_RocketGruntM,
@@ -856,7 +856,7 @@ const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
     [TRAINER_PIC_ELITE_FOUR_BRUNO]      = sAnims_EliteFourBruno,
     [TRAINER_PIC_ELITE_FOUR_AGATHA]     = sAnims_EliteFourAgatha,
     [TRAINER_PIC_ELITE_FOUR_LANCE]      = sAnims_EliteFourLance,
-    [TRAINER_PIC_LEADER_BROCK]          = sAnims_LeaderBrock,
+    [TRAINER_PIC_LEADER_BUGSY]          = sAnims_LeaderBugsy,
     [TRAINER_PIC_LEADER_MISTY]          = sAnims_LeaderMisty,
     [TRAINER_PIC_LEADER_LT_SURGE]       = sAnims_LeaderLtSurge,
     [TRAINER_PIC_LEADER_ERIKA]          = sAnims_LeaderErika,

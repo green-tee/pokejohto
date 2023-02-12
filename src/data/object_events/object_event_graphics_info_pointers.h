@@ -65,27 +65,27 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Captain;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Nurse;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CableClubReceptionist;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnionRoomReceptionist;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMaleReceptionist;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Eusine;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Clerk;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MGDeliveryman;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainerTowerDude;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ProfOak;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Blue;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bill;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Elm;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Joey;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Silver;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lance;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Agatha;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Daisy;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lorelei;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Clair;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Katze;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Will;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MrFuji;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bruno;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Brock;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Misty;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LtSurge;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Erika;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Chuck;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bugsy;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Whitney;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Falkner;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Morty;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Koga;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sabrina;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Blaine;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Giovanni;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Jasmine;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Fuchs;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Karen;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mom;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Celio;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TeachyTVHost;
@@ -220,27 +220,27 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_NURSE]                    = &gObjectEventGraphicsInfo_Nurse,
     [OBJ_EVENT_GFX_CABLE_CLUB_RECEPTIONIST]  = &gObjectEventGraphicsInfo_CableClubReceptionist,
     [OBJ_EVENT_GFX_UNION_ROOM_RECEPTIONIST]  = &gObjectEventGraphicsInfo_UnionRoomReceptionist,
-    [OBJ_EVENT_GFX_UNUSED_MALE_RECEPTIONIST] = &gObjectEventGraphicsInfo_UnusedMaleReceptionist,
+    [OBJ_EVENT_GFX_UNUSED_MALE_RECEPTIONIST] = &gObjectEventGraphicsInfo_Eusine,
     [OBJ_EVENT_GFX_CLERK]                    = &gObjectEventGraphicsInfo_Clerk,
     [OBJ_EVENT_GFX_MG_DELIVERYMAN]           = &gObjectEventGraphicsInfo_MGDeliveryman,
     [OBJ_EVENT_GFX_TRAINER_TOWER_DUDE]       = &gObjectEventGraphicsInfo_TrainerTowerDude,
-    [OBJ_EVENT_GFX_PROF_OAK]                 = &gObjectEventGraphicsInfo_ProfOak,
-    [OBJ_EVENT_GFX_BLUE]                     = &gObjectEventGraphicsInfo_Blue,
-    [OBJ_EVENT_GFX_BILL]                     = &gObjectEventGraphicsInfo_Bill,
+    [OBJ_EVENT_GFX_PROF_OAK]                 = &gObjectEventGraphicsInfo_Elm,
+    [OBJ_EVENT_GFX_BLUE]                     = &gObjectEventGraphicsInfo_Joey,
+    [OBJ_EVENT_GFX_BILL]                     = &gObjectEventGraphicsInfo_Silver,
     [OBJ_EVENT_GFX_LANCE]                    = &gObjectEventGraphicsInfo_Lance,
-    [OBJ_EVENT_GFX_AGATHA]                   = &gObjectEventGraphicsInfo_Agatha,
-    [OBJ_EVENT_GFX_DAISY]                    = &gObjectEventGraphicsInfo_Daisy,
-    [OBJ_EVENT_GFX_LORELEI]                  = &gObjectEventGraphicsInfo_Lorelei,
+    [OBJ_EVENT_GFX_AGATHA]                   = &gObjectEventGraphicsInfo_Clair,
+    [OBJ_EVENT_GFX_DAISY]                    = &gObjectEventGraphicsInfo_Katze,
+    [OBJ_EVENT_GFX_LORELEI]                  = &gObjectEventGraphicsInfo_Will,
     [OBJ_EVENT_GFX_MR_FUJI]                  = &gObjectEventGraphicsInfo_MrFuji,
-    [OBJ_EVENT_GFX_BRUNO]                    = &gObjectEventGraphicsInfo_Bruno,
-    [OBJ_EVENT_GFX_BROCK]                    = &gObjectEventGraphicsInfo_Brock,
-    [OBJ_EVENT_GFX_MISTY]                    = &gObjectEventGraphicsInfo_Misty,
-    [OBJ_EVENT_GFX_LT_SURGE]                 = &gObjectEventGraphicsInfo_LtSurge,
-    [OBJ_EVENT_GFX_ERIKA]                    = &gObjectEventGraphicsInfo_Erika,
+    [OBJ_EVENT_GFX_BRUNO]                    = &gObjectEventGraphicsInfo_Chuck,
+    [OBJ_EVENT_GFX_BROCK]                    = &gObjectEventGraphicsInfo_Bugsy,
+    [OBJ_EVENT_GFX_MISTY]                    = &gObjectEventGraphicsInfo_Whitney,
+    [OBJ_EVENT_GFX_LT_SURGE]                 = &gObjectEventGraphicsInfo_Falkner,
+    [OBJ_EVENT_GFX_ERIKA]                    = &gObjectEventGraphicsInfo_Morty,
     [OBJ_EVENT_GFX_KOGA]                     = &gObjectEventGraphicsInfo_Koga,
-    [OBJ_EVENT_GFX_SABRINA]                  = &gObjectEventGraphicsInfo_Sabrina,
-    [OBJ_EVENT_GFX_BLAINE]                   = &gObjectEventGraphicsInfo_Blaine,
-    [OBJ_EVENT_GFX_GIOVANNI]                 = &gObjectEventGraphicsInfo_Giovanni,
+    [OBJ_EVENT_GFX_SABRINA]                  = &gObjectEventGraphicsInfo_Jasmine,
+    [OBJ_EVENT_GFX_BLAINE]                   = &gObjectEventGraphicsInfo_Fuchs,
+    [OBJ_EVENT_GFX_GIOVANNI]                 = &gObjectEventGraphicsInfo_Karen,
     [OBJ_EVENT_GFX_MOM]                      = &gObjectEventGraphicsInfo_Mom,
     [OBJ_EVENT_GFX_CELIO]                    = &gObjectEventGraphicsInfo_Celio,
     [OBJ_EVENT_GFX_TEACHY_TV_HOST]           = &gObjectEventGraphicsInfo_TeachyTVHost,

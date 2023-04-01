@@ -265,7 +265,7 @@ $(MID_SUBDIR)/mus_vs_mewtwo.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G157 -V090
 
 $(MID_SUBDIR)/mus_vs_trainer.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G156 -V090
+	$(MID) $< $@ -E -R$(STD_REVERB) -G155 -V090
 
 $(MID_SUBDIR)/mus_vs_wild.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G157 -V090

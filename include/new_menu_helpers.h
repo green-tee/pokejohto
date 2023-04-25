@@ -5,6 +5,9 @@
 #include "text.h"
 #include "task.h"
 
+#define WINDOW_DIALOG_MODE_LIGHT 0
+#define WINDOW_DIALOG_MODE_DARK  1
+
 extern const u16 gMenuMessageWindow_Gfx[];
 
 void ClearScheduledBgCopiesToVram(void);

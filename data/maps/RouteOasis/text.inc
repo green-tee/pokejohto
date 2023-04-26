@@ -270,3 +270,23 @@ RouteOasis_Text_Bugsy_HealJoeysPokemon::
 
 RouteOasis_Text_Joey_ThanksBugsy::
 	.string "{COLOR BLUE}Joey: Thank you, Bugsy!$"
+
+RouteOasis_Text_Bugsy_YourFirstTask::
+	.string "{COLOR GREEN}Bugsy: Now, {PLAYER}, since\n"
+	.string "we're done here, I'm giving you\l"
+	.string "a little task.\p"
+	.string "Are you ready to hear it?$"
+
+RouteOasis_Text_Bugsy_GoToThePokemonCenter::
+	.string "{COLOR GREEN}Bugsy: You have to visit the\n"
+	.string "Pokémon Center at the Colony!\p"
+	.string "If you've never heard of a\n"
+	.string "Pokémon Center, feel free to ask\l"
+	.string "whoever you wish. HOWEVER!\p"
+	.string "Asking people to walk you to the\n"
+	.string "goal is out of the question! You\l"
+	.string "must find it on your own!\p"
+	.string "Find me there!$"
+
+RouteOasis_Text_Bugsy_ImGoing::
+	.string "{COLOR GREEN}Bugsy: I'm going, see ya!$"

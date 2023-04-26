@@ -637,9 +637,31 @@ script(local) RouteOasis_EventScript_AfterBattleSequences {
     call(RouteOasis_EventScript_PlayAndWaitHealingFanfare)
     msgbox(RouteOasis_Text_Joey_ThanksBugsy)
     closemessage
+    turnobject(LOCALID_BUGSY, DIR_SOUTH)
+    turnobject(LOCALID_JOEY, DIR_SOUTH)
+    turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+    msgbox(RouteOasis_Text_Bugsy_YourFirstTask)
+    closemessage
+    delay(60)
+    msgbox(RouteOasis_Text_Bugsy_GoToThePokemonCenter)
+    closemessage
+    applymovement(LOCALID_BUGSY, Movement_Bugsy_FaceJoeyFromLeft)
+    waitmovement(LOCALID_BUGSY)
+    msgbox(RouteOasis_Text_Bugsy_ImGoing)
+    closemessage
+    applymovement(LOCALID_BUGSY, Movement_Bugsy_RunAwayToPokeCenter)
+    waitmovement(LOCALID_BUGSY)
+    removeobject(LOCALID_BUGSY)
+    delay(90)
 }
 
 movement Movement_Bugsy_WalkToHealJoey {
     walk_up
     face_right
+}
+
+movement Movement_Bugsy_RunAwayToPokeCenter {
+    walk_fast_down * 2
+    walk_fast_right * 5
+    walk_fast_down * 7
 }

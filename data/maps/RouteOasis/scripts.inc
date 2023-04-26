@@ -684,6 +684,18 @@ RouteOasis_EventScript_AfterBattleSequences:
 	call RouteOasis_EventScript_PlayAndWaitHealingFanfare
 	msgbox RouteOasis_Text_Joey_ThanksBugsy
 	closemessage
+	turnobject 2, DIR_SOUTH
+	turnobject 1, DIR_SOUTH
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	msgbox RouteOasis_Text_Bugsy_YourFirstTask
+	closemessage
+	delay 60
+	msgbox RouteOasis_Text_Bugsy_GoToThePokemonCenter
+	closemessage
+	applymovement 2, Movement_Bugsy_FaceJoeyFromLeft
+	waitmovement 2
+	msgbox RouteOasis_Text_Bugsy_ImGoing
+	closemessage
 	return
 
 

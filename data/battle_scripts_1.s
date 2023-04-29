@@ -1945,8 +1945,8 @@ BattleScript_BeatUpLoop::
 	trydobeatup BattleScript_BeatUpEnd, BattleScript_ButItFailed
 	printstring STRINGID_PKMNATTACK
 	critcalc
-	jumpifbyte CMP_NOT_EQUAL, gCritMultiplier, 2, BattleScript_BeatUpAttack
-	manipulatedamage DMG_DOUBLED
+	jumpifbyte CMP_EQUAL, gCritPercentageMultiplier, 100, BattleScript_BeatUpAttack
+	manipulatedamage DMG_CRITICAL
 BattleScript_BeatUpAttack::
 	adjustnormaldamage
 	attackanimation

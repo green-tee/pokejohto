@@ -511,7 +511,7 @@ u8 GetMostSuitableMonToSwitchInto(void)
     gBattleStruct->dynamicMoveType = 0;
     gBattleScripting.dmgMultiplier = 1;
     gMoveResultFlags = 0;
-    gCritMultiplier = 1;
+    gCritPercentageMultiplier = 100;
     bestDmg = 0;
     bestMonId = 6;
     // If we couldn't find the best mon in terms of typing, find the one that deals most damage.

@@ -48,8 +48,8 @@
 #define FLAG_HIDE_CHIKORITA_BALL                           0x028
 #define FLAG_HIDE_TOTODILE_BALL                            0x029
 #define FLAG_HIDE_CYNDAQUIL_BALL                           0x02A
-#define FLAG_HIDE_OAK_IN_HIS_LAB                           0x02B
-#define FLAG_HIDE_OAK_IN_PALLET_TOWN                       0x02C
+#define FLAG_HIDE_BUGSY_IN_ROUTE_OASIS                     0x02B
+#define FLAG_HIDE_JOEY_IN_ROUTE_OASIS                      0x02C
 #define FLAG_HIDE_RIVAL_IN_LAB                             0x02D
 #define FLAG_HIDE_PEWTER_CITY_GYM_GUIDE                    0x02E
 #define FLAG_HIDE_DOME_FOSSIL                              0x02F

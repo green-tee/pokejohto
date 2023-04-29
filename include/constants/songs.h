@@ -353,6 +353,7 @@
 #define MUS_SLOW_PALLET           345 // MUS_RG_SLOWMASARA
 #define MUS_TEACHY_TV_MENU        346 // MUS_RG_TVNOIZE
 #define MUS_DESCOLE               347
+#define MUS_SANDALINE             348
 
 #define MUS_NONE                    0xFFFF
 

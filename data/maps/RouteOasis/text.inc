@@ -290,3 +290,11 @@ RouteOasis_Text_Bugsy_GoToThePokemonCenter::
 
 RouteOasis_Text_Bugsy_ImGoing::
 	.string "{COLOR GREEN}Bugsy: I'm going, see ya!$"
+
+RouteOasis_Text_Joey_ImGoingToo::
+	.string "{COLOR BLUE}Joey: Don't ask why he had to\n"
+	.string "make it so awkward.\p"
+	.string "Anyway, finding a Pokémon Center\n"
+	.string "in Sandaline Colony isn't hard\l"
+	.string "at all. You actually have to try\l"
+	.string "not to see it!$"

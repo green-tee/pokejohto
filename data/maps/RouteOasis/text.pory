@@ -338,3 +338,12 @@ text RouteOasis_Text_Bugsy_GoToThePokemonCenter {
 text RouteOasis_Text_Bugsy_ImGoing {
     "{COLOR GREEN}Bugsy: I'm going, see ya!"
 }
+
+text RouteOasis_Text_Joey_ImGoingToo {
+    "{COLOR BLUE}Joey: Don't ask why he had to\n"
+    "make it so awkward.\p"
+    "Anyway, finding a Pokémon Center\n"
+    "in Sandaline Colony isn't hard\l"
+    "at all. You actually have to try\l"
+    "not to see it!"
+}

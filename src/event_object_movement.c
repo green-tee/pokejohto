@@ -429,13 +429,13 @@ static const u8 gInitialMovementTypeFacingDirections[MOVEMENT_TYPES_COUNT] = {
 #define OBJ_EVENT_PAL_TAG_PLAYER_RED                  0x1100
 #define OBJ_EVENT_PAL_TAG_PLAYER_RED_REFLECTION       0x1101
 #define OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION           0x1102
-#define OBJ_EVENT_PAL_TAG_NPC_BLUE                    0x1103
-#define OBJ_EVENT_PAL_TAG_NPC_PINK                    0x1104
-#define OBJ_EVENT_PAL_TAG_NPC_GREEN                   0x1105
-#define OBJ_EVENT_PAL_TAG_NPC_WHITE                   0x1106
-#define OBJ_EVENT_PAL_TAG_NPC_BLUE_REFLECTION         0x1107
-#define OBJ_EVENT_PAL_TAG_NPC_PINK_REFLECTION         0x1108
-#define OBJ_EVENT_PAL_TAG_NPC_GREEN_REFLECTION        0x1109
+#define OBJ_EVENT_PAL_TAG_NPC_BUGSY                   0x1103
+#define OBJ_EVENT_PAL_TAG_NPC_WHITNEY                 0x1104
+#define OBJ_EVENT_PAL_TAG_NPC_FALKNER                 0x1105
+#define OBJ_EVENT_PAL_TAG_NPC_MORTY                   0x1106
+#define OBJ_EVENT_PAL_TAG_NPC_CHUCK                   0x1107
+#define OBJ_EVENT_PAL_TAG_NPC_FUCHS                   0x1108
+#define OBJ_EVENT_PAL_TAG_NPC_LANCE                   0x1109
 #define OBJ_EVENT_PAL_TAG_NPC_WHITE_REFLECTION        0x110A
 #define OBJ_EVENT_PAL_TAG_RS_QUINTY_PLUMP             0x110B
 #define OBJ_EVENT_PAL_TAG_RS_QUINTY_PLUMP_REFLECTION  0x110C
@@ -465,13 +465,13 @@ static const u8 gInitialMovementTypeFacingDirections[MOVEMENT_TYPES_COUNT] = {
 #include "data/object_events/object_event_graphics_info.h"
 
 static const struct SpritePalette sObjectEventSpritePalettes[] = {
-    {gObjectEventPal_NpcBugsy,                OBJ_EVENT_PAL_TAG_NPC_BLUE},
-    {gObjectEventPal_NpcWhitney,              OBJ_EVENT_PAL_TAG_NPC_PINK},
-    {gObjectEventPal_NpcFalkner,              OBJ_EVENT_PAL_TAG_NPC_GREEN},
-    {gObjectEventPal_NpcMorty,                OBJ_EVENT_PAL_TAG_NPC_WHITE},
-    {gObjectEventPal_NpcChuck,                OBJ_EVENT_PAL_TAG_NPC_BLUE_REFLECTION},
-    {gObjectEventPal_NpcFuchs,                OBJ_EVENT_PAL_TAG_NPC_PINK_REFLECTION},
-    {gObjectEventPal_NpcLance,                OBJ_EVENT_PAL_TAG_NPC_GREEN_REFLECTION},
+    {gObjectEventPal_NpcBugsy,                OBJ_EVENT_PAL_TAG_NPC_BUGSY},
+    {gObjectEventPal_NpcWhitney,              OBJ_EVENT_PAL_TAG_NPC_WHITNEY},
+    {gObjectEventPal_NpcFalkner,              OBJ_EVENT_PAL_TAG_NPC_FALKNER},
+    {gObjectEventPal_NpcMorty,                OBJ_EVENT_PAL_TAG_NPC_MORTY},
+    {gObjectEventPal_NpcChuck,                OBJ_EVENT_PAL_TAG_NPC_CHUCK},
+    {gObjectEventPal_NpcFuchs,                OBJ_EVENT_PAL_TAG_NPC_FUCHS},
+    {gObjectEventPal_NpcLance,                OBJ_EVENT_PAL_TAG_NPC_LANCE},
     {gObjectEventPal_NpcWhiteReflection,      OBJ_EVENT_PAL_TAG_NPC_WHITE_REFLECTION},
     {gObjectEventPal_Player,                  OBJ_EVENT_PAL_TAG_PLAYER_RED},
     {gObjectEventPal_PlayerReflection,        OBJ_EVENT_PAL_TAG_PLAYER_RED_REFLECTION},
@@ -578,10 +578,10 @@ static const u16 sRSGroudonReflectionPaletteTags[] = {
 };
 
 static const u16 sGreenNPCReflectionPaletteTags[] = {
-    OBJ_EVENT_PAL_TAG_NPC_GREEN_REFLECTION,
-    OBJ_EVENT_PAL_TAG_NPC_GREEN_REFLECTION,
-    OBJ_EVENT_PAL_TAG_NPC_GREEN_REFLECTION,
-    OBJ_EVENT_PAL_TAG_NPC_GREEN_REFLECTION,
+    OBJ_EVENT_PAL_TAG_NPC_LANCE,
+    OBJ_EVENT_PAL_TAG_NPC_LANCE,
+    OBJ_EVENT_PAL_TAG_NPC_LANCE,
+    OBJ_EVENT_PAL_TAG_NPC_LANCE,
 };
 
 static const struct PairedPalettes gSpecialObjectReflectionPaletteSets[] = {
@@ -595,7 +595,7 @@ static const struct PairedPalettes gSpecialObjectReflectionPaletteSets[] = {
     {OBJ_EVENT_PAL_TAG_SEAGALLOP,           sSeagallopReflectionPaletteTags},
     {OBJ_EVENT_PAL_TAG_RS_KYOGRE,           sRSKyogreReflectionPaletteTags},
     {OBJ_EVENT_PAL_TAG_RS_GROUDON,          sRSGroudonReflectionPaletteTags},
-    {OBJ_EVENT_PAL_TAG_NPC_GREEN,           sGreenNPCReflectionPaletteTags},
+    {OBJ_EVENT_PAL_TAG_NPC_FALKNER,           sGreenNPCReflectionPaletteTags},
     {OBJ_EVENT_PAL_TAG_RS_SUBMARINE_SHADOW, sRSSubmarineShadowReflectionPaletteTags},
     {OBJ_EVENT_PAL_TAG_NONE, NULL},
 };
@@ -603,52 +603,52 @@ static const struct PairedPalettes gSpecialObjectReflectionPaletteSets[] = {
 static const u16 sObjectPaletteTags0[] = {
     OBJ_EVENT_PAL_TAG_PLAYER_RED,
     OBJ_EVENT_PAL_TAG_PLAYER_RED_REFLECTION,
-    OBJ_EVENT_PAL_TAG_NPC_BLUE,
-    OBJ_EVENT_PAL_TAG_NPC_PINK,
-    OBJ_EVENT_PAL_TAG_NPC_GREEN,
-    OBJ_EVENT_PAL_TAG_NPC_WHITE,
-    OBJ_EVENT_PAL_TAG_NPC_BLUE_REFLECTION,
-    OBJ_EVENT_PAL_TAG_NPC_PINK_REFLECTION,
-    OBJ_EVENT_PAL_TAG_NPC_GREEN_REFLECTION,
+    OBJ_EVENT_PAL_TAG_NPC_BUGSY,
+    OBJ_EVENT_PAL_TAG_NPC_WHITNEY,
+    OBJ_EVENT_PAL_TAG_NPC_FALKNER,
+    OBJ_EVENT_PAL_TAG_NPC_MORTY,
+    OBJ_EVENT_PAL_TAG_NPC_CHUCK,
+    OBJ_EVENT_PAL_TAG_NPC_FUCHS,
+    OBJ_EVENT_PAL_TAG_NPC_LANCE,
     OBJ_EVENT_PAL_TAG_NPC_WHITE_REFLECTION,
 };
 
 static const u16 sObjectPaletteTags1[] = {
     OBJ_EVENT_PAL_TAG_PLAYER_RED,
     OBJ_EVENT_PAL_TAG_PLAYER_GREEN,
-    OBJ_EVENT_PAL_TAG_NPC_BLUE,
-    OBJ_EVENT_PAL_TAG_NPC_PINK,
-    OBJ_EVENT_PAL_TAG_NPC_GREEN,
-    OBJ_EVENT_PAL_TAG_NPC_WHITE,
-    OBJ_EVENT_PAL_TAG_NPC_BLUE_REFLECTION,
-    OBJ_EVENT_PAL_TAG_NPC_PINK_REFLECTION,
-    OBJ_EVENT_PAL_TAG_NPC_GREEN_REFLECTION,
+    OBJ_EVENT_PAL_TAG_NPC_BUGSY,
+    OBJ_EVENT_PAL_TAG_NPC_WHITNEY,
+    OBJ_EVENT_PAL_TAG_NPC_FALKNER,
+    OBJ_EVENT_PAL_TAG_NPC_MORTY,
+    OBJ_EVENT_PAL_TAG_NPC_CHUCK,
+    OBJ_EVENT_PAL_TAG_NPC_FUCHS,
+    OBJ_EVENT_PAL_TAG_NPC_LANCE,
     OBJ_EVENT_PAL_TAG_NPC_WHITE_REFLECTION,
 };
 
 static const u16 sObjectPaletteTags2[] = {
     OBJ_EVENT_PAL_TAG_PLAYER_RED,
     OBJ_EVENT_PAL_TAG_PLAYER_RED_REFLECTION,
-    OBJ_EVENT_PAL_TAG_NPC_BLUE,
-    OBJ_EVENT_PAL_TAG_NPC_PINK,
-    OBJ_EVENT_PAL_TAG_NPC_GREEN,
-    OBJ_EVENT_PAL_TAG_NPC_WHITE,
-    OBJ_EVENT_PAL_TAG_NPC_BLUE_REFLECTION,
-    OBJ_EVENT_PAL_TAG_NPC_PINK_REFLECTION,
-    OBJ_EVENT_PAL_TAG_NPC_GREEN_REFLECTION,
+    OBJ_EVENT_PAL_TAG_NPC_BUGSY,
+    OBJ_EVENT_PAL_TAG_NPC_WHITNEY,
+    OBJ_EVENT_PAL_TAG_NPC_FALKNER,
+    OBJ_EVENT_PAL_TAG_NPC_MORTY,
+    OBJ_EVENT_PAL_TAG_NPC_CHUCK,
+    OBJ_EVENT_PAL_TAG_NPC_FUCHS,
+    OBJ_EVENT_PAL_TAG_NPC_LANCE,
     OBJ_EVENT_PAL_TAG_NPC_WHITE_REFLECTION,
 };
 
 static const u16 sObjectPaletteTags3[] = {
     OBJ_EVENT_PAL_TAG_PLAYER_RED,
     OBJ_EVENT_PAL_TAG_PLAYER_RED_REFLECTION,
-    OBJ_EVENT_PAL_TAG_NPC_BLUE,
-    OBJ_EVENT_PAL_TAG_NPC_PINK,
-    OBJ_EVENT_PAL_TAG_NPC_GREEN,
-    OBJ_EVENT_PAL_TAG_NPC_WHITE,
-    OBJ_EVENT_PAL_TAG_NPC_BLUE_REFLECTION,
-    OBJ_EVENT_PAL_TAG_NPC_PINK_REFLECTION,
-    OBJ_EVENT_PAL_TAG_NPC_GREEN_REFLECTION,
+    OBJ_EVENT_PAL_TAG_NPC_BUGSY,
+    OBJ_EVENT_PAL_TAG_NPC_WHITNEY,
+    OBJ_EVENT_PAL_TAG_NPC_FALKNER,
+    OBJ_EVENT_PAL_TAG_NPC_MORTY,
+    OBJ_EVENT_PAL_TAG_NPC_CHUCK,
+    OBJ_EVENT_PAL_TAG_NPC_FUCHS,
+    OBJ_EVENT_PAL_TAG_NPC_LANCE,
     OBJ_EVENT_PAL_TAG_NPC_WHITE_REFLECTION,
 };
 

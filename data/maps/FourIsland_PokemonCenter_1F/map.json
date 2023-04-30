@@ -3,7 +3,7 @@
   "name": "FourIsland_PokemonCenter_1F",
   "layout": "LAYOUT_POKEMON_CENTER_1F",
   "music": "MUS_POKE_CENTER",
-  "region_map_section": "MAPSEC_FOUR_ISLAND",
+  "region_map_section": "MAPSEC_SANDALINE_COLONY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -77,7 +77,7 @@
       "x": 7,
       "y": 8,
       "elevation": 3,
-      "dest_map": "MAP_FOUR_ISLAND",
+      "dest_map": "MAP_SANDALINE_COLONY",
       "dest_warp_id": "0"
     },
     {

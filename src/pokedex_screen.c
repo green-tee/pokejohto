@@ -187,7 +187,7 @@ const u32 sTilemap_AreaMap_Kanto[] = INCBIN_U32("graphics/pokedex/map_kanto.4bpp
 const u32 sTilemap_AreaMap_OneIsland[] = INCBIN_U32("graphics/pokedex/map_one_island.4bpp.lz");
 const u32 sTilemap_AreaMap_TwoIsland[] = INCBIN_U32("graphics/pokedex/map_two_island.4bpp.lz");
 const u32 sTilemap_AreaMap_ThreeIsland[] = INCBIN_U32("graphics/pokedex/map_three_island.4bpp.lz");
-const u32 sTilemap_AreaMap_FourIsland[] = INCBIN_U32("graphics/pokedex/map_four_island.4bpp.lz");
+const u32 sTilemap_AreaMap_SandalineColony[] = INCBIN_U32("graphics/pokedex/map_sandaline_colony.4bpp.lz");
 const u32 sTilemap_AreaMap_FiveIsland[] = INCBIN_U32("graphics/pokedex/map_five_island.4bpp.lz");
 const u32 sTilemap_AreaMap_SixIsland[] = INCBIN_U32("graphics/pokedex/map_six_island.4bpp.lz");
 const u32 sTilemap_AreaMap_SevenIsland[] = INCBIN_U32("graphics/pokedex/map_seven_island.4bpp.lz");
@@ -712,7 +712,7 @@ static const struct WindowTemplate sWindowTemplate_AreaMap_ThreeIsland = {
     .baseBlock = 0x028c
 };
 
-static const struct WindowTemplate sWindowTemplate_AreaMap_FourIsland = {
+static const struct WindowTemplate sWindowTemplate_AreaMap_SandalineColony = {
     .bg = 2,
     .tilemapLeft = 13,
     .tilemapTop = 13,
@@ -756,13 +756,13 @@ struct {
     const struct WindowTemplate * window;
     const u32 * tiles;
 } const sAreaMapStructs_SeviiIslands[] = {
-    {&sWindowTemplate_AreaMap_OneIsland,   sTilemap_AreaMap_OneIsland},
-    {&sWindowTemplate_AreaMap_TwoIsland,   sTilemap_AreaMap_TwoIsland},
-    {&sWindowTemplate_AreaMap_ThreeIsland, sTilemap_AreaMap_ThreeIsland},
-    {&sWindowTemplate_AreaMap_FourIsland,  sTilemap_AreaMap_FourIsland},
-    {&sWindowTemplate_AreaMap_FiveIsland,  sTilemap_AreaMap_FiveIsland},
-    {&sWindowTemplate_AreaMap_SixIsland,   sTilemap_AreaMap_SixIsland},
-    {&sWindowTemplate_AreaMap_SevenIsland, sTilemap_AreaMap_SevenIsland},
+    {&sWindowTemplate_AreaMap_OneIsland,        sTilemap_AreaMap_OneIsland},
+    {&sWindowTemplate_AreaMap_TwoIsland,        sTilemap_AreaMap_TwoIsland},
+    {&sWindowTemplate_AreaMap_ThreeIsland,      sTilemap_AreaMap_ThreeIsland},
+    {&sWindowTemplate_AreaMap_SandalineColony,  sTilemap_AreaMap_SandalineColony},
+    {&sWindowTemplate_AreaMap_FiveIsland,       sTilemap_AreaMap_FiveIsland},
+    {&sWindowTemplate_AreaMap_SixIsland,        sTilemap_AreaMap_SixIsland},
+    {&sWindowTemplate_AreaMap_SevenIsland,      sTilemap_AreaMap_SevenIsland},
 };
 
 static const u16 sCategoryPageIconWindowBg[] = INCBIN_U16("graphics/pokedex/page_icon_tilemap.bin");

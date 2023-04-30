@@ -6,6 +6,6 @@ FourIsland_Harbor_EventScript_Sailor::
 	faceplayer
 	message Text_WhereDoYouWantToSail
 	waitmessage
-	setvar VAR_0x8004, SEAGALLOP_FOUR_ISLAND
+	setvar VAR_0x8004, SEAGALLOP_SANDALINE_COLONY
 	goto EventScript_ChooseDestFromIsland
 	end

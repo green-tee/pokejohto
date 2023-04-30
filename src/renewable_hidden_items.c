@@ -328,8 +328,8 @@ static const struct RenewableHiddenItemData sRenewableHiddenItems[] = {
         }
     },
     {
-        .mapGroup = MAP_GROUP(FOUR_ISLAND),
-        .mapNum = MAP_NUM(FOUR_ISLAND),
+        .mapGroup = MAP_GROUP(SANDALINE_COLONY),
+        .mapNum = MAP_NUM(SANDALINE_COLONY),
         .rare = {
             NO_ITEM,
             NO_ITEM,

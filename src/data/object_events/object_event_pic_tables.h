@@ -854,10 +854,10 @@ static const struct SpriteFrameImage sPicTable_Chuck[] = {
 };
 
 static const struct SpriteFrameImage sPicTable_CutTree[] = {
-    overworld_frame(gObjectEventPic_CutTree, 2, 2, 0),
-    overworld_frame(gObjectEventPic_CutTree, 2, 2, 1),
-    overworld_frame(gObjectEventPic_CutTree, 2, 2, 2),
-    overworld_frame(gObjectEventPic_CutTree, 2, 2, 3),
+    overworld_frame(gObjectEventPic_CutTree, 4, 4, 0),
+    overworld_frame(gObjectEventPic_CutTree, 4, 4, 1),
+    overworld_frame(gObjectEventPic_CutTree, 4, 4, 2),
+    overworld_frame(gObjectEventPic_CutTree, 4, 4, 3),
 };
 
 static const struct SpriteFrameImage sPicTable_Clerk[] = {

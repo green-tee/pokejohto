@@ -63,8 +63,8 @@
       "x": 4,
       "y": 7,
       "elevation": 3,
-      "dest_map": "MAP_SANDALINE_COLONY",
-      "dest_warp_id": "7"
+      "dest_map": "MAP_FOUR_ISLAND_POKEMON_CENTER_1F",
+      "dest_warp_id": "2"
     }
   ],
   "coord_events": [

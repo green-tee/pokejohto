@@ -264,7 +264,7 @@ gSongTable::
 	song mus_obtain_berry, 2, 2
 	song mus_evolution_intro, 2, 2
 	song mus_evolution, 0, 0
-	song mus_rs_vs_gym_leader, 0, 0
+	song mus_vs_gym_leader_last_mon, 0, 0
 	song mus_rs_vs_trainer, 0, 0
 	song mus_school, 0, 0
 	song mus_slots_jackpot, 2, 2
@@ -327,7 +327,7 @@ gSongTable::
 	song mus_new_game_exit, 0, 0
 	song mus_poke_jump, 0, 0
 	song mus_union_room, 0, 0
-	song mus_net_center, 0, 0
+	song mus_poke_mart, 0, 0
 	song mus_mystery_gift, 0, 0
 	song mus_berry_pick, 0, 0
 	song mus_sevii_cave, 0, 0
@@ -348,6 +348,7 @@ gSongTable::
 	song mus_teachy_tv_menu, 0, 0
 	song mus_descole, 0, 0
 	song mus_sandaline, 0, 0
+	song mus_rayquaza_appears, 0, 0
 
 dummy_song_header:
 	.byte 0, 0, 0, 0

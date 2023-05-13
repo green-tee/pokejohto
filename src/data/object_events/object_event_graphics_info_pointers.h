@@ -66,7 +66,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Nurse;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CableClubReceptionist;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnionRoomReceptionist;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Eusine;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Clerk;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ClerkM;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MGDeliveryman;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainerTowerDude;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Elm;
@@ -221,7 +221,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_CABLE_CLUB_RECEPTIONIST]  = &gObjectEventGraphicsInfo_CableClubReceptionist,
     [OBJ_EVENT_GFX_UNION_ROOM_RECEPTIONIST]  = &gObjectEventGraphicsInfo_UnionRoomReceptionist,
     [OBJ_EVENT_GFX_UNUSED_MALE_RECEPTIONIST] = &gObjectEventGraphicsInfo_Eusine,
-    [OBJ_EVENT_GFX_CLERK]                    = &gObjectEventGraphicsInfo_Clerk,
+    [OBJ_EVENT_GFX_CLERK_M]                  = &gObjectEventGraphicsInfo_ClerkM,
     [OBJ_EVENT_GFX_MG_DELIVERYMAN]           = &gObjectEventGraphicsInfo_MGDeliveryman,
     [OBJ_EVENT_GFX_TRAINER_TOWER_DUDE]       = &gObjectEventGraphicsInfo_TrainerTowerDude,
     [OBJ_EVENT_GFX_PROF_OAK]                 = &gObjectEventGraphicsInfo_Elm,

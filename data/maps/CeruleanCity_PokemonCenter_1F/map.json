@@ -120,17 +120,10 @@
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_CERULEAN_CITY_MART",
-      "dest_warp_id": "1"
+      "dest_warp_id": "0"
     },
     {
       "x": 7,
-      "y": 8,
-      "elevation": 0,
-      "dest_map": "MAP_CERULEAN_CITY",
-      "dest_warp_id": "3"
-    },
-    {
-      "x": 8,
       "y": 8,
       "elevation": 0,
       "dest_map": "MAP_CERULEAN_CITY",

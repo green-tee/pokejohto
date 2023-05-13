@@ -94,7 +94,10 @@ $(OBJEVENTGFXDIR)/people/channeler.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/chef.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/clerk.4bpp: %.4bpp: %.png
+#$(OBJEVENTGFXDIR)/people/clerk.4bpp: %.4bpp: %.png
+#	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/clerk_m.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/cooltrainer_f.4bpp: %.4bpp: %.png

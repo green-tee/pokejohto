@@ -1176,14 +1176,14 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CutTree = {
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Clerk = {
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ClerkM = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_MORTY,
+    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_FALKNER,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = 5,
+    .paletteSlot = 4,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .disableReflectionPaletteLoad = FALSE,
@@ -1191,7 +1191,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Clerk = {
     .oam = &gObjectEventBaseOam_16x32,
     .subspriteTables = gObjectEventSpriteOamTables_16x32,
     .anims = sAnimTable_Standard,
-    .images = sPicTable_Clerk,
+    .images = sPicTable_ClerkM,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 

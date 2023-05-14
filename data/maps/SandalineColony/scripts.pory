@@ -1,0 +1,7 @@
+mapscripts SandalineColony_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION: SandalineColony_EventScript_OnTransition
+}
+
+script SandalineColony_EventScript_OnTransition {
+    setworldmapflag(FLAG_WORLD_MAP_SANDALINE_COLONY)
+}

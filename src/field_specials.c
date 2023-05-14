@@ -1692,7 +1692,7 @@ u8 GetUnlockedSeviiAreas(void)
         result |= 1 << 1;
     if (FlagGet(FLAG_WORLD_MAP_THREE_ISLAND) == TRUE)
         result |= 1 << 2;
-    if (FlagGet(FLAG_WORLD_MAP_FOUR_ISLAND) == TRUE)
+    if (FlagGet(FLAG_WORLD_MAP_SANDALINE_COLONY) == TRUE)
         result |= 1 << 3;
     if (FlagGet(FLAG_WORLD_MAP_FIVE_ISLAND) == TRUE)
         result |= 1 << 4;

@@ -315,3 +315,35 @@ text RouteOasis_Text_Bugsy_HealJoeysPokemon {
 text RouteOasis_Text_Joey_ThanksBugsy {
     "{COLOR BLUE}Joey: Thank you, Bugsy!"
 }
+
+text RouteOasis_Text_Bugsy_YourFirstTask {
+    "{COLOR GREEN}Bugsy: Now, {PLAYER}, since\n"
+    "we're done here, I'm giving you\l"
+    "a little task.\p"
+    "Are you ready to hear it?"
+}
+
+text RouteOasis_Text_Bugsy_GoToThePokemonCenter {
+    "{COLOR GREEN}Bugsy: You have to visit the\n"
+    "Pokémon Center at the Colony!\p"
+    "If you've never heard of a\n"
+    "Pokémon Center, feel free to ask\l"
+    "whoever you wish. HOWEVER!\p"
+    "Asking people to walk you to the\n"
+    "goal is out of the question! You\l"
+    "must find it on your own!\p"
+    "Find me there!"
+}
+
+text RouteOasis_Text_Bugsy_ImGoing {
+    "{COLOR GREEN}Bugsy: I'm going, see ya!"
+}
+
+text RouteOasis_Text_Joey_ImGoingToo {
+    "{COLOR BLUE}Joey: Don't ask why he had to\n"
+    "make it so awkward.\p"
+    "Anyway, finding a Pokémon Center\n"
+    "in Sandaline Colony isn't hard\l"
+    "at all. You actually have to try\l"
+    "not to see it!"
+}

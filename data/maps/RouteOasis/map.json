@@ -2,7 +2,7 @@
   "id": "MAP_ROUTE_OASIS",
   "name": "RouteOasis",
   "layout": "LAYOUT_ROUTE6",
-  "music": "MUS_ROUTE3",
+  "music": "MUS_SANDALINE",
   "region_map_section": "MAPSEC_ROUTE_6",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -15,7 +15,7 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "map": "MAP_FOUR_ISLAND",
+      "map": "MAP_SANDALINE_COLONY",
       "offset": 1,
       "direction": "down"
     }
@@ -33,7 +33,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "RouteOasis_EventScript_Joey",
-      "flag": "0"
+      "flag": "FLAG_HIDE_JOEY_IN_ROUTE_OASIS"
     },
     {
       "type": "object",
@@ -47,7 +47,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "RouteOasis_EventScript_Bugsy",
-      "flag": "0"
+      "flag": "FLAG_HIDE_BUGSY_IN_ROUTE_OASIS"
     },
     {
       "type": "object",

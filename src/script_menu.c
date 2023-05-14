@@ -656,7 +656,7 @@ static const u8 *const sSeagallopDestStrings[] = {
     gText_OneIsland,
     gText_TwoIsland,
     gText_ThreeIsland,
-    gText_FourIsland,
+    gText_Sandaline,
     gText_FiveIsland,
     gText_SixIsland,
     gText_SevenIsland
@@ -1211,7 +1211,7 @@ void DrawSeagallopDestinationMenu(void)
             if (gSpecialVar_0x8004 < SEAGALLOP_FIVE_ISLAND)
                 r4 = SEAGALLOP_FIVE_ISLAND;
             else
-                r4 = SEAGALLOP_FOUR_ISLAND;
+                r4 = SEAGALLOP_SANDALINE_COLONY;
             nitems = 5;
             top = 2;
         }
@@ -1262,8 +1262,8 @@ u16 GetSelectedSeagallopDestination(void)
         }
         else if (gSpecialVar_Result == 0)
         {
-            if (gSpecialVar_0x8004 > SEAGALLOP_FOUR_ISLAND)
-                return SEAGALLOP_FOUR_ISLAND;
+            if (gSpecialVar_0x8004 > SEAGALLOP_SANDALINE_COLONY)
+                return SEAGALLOP_SANDALINE_COLONY;
             else
                 return SEAGALLOP_FIVE_ISLAND;
         }

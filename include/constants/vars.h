@@ -181,7 +181,7 @@
 #define VAR_MAP_SCENE_FIVE_ISLAND_LOST_CAVE_ROOM10                             0x4083
 #define VAR_MAP_SCENE_FIVE_ISLAND_RESORT_GORGEOUS                              0x4084
 #define VAR_MAP_SCENE_INDIGO_PLATEAU_EXTERIOR                                  0x4085
-#define VAR_MAP_SCENE_FOUR_ISLAND                                              0x4086
+#define VAR_MAP_SCENE_SANDALINE_COLONY                                         0x4086
 #define VAR_0x4087                                                             0x4087
 #define VAR_MAP_SCENE_ROCKET_WAREHOUSE                                         0x4088
 #define VAR_MAP_SCENE_SIX_ISLAND_POKEMON_CENTER_1F                             0x4089

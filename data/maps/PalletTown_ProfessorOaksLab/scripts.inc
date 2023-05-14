@@ -68,7 +68,7 @@ PalletTown_ProfessorOaksLab_EventScript_EnterForNationalDexScene:: @ 8169002
 	removeobject LOCALID_PROF_OAK
 	setobjectxyperm LOCALID_PROF_OAK, 6, 3
 	setobjectmovementtype LOCALID_PROF_OAK, MOVEMENT_TYPE_FACE_DOWN
-	clearflag FLAG_HIDE_OAK_IN_HIS_LAB
+	clearflag FLAG_HIDE_BUGSY_IN_ROUTE_OASIS
 	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_ProfessorOaksLab_Movement_PlayerEnter
 	waitmovement 0
 	goto PalletTown_ProfessorOaksLab_EventScript_NationalDexScene
@@ -212,7 +212,7 @@ PalletTown_ProfessorOaksLab_ChooseStarterScene::
 	removeobject LOCALID_PROF_OAK
 	setobjectxyperm LOCALID_PROF_OAK, 6, 3
 	setobjectmovementtype LOCALID_PROF_OAK, MOVEMENT_TYPE_FACE_DOWN
-	clearflag FLAG_HIDE_OAK_IN_HIS_LAB
+	clearflag FLAG_HIDE_BUGSY_IN_ROUTE_OASIS
 	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_ProfessorOaksLab_Movement_PlayerEnter
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterUp

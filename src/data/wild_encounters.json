@@ -23565,8 +23565,8 @@
           }
         },
         {
-          "map": "MAP_FOUR_ISLAND",
-          "base_label": "sFourIsland_FireRed",
+          "map": "MAP_SANDALINE_COLONY",
+          "base_label": "sSandalineColony_FireRed",
           "water_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -23654,8 +23654,8 @@
           }
         },
         {
-          "map": "MAP_FOUR_ISLAND",
-          "base_label": "sFourIsland_LeafGreen",
+          "map": "MAP_SANDALINE_COLONY",
+          "base_label": "sSandalineColony_LeafGreen",
           "water_mons": {
             "encounter_rate": 2,
             "mons": [

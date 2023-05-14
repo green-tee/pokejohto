@@ -12,7 +12,7 @@ $(MID_SUBDIR)/mus_follow_me.s: %.s: %.mid
 $(MID_SUBDIR)/mus_rs_vs_trainer.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G011 -V080 -P1
 
-$(MID_SUBDIR)/mus_rs_vs_gym_leader.s: %.s: %.mid
+$(MID_SUBDIR)/mus_vs_gym_leader_last_mon.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G010 -V080
 
 $(MID_SUBDIR)/mus_victory_road.s: %.s: %.mid
@@ -147,8 +147,8 @@ $(MID_SUBDIR)/mus_sevii_dungeon.s: %.s: %.mid
 $(MID_SUBDIR)/mus_sevii_route.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G187 -V080
 
-$(MID_SUBDIR)/mus_net_center.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G162 -V096
+$(MID_SUBDIR)/mus_poke_mart.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G149 -V096
 
 $(MID_SUBDIR)/mus_pewter.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G173 -V084
@@ -283,7 +283,13 @@ $(MID_SUBDIR)/mus_victory_wild.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G170 -V090
 
 $(MID_SUBDIR)/mus_descole.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G139 -V100
+
+$(MID_SUBDIR)/mus_sandaline.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G139 -V090
+
+$(MID_SUBDIR)/mus_rayquaza_appears.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G157 -V090
 
 $(MID_SUBDIR)/ph_choice_blend.s: %.s: %.mid
 	$(MID) $< $@ -E -G130 -P4

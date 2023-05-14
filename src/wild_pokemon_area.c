@@ -106,8 +106,8 @@ static const u16 sDexAreas_Sevii3[][2] = {
 };
 
 static const u16 sDexAreas_Sevii4[][2] = {
-	{ MAPSEC_FOUR_ISLAND,  51 },
-	{ MAPSEC_ICEFALL_CAVE, 74 }    
+	{ MAPSEC_SANDALINE_COLONY, 51 },
+	{ MAPSEC_ICEFALL_CAVE,     74 }    
 };
 
 static const u16 sDexAreas_Sevii5[][2] = {

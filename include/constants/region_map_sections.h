@@ -153,7 +153,7 @@
 #define MAPSEC_ONE_ISLAND                   0x8F
 #define MAPSEC_TWO_ISLAND                   0x90
 #define MAPSEC_THREE_ISLAND                 0x91
-#define MAPSEC_FOUR_ISLAND                  0x92
+#define MAPSEC_SANDALINE_COLONY             0x92
 #define MAPSEC_FIVE_ISLAND                  0x93
 #define MAPSEC_SEVEN_ISLAND                 0x94
 #define MAPSEC_SIX_ISLAND                   0x95

@@ -684,12 +684,71 @@ RouteOasis_EventScript_AfterBattleSequences:
 	call RouteOasis_EventScript_PlayAndWaitHealingFanfare
 	msgbox RouteOasis_Text_Joey_ThanksBugsy
 	closemessage
+	turnobject 2, DIR_SOUTH
+	turnobject 1, DIR_SOUTH
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	msgbox RouteOasis_Text_Bugsy_YourFirstTask
+	closemessage
+	delay 60
+	msgbox RouteOasis_Text_Bugsy_GoToThePokemonCenter
+	closemessage
+	applymovement 2, Movement_Bugsy_FaceJoeyFromLeft
+	waitmovement 2
+	msgbox RouteOasis_Text_Bugsy_ImGoing
+	closemessage
+	applymovement 2, Movement_Bugsy_RunAwayToPokeCenter
+	waitmovement 2
+	removeobject 2
+	delay 90
+	applymovement 1, Movement_FacePlayerFromAbove
+	waitmovement 1
+	msgbox RouteOasis_Text_Joey_ImGoingToo
+	closemessage
+	applymovement 1, Movement_Joey_WalkAwayToSandalineColony
+	waitmovement 1
+	removeobject 1
+	delay 120
 	return
 
 
 Movement_Bugsy_WalkToHealJoey:
 	walk_up
 	face_right
+	step_end
+
+Movement_Bugsy_RunAwayToPokeCenter:
+	walk_fast_down
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	step_end
+
+Movement_Joey_WalkAwayToSandalineColony:
+	walk_left
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
 	step_end
 
 RouteOasis_EventScript_SetupInteractedStarterInfo_Text_0:

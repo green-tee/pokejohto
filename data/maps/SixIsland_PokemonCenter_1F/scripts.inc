@@ -42,7 +42,7 @@ SixIsland_PokemonCenter_1F_EventScript_RivalScene::
 	delay 35
 	removeobject LOCALID_RIVAL
 	setvar VAR_MAP_SCENE_SIX_ISLAND_POKEMON_CENTER_1F, 1
-	setvar VAR_MAP_SCENE_FOUR_ISLAND, 1
+	setvar VAR_MAP_SCENE_SANDALINE_COLONY, 1
 	releaseall
 	end
 

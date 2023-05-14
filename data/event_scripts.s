@@ -288,7 +288,7 @@ gStdScriptsEnd::
 	.include "data/maps/OneIsland/scripts.inc"
 	.include "data/maps/TwoIsland/scripts.inc"
 	.include "data/maps/ThreeIsland/scripts.inc"
-	.include "data/maps/FourIsland/scripts.inc"
+	.include "data/maps/SandalineColony/scripts.inc"
 	.include "data/maps/FiveIsland/scripts.inc"
 	.include "data/maps/SevenIsland/scripts.inc"
 	.include "data/maps/SixIsland/scripts.inc"
@@ -619,7 +619,7 @@ gStdScriptsEnd::
 	.include "data/maps/OneIsland/text.inc"
 	.include "data/maps/TwoIsland/text.inc"
 	.include "data/maps/ThreeIsland/text.inc"
-	.include "data/maps/FourIsland/text.inc"
+	.include "data/maps/SandalineColony/text.inc"
 	.include "data/maps/FiveIsland/text.inc"
 	.include "data/maps/SevenIsland/text.inc"
 	.include "data/maps/SixIsland/text.inc"
@@ -1012,8 +1012,8 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_CHIKORITA_BALL
 	setflag FLAG_HIDE_CYNDAQUIL_BALL
 	setflag FLAG_HIDE_TOTODILE_BALL
-	@setflag FLAG_HIDE_OAK_IN_HIS_LAB
-	@setflag FLAG_HIDE_OAK_IN_PALLET_TOWN
+	@setflag FLAG_HIDE_BUGSY_IN_ROUTE_OASIS
+	@setflag FLAG_HIDE_JOEY_IN_ROUTE_OASIS
 	@setflag FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
 	@setflag FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
 	@setflag FLAG_HIDE_POKEHOUSE_FUJI

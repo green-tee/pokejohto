@@ -215,7 +215,7 @@
 #define MAP_ONE_ISLAND                           (12 | (3 << 8))
 #define MAP_TWO_ISLAND                           (13 | (3 << 8))
 #define MAP_THREE_ISLAND                         (14 | (3 << 8))
-#define MAP_FOUR_ISLAND                          (15 | (3 << 8))
+#define MAP_SANDALINE_COLONY                     (15 | (3 << 8))
 #define MAP_FIVE_ISLAND                          (16 | (3 << 8))
 #define MAP_SEVEN_ISLAND                         (17 | (3 << 8))
 #define MAP_SIX_ISLAND                           (18 | (3 << 8))

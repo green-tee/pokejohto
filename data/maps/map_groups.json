@@ -1,5 +1,4 @@
 {
-  "layouts_table_label": "gMapLayouts",
   "group_order": [
     "gMapGroup_Link",
     "gMapGroup_Dungeons",
@@ -255,7 +254,7 @@
     "OneIsland",
     "TwoIsland",
     "ThreeIsland",
-    "FourIsland",
+    "SandalineColony",
     "FiveIsland",
     "SevenIsland",
     "SixIsland",

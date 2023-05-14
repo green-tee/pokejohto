@@ -10,6 +10,7 @@
 #include "strings.h"
 #include "field_fadetransition.h"
 #include "gba/m4a_internal.h"
+#include "new_menu_helpers.h"
 
 // can't include the one in menu_helpers.h since Task_OptionMenu needs bool32 for matching
 bool32 MenuHelpers_CallLinkSomething(void);
@@ -57,6 +58,17 @@ struct OptionMenu
     u8 loadPaletteState;
 };
 
+enum OptionMenuPlayerActions
+{
+    MENUACTION_NOTHING = 0,
+    MENUACTION_CLOSE,
+    MENUACTION_CHANGEFRAME,
+    MENUACTION_SCROLLOPTION,
+    MENUACTION_CHANGEOTHEROPTION,
+    MENUACTION_SWITCHTAB,
+    MENUACTION_CHANGEDIALOGMODE
+};
+
 static EWRAM_DATA struct OptionMenu *sOptionMenuPtr = NULL;
 
 //Function Declarataions
@@ -71,7 +83,7 @@ static void OptionMenu_PickSwitchCancel(void);
 static void OptionMenu_ResetSpriteData(void);
 static bool8 LoadOptionMenuPalette(void);
 static void Task_OptionMenu(u8 taskId);
-static u8 OptionMenu_ProcessInput(void);
+static enum OptionMenuPlayerActions OptionMenu_ProcessInput(void);
 static void BufferOptionMenuString(enum MenuTabs activeTab, u8 cursorPos);
 static void CloseAndSaveOptionMenu(u8 taskId);
 static void PrintOptionMenuHeader(void);
@@ -421,7 +433,10 @@ static bool8 LoadOptionMenuPalette(void)
         LoadBgTiles(1, GetUserWindowGraphics(sOptionMenuPtr->option[MENUITEM_FRAMETYPE])->tiles, 0x120, 0x1AA);
         break;
     case 1:
-        LoadPalette(GetUserWindowGraphics(sOptionMenuPtr->option[MENUITEM_FRAMETYPE])->palette, 0x20, 0x20);
+        if (gSaveBlock2Ptr->optionsWindowDialogMode == WINDOW_DIALOG_MODE_LIGHT)
+            LoadPalette(GetUserWindowGraphics(sOptionMenuPtr->option[MENUITEM_FRAMETYPE])->paletteLight, 0x20, 0x20);
+        else
+            LoadPalette(GetUserWindowGraphics(sOptionMenuPtr->option[MENUITEM_FRAMETYPE])->paletteDark, 0x20, 0x20);
         break;
     case 2:
         LoadPalette(sOptionMenuPalette, 0x10, 0x20);
@@ -458,28 +473,31 @@ static void Task_OptionMenu(u8 taskId)
             break;
         switch (OptionMenu_ProcessInput())
         {
-        case 0:
+        case MENUACTION_NOTHING:
             // Nothing happened
             break;
-        case 1:
+        case MENUACTION_CLOSE:
             // Menu is being closed
             sOptionMenuPtr->loadState++;
             break;
-        case 2:
+        case MENUACTION_CHANGEFRAME:
             // Window frame option was changed
             LoadBgTiles(1, GetUserWindowGraphics(sOptionMenuPtr->option[MENUITEM_FRAMETYPE])->tiles, 0x120, 0x1AA);
-            LoadPalette(GetUserWindowGraphics(sOptionMenuPtr->option[MENUITEM_FRAMETYPE])->palette, 0x20, 0x20);
+            if (sOptionMenuPtr->option[MENUITEM_DIALOGMODE] == WINDOW_DIALOG_MODE_LIGHT)
+                LoadPalette(GetUserWindowGraphics(sOptionMenuPtr->option[MENUITEM_FRAMETYPE])->paletteLight, 0x20, 0x20);
+            else
+                LoadPalette(GetUserWindowGraphics(sOptionMenuPtr->option[MENUITEM_FRAMETYPE])->paletteDark, 0x20, 0x20);
             BufferOptionMenuString(sOptionMenuPtr->activeTab, sOptionMenuPtr->cursorPos);
             break;
-        case 3:
+        case MENUACTION_SCROLLOPTION:
             // Cursor was moved up or down
             UpdateSettingSelectionDisplay(sOptionMenuPtr->cursorPos);
             break;
-        case 4:
+        case MENUACTION_CHANGEOTHEROPTION:
             // An option was changed, but not the window frame
             BufferOptionMenuString(sOptionMenuPtr->activeTab, sOptionMenuPtr->cursorPos);
             break;
-        case 5:
+        case MENUACTION_SWITCHTAB:
             // Active tab was switched
             CopyBgTilemapBufferToVram(1); // DrawOptionMenuBg();
             LoadOptionMenuItemNames();
@@ -487,6 +505,14 @@ static void Task_OptionMenu(u8 taskId)
             for (i = 1; i <= itemsInTabCount; i++)
                 BufferOptionMenuString(sOptionMenuPtr->activeTab, i);
             UpdateSettingSelectionDisplay(sOptionMenuPtr->cursorPos);
+            break;
+        case MENUACTION_CHANGEDIALOGMODE:
+            // Dark mode was toggled
+            if (sOptionMenuPtr->option[MENUITEM_DIALOGMODE] == WINDOW_DIALOG_MODE_LIGHT)
+                LoadPalette(GetUserWindowGraphics(sOptionMenuPtr->option[MENUITEM_FRAMETYPE])->paletteLight, 0x20, 0x20);
+            else
+                LoadPalette(GetUserWindowGraphics(sOptionMenuPtr->option[MENUITEM_FRAMETYPE])->paletteDark, 0x20, 0x20);
+            BufferOptionMenuString(sOptionMenuPtr->activeTab, sOptionMenuPtr->cursorPos);
             break;
         }
         break;
@@ -505,7 +531,7 @@ static void Task_OptionMenu(u8 taskId)
     }
 }
 
-static u8 OptionMenu_ProcessInput(void)
+static enum OptionMenuPlayerActions OptionMenu_ProcessInput(void)
 {
     enum MenuTabs currentlyActiveTab = sOptionMenuPtr->activeTab;
     const MenuItem *currentlyActiveTabItems = sMenuTabsOptionItems[currentlyActiveTab];
@@ -521,7 +547,7 @@ static u8 OptionMenu_ProcessInput(void)
                 sOptionMenuPtr->activeTab = 0;
             else
                 sOptionMenuPtr->activeTab = sOptionMenuPtr->activeTab + 1;
-            return 5;
+            return MENUACTION_SWITCHTAB;
         }
         else
         {
@@ -533,9 +559,11 @@ static u8 OptionMenu_ProcessInput(void)
                 ++currentItemValueIndex;
             sOptionMenuPtr->option[currentlySelectedItem] = currentItemValueIndex;
             if (currentlySelectedItem == MENUITEM_FRAMETYPE)
-                return 2;
+                return MENUACTION_CHANGEFRAME;
+            else if (currentlySelectedItem == MENUITEM_DIALOGMODE)
+                return MENUACTION_CHANGEDIALOGMODE;
             else
-                return 4;
+                return MENUACTION_CHANGEOTHEROPTION;
         }
     }
     else if (JOY_REPT(DPAD_LEFT))
@@ -547,7 +575,7 @@ static u8 OptionMenu_ProcessInput(void)
                 sOptionMenuPtr->activeTab = MENUTAB_COUNT - 1;
             else
                 sOptionMenuPtr->activeTab = sOptionMenuPtr->activeTab - 1;
-            return 5;
+            return MENUACTION_SWITCHTAB;
         }
         else
         {
@@ -559,9 +587,11 @@ static u8 OptionMenu_ProcessInput(void)
                 --currentItemValueIndex;
             sOptionMenuPtr->option[currentlySelectedItem] = currentItemValueIndex;
             if (currentlySelectedItem == MENUITEM_FRAMETYPE)
-                return 2;
+                return MENUACTION_CHANGEFRAME;
+            else if (currentlySelectedItem == MENUITEM_DIALOGMODE)
+                return MENUACTION_CHANGEDIALOGMODE;
             else
-                return 4;
+                return MENUACTION_CHANGEOTHEROPTION;
         }
     }
     else if (JOY_REPT(DPAD_UP))
@@ -575,7 +605,7 @@ static u8 OptionMenu_ProcessInput(void)
         }
         else
             sOptionMenuPtr->cursorPos = sOptionMenuPtr->cursorPos - 1;
-        return 3;        
+        return MENUACTION_SCROLLOPTION;        
     }
     else if (JOY_REPT(DPAD_DOWN))
     {
@@ -584,15 +614,15 @@ static u8 OptionMenu_ProcessInput(void)
             sOptionMenuPtr->cursorPos = 0;
         else
             sOptionMenuPtr->cursorPos = sOptionMenuPtr->cursorPos + 1;
-        return 3;
+        return MENUACTION_SCROLLOPTION;
     }
     else if (JOY_NEW(B_BUTTON) || JOY_NEW(A_BUTTON))
     {
-        return 1;
+        return MENUACTION_CLOSE;
     }
     else
     {
-        return 0;
+        return MENUACTION_NOTHING;
     }
 }
 

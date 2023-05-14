@@ -4,7 +4,8 @@
 struct TextWindowGraphics
 {
     const void *tiles;
-    const void *palette;
+    const void *paletteLight;
+    const void *paletteDark;
 };
 
 extern const u16 gSignpostWindow_Gfx[];

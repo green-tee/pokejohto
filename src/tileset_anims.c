@@ -275,8 +275,8 @@ static void QueueAnimTiles_General_Lilypad(u16 timer)
 static void TilesetAnim_General(u16 timer)
 {
     if (timer % 4 == 0) {
-        QueueAnimTiles_General_PondWatersEdge(timer >> 3);
-        QueueAnimTiles_General_Lilypad(timer >> 3);
+        QueueAnimTiles_General_PondWatersEdge(timer >> 4);
+        QueueAnimTiles_General_Lilypad(timer >> 4);
     }
     if (timer % 8 == 0)
         QueueAnimTiles_General_SandWatersEdge(timer >> 3);

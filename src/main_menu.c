@@ -17,6 +17,7 @@
 #include "text_window.h"
 #include "text_window_graphics.h"
 #include "constants/songs.h"
+#include "new_menu_helpers.h"
 
 enum MainMenuType
 {
@@ -678,7 +679,10 @@ static void PrintBadgeCount(void)
 static void LoadUserFrameToBg(u8 bgId)
 {
     LoadBgTiles(bgId, GetUserWindowGraphics(gSaveBlock2Ptr->optionsWindowFrameType)->tiles, 0x120, 0x1B1);
-    LoadPalette(GetUserWindowGraphics(gSaveBlock2Ptr->optionsWindowFrameType)->palette, 0x20, 0x20);
+    if (gSaveBlock2Ptr->optionsWindowDialogMode == WINDOW_DIALOG_MODE_LIGHT)
+        LoadPalette(GetUserWindowGraphics(gSaveBlock2Ptr->optionsWindowFrameType)->paletteLight, 0x20, 0x20);
+    else
+        LoadPalette(GetUserWindowGraphics(gSaveBlock2Ptr->optionsWindowFrameType)->paletteDark, 0x20, 0x20);
     MainMenu_EraseWindow(&sWindowTemplate[MAIN_MENU_WINDOW_ERROR]);
 }
 

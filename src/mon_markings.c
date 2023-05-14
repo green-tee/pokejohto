@@ -292,7 +292,7 @@ static void BufferMenuWindowTiles(void)
 {
     const struct TextWindowGraphics *frame = GetUserWindowGraphics(gSaveBlock2Ptr->optionsWindowFrameType);
     sMenu->frameTiles = frame->tiles;
-    sMenu->framePalette = frame->palette;
+    sMenu->framePalette = frame->paletteLight;
     sMenu->tileLoadState = 0;
     CpuFill16(0, sMenu->windowSpriteTiles, sizeof(sMenu->windowSpriteTiles));
 }

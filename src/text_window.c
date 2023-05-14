@@ -153,6 +153,18 @@ void rbox_fill_rectangle(u8 windowId)
 
 const u16 *GetTextWindowPalette(u8 id)
 {
+    const u16 *textWindowPalettes;
+
+    switch (gSaveBlock2Ptr->optionsWindowDialogMode)
+    {
+        case WINDOW_DIALOG_MODE_LIGHT:
+            textWindowPalettes = (const u16 *) gTextWindowPalettesLight;
+            break;
+        case WINDOW_DIALOG_MODE_DARK:
+            textWindowPalettes = (const u16 *) gTextWindowPalettesDark;
+            break;
+    }
+
     switch (id)
     {
     case 0:
@@ -173,5 +185,5 @@ const u16 *GetTextWindowPalette(u8 id)
         break;
     }
 
-    return (const u16 *)(gTextWindowPalettes) + id;
+    return textWindowPalettes + id;
 }

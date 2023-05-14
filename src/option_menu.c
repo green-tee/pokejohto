@@ -14,8 +14,17 @@
 // can't include the one in menu_helpers.h since Task_OptionMenu needs bool32 for matching
 bool32 MenuHelpers_CallLinkSomething(void);
 
+// Menu tabs, each tab groups items that are related to each other
+enum MenuTabs
+{
+    MENUTAB_WINDOW = 0,
+    MENUTAB_BATTLE,
+    MENUTAB_MISCELLANEOUS,
+    MENUTAB_COUNT
+};
+
 // Menu items
-enum
+enum MenuItems
 {
     MENUITEM_TEXTSPEED = 0,
     MENUITEM_BATTLESCENE,
@@ -23,9 +32,12 @@ enum
     MENUITEM_SOUND,
     MENUITEM_BUTTONMODE,
     MENUITEM_FRAMETYPE,
+    MENUITEM_DIALOGMODE,
     MENUITEM_CANCEL,
     MENUITEM_COUNT
 };
+
+typedef enum MenuItems MenuItem;
 
 // Window Ids
 enum
@@ -37,11 +49,12 @@ enum
 // RAM symbols
 struct OptionMenu
 {
-    /*0x00*/ u16 option[MENUITEM_COUNT];
-    /*0x0E*/ u16 cursorPos;
-    /*0x10*/ u8 loadState;
-    /*0x11*/ u8 state;
-    /*0x12*/ u8 loadPaletteState;
+    u8 option[MENUITEM_COUNT];
+    enum MenuTabs activeTab;
+    u8 cursorPos;
+    u8 loadState;
+    u8 state;
+    u8 loadPaletteState;
 };
 
 static EWRAM_DATA struct OptionMenu *sOptionMenuPtr = NULL;
@@ -59,12 +72,12 @@ static void OptionMenu_ResetSpriteData(void);
 static bool8 LoadOptionMenuPalette(void);
 static void Task_OptionMenu(u8 taskId);
 static u8 OptionMenu_ProcessInput(void);
-static void BufferOptionMenuString(u8 selection);
+static void BufferOptionMenuString(enum MenuTabs activeTab, u8 cursorPos);
 static void CloseAndSaveOptionMenu(u8 taskId);
 static void PrintOptionMenuHeader(void);
 static void DrawOptionMenuBg(void);
 static void LoadOptionMenuItemNames(void);
-static void UpdateSettingSelectionDisplay(u16 selection);
+static void UpdateSettingSelectionDisplay(u8 cursorPos);
 
 // Data Definitions
 static const struct WindowTemplate sOptionMenuWinTemplates[] =
@@ -131,7 +144,63 @@ static const struct BgTemplate sOptionMenuBgTemplates[] =
 };
 
 static const u16 sOptionMenuPalette[] = INCBIN_U16("graphics/misc/unk_83cc2e4.gbapal");
-static const u16 sOptionMenuItemCounts[MENUITEM_COUNT] = {3, 2, 2, 2, 3, 10, 0};
+
+#define MAX_ITEMS_PER_TAB 4
+
+static const u16 sOptionMenuTabCounts[MENUTAB_COUNT] =
+{
+    [MENUTAB_WINDOW] = 4,
+    [MENUTAB_BATTLE] = 3,
+    [MENUTAB_MISCELLANEOUS] = 3
+};
+
+#define S_MENU_TAB_WINDOW_OPTION_ITEMS \
+{\
+    MENUITEM_TEXTSPEED,\
+    MENUITEM_FRAMETYPE,\
+    MENUITEM_DIALOGMODE,\
+    MENUITEM_CANCEL\
+}
+
+#define S_MENU_TAB_BATTLE_OPTION_ITEMS \
+{\
+    MENUITEM_BATTLESCENE,\
+    MENUITEM_BATTLESTYLE,\
+    MENUITEM_CANCEL\
+}
+
+#define S_MENU_TAB_MISCELLANEOUS_OPTION_ITEMS \
+{\
+    MENUITEM_SOUND,\
+    MENUITEM_BUTTONMODE,\
+    MENUITEM_CANCEL\
+}
+
+static const MenuItem sMenuTabsOptionItems[][MAX_ITEMS_PER_TAB] =
+{
+    [MENUTAB_WINDOW] = S_MENU_TAB_WINDOW_OPTION_ITEMS,
+    [MENUTAB_BATTLE] = S_MENU_TAB_BATTLE_OPTION_ITEMS,
+    [MENUTAB_MISCELLANEOUS] = S_MENU_TAB_MISCELLANEOUS_OPTION_ITEMS
+};
+
+static const u16 sOptionMenuItemCounts[MENUITEM_COUNT] =
+{
+    [MENUITEM_TEXTSPEED] = 3,
+    [MENUITEM_BATTLESCENE] = 2,
+    [MENUITEM_BATTLESTYLE] = 2,
+    [MENUITEM_SOUND] = 2,
+    [MENUITEM_BUTTONMODE] = 3,
+    [MENUITEM_FRAMETYPE] = 10,
+    [MENUITEM_DIALOGMODE] = 2,
+    [MENUITEM_CANCEL] = 0
+};
+
+static const u8 *const sOptionMenuTabsNames[MENUTAB_COUNT] =
+{
+    [MENUTAB_WINDOW] = gText_TabWindow,
+    [MENUTAB_BATTLE] = gText_TabBattle,
+    [MENUTAB_MISCELLANEOUS] = gText_TabMiscellaneous
+};
 
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 {
@@ -141,6 +210,7 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_SOUND]       = gText_Sound,
     [MENUITEM_BUTTONMODE]  = gText_ButtonMode,
     [MENUITEM_FRAMETYPE]   = gText_Frame,
+    [MENUITEM_DIALOGMODE]  = gText_Dialog,
     [MENUITEM_CANCEL]      = gText_OptionMenuCancel,
 };
 
@@ -176,6 +246,12 @@ static const u8 *const sButtonTypeOptions[] =
 	gText_ButtonTypeLEqualsA
 };
 
+static const u8 *const sDialogModeOptions[] =
+{
+    gText_DialogModeLight,
+    gText_DialogModeDark
+};
+
 static const u8 sOptionMenuPickSwitchCancelTextColor[] = {TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY};
 static const u8 sOptionMenuTextColor[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_RED, TEXT_COLOR_RED};
 
@@ -205,6 +281,7 @@ void CB2_OptionsMenuFromStartMenu(void)
     sOptionMenuPtr->loadState = 0;
     sOptionMenuPtr->loadPaletteState = 0;
     sOptionMenuPtr->state = 0;
+    sOptionMenuPtr->activeTab = MENUTAB_WINDOW;
     sOptionMenuPtr->cursorPos = 0;
     sOptionMenuPtr->option[MENUITEM_TEXTSPEED] = gSaveBlock2Ptr->optionsTextSpeed;
     sOptionMenuPtr->option[MENUITEM_BATTLESCENE] = gSaveBlock2Ptr->optionsBattleSceneOff;
@@ -212,6 +289,7 @@ void CB2_OptionsMenuFromStartMenu(void)
     sOptionMenuPtr->option[MENUITEM_SOUND] = gSaveBlock2Ptr->optionsSound;
     sOptionMenuPtr->option[MENUITEM_BUTTONMODE] = gSaveBlock2Ptr->optionsButtonMode;
     sOptionMenuPtr->option[MENUITEM_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
+    sOptionMenuPtr->option[MENUITEM_DIALOGMODE] = gSaveBlock2Ptr->optionsWindowDialogMode;
     
     for (i = 0; i < MENUITEM_COUNT - 1; i++)
     {
@@ -235,7 +313,9 @@ static void OptionMenu_SetVBlankCallback(void)
 
 static void CB2_OptionMenu(void)
 {
-    u8 i, state;
+    u8 i;
+    u8 state;
+    u8 itemsInTabCount;
     state = sOptionMenuPtr->state;
     switch (state)
     {
@@ -262,8 +342,9 @@ static void CB2_OptionMenu(void)
         LoadOptionMenuItemNames();
         break;
     case 7:
-        for (i = 0; i < MENUITEM_COUNT; i++)
-            BufferOptionMenuString(i);
+        itemsInTabCount = sOptionMenuTabCounts[sOptionMenuPtr->activeTab];
+        for (i = 1; i <= itemsInTabCount; i++)
+            BufferOptionMenuString(sOptionMenuPtr->activeTab, i);
         break;
     case 8:
         UpdateSettingSelectionDisplay(sOptionMenuPtr->cursorPos);
@@ -358,6 +439,8 @@ static bool8 LoadOptionMenuPalette(void)
 
 static void Task_OptionMenu(u8 taskId)
 {
+    u8 itemsInTabCount;
+    u8 i;
     switch (sOptionMenuPtr->loadState)
     {
     case 0:
@@ -376,20 +459,34 @@ static void Task_OptionMenu(u8 taskId)
         switch (OptionMenu_ProcessInput())
         {
         case 0:
+            // Nothing happened
             break;
         case 1:
+            // Menu is being closed
             sOptionMenuPtr->loadState++;
             break;
         case 2:
+            // Window frame option was changed
             LoadBgTiles(1, GetUserWindowGraphics(sOptionMenuPtr->option[MENUITEM_FRAMETYPE])->tiles, 0x120, 0x1AA);
             LoadPalette(GetUserWindowGraphics(sOptionMenuPtr->option[MENUITEM_FRAMETYPE])->palette, 0x20, 0x20);
-            BufferOptionMenuString(sOptionMenuPtr->cursorPos);
+            BufferOptionMenuString(sOptionMenuPtr->activeTab, sOptionMenuPtr->cursorPos);
             break;
         case 3:
+            // Cursor was moved up or down
             UpdateSettingSelectionDisplay(sOptionMenuPtr->cursorPos);
             break;
         case 4:
-            BufferOptionMenuString(sOptionMenuPtr->cursorPos);
+            // An option was changed, but not the window frame
+            BufferOptionMenuString(sOptionMenuPtr->activeTab, sOptionMenuPtr->cursorPos);
+            break;
+        case 5:
+            // Active tab was switched
+            CopyBgTilemapBufferToVram(1); // DrawOptionMenuBg();
+            LoadOptionMenuItemNames();
+            itemsInTabCount = sOptionMenuTabCounts[sOptionMenuPtr->activeTab];
+            for (i = 1; i <= itemsInTabCount; i++)
+                BufferOptionMenuString(sOptionMenuPtr->activeTab, i);
+            UpdateSettingSelectionDisplay(sOptionMenuPtr->cursorPos);
             break;
         }
         break;
@@ -409,46 +506,82 @@ static void Task_OptionMenu(u8 taskId)
 }
 
 static u8 OptionMenu_ProcessInput(void)
-{ 
-    u16 current;
-    u16 *curr;
+{
+    enum MenuTabs currentlyActiveTab = sOptionMenuPtr->activeTab;
+    const MenuItem *currentlyActiveTabItems = sMenuTabsOptionItems[currentlyActiveTab];
+    MenuItem currentlySelectedItem;
+    u8 itemCancelIndex = sOptionMenuTabCounts[sOptionMenuPtr->activeTab];
+    u16 currentItemValueIndex;
     if (JOY_REPT(DPAD_RIGHT))
     {
-        current = sOptionMenuPtr->option[(sOptionMenuPtr->cursorPos)];
-        if (current == (sOptionMenuItemCounts[sOptionMenuPtr->cursorPos] - 1))
-            sOptionMenuPtr->option[sOptionMenuPtr->cursorPos] = 0;
+        if (sOptionMenuPtr->cursorPos == 0)
+        {
+            // Switch active tab
+            if (currentlyActiveTab == MENUTAB_COUNT - 1)
+                sOptionMenuPtr->activeTab = 0;
+            else
+                sOptionMenuPtr->activeTab = sOptionMenuPtr->activeTab + 1;
+            return 5;
+        }
         else
-            sOptionMenuPtr->option[sOptionMenuPtr->cursorPos] = current + 1;
-        if (sOptionMenuPtr->cursorPos == MENUITEM_FRAMETYPE)
-            return 2;
-        else
-            return 4;
+        {
+            currentlySelectedItem = currentlyActiveTabItems[sOptionMenuPtr->cursorPos - 1];
+            currentItemValueIndex = sOptionMenuPtr->option[currentlySelectedItem];
+            if (currentItemValueIndex == (sOptionMenuItemCounts[currentlySelectedItem] - 1))
+                currentItemValueIndex = 0;
+            else
+                ++currentItemValueIndex;
+            sOptionMenuPtr->option[currentlySelectedItem] = currentItemValueIndex;
+            if (currentlySelectedItem == MENUITEM_FRAMETYPE)
+                return 2;
+            else
+                return 4;
+        }
     }
     else if (JOY_REPT(DPAD_LEFT))
     {
-        curr = &sOptionMenuPtr->option[sOptionMenuPtr->cursorPos];
-        if (*curr == 0)
-            *curr = sOptionMenuItemCounts[sOptionMenuPtr->cursorPos] - 1;
+        if (sOptionMenuPtr->cursorPos == 0)
+        {
+            // Switch active tab
+            if (currentlyActiveTab == 0)
+                sOptionMenuPtr->activeTab = MENUTAB_COUNT - 1;
+            else
+                sOptionMenuPtr->activeTab = sOptionMenuPtr->activeTab - 1;
+            return 5;
+        }
         else
-            --*curr;
-        
-        if (sOptionMenuPtr->cursorPos == MENUITEM_FRAMETYPE)
-            return 2;
-        else
-            return 4;
+        {
+            currentlySelectedItem = currentlyActiveTabItems[sOptionMenuPtr->cursorPos - 1];
+            currentItemValueIndex = sOptionMenuPtr->option[currentlySelectedItem];
+            if (currentItemValueIndex == 0)
+                currentItemValueIndex = sOptionMenuItemCounts[currentlySelectedItem] - 1;
+            else
+                --currentItemValueIndex;
+            sOptionMenuPtr->option[currentlySelectedItem] = currentItemValueIndex;
+            if (currentlySelectedItem == MENUITEM_FRAMETYPE)
+                return 2;
+            else
+                return 4;
+        }
     }
     else if (JOY_REPT(DPAD_UP))
     {
-        if (sOptionMenuPtr->cursorPos == MENUITEM_TEXTSPEED)
-            sOptionMenuPtr->cursorPos = MENUITEM_CANCEL;
+        if (sOptionMenuPtr->cursorPos == 0)
+        {
+            // Cursor is at the top of the screen.
+            // Cursor should be moved to CANCEL, which is the last menu item.
+            // The index of CANCEL depends on which tab is currently active
+            sOptionMenuPtr->cursorPos = itemCancelIndex;
+        }
         else
             sOptionMenuPtr->cursorPos = sOptionMenuPtr->cursorPos - 1;
         return 3;        
     }
     else if (JOY_REPT(DPAD_DOWN))
     {
-        if (sOptionMenuPtr->cursorPos == MENUITEM_CANCEL)
-            sOptionMenuPtr->cursorPos = MENUITEM_TEXTSPEED;
+        // Check if cursor is on CANCEL. If it is, it should be moved to the top of the screen.
+        if (sOptionMenuPtr->cursorPos == itemCancelIndex)
+            sOptionMenuPtr->cursorPos = 0;
         else
             sOptionMenuPtr->cursorPos = sOptionMenuPtr->cursorPos + 1;
         return 3;
@@ -463,17 +596,19 @@ static u8 OptionMenu_ProcessInput(void)
     }
 }
 
-static void BufferOptionMenuString(u8 selection)
+static void BufferOptionMenuString(enum MenuTabs activeTab, u8 cursorPos)
 {
     u8 str[20];
     u8 buf[12];
     u8 dst[3];
     u8 x, y;
+    MenuItem selection;
     
     memcpy(dst, sOptionMenuTextColor, 3);
     x = 0x82;
-    y = ((GetFontAttribute(FONT_2, FONTATTR_MAX_LETTER_HEIGHT) - 1) * selection) + 2;
+    y = ((GetFontAttribute(FONT_2, FONTATTR_MAX_LETTER_HEIGHT) + 2 - 1) * cursorPos) + 2;
     FillWindowPixelRect(1, 1, x, y, 0x46, GetFontAttribute(FONT_2, FONTATTR_MAX_LETTER_HEIGHT));
+    selection = sMenuTabsOptionItems[sOptionMenuPtr->activeTab][cursorPos - 1];
 
     switch (selection)
     {
@@ -498,6 +633,9 @@ static void BufferOptionMenuString(u8 selection)
         StringAppendN(str, buf, 3);
         AddTextPrinterParameterized3(1, FONT_2, x, y, dst, -1, str);
         break;
+    case MENUITEM_DIALOGMODE:
+        AddTextPrinterParameterized3(1, FONT_2, x, y, dst, -1, sDialogModeOptions[sOptionMenuPtr->option[selection]]);
+        break;
     default:
         break;
     }
@@ -516,6 +654,7 @@ static void CloseAndSaveOptionMenu(u8 taskId)
     gSaveBlock2Ptr->optionsSound = sOptionMenuPtr->option[MENUITEM_SOUND];
     gSaveBlock2Ptr->optionsButtonMode = sOptionMenuPtr->option[MENUITEM_BUTTONMODE];
     gSaveBlock2Ptr->optionsWindowFrameType = sOptionMenuPtr->option[MENUITEM_FRAMETYPE];
+    gSaveBlock2Ptr->optionsWindowDialogMode = sOptionMenuPtr->option[MENUITEM_DIALOGMODE];
     SetPokemonCryStereo(gSaveBlock2Ptr->optionsSound);
     FREE_AND_SET_NULL(sOptionMenuPtr);
     DestroyTask(taskId);
@@ -556,20 +695,33 @@ static void DrawOptionMenuBg(void)
 static void LoadOptionMenuItemNames(void)
 {
     u8 i;
-    
+    u8 y;
+    u8 maxLetterHeight = GetFontAttribute(FONT_2, FONTATTR_MAX_LETTER_HEIGHT);
+    enum MenuTabs activeTab = sOptionMenuPtr->activeTab;
+    const MenuItem *itemsInActiveTab = sMenuTabsOptionItems[sOptionMenuPtr->activeTab];
+    u8 itemsInTabCount = sOptionMenuTabCounts[sOptionMenuPtr->activeTab];
+    const u8 *activeTabName = sOptionMenuTabsNames[activeTab];
+
+    // Calculate x coordinate so that tab name is centered
+    u8 activeTabNameWidthPixels = GetStringWidth(FONT_2, activeTabName, -1);
+    u8 optionWindowWidthPixels = 8 * GetWindowAttribute(WIN_OPTIONS, WINDOW_WIDTH);
+    u8 tabNameX = SAFE_DIV(optionWindowWidthPixels - activeTabNameWidthPixels, 2);
+
     FillWindowPixelBuffer(1, PIXEL_FILL(1));
-    for (i = 0; i < MENUITEM_COUNT; i++)
+    AddTextPrinterParameterized(WIN_OPTIONS, FONT_2, activeTabName, tabNameX, 2, TEXT_SKIP_DRAW, NULL);
+    for (i = 1; i <= itemsInTabCount; i++)
     {
-        AddTextPrinterParameterized(WIN_OPTIONS, FONT_2, sOptionMenuItemsNames[i], 8, (u8)((i * (GetFontAttribute(FONT_2, FONTATTR_MAX_LETTER_HEIGHT))) + 2) - i, TEXT_SKIP_DRAW, NULL);    
+        y = i * (maxLetterHeight + 2 - 1) + (u8)2;
+        AddTextPrinterParameterized(WIN_OPTIONS, FONT_2, sOptionMenuItemsNames[itemsInActiveTab[i - 1]], 8, y, TEXT_SKIP_DRAW, NULL);    
     }
 }
 
-static void UpdateSettingSelectionDisplay(u16 selection)
+static void UpdateSettingSelectionDisplay(u8 cursorPos)
 {
     u16 maxLetterHeight, y;
     
     maxLetterHeight = GetFontAttribute(FONT_2, FONTATTR_MAX_LETTER_HEIGHT);
-    y = selection * (maxLetterHeight - 1) + 0x3A;
-    SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(y, y + maxLetterHeight));
+    y = cursorPos * (maxLetterHeight + 2 - 1) + 0x3A;
+    SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(y, y + maxLetterHeight + 2));
     SetGpuReg(REG_OFFSET_WIN0H, WIN_RANGE(0x10, 0xE0));
 }

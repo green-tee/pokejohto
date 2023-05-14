@@ -31,8 +31,16 @@ static const u16 sUserFrame_Type10_Pal[] = INCBIN_U16("graphics/text_window/type
 const u16 gStdTextWindow_Gfx[] = INCBIN_U16("graphics/text_window/std.4bpp");
 const u16 gQuestLogWindow_Gfx[] = INCBIN_U16("graphics/text_window/quest_log.4bpp");
 
-const u16 gTextWindowPalettes[][16] = {
+const u16 gTextWindowPalettesLight[][16] = {
     INCBIN_U16("graphics/text_window/stdpal_0.gbapal"),
+    INCBIN_U16("graphics/text_window/stdpal_1.gbapal"),
+    INCBIN_U16("graphics/text_window/stdpal_2.gbapal"),
+    INCBIN_U16("graphics/text_window/stdpal_3.gbapal"),
+    INCBIN_U16("graphics/text_window/stdpal_4.gbapal")
+};
+
+const u16 gTextWindowPalettesDark[][16] = {
+    INCBIN_U16("graphics/text_window/stdpaldark_0.gbapal"),
     INCBIN_U16("graphics/text_window/stdpal_1.gbapal"),
     INCBIN_U16("graphics/text_window/stdpal_2.gbapal"),
     INCBIN_U16("graphics/text_window/stdpal_3.gbapal"),

@@ -917,6 +917,9 @@ extern const u8 gText_DecimalPoint[];
 extern const u8 gText_Rooftop2[];
 
 // option menu
+extern const u8 gText_TabWindow[];
+extern const u8 gText_TabBattle[];
+extern const u8 gText_TabMiscellaneous[];
 extern const u8 gText_TextSpeed[];
 extern const u8 gText_BattleScene[];
 extern const u8 gText_BattleStyle[];

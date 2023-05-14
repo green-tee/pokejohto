@@ -37,7 +37,7 @@ enum MenuItems
     MENUITEM_COUNT
 };
 
-typedef u8 MenuItem;
+typedef enum MenuItems MenuItem;
 
 // Window Ids
 enum
@@ -481,7 +481,7 @@ static void Task_OptionMenu(u8 taskId)
             break;
         case 5:
             // Active tab was switched
-            DrawOptionMenuBg();
+            CopyBgTilemapBufferToVram(1); // DrawOptionMenuBg();
             LoadOptionMenuItemNames();
             itemsInTabCount = sOptionMenuTabCounts[sOptionMenuPtr->activeTab];
             for (i = 1; i <= itemsInTabCount; i++)
@@ -606,7 +606,7 @@ static void BufferOptionMenuString(enum MenuTabs activeTab, u8 cursorPos)
     
     memcpy(dst, sOptionMenuTextColor, 3);
     x = 0x82;
-    y = ((GetFontAttribute(FONT_2, FONTATTR_MAX_LETTER_HEIGHT) - 1) * cursorPos) + 2;
+    y = ((GetFontAttribute(FONT_2, FONTATTR_MAX_LETTER_HEIGHT) + 2 - 1) * cursorPos) + 2;
     FillWindowPixelRect(1, 1, x, y, 0x46, GetFontAttribute(FONT_2, FONTATTR_MAX_LETTER_HEIGHT));
     selection = sMenuTabsOptionItems[sOptionMenuPtr->activeTab][cursorPos - 1];
 
@@ -695,15 +695,24 @@ static void DrawOptionMenuBg(void)
 static void LoadOptionMenuItemNames(void)
 {
     u8 i;
+    u8 y;
+    u8 maxLetterHeight = GetFontAttribute(FONT_2, FONTATTR_MAX_LETTER_HEIGHT);
     enum MenuTabs activeTab = sOptionMenuPtr->activeTab;
     const MenuItem *itemsInActiveTab = sMenuTabsOptionItems[sOptionMenuPtr->activeTab];
     u8 itemsInTabCount = sOptionMenuTabCounts[sOptionMenuPtr->activeTab];
-    
+    const u8 *activeTabName = sOptionMenuTabsNames[activeTab];
+
+    // Calculate x coordinate so that tab name is centered
+    u8 activeTabNameWidthPixels = GetStringWidth(FONT_2, activeTabName, -1);
+    u8 optionWindowWidthPixels = 8 * GetWindowAttribute(WIN_OPTIONS, WINDOW_WIDTH);
+    u8 tabNameX = SAFE_DIV(optionWindowWidthPixels - activeTabNameWidthPixels, 2);
+
     FillWindowPixelBuffer(1, PIXEL_FILL(1));
-    AddTextPrinterParameterized(WIN_OPTIONS, FONT_2, sOptionMenuTabsNames[activeTab], 32, 2, TEXT_SKIP_DRAW, NULL);
+    AddTextPrinterParameterized(WIN_OPTIONS, FONT_2, activeTabName, tabNameX, 2, TEXT_SKIP_DRAW, NULL);
     for (i = 1; i <= itemsInTabCount; i++)
     {
-        AddTextPrinterParameterized(WIN_OPTIONS, FONT_2, sOptionMenuItemsNames[itemsInActiveTab[i - 1]], 8, (u8)((i * (GetFontAttribute(FONT_2, FONTATTR_MAX_LETTER_HEIGHT))) + 2) - i, TEXT_SKIP_DRAW, NULL);    
+        y = i * (maxLetterHeight + 2 - 1) + (u8)2;
+        AddTextPrinterParameterized(WIN_OPTIONS, FONT_2, sOptionMenuItemsNames[itemsInActiveTab[i - 1]], 8, y, TEXT_SKIP_DRAW, NULL);    
     }
 }
 
@@ -712,7 +721,7 @@ static void UpdateSettingSelectionDisplay(u8 cursorPos)
     u16 maxLetterHeight, y;
     
     maxLetterHeight = GetFontAttribute(FONT_2, FONTATTR_MAX_LETTER_HEIGHT);
-    y = cursorPos * (maxLetterHeight - 1) + 0x3A;
-    SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(y, y + maxLetterHeight));
+    y = cursorPos * (maxLetterHeight + 2 - 1) + 0x3A;
+    SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(y, y + maxLetterHeight + 2));
     SetGpuReg(REG_OFFSET_WIN0H, WIN_RANGE(0x10, 0xE0));
 }

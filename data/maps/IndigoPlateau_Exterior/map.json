@@ -23,7 +23,7 @@
   "object_events": [
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_BLUE",
+      "graphics_id": "OBJ_EVENT_GFX_JOEY",
       "x": 11,
       "y": 6,
       "elevation": 0,
@@ -37,7 +37,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_PROF_OAK",
+      "graphics_id": "OBJ_EVENT_GFX_ELM",
       "x": 11,
       "y": 6,
       "elevation": 0,

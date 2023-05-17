@@ -150,6 +150,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DeoxysD;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DeoxysA;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DeoxysN;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SSAnne;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ClerkF;
 
 
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
@@ -220,27 +221,27 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_NURSE]                    = &gObjectEventGraphicsInfo_Nurse,
     [OBJ_EVENT_GFX_CABLE_CLUB_RECEPTIONIST]  = &gObjectEventGraphicsInfo_CableClubReceptionist,
     [OBJ_EVENT_GFX_UNION_ROOM_RECEPTIONIST]  = &gObjectEventGraphicsInfo_UnionRoomReceptionist,
-    [OBJ_EVENT_GFX_UNUSED_MALE_RECEPTIONIST] = &gObjectEventGraphicsInfo_Eusine,
+    [OBJ_EVENT_GFX_UNUSED_EUSINE]            = &gObjectEventGraphicsInfo_Eusine,
     [OBJ_EVENT_GFX_CLERK_M]                  = &gObjectEventGraphicsInfo_ClerkM,
     [OBJ_EVENT_GFX_MG_DELIVERYMAN]           = &gObjectEventGraphicsInfo_MGDeliveryman,
     [OBJ_EVENT_GFX_TRAINER_TOWER_DUDE]       = &gObjectEventGraphicsInfo_TrainerTowerDude,
-    [OBJ_EVENT_GFX_PROF_OAK]                 = &gObjectEventGraphicsInfo_Elm,
-    [OBJ_EVENT_GFX_BLUE]                     = &gObjectEventGraphicsInfo_Joey,
-    [OBJ_EVENT_GFX_BILL]                     = &gObjectEventGraphicsInfo_Silver,
+    [OBJ_EVENT_GFX_ELM]                      = &gObjectEventGraphicsInfo_Elm,
+    [OBJ_EVENT_GFX_JOEY]                     = &gObjectEventGraphicsInfo_Joey,
+    [OBJ_EVENT_GFX_SILVER]                   = &gObjectEventGraphicsInfo_Silver,
     [OBJ_EVENT_GFX_LANCE]                    = &gObjectEventGraphicsInfo_Lance,
-    [OBJ_EVENT_GFX_AGATHA]                   = &gObjectEventGraphicsInfo_Clair,
-    [OBJ_EVENT_GFX_DAISY]                    = &gObjectEventGraphicsInfo_Katze,
-    [OBJ_EVENT_GFX_LORELEI]                  = &gObjectEventGraphicsInfo_Will,
+    [OBJ_EVENT_GFX_CLAIR]                    = &gObjectEventGraphicsInfo_Clair,
+    [OBJ_EVENT_GFX_KATZE]                    = &gObjectEventGraphicsInfo_Katze,
+    [OBJ_EVENT_GFX_WILL]                     = &gObjectEventGraphicsInfo_Will,
     [OBJ_EVENT_GFX_MR_FUJI]                  = &gObjectEventGraphicsInfo_MrFuji,
-    [OBJ_EVENT_GFX_BRUNO]                    = &gObjectEventGraphicsInfo_Chuck,
-    [OBJ_EVENT_GFX_BROCK]                    = &gObjectEventGraphicsInfo_Bugsy,
-    [OBJ_EVENT_GFX_MISTY]                    = &gObjectEventGraphicsInfo_Whitney,
-    [OBJ_EVENT_GFX_LT_SURGE]                 = &gObjectEventGraphicsInfo_Falkner,
-    [OBJ_EVENT_GFX_ERIKA]                    = &gObjectEventGraphicsInfo_Morty,
+    [OBJ_EVENT_GFX_CHUCK]                    = &gObjectEventGraphicsInfo_Chuck,
+    [OBJ_EVENT_GFX_BUGSY]                    = &gObjectEventGraphicsInfo_Bugsy,
+    [OBJ_EVENT_GFX_WHITNEY]                  = &gObjectEventGraphicsInfo_Whitney,
+    [OBJ_EVENT_GFX_FALKNER]                  = &gObjectEventGraphicsInfo_Falkner,
+    [OBJ_EVENT_GFX_MORTY]                    = &gObjectEventGraphicsInfo_Morty,
     [OBJ_EVENT_GFX_KOGA]                     = &gObjectEventGraphicsInfo_Koga,
-    [OBJ_EVENT_GFX_SABRINA]                  = &gObjectEventGraphicsInfo_Jasmine,
-    [OBJ_EVENT_GFX_BLAINE]                   = &gObjectEventGraphicsInfo_Fuchs,
-    [OBJ_EVENT_GFX_GIOVANNI]                 = &gObjectEventGraphicsInfo_Karen,
+    [OBJ_EVENT_GFX_JASMINE]                  = &gObjectEventGraphicsInfo_Jasmine,
+    [OBJ_EVENT_GFX_FUCHS]                    = &gObjectEventGraphicsInfo_Fuchs,
+    [OBJ_EVENT_GFX_KAREN]                    = &gObjectEventGraphicsInfo_Karen,
     [OBJ_EVENT_GFX_MOM]                      = &gObjectEventGraphicsInfo_Mom,
     [OBJ_EVENT_GFX_CELIO]                    = &gObjectEventGraphicsInfo_Celio,
     [OBJ_EVENT_GFX_TEACHY_TV_HOST]           = &gObjectEventGraphicsInfo_TeachyTVHost,
@@ -305,4 +306,5 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_DEOXYS_A]                 = &gObjectEventGraphicsInfo_DeoxysA,
     [OBJ_EVENT_GFX_DEOXYS_N]                 = &gObjectEventGraphicsInfo_DeoxysN,
     [OBJ_EVENT_GFX_SS_ANNE]                  = &gObjectEventGraphicsInfo_SSAnne,
+    [OBJ_EVENT_GFX_CLERK_F]                  = &gObjectEventGraphicsInfo_ClerkF
 };

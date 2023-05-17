@@ -673,16 +673,16 @@ static const struct SpriteFrameImage sPicTable_TeachyTVHost[] = {
     overworld_frame(gObjectEventPic_TeachyTVHost, 2, 4, 8),
 };
 
-static const struct SpriteFrameImage sPicTable_UnusedWoman[] = {
-    overworld_frame(gObjectEventPic_UnusedWoman, 2, 4, 0),
-    overworld_frame(gObjectEventPic_UnusedWoman, 2, 4, 1),
-    overworld_frame(gObjectEventPic_UnusedWoman, 2, 4, 2),
-    overworld_frame(gObjectEventPic_UnusedWoman, 2, 4, 3),
-    overworld_frame(gObjectEventPic_UnusedWoman, 2, 4, 4),
-    overworld_frame(gObjectEventPic_UnusedWoman, 2, 4, 5),
-    overworld_frame(gObjectEventPic_UnusedWoman, 2, 4, 6),
-    overworld_frame(gObjectEventPic_UnusedWoman, 2, 4, 7),
-    overworld_frame(gObjectEventPic_UnusedWoman, 2, 4, 8),
+static const struct SpriteFrameImage sPicTable_ClerkF[] = {
+    overworld_frame(gObjectEventPic_ClerkF, 4, 4, 0),
+    overworld_frame(gObjectEventPic_ClerkF, 4, 4, 1),
+    overworld_frame(gObjectEventPic_ClerkF, 4, 4, 2),
+    overworld_frame(gObjectEventPic_ClerkF, 4, 4, 3),
+    overworld_frame(gObjectEventPic_ClerkF, 4, 4, 4),
+    overworld_frame(gObjectEventPic_ClerkF, 4, 4, 5),
+    overworld_frame(gObjectEventPic_ClerkF, 4, 4, 6),
+    overworld_frame(gObjectEventPic_ClerkF, 4, 4, 7),
+    overworld_frame(gObjectEventPic_ClerkF, 4, 4, 8),
 };
 
 static const struct SpriteFrameImage sPicTable_TuberF[] = {

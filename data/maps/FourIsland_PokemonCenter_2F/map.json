@@ -73,7 +73,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_AGATHA",
+      "graphics_id": "OBJ_EVENT_GFX_CLAIR",
       "x": 2,
       "y": 12,
       "elevation": 0,
@@ -87,7 +87,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_BLAINE",
+      "graphics_id": "OBJ_EVENT_GFX_FUCHS",
       "x": 4,
       "y": 8,
       "elevation": 0,
@@ -101,7 +101,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_BLUE",
+      "graphics_id": "OBJ_EVENT_GFX_JOEY",
       "x": 7,
       "y": 7,
       "elevation": 0,
@@ -115,7 +115,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_BILL",
+      "graphics_id": "OBJ_EVENT_GFX_SILVER",
       "x": 10,
       "y": 18,
       "elevation": 0,
@@ -129,7 +129,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_BROCK",
+      "graphics_id": "OBJ_EVENT_GFX_BUGSY",
       "x": 1,
       "y": 17,
       "elevation": 0,
@@ -143,7 +143,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_BRUNO",
+      "graphics_id": "OBJ_EVENT_GFX_CHUCK",
       "x": 12,
       "y": 21,
       "elevation": 0,
@@ -157,7 +157,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_GIOVANNI",
+      "graphics_id": "OBJ_EVENT_GFX_KAREN",
       "x": 11,
       "y": 13,
       "elevation": 0,
@@ -199,7 +199,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_ERIKA",
+      "graphics_id": "OBJ_EVENT_GFX_MORTY",
       "x": 6,
       "y": 15,
       "elevation": 0,
@@ -213,7 +213,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_LORELEI",
+      "graphics_id": "OBJ_EVENT_GFX_WILL",
       "x": 7,
       "y": 11,
       "elevation": 0,
@@ -227,7 +227,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_LT_SURGE",
+      "graphics_id": "OBJ_EVENT_GFX_FALKNER",
       "x": 2,
       "y": 25,
       "elevation": 0,
@@ -241,7 +241,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_MISTY",
+      "graphics_id": "OBJ_EVENT_GFX_WHITNEY",
       "x": 2,
       "y": 16,
       "elevation": 0,
@@ -255,7 +255,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_SABRINA",
+      "graphics_id": "OBJ_EVENT_GFX_JASMINE",
       "x": 2,
       "y": 21,
       "elevation": 0,
@@ -269,7 +269,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_UNUSED_MALE_RECEPTIONIST",
+      "graphics_id": "OBJ_EVENT_GFX_UNUSED_EUSINE",
       "x": 7,
       "y": 19,
       "elevation": 0,
@@ -283,7 +283,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_DAISY",
+      "graphics_id": "OBJ_EVENT_GFX_KATZE",
       "x": 7,
       "y": 15,
       "elevation": 0,
@@ -297,7 +297,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_PROF_OAK",
+      "graphics_id": "OBJ_EVENT_GFX_ELM",
       "x": 6,
       "y": 23,
       "elevation": 0,

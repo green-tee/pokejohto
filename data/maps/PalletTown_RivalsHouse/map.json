@@ -17,7 +17,7 @@
   "object_events": [
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_DAISY",
+      "graphics_id": "OBJ_EVENT_GFX_KATZE",
       "x": 10,
       "y": 6,
       "elevation": 3,

@@ -1773,18 +1773,18 @@ bool8 DoesPlayerPartyContainSpecies(void)
 }
 
 static const u8 sMartMaps[][3] = {
-    {MAP(VIRIDIAN_CITY_MART),   1},
-    {MAP(PEWTER_CITY_MART),     3},
-    {MAP(CERULEAN_CITY_MART),   1},
-    {MAP(LAVENDER_TOWN_MART),   1},
-    {MAP(VERMILION_CITY_MART),  1},
-    {MAP(FUCHSIA_CITY_MART),    1},
-    {MAP(CINNABAR_ISLAND_MART), 1},
-    {MAP(SAFFRON_CITY_MART),    1},
-    {MAP(THREE_ISLAND_MART),    1},
-    {MAP(FOUR_ISLAND_MART),     1},
-    {MAP(SEVEN_ISLAND_MART),    1},
-    {MAP(SIX_ISLAND_MART),      1}
+    {MAP(VIRIDIAN_CITY_MART),    1},
+    {MAP(PEWTER_CITY_MART),      3},
+    {MAP(CERULEAN_CITY_MART),    1},
+    {MAP(LAVENDER_TOWN_MART),    1},
+    {MAP(VERMILION_CITY_MART),   1},
+    {MAP(FUCHSIA_CITY_MART),     1},
+    {MAP(CINNABAR_ISLAND_MART),  1},
+    {MAP(SAFFRON_CITY_MART),     1},
+    {MAP(THREE_ISLAND_MART),     1},
+    {MAP(SANDALINE_COLONY_MART), 1},
+    {MAP(SEVEN_ISLAND_MART),     1},
+    {MAP(SIX_ISLAND_MART),       1}
 };
 
 u8 GetMartClerkObjectId(void)

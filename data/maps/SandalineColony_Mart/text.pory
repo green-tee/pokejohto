@@ -1,0 +1,76 @@
+text SandalineColony_Mart_Text_ClerkF_WelcomeToThePokemonMart {
+    "Hi, welcome to the Pokémon Mart!\p"
+    "Here you can buy useful Items to\n"
+    "aid you in your journey as a\l"
+    "Pokémon Trainer.\p"
+    "Every Gym Badge you win will\n"
+    "reward you with a broader\l"
+    "selection of Items to choose\l"
+    "from!"
+}
+
+text SandalineColony_Mart_Text_ClerkM_ThatGuyIsWaitingForSomeone {
+    "Welcome to Sandaline Colony's\n"
+    "Pokémon Mart!\p"
+    "Are you looking for somebody?\n"
+    "Could it be that guy between\l"
+    "The shelves over there?\p"
+    "I swear, I'm sure I've seen him\n"
+    "somewhere, but I just can't\l"
+    "remember where..."
+}
+
+text SandalineColony_Mart_Text_Bugsy_TookYouAWhile {
+    "{COLOR GREEN}Bugsy: Took you long enough!\p"
+    "This facility here is called\n"
+    "a Pokémon Center.\p"
+    "Every Pokémon Center serves two\n"
+    "basic purposes. One of those is\l"
+    "to sell useful Items that every\l"
+    "Trainer needs to know!\p"
+    "Follow me!"
+}
+
+text SandalineColony_Mart_Text_Bugsy_ThisIsAMart {
+    "{COLOR GREEN}Bugsy: This section of a Pokémon\n"
+    "Center is usually referred to as\l"
+    "a Pokémon Mart\p"
+    "Pokémon Marts used to be found\n"
+    "in their own buildings, but they\l"
+    "all merged with Pokémon Centers\l"
+    "one year ago."
+}
+
+text SandalineColony_Mart_Text_Bugsy_IdLikeToBuyPokeBalls {
+    "{COLOR GREEN}Bugsy: Hi! I'd like to buy 10\n"
+    "regular Poké Balls, please!"
+}
+
+text SandalineColony_Mart_Text_ClerkM_ThatWouldBeMoney {
+    "{COLOR BLUE}Mart Clerk: That would be\n"
+    "¥2,000."
+}
+
+text SandalineColony_Mart_Text_Scene_BugsyPays {
+    "Bugsy paid ¥2,000."
+}
+
+text SandalineColony_Mart_Text_ClerkM_YouReceiveAPremierBall {
+    "{COLOR BLUE}Mart Clerk: as per our policy,\n"
+    "I'm throwing in a Premier Ball\l"
+    "too."
+}
+
+text SandalineColony_Mart_Text_Bugsy_ThankYou {
+    "{COLOR GREEN}Bugsy: Thank you very much!\n"
+}
+
+text SandalineColony_Mart_Text_Bugsy_ItemsCostMoney {
+    "{COLOR GREEN}Bugsy: As you can imagine, Items\n"
+    "are traded for money. If you're\l"
+    "broke, a Pokémon Mart won't do\l"
+    "any good for you.\p"
+    "But it's still worth coming to a\n"
+    "Pokémon Center, and I'll show\l"
+    "you why. Let's go!"
+}

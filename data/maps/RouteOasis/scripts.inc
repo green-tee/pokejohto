@@ -42,7 +42,7 @@ RouteOasis_EventScript_BugsyIntro::
 RouteOasis_EventScript_BugsyIntroSpeech:
 	msgbox RouteOasis_Text_Bugsy_YouWantToBecomeATrainer
 	closemessage
-	applymovement 2, Movement_FaceJoey
+	applymovement 2, RouteOasis_Movement_FaceJoey
 	waitmovement 2
 	msgbox RouteOasis_Text_Bugsy_JoeyNewGymLeader
 	closemessage
@@ -53,17 +53,17 @@ RouteOasis_EventScript_BugsyIntroSpeech:
 	delay 30
 	msgbox RouteOasis_Text_Bugsy_TheseMonsAreRare
 	closemessage
-	applymovement 2, Movement_FacePlayer
+	applymovement 2, RouteOasis_Movement_FacePlayer
 	waitmovement 2
 	msgbox RouteOasis_Text_Bugsy_LastChallenger
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Movement_Player_OutOfTheWay
+	applymovement OBJ_EVENT_ID_PLAYER, RouteOasis_Movement_Player_OutOfTheWay
 	waitmovement OBJ_EVENT_ID_PLAYER
 	return
 
 
 RouteOasis_EventScript_JoeyExclamationEmote:
-	applymovement 1, Movement_Surprised
+	applymovement 1, RouteOasis_Movement_Surprised
 	playse SE_PIN
 	waitmovement 1
 	waitse
@@ -71,7 +71,7 @@ RouteOasis_EventScript_JoeyExclamationEmote:
 
 
 RouteOasis_EventScript_BugsyIntroLayPokeballs:
-	applymovement 2, Movement_GoLayingFirstBall
+	applymovement 2, RouteOasis_Movement_GoLayingFirstBall
 	delay 60
 	turnobject 1, DIR_WEST
 	waitmovement 2
@@ -80,14 +80,14 @@ RouteOasis_EventScript_BugsyIntroLayPokeballs:
 	playse SE_BALL
 	waitse
 	delay 30
-	applymovement 2, Movement_GoLayingNextBall
+	applymovement 2, RouteOasis_Movement_GoLayingNextBall
 	waitmovement 2
 	addobject 4
 	clearflag FLAG_HIDE_CYNDAQUIL_BALL
 	playse SE_BALL
 	waitse
 	delay 30
-	applymovement 2, Movement_GoLayingNextBall
+	applymovement 2, RouteOasis_Movement_GoLayingNextBall
 	waitmovement 2
 	addobject 5
 	clearflag FLAG_HIDE_TOTODILE_BALL
@@ -98,24 +98,24 @@ RouteOasis_EventScript_BugsyIntroLayPokeballs:
 
 
 RouteOasis_EventScript_BugsyIntroExplainStarters:
-	applymovement 2, Movement_GoExplainStartersToPlayer
+	applymovement 2, RouteOasis_Movement_GoExplainStartersToPlayer
 	waitmovement 2
 	msgbox RouteOasis_Text_Bugsy_PlayerPickMon
 	closemessage
-	applymovement 2, Movement_Bugsy_FaceJoeyFromLeft
+	applymovement 2, RouteOasis_Movement_Bugsy_FaceJoeyFromLeft
 	waitmovement 2
 	msgbox RouteOasis_Text_Bugsy_JoeyWillPickSecond
 	closemessage
-	applymovement 2, Movement_FacePokeballs
+	applymovement 2, RouteOasis_Movement_FacePokeballs
 	waitmovement 2
 	msgbox RouteOasis_Text_Bugsy_IWillPickLast
 	closemessage
-	applymovement 2, Movement_FacePlayerFromAbove
+	applymovement 2, RouteOasis_Movement_FacePlayerFromAbove
 	waitmovement 2
 	msgbox RouteOasis_Text_Bugsy_GoAheadPickOne
 	closemessage
 	delay 30
-	applymovement 2, Movement_WaitPlayerPickStarter
+	applymovement 2, RouteOasis_Movement_WaitPlayerPickStarter
 	waitmovement 2
 	call RouteOasis_EventScript_AdjustBugsyAndJoey
 	return
@@ -133,7 +133,7 @@ RouteOasis_EventScript_BugsyPreventPlayerFromGoingAway::
 	turnobject 2, DIR_SOUTH
 	msgbox RouteOasis_Text_Bugsy_DoNotGoAway
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Movement_Player_WalkToPokeballsFromLeft
+	applymovement OBJ_EVENT_ID_PLAYER, RouteOasis_Movement_Player_WalkToPokeballsFromLeft
 	waitmovement OBJ_EVENT_ID_PLAYER
 	turnobject 2, DIR_EAST
 	releaseall
@@ -145,72 +145,72 @@ RouteOasis_EventScript_JoeyPreventPlayerFromGoingAway::
 	turnobject 1, DIR_EAST
 	msgbox RouteOasis_Text_Joey_DoNotGoAway
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Movement_Player_WalkToPokeballsFromRight
+	applymovement OBJ_EVENT_ID_PLAYER, RouteOasis_Movement_Player_WalkToPokeballsFromRight
 	waitmovement OBJ_EVENT_ID_PLAYER
 	turnobject 1, DIR_WEST
 	releaseall
 	return
 
 
-Movement_FaceJoey:
+RouteOasis_Movement_FaceJoey:
 	walk_in_place_fast_up
 	step_end
 
-Movement_Surprised:
+RouteOasis_Movement_Surprised:
 	emote_exclamation_mark
 	step_end
 
-Movement_FacePlayer:
+RouteOasis_Movement_FacePlayer:
 	walk_in_place_left
 	step_end
 
-Movement_Player_OutOfTheWay:
+RouteOasis_Movement_Player_OutOfTheWay:
 	walk_down
 	walk_left
 	face_up
 	step_end
 
-Movement_GoLayingFirstBall:
+RouteOasis_Movement_GoLayingFirstBall:
 	walk_left
 	walk_left
 	walk_left
 	walk_in_place_fast_up
 	step_end
 
-Movement_GoLayingNextBall:
+RouteOasis_Movement_GoLayingNextBall:
 	walk_right
 	walk_in_place_fast_up
 	step_end
 
-Movement_GoExplainStartersToPlayer:
+RouteOasis_Movement_GoExplainStartersToPlayer:
 	walk_left
 	walk_in_place_fast_down
 	step_end
 
-Movement_Bugsy_FaceJoeyFromLeft:
+RouteOasis_Movement_Bugsy_FaceJoeyFromLeft:
 	walk_in_place_right
 	step_end
 
-Movement_FacePokeballs:
+RouteOasis_Movement_FacePokeballs:
 	walk_in_place_slow_up
 	step_end
 
-Movement_FacePlayerFromAbove:
+RouteOasis_Movement_FacePlayerFromAbove:
 	walk_in_place_down
 	step_end
 
-Movement_WaitPlayerPickStarter:
+RouteOasis_Movement_WaitPlayerPickStarter:
 	walk_left
 	walk_left
 	face_right
 	step_end
 
-Movement_Player_WalkToPokeballsFromLeft:
+RouteOasis_Movement_Player_WalkToPokeballsFromLeft:
 	walk_right
 	walk_right
 	step_end
 
-Movement_Player_WalkToPokeballsFromRight:
+RouteOasis_Movement_Player_WalkToPokeballsFromRight:
 	walk_left
 	walk_left
 	step_end
@@ -319,28 +319,28 @@ RouteOasis_EventScript_PositionCharactersAfterSelection_1:
 	return
 
 RouteOasis_EventScript_PositionCharactersAfterSelection_3:
-	applymovement OBJ_EVENT_ID_CAMERA, Movement_Camera_FromChikoritaBall
+	applymovement OBJ_EVENT_ID_CAMERA, RouteOasis_Movement_Camera_FromChikoritaBall
 	goto RouteOasis_EventScript_PositionCharactersAfterSelection_1
 
 RouteOasis_EventScript_PositionCharactersAfterSelection_4:
-	applymovement OBJ_EVENT_ID_CAMERA, Movement_Camera_FromCyndaquilBall
+	applymovement OBJ_EVENT_ID_CAMERA, RouteOasis_Movement_Camera_FromCyndaquilBall
 	goto RouteOasis_EventScript_PositionCharactersAfterSelection_1
 
 RouteOasis_EventScript_PositionCharactersAfterSelection_5:
-	applymovement OBJ_EVENT_ID_CAMERA, Movement_Camera_FromTotodileBall
+	applymovement OBJ_EVENT_ID_CAMERA, RouteOasis_Movement_Camera_FromTotodileBall
 	goto RouteOasis_EventScript_PositionCharactersAfterSelection_1
 
 
-Movement_Camera_FromChikoritaBall:
+RouteOasis_Movement_Camera_FromChikoritaBall:
 	walk_faster_down
 	step_end
 
-Movement_Camera_FromCyndaquilBall:
+RouteOasis_Movement_Camera_FromCyndaquilBall:
 	walk_faster_left
 	walk_faster_down
 	step_end
 
-Movement_Camera_FromTotodileBall:
+RouteOasis_Movement_Camera_FromTotodileBall:
 	walk_faster_left
 	walk_faster_left
 	walk_faster_down
@@ -351,7 +351,7 @@ RouteOasis_EventScript_JoeyStarterSelection:
 	msgbox RouteOasis_Text_Bugsy_YourTurnJoey
 	closemessage
 	delay 60
-	applymovement 1, Movement_TurnToCamera
+	applymovement 1, RouteOasis_Movement_TurnToCamera
 	waitmovement 1
 	msgbox RouteOasis_Text_Joey_Dots
 	closemessage
@@ -359,7 +359,7 @@ RouteOasis_EventScript_JoeyStarterSelection:
 	msgbox RouteOasis_Text_Joey_WhichOneShouldIPick
 	closemessage
 	delay 60
-	applymovement 1, Movement_FacePokeballs
+	applymovement 1, RouteOasis_Movement_FacePokeballs
 	waitmovement 1
 	msgbox RouteOasis_Text_Joey_AdvantageOverPlayerOrOverBugsy
 	closemessage
@@ -407,7 +407,7 @@ RouteOasis_EventScript_SetupBuffersAccordingToStarter_5:
 	goto RouteOasis_EventScript_SetupBuffersAccordingToStarter_1
 
 
-Movement_TurnToCamera:
+RouteOasis_Movement_TurnToCamera:
 	walk_in_place_slow_down
 	step_end
 
@@ -421,34 +421,34 @@ RouteOasis_EventScript_JoeyWalkToPokeball_1:
 	return
 
 RouteOasis_EventScript_JoeyWalkToPokeball_3:
-	applymovement 1, Movement_Joey_RunToChikoritaBall
+	applymovement 1, RouteOasis_Movement_Joey_RunToChikoritaBall
 	goto RouteOasis_EventScript_JoeyWalkToPokeball_1
 
 RouteOasis_EventScript_JoeyWalkToPokeball_4:
-	applymovement 1, Movement_Joey_RunToCyndaquilBall
+	applymovement 1, RouteOasis_Movement_Joey_RunToCyndaquilBall
 	goto RouteOasis_EventScript_JoeyWalkToPokeball_1
 
 RouteOasis_EventScript_JoeyWalkToPokeball_5:
-	applymovement 1, Movement_Joey_RunToTotodileBall
+	applymovement 1, RouteOasis_Movement_Joey_RunToTotodileBall
 	goto RouteOasis_EventScript_JoeyWalkToPokeball_1
 
 
-Movement_Joey_RunToChikoritaBall:
+RouteOasis_Movement_Joey_RunToChikoritaBall:
 	walk_fast_left
 	walk_in_place_fast_up
 	step_end
 
-Movement_Joey_RunToCyndaquilBall:
+RouteOasis_Movement_Joey_RunToCyndaquilBall:
 	walk_in_place_fast_up
 	step_end
 
-Movement_Joey_RunToTotodileBall:
+RouteOasis_Movement_Joey_RunToTotodileBall:
 	walk_fast_right
 	walk_in_place_fast_up
 	step_end
 
 RouteOasis_EventScript_BugsyStarterSelection:
-	applymovement 2, Movement_Bugsy_FaceJoeyFromLeft
+	applymovement 2, RouteOasis_Movement_Bugsy_FaceJoeyFromLeft
 	waitmovement 2
 	msgbox RouteOasis_Text_Bugsy_ThatLeavesOneForMe
 	closemessage
@@ -471,29 +471,29 @@ RouteOasis_EventScript_BugsyWalkToPokeball_1:
 	return
 
 RouteOasis_EventScript_BugsyWalkToPokeball_3:
-	applymovement 2, Movement_Bugsy_WalkToChikoritaBall
+	applymovement 2, RouteOasis_Movement_Bugsy_WalkToChikoritaBall
 	goto RouteOasis_EventScript_BugsyWalkToPokeball_1
 
 RouteOasis_EventScript_BugsyWalkToPokeball_4:
-	applymovement 2, Movement_Bugsy_WalkToCyndaquilBall
+	applymovement 2, RouteOasis_Movement_Bugsy_WalkToCyndaquilBall
 	goto RouteOasis_EventScript_BugsyWalkToPokeball_1
 
 RouteOasis_EventScript_BugsyWalkToPokeball_5:
-	applymovement 2, Movement_Bugsy_WalkToTotodileBall
+	applymovement 2, RouteOasis_Movement_Bugsy_WalkToTotodileBall
 	goto RouteOasis_EventScript_BugsyWalkToPokeball_1
 
 
-Movement_Bugsy_WalkToChikoritaBall:
+RouteOasis_Movement_Bugsy_WalkToChikoritaBall:
 	walk_up
 	walk_in_place_right
 	step_end
 
-Movement_Bugsy_WalkToCyndaquilBall:
+RouteOasis_Movement_Bugsy_WalkToCyndaquilBall:
 	walk_up
 	walk_right
 	step_end
 
-Movement_Bugsy_WalkToTotodileBall:
+RouteOasis_Movement_Bugsy_WalkToTotodileBall:
 	walk_up
 	walk_right
 	walk_right
@@ -508,7 +508,7 @@ RouteOasis_EventScript_PositionCharactersBeforeFirstBattle:
 	turnobject 2, DIR_EAST
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, Movement_Camera_BeforeFirstBattle
+	applymovement OBJ_EVENT_ID_CAMERA, RouteOasis_Movement_Camera_BeforeFirstBattle
 	waitmovement OBJ_EVENT_ID_CAMERA
 	special RemoveCameraObject
 	delay 120
@@ -516,7 +516,7 @@ RouteOasis_EventScript_PositionCharactersBeforeFirstBattle:
 	return
 
 
-Movement_Camera_BeforeFirstBattle:
+RouteOasis_Movement_Camera_BeforeFirstBattle:
 	walk_faster_up
 	walk_faster_right
 	walk_faster_right
@@ -534,7 +534,7 @@ RouteOasis_EventScript_JoeyBattleSequence:
 	msgbox RouteOasis_Text_Bugsy_OneThingLeftToDo
 	closemessage
 	msgbox RouteOasis_Text_Joey_AnswerBugsySure
-	applymovement 1, Movement_FacePlayerFromAbove
+	applymovement 1, RouteOasis_Movement_FacePlayerFromAbove
 	waitmovement 1
 	msgbox RouteOasis_Text_Joey_WeNeedToShowPlayerHowToBattle
 	closemessage
@@ -542,7 +542,7 @@ RouteOasis_EventScript_JoeyBattleSequence:
 	msgbox RouteOasis_Text_Bugsy_FairBattlesAreGood
 	closemessage
 	delay 60
-	applymovement OBJ_EVENT_ID_PLAYER, Movement_FacePokeballs
+	applymovement OBJ_EVENT_ID_PLAYER, RouteOasis_Movement_FacePokeballs
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox RouteOasis_Text_Joey_IllGoEasyOnYou
 	closemessage
@@ -610,7 +610,7 @@ RouteOasis_EventScript_SetupBattleVariables_4:
 
 
 RouteOasis_EventScript_BugsyBattleSequence:
-	applymovement 2, Movement_Bugsy_WalkToHealPlayer
+	applymovement 2, RouteOasis_Movement_Bugsy_WalkToHealPlayer
 	waitmovement 2
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	delay 30
@@ -648,7 +648,7 @@ RouteOasis_EventScript_PlayAndWaitHealingFanfare:
 	return
 
 
-Movement_Bugsy_WalkToHealPlayer:
+RouteOasis_Movement_Bugsy_WalkToHealPlayer:
 	walk_right
 	step_end
 
@@ -676,7 +676,7 @@ RouteOasis_EventScript_AfterBattleSequences:
 	msgbox RouteOasis_Text_Bugsy_LetMeHealAgain
 	closemessage
 	call RouteOasis_EventScript_HealWaitFanfareNoFadescreen
-	applymovement 2, Movement_Bugsy_WalkToHealJoey
+	applymovement 2, RouteOasis_Movement_Bugsy_WalkToHealJoey
 	waitmovement 2
 	turnobject 1, DIR_WEST
 	msgbox RouteOasis_Text_Bugsy_HealJoeysPokemon
@@ -692,31 +692,31 @@ RouteOasis_EventScript_AfterBattleSequences:
 	delay 60
 	msgbox RouteOasis_Text_Bugsy_GoToThePokemonCenter
 	closemessage
-	applymovement 2, Movement_Bugsy_FaceJoeyFromLeft
+	applymovement 2, RouteOasis_Movement_Bugsy_FaceJoeyFromLeft
 	waitmovement 2
 	msgbox RouteOasis_Text_Bugsy_ImGoing
 	closemessage
-	applymovement 2, Movement_Bugsy_RunAwayToPokeCenter
+	applymovement 2, RouteOasis_Movement_Bugsy_RunAwayToPokeCenter
 	waitmovement 2
 	removeobject 2
 	delay 90
-	applymovement 1, Movement_FacePlayerFromAbove
+	applymovement 1, RouteOasis_Movement_FacePlayerFromAbove
 	waitmovement 1
 	msgbox RouteOasis_Text_Joey_ImGoingToo
 	closemessage
-	applymovement 1, Movement_Joey_WalkAwayToSandalineColony
+	applymovement 1, RouteOasis_Movement_Joey_WalkAwayToSandalineColony
 	waitmovement 1
 	removeobject 1
 	delay 120
 	return
 
 
-Movement_Bugsy_WalkToHealJoey:
+RouteOasis_Movement_Bugsy_WalkToHealJoey:
 	walk_up
 	face_right
 	step_end
 
-Movement_Bugsy_RunAwayToPokeCenter:
+RouteOasis_Movement_Bugsy_RunAwayToPokeCenter:
 	walk_fast_down
 	walk_fast_down
 	walk_fast_right
@@ -733,7 +733,7 @@ Movement_Bugsy_RunAwayToPokeCenter:
 	walk_fast_down
 	step_end
 
-Movement_Joey_WalkAwayToSandalineColony:
+RouteOasis_Movement_Joey_WalkAwayToSandalineColony:
 	walk_left
 	walk_down
 	walk_down

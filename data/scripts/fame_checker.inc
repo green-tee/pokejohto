@@ -143,11 +143,11 @@ FiveIsland_ResortGorgeous_House_EventScript_PokemonJournal::
 	releaseall
 	end
 
-FourIsland_Mart_EventScript_OldMan::
+SandalineColony_Mart_EventScript_OldMan::
 	lock
 	faceplayer
 	famechecker FAMECHECKER_LORELEI, 2
-	msgbox FourIsland_Mart_Text_LoreleiGrewUpOnThisIsland
+	@ msgbox SandalineColony_Mart_Text_LoreleiGrewUpOnThisIsland
 	release
 	end
 

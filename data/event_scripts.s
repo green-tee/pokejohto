@@ -493,7 +493,7 @@ gStdScriptsEnd::
 	.include "data/maps/FourIsland_LoreleisHouse/scripts.inc"
 	.include "data/maps/FourIsland_Harbor/scripts.inc"
 	.include "data/maps/FourIsland_House2/scripts.inc"
-	.include "data/maps/FourIsland_Mart/scripts.inc"
+	.include "data/maps/SandalineColony_Mart/scripts.inc"
 	.include "data/maps/FiveIsland_PokemonCenter_1F/scripts.inc"
 	.include "data/maps/FiveIsland_PokemonCenter_2F/scripts.inc"
 	.include "data/maps/FiveIsland_Harbor/scripts.inc"
@@ -789,7 +789,7 @@ gStdScriptsEnd::
 	.include "data/maps/FourIsland_PokemonCenter_1F/text.inc"
 	.include "data/maps/FourIsland_House1/text.inc"
 	.include "data/maps/FourIsland_LoreleisHouse/text.inc"
-	.include "data/maps/FourIsland_Mart/text.inc"
+	.include "data/maps/SandalineColony_Mart/text.inc"
 	.include "data/maps/FiveIsland_PokemonCenter_1F/text.inc"
 	.include "data/maps/FiveIsland_House1/text.inc"
 	.include "data/maps/FiveIsland_House2/text.inc"
@@ -1012,6 +1012,7 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_CHIKORITA_BALL
 	setflag FLAG_HIDE_CYNDAQUIL_BALL
 	setflag FLAG_HIDE_TOTODILE_BALL
+	setflag FLAG_HIDE_BUGSY_IN_SANDALINE_POKECENTER
 	@setflag FLAG_HIDE_BUGSY_IN_ROUTE_OASIS
 	@setflag FLAG_HIDE_JOEY_IN_ROUTE_OASIS
 	@setflag FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE

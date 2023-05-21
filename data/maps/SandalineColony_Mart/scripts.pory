@@ -1,0 +1,115 @@
+// Characters
+const LOCALID_CLERK_M = 1
+const LOCALID_BUGSY = 5
+
+mapscripts SandalineColony_Mart_MapScripts {}
+
+// This script is executed when the player interacts with the male clerk.
+script SandalineColony_Mart_EventScript_ClerkM {
+    if (var(VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER) < 1) {
+        # Make sure Bugsy has explained the Pokémon Mart before allowing shopping
+        msgbox(SandalineColony_Mart_Text_ClerkM_ThatGuyIsWaitingForSomeone, MSGBOX_NPC)
+    } else {
+        lock
+        faceplayer
+        message(Text_MayIHelpYou)
+        waitmessage
+        pokemart(Mart_StandardItems)
+        msgbox(Text_PleaseComeAgain)
+        closemessage
+        release
+    }
+}
+
+// This script is executed when the player interacts with the female clerk.
+script SandalineColony_Mart_EventScript_ClerkF {
+    msgbox(SandalineColony_Mart_Text_ClerkF_WelcomeToThePokemonMart, MSGBOX_NPC)
+}
+
+mart Mart_StandardItems {
+    ITEM_POKE_BALL
+    ITEM_POTION
+    ITEM_ANTIDOTE
+    ITEM_PARALYZE_HEAL
+    ITEM_REPEL
+    ITEM_ESCAPE_ROPE
+    ITEM_NONE
+}
+
+script SandalineColony_Mart_EventScript_Bugsy {
+    lock
+    applymovement(LOCALID_BUGSY, SandalineColony_Mart_Movement_Bugsy_RunInPlace)
+    waitmovement(LOCALID_BUGSY)
+    msgbox(SandalineColony_Mart_Text_Bugsy_TookYouAWhile)
+    closemessage
+    applymovement(OBJ_EVENT_ID_PLAYER, SandalineColony_Mart_Movement_Player_OutOfTheWay)
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+    applymovement(LOCALID_BUGSY, SandalineColony_Mart_Movement_Bugsy_WalkToClerk)
+    delay(90)
+    applymovement(OBJ_EVENT_ID_PLAYER, SandalineColony_Mart_Movement_Player_FollowBugsyToClerk)
+    waitmovement(LOCALID_BUGSY)
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+    turnobject(LOCALID_BUGSY, DIR_EAST)
+    msgbox(SandalineColony_Mart_Text_Bugsy_ThisIsAMart)
+    closemessage
+    applymovement(LOCALID_BUGSY, SandalineColony_Mart_Movement_TurnToClerk)
+    waitmovement(LOCALID_BUGSY)
+    msgbox(SandalineColony_Mart_Text_Bugsy_IdLikeToBuyPokeBalls)
+    closemessage
+    applymovement(LOCALID_CLERK_M, SandalineColony_Mart_Movement_ClerkM_GivePokeBallsToBugsy)
+    waitmovement(LOCALID_CLERK_M)
+    msgbox(SandalineColony_Mart_Text_ClerkM_ThatWouldBeMoney)
+    closemessage
+    playse(SE_SHOP)
+    msgbox(SandalineColony_Mart_Text_Scene_BugsyPays, MSGBOX_DEFAULT)
+    waitse
+    closemessage
+    msgbox(SandalineColony_Mart_Text_ClerkM_YouReceiveAPremierBall)
+    closemessage
+    msgbox(SandalineColony_Mart_Text_Bugsy_ThankYou)
+    closemessage
+    turnobject(LOCALID_BUGSY, DIR_EAST)
+    msgbox(SandalineColony_Mart_Text_Bugsy_ItemsCostMoney)
+    closemessage
+    applymovement(LOCALID_BUGSY, SandalineColony_Mart_Movement_Bugsy_WalkOut)
+    waitmovement(LOCALID_BUGSY)
+    removeobject(LOCALID_BUGSY)
+    playse(SE_EXIT)
+    delay(120)
+    setvar(VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER, 1)
+    release
+}
+
+movement SandalineColony_Mart_Movement_Bugsy_RunInPlace {
+    walk_in_place_fast_left * 5
+}
+
+movement SandalineColony_Mart_Movement_Player_OutOfTheWay {
+    walk_down
+    face_up
+}
+
+movement SandalineColony_Mart_Movement_Bugsy_WalkToClerk {
+    walk_left
+    walk_up * 3
+    walk_left * 6
+}
+
+movement SandalineColony_Mart_Movement_Player_FollowBugsyToClerk {
+    walk_up * 4
+    walk_left * 5
+}
+
+movement SandalineColony_Mart_Movement_TurnToClerk {
+    walk_in_place_left
+}
+
+movement SandalineColony_Mart_Movement_ClerkM_GivePokeBallsToBugsy {
+    walk_in_place_slow_right
+}
+
+movement SandalineColony_Mart_Movement_Bugsy_WalkOut {
+    walk_down * 5
+    walk_left
+    walk_down
+}

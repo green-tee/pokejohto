@@ -53,7 +53,7 @@ script RouteOasis_EventScript_BugsyIntro {
 script(local) RouteOasis_EventScript_BugsyIntroSpeech {
     msgbox(RouteOasis_Text_Bugsy_YouWantToBecomeATrainer)
     closemessage
-    applymovement(LOCALID_BUGSY, Movement_FaceJoey)
+    applymovement(LOCALID_BUGSY, RouteOasis_Movement_FaceJoey)
     waitmovement(LOCALID_BUGSY)
     msgbox(RouteOasis_Text_Bugsy_JoeyNewGymLeader)
     closemessage
@@ -64,18 +64,18 @@ script(local) RouteOasis_EventScript_BugsyIntroSpeech {
     delay(30)
     msgbox(RouteOasis_Text_Bugsy_TheseMonsAreRare)
     closemessage
-    applymovement(LOCALID_BUGSY, Movement_FacePlayer)
+    applymovement(LOCALID_BUGSY, RouteOasis_Movement_FacePlayer)
     waitmovement(LOCALID_BUGSY)
     msgbox(RouteOasis_Text_Bugsy_LastChallenger)
     closemessage
-    applymovement(OBJ_EVENT_ID_PLAYER, Movement_Player_OutOfTheWay)
+    applymovement(OBJ_EVENT_ID_PLAYER, RouteOasis_Movement_Player_OutOfTheWay)
     waitmovement(OBJ_EVENT_ID_PLAYER)
 }
 
 // Makes an exclamation mark appear over Joey's head, with sound and waits.
 // This script is isolated because it is called more than once.
 script(local) RouteOasis_EventScript_JoeyExclamationEmote {
-    applymovement(LOCALID_JOEY, Movement_Surprised)
+    applymovement(LOCALID_JOEY, RouteOasis_Movement_Surprised)
     playse(SE_PIN)
     waitmovement(LOCALID_JOEY)
     waitse
@@ -84,7 +84,7 @@ script(local) RouteOasis_EventScript_JoeyExclamationEmote {
 // Bugsy walks to the metatiles where the Poké Balls should appear and makes them visible.
 // Every Poké Ball is laid down separately, with movement, sound and delay.
 script(local) RouteOasis_EventScript_BugsyIntroLayPokeballs {
-    applymovement(LOCALID_BUGSY, Movement_GoLayingFirstBall)
+    applymovement(LOCALID_BUGSY, RouteOasis_Movement_GoLayingFirstBall)
     delay(60)
     turnobject(LOCALID_JOEY, DIR_WEST)
     waitmovement(LOCALID_BUGSY)
@@ -93,14 +93,14 @@ script(local) RouteOasis_EventScript_BugsyIntroLayPokeballs {
     playse(SE_BALL)
     waitse
     delay(30)
-    applymovement(LOCALID_BUGSY, Movement_GoLayingNextBall)
+    applymovement(LOCALID_BUGSY, RouteOasis_Movement_GoLayingNextBall)
     waitmovement(LOCALID_BUGSY)
     addobject(LOCALID_CYNDAQUIL_BALL)
     clearflag(FLAG_HIDE_CYNDAQUIL_BALL)
     playse(SE_BALL)
     waitse
     delay(30)
-    applymovement(LOCALID_BUGSY, Movement_GoLayingNextBall)
+    applymovement(LOCALID_BUGSY, RouteOasis_Movement_GoLayingNextBall)
     waitmovement(LOCALID_BUGSY)
     addobject(LOCALID_TOTODILE_BALL)
     clearflag(FLAG_HIDE_TOTODILE_BALL)
@@ -111,24 +111,24 @@ script(local) RouteOasis_EventScript_BugsyIntroLayPokeballs {
 
 // Dialogue after Bugsy spawns Poké Balls.
 script(local) RouteOasis_EventScript_BugsyIntroExplainStarters {
-    applymovement(LOCALID_BUGSY, Movement_GoExplainStartersToPlayer)
+    applymovement(LOCALID_BUGSY, RouteOasis_Movement_GoExplainStartersToPlayer)
     waitmovement(LOCALID_BUGSY)
     msgbox(RouteOasis_Text_Bugsy_PlayerPickMon)
     closemessage
-    applymovement(LOCALID_BUGSY, Movement_Bugsy_FaceJoeyFromLeft)
+    applymovement(LOCALID_BUGSY, RouteOasis_Movement_Bugsy_FaceJoeyFromLeft)
     waitmovement(LOCALID_BUGSY)
     msgbox(RouteOasis_Text_Bugsy_JoeyWillPickSecond)
     closemessage
-    applymovement(LOCALID_BUGSY, Movement_FacePokeballs)
+    applymovement(LOCALID_BUGSY, RouteOasis_Movement_FacePokeballs)
     waitmovement(LOCALID_BUGSY)
     msgbox(RouteOasis_Text_Bugsy_IWillPickLast)
     closemessage
-    applymovement(LOCALID_BUGSY, Movement_FacePlayerFromAbove)
+    applymovement(LOCALID_BUGSY, RouteOasis_Movement_FacePlayerFromAbove)
     waitmovement(LOCALID_BUGSY)
     msgbox(RouteOasis_Text_Bugsy_GoAheadPickOne)
     closemessage
     delay(30)
-    applymovement(LOCALID_BUGSY, Movement_WaitPlayerPickStarter)
+    applymovement(LOCALID_BUGSY, RouteOasis_Movement_WaitPlayerPickStarter)
     waitmovement(LOCALID_BUGSY)
     call(RouteOasis_EventScript_AdjustBugsyAndJoey)
 }
@@ -147,7 +147,7 @@ script RouteOasis_EventScript_BugsyPreventPlayerFromGoingAway {
     turnobject(LOCALID_BUGSY, DIR_SOUTH)
     msgbox(RouteOasis_Text_Bugsy_DoNotGoAway)
     closemessage
-    applymovement(OBJ_EVENT_ID_PLAYER, Movement_Player_WalkToPokeballsFromLeft)
+    applymovement(OBJ_EVENT_ID_PLAYER, RouteOasis_Movement_Player_WalkToPokeballsFromLeft)
     waitmovement(OBJ_EVENT_ID_PLAYER)
     turnobject(LOCALID_BUGSY, DIR_EAST)
     releaseall
@@ -160,68 +160,68 @@ script RouteOasis_EventScript_JoeyPreventPlayerFromGoingAway {
     turnobject(LOCALID_JOEY, DIR_EAST)
     msgbox(RouteOasis_Text_Joey_DoNotGoAway)
     closemessage
-    applymovement(OBJ_EVENT_ID_PLAYER, Movement_Player_WalkToPokeballsFromRight)
+    applymovement(OBJ_EVENT_ID_PLAYER, RouteOasis_Movement_Player_WalkToPokeballsFromRight)
     waitmovement(OBJ_EVENT_ID_PLAYER)
     turnobject(LOCALID_JOEY, DIR_WEST)
     releaseall
 }
 
-movement Movement_FaceJoey {
+movement RouteOasis_Movement_FaceJoey {
     walk_in_place_fast_up
 }
 
-movement Movement_Surprised {
+movement RouteOasis_Movement_Surprised {
     emote_exclamation_mark
 }
 
-movement Movement_FacePlayer {
+movement RouteOasis_Movement_FacePlayer {
     walk_in_place_left
 }
 
-movement Movement_Player_OutOfTheWay {
+movement RouteOasis_Movement_Player_OutOfTheWay {
     walk_down
     walk_left
     face_up
 }
 
-movement Movement_GoLayingFirstBall {
+movement RouteOasis_Movement_GoLayingFirstBall {
     walk_left * 3
     walk_in_place_fast_up
 }
 
-movement Movement_GoLayingNextBall {
+movement RouteOasis_Movement_GoLayingNextBall {
     walk_right
     walk_in_place_fast_up
 }
 
-movement Movement_GoExplainStartersToPlayer {
+movement RouteOasis_Movement_GoExplainStartersToPlayer {
     walk_left
     walk_in_place_fast_down
 }
 
-movement Movement_Bugsy_FaceJoeyFromLeft {
+movement RouteOasis_Movement_Bugsy_FaceJoeyFromLeft {
     walk_in_place_right
 }
 
-movement Movement_FacePokeballs {
+movement RouteOasis_Movement_FacePokeballs {
     walk_in_place_slow_up
 }
 
-movement Movement_FacePlayerFromAbove {
+movement RouteOasis_Movement_FacePlayerFromAbove {
     walk_in_place_down
 }
 
-movement Movement_WaitPlayerPickStarter {
+movement RouteOasis_Movement_WaitPlayerPickStarter {
     walk_left
     walk_left
     face_right
 }
 
-movement Movement_Player_WalkToPokeballsFromLeft {
+movement RouteOasis_Movement_Player_WalkToPokeballsFromLeft {
     walk_right * 2
 }
 
-movement Movement_Player_WalkToPokeballsFromRight {
+movement RouteOasis_Movement_Player_WalkToPokeballsFromRight {
     walk_left * 2
 }
 
@@ -322,11 +322,11 @@ script(local) RouteOasis_EventScript_PositionCharactersAfterSelection {
         # Adjust camera depending on Player's current position.
         # The position is known because each Pokémon is only interactable from one side.
         case LOCALID_CHIKORITA_BALL:
-            applymovement(OBJ_EVENT_ID_CAMERA, Movement_Camera_FromChikoritaBall)
+            applymovement(OBJ_EVENT_ID_CAMERA, RouteOasis_Movement_Camera_FromChikoritaBall)
         case LOCALID_CYNDAQUIL_BALL:
-            applymovement(OBJ_EVENT_ID_CAMERA, Movement_Camera_FromCyndaquilBall)
+            applymovement(OBJ_EVENT_ID_CAMERA, RouteOasis_Movement_Camera_FromCyndaquilBall)
         case LOCALID_TOTODILE_BALL:
-            applymovement(OBJ_EVENT_ID_CAMERA, Movement_Camera_FromTotodileBall)
+            applymovement(OBJ_EVENT_ID_CAMERA, RouteOasis_Movement_Camera_FromTotodileBall)
     }
     waitmovement(OBJ_EVENT_ID_CAMERA)
     special(RemoveCameraObject)
@@ -337,16 +337,16 @@ script(local) RouteOasis_EventScript_PositionCharactersAfterSelection {
     fadescreenspeed(FADE_FROM_BLACK, 6)
 }
 
-movement Movement_Camera_FromChikoritaBall {
+movement RouteOasis_Movement_Camera_FromChikoritaBall {
     walk_faster_down
 }
 
-movement Movement_Camera_FromCyndaquilBall {
+movement RouteOasis_Movement_Camera_FromCyndaquilBall {
     walk_faster_left
     walk_faster_down
 }
 
-movement Movement_Camera_FromTotodileBall {
+movement RouteOasis_Movement_Camera_FromTotodileBall {
     walk_faster_left * 2
     walk_faster_down
 }
@@ -358,7 +358,7 @@ script(local) RouteOasis_EventScript_JoeyStarterSelection {
     msgbox(RouteOasis_Text_Bugsy_YourTurnJoey)
     closemessage
     delay(60)
-    applymovement(LOCALID_JOEY, Movement_TurnToCamera)
+    applymovement(LOCALID_JOEY, RouteOasis_Movement_TurnToCamera)
     waitmovement(LOCALID_JOEY)
     msgbox(RouteOasis_Text_Joey_Dots)
     closemessage
@@ -366,7 +366,7 @@ script(local) RouteOasis_EventScript_JoeyStarterSelection {
     msgbox(RouteOasis_Text_Joey_WhichOneShouldIPick)
     closemessage
     delay(60)
-    applymovement(LOCALID_JOEY, Movement_FacePokeballs)
+    applymovement(LOCALID_JOEY, RouteOasis_Movement_FacePokeballs)
     waitmovement(LOCALID_JOEY)
     msgbox(RouteOasis_Text_Joey_AdvantageOverPlayerOrOverBugsy)
     closemessage
@@ -405,7 +405,7 @@ script(local) RouteOasis_EventScript_SetupBuffersAccordingToStarter {
     bufferspeciesname(STR_VAR_3, JOEY_STARTER)
 }
 
-movement Movement_TurnToCamera {
+movement RouteOasis_Movement_TurnToCamera {
     walk_in_place_slow_down
 }
 
@@ -414,32 +414,32 @@ movement Movement_TurnToCamera {
 script(local) RouteOasis_EventScript_JoeyWalkToPokeball {
     switch (var(JOEY_STARTER)) {
         case SPECIES_CHIKORITA:
-            applymovement(LOCALID_JOEY, Movement_Joey_RunToChikoritaBall)
+            applymovement(LOCALID_JOEY, RouteOasis_Movement_Joey_RunToChikoritaBall)
         case SPECIES_CYNDAQUIL:
-            applymovement(LOCALID_JOEY, Movement_Joey_RunToCyndaquilBall)
+            applymovement(LOCALID_JOEY, RouteOasis_Movement_Joey_RunToCyndaquilBall)
         case SPECIES_TOTODILE:
-            applymovement(LOCALID_JOEY, Movement_Joey_RunToTotodileBall)
+            applymovement(LOCALID_JOEY, RouteOasis_Movement_Joey_RunToTotodileBall)
     }
     waitmovement(LOCALID_JOEY)
 }
 
-movement Movement_Joey_RunToChikoritaBall {
+movement RouteOasis_Movement_Joey_RunToChikoritaBall {
     walk_fast_left
     walk_in_place_fast_up
 }
 
-movement Movement_Joey_RunToCyndaquilBall {
+movement RouteOasis_Movement_Joey_RunToCyndaquilBall {
     walk_in_place_fast_up
 }
 
-movement Movement_Joey_RunToTotodileBall {
+movement RouteOasis_Movement_Joey_RunToTotodileBall {
     walk_fast_right
     walk_in_place_fast_up
 }
 
 // This script handles the sequence in which Bugsy takes his Poké Ball.
 script(local) RouteOasis_EventScript_BugsyStarterSelection {
-    applymovement(LOCALID_BUGSY, Movement_Bugsy_FaceJoeyFromLeft)
+    applymovement(LOCALID_BUGSY, RouteOasis_Movement_Bugsy_FaceJoeyFromLeft)
     waitmovement(LOCALID_BUGSY)
     msgbox(RouteOasis_Text_Bugsy_ThatLeavesOneForMe)
     closemessage
@@ -456,26 +456,26 @@ script(local) RouteOasis_EventScript_BugsyStarterSelection {
 script(local) RouteOasis_EventScript_BugsyWalkToPokeball {
     switch (var(BUGSY_STARTER)) {
         case SPECIES_CHIKORITA:
-            applymovement(LOCALID_BUGSY, Movement_Bugsy_WalkToChikoritaBall)
+            applymovement(LOCALID_BUGSY, RouteOasis_Movement_Bugsy_WalkToChikoritaBall)
         case SPECIES_CYNDAQUIL:
-            applymovement(LOCALID_BUGSY, Movement_Bugsy_WalkToCyndaquilBall)
+            applymovement(LOCALID_BUGSY, RouteOasis_Movement_Bugsy_WalkToCyndaquilBall)
         case SPECIES_TOTODILE:
-            applymovement(LOCALID_BUGSY, Movement_Bugsy_WalkToTotodileBall)
+            applymovement(LOCALID_BUGSY, RouteOasis_Movement_Bugsy_WalkToTotodileBall)
     }
     waitmovement(LOCALID_BUGSY)
 }
 
-movement Movement_Bugsy_WalkToChikoritaBall {
+movement RouteOasis_Movement_Bugsy_WalkToChikoritaBall {
     walk_up
     walk_in_place_right
 }
 
-movement Movement_Bugsy_WalkToCyndaquilBall {
+movement RouteOasis_Movement_Bugsy_WalkToCyndaquilBall {
     walk_up
     walk_right
 }
 
-movement Movement_Bugsy_WalkToTotodileBall {
+movement RouteOasis_Movement_Bugsy_WalkToTotodileBall {
     walk_up
     walk_right * 2
 }
@@ -491,14 +491,14 @@ script(local) RouteOasis_EventScript_PositionCharactersBeforeFirstBattle {
     turnobject(LOCALID_BUGSY, DIR_EAST)
     turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
     special(SpawnCameraObject)
-    applymovement(OBJ_EVENT_ID_CAMERA, Movement_Camera_BeforeFirstBattle)
+    applymovement(OBJ_EVENT_ID_CAMERA, RouteOasis_Movement_Camera_BeforeFirstBattle)
     waitmovement(OBJ_EVENT_ID_CAMERA)
     special(RemoveCameraObject)
     delay(120)
     fadescreenspeed(FADE_FROM_BLACK, 6)
 }
 
-movement Movement_Camera_BeforeFirstBattle {
+movement RouteOasis_Movement_Camera_BeforeFirstBattle {
     walk_faster_up
     walk_faster_right * 3
 }
@@ -514,7 +514,7 @@ script(local) RouteOasis_EventScript_JoeyBattleSequence {
     msgbox(RouteOasis_Text_Bugsy_OneThingLeftToDo)
     closemessage
     msgbox(RouteOasis_Text_Joey_AnswerBugsySure)
-    applymovement(LOCALID_JOEY, Movement_FacePlayerFromAbove)
+    applymovement(LOCALID_JOEY, RouteOasis_Movement_FacePlayerFromAbove)
     waitmovement(LOCALID_JOEY)
     msgbox(RouteOasis_Text_Joey_WeNeedToShowPlayerHowToBattle)
     closemessage
@@ -522,7 +522,7 @@ script(local) RouteOasis_EventScript_JoeyBattleSequence {
     msgbox(RouteOasis_Text_Bugsy_FairBattlesAreGood)
     closemessage
     delay(60)
-    applymovement(OBJ_EVENT_ID_PLAYER, Movement_FacePokeballs)
+    applymovement(OBJ_EVENT_ID_PLAYER, RouteOasis_Movement_FacePokeballs)
     waitmovement(OBJ_EVENT_ID_PLAYER)
     msgbox(RouteOasis_Text_Joey_IllGoEasyOnYou)
     closemessage
@@ -575,7 +575,7 @@ script(local) RouteOasis_EventScript_SetupBattleVariables {
 
 // This script carries the first battle against Bugsy, along with dialogues before and after the fight.
 script(local) RouteOasis_EventScript_BugsyBattleSequence {
-    applymovement(LOCALID_BUGSY, Movement_Bugsy_WalkToHealPlayer)
+    applymovement(LOCALID_BUGSY, RouteOasis_Movement_Bugsy_WalkToHealPlayer)
     waitmovement(LOCALID_BUGSY)
     turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
     delay(30)
@@ -610,7 +610,7 @@ script(local) RouteOasis_EventScript_PlayAndWaitHealingFanfare {
     waitfanfare
 }
 
-movement Movement_Bugsy_WalkToHealPlayer {
+movement RouteOasis_Movement_Bugsy_WalkToHealPlayer {
     walk_right
 }
 
@@ -633,7 +633,7 @@ script(local) RouteOasis_EventScript_AfterBattleSequences {
     msgbox(RouteOasis_Text_Bugsy_LetMeHealAgain)
     closemessage
     call(RouteOasis_EventScript_HealWaitFanfareNoFadescreen)
-    applymovement(LOCALID_BUGSY, Movement_Bugsy_WalkToHealJoey)
+    applymovement(LOCALID_BUGSY, RouteOasis_Movement_Bugsy_WalkToHealJoey)
     waitmovement(LOCALID_BUGSY)
     turnobject(LOCALID_JOEY, DIR_WEST)
     msgbox(RouteOasis_Text_Bugsy_HealJoeysPokemon)
@@ -649,36 +649,36 @@ script(local) RouteOasis_EventScript_AfterBattleSequences {
     delay(60)
     msgbox(RouteOasis_Text_Bugsy_GoToThePokemonCenter)
     closemessage
-    applymovement(LOCALID_BUGSY, Movement_Bugsy_FaceJoeyFromLeft)
+    applymovement(LOCALID_BUGSY, RouteOasis_Movement_Bugsy_FaceJoeyFromLeft)
     waitmovement(LOCALID_BUGSY)
     msgbox(RouteOasis_Text_Bugsy_ImGoing)
     closemessage
-    applymovement(LOCALID_BUGSY, Movement_Bugsy_RunAwayToPokeCenter)
+    applymovement(LOCALID_BUGSY, RouteOasis_Movement_Bugsy_RunAwayToPokeCenter)
     waitmovement(LOCALID_BUGSY)
     removeobject(LOCALID_BUGSY)
     delay(90)
-    applymovement(LOCALID_JOEY, Movement_FacePlayerFromAbove)
+    applymovement(LOCALID_JOEY, RouteOasis_Movement_FacePlayerFromAbove)
     waitmovement(LOCALID_JOEY)
     msgbox(RouteOasis_Text_Joey_ImGoingToo)
     closemessage
-    applymovement(LOCALID_JOEY, Movement_Joey_WalkAwayToSandalineColony)
+    applymovement(LOCALID_JOEY, RouteOasis_Movement_Joey_WalkAwayToSandalineColony)
     waitmovement(LOCALID_JOEY)
     removeobject(LOCALID_JOEY)
     delay(120)
 }
 
-movement Movement_Bugsy_WalkToHealJoey {
+movement RouteOasis_Movement_Bugsy_WalkToHealJoey {
     walk_up
     face_right
 }
 
-movement Movement_Bugsy_RunAwayToPokeCenter {
+movement RouteOasis_Movement_Bugsy_RunAwayToPokeCenter {
     walk_fast_down * 2
     walk_fast_right * 5
     walk_fast_down * 7
 }
 
-movement Movement_Joey_WalkAwayToSandalineColony {
+movement RouteOasis_Movement_Joey_WalkAwayToSandalineColony {
     walk_left
     walk_down * 2
     walk_right * 5

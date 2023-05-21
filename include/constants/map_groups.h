@@ -484,7 +484,7 @@
 #define MAP_FOUR_ISLAND_LORELEIS_HOUSE    (4 | (35 << 8))
 #define MAP_FOUR_ISLAND_HARBOR            (5 | (35 << 8))
 #define MAP_FOUR_ISLAND_HOUSE2            (6 | (35 << 8))
-#define MAP_FOUR_ISLAND_MART              (7 | (35 << 8))
+#define MAP_SANDALINE_COLONY_MART         (7 | (35 << 8))
 
 // gMapGroup_IndoorFiveIsland
 #define MAP_FIVE_ISLAND_POKEMON_CENTER_1F (0 | (36 << 8))

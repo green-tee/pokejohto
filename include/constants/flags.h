@@ -45,13 +45,13 @@
 #define FLAG_0x027               0x027
 
 // Hide/show flags
-#define FLAG_HIDE_CHIKORITA_BALL                           0x028
-#define FLAG_HIDE_TOTODILE_BALL                            0x029
-#define FLAG_HIDE_CYNDAQUIL_BALL                           0x02A
-#define FLAG_HIDE_BUGSY_IN_ROUTE_OASIS                     0x02B
-#define FLAG_HIDE_JOEY_IN_ROUTE_OASIS                      0x02C
-#define FLAG_HIDE_RIVAL_IN_LAB                             0x02D
-#define FLAG_HIDE_PEWTER_CITY_GYM_GUIDE                    0x02E
+#define FLAG_HIDE_CHIKORITA_BALL                           0x028 // Show ball to set up starter choice, hide ball after confirming starter choice
+#define FLAG_HIDE_TOTODILE_BALL                            0x029 // Show ball to set up starter choice, hide ball after confirming starter choice
+#define FLAG_HIDE_CYNDAQUIL_BALL                           0x02A // Show ball to set up starter choice, hide ball after confirming starter choice
+#define FLAG_HIDE_BUGSY_IN_ROUTE_OASIS                     0x02B // Hide Bugsy after intro is over
+#define FLAG_HIDE_JOEY_IN_ROUTE_OASIS                      0x02C // Hide Joey after intro is over
+#define FLAG_HIDE_BUGSY_IN_SANDALINE_MART                  0x02D // Hide Bugsy after finding him
+#define FLAG_HIDE_BUGSY_IN_SANDALINE_POKECENTER            0x02E // Show Bugsy to tour Pokémon Center, hide Bugsy after tour is over
 #define FLAG_HIDE_DOME_FOSSIL                              0x02F
 #define FLAG_HIDE_HELIX_FOSSIL                             0x030
 #define FLAG_HIDE_NUGGET_BRIDGE_ROCKET                     0x031

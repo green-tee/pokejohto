@@ -35,7 +35,7 @@
     "gMapGroup_IndoorOneIsland",
     "gMapGroup_IndoorTwoIsland",
     "gMapGroup_IndoorThreeIsland",
-    "gMapGroup_IndoorFourIsland",
+    "gMapGroup_IndoorSandalineColony",
     "gMapGroup_IndoorFiveIsland",
     "gMapGroup_IndoorSixIsland",
     "gMapGroup_IndoorThreeIslandRoute",
@@ -515,9 +515,9 @@
     "ThreeIsland_House4",
     "ThreeIsland_House5"
   ],
-  "gMapGroup_IndoorFourIsland": [
+  "gMapGroup_IndoorSandalineColony": [
     "FourIsland_PokemonDayCare",
-    "FourIsland_PokemonCenter_1F",
+    "SandalineColony_PokemonCenter",
     "FourIsland_PokemonCenter_2F",
     "FourIsland_House1",
     "FourIsland_LoreleisHouse",

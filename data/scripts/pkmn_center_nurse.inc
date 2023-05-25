@@ -14,7 +14,7 @@ EventScript_PkmnCenterNurse_HealPkmn::
 	message Text_TakeYourPkmnForFewSeconds
 	waitmessage
 	call EventScript_PkmnCenterNurse_TakeAndHealPkmn
-	special SetUsedPkmnCenterQuestLogEvent
+	@special SetUsedPkmnCenterQuestLogEvent
 	goto EventScript_PkmnCenterNurse_CheckTrainerTowerAndUnionRoom
 	end
 
@@ -38,8 +38,8 @@ EventScript_PkmnCenterNurse_CheckTrainerTowerAndUnionRoom::
 	end
 
 EventScript_PkmnCenterNurse_ReturnPkmn::
-	message Text_RestoredPkmnToFullHealth
-	waitmessage
+	msgbox Text_RestoredPkmnToFullHealth
+	closemessage
 	applymovement VAR_LAST_TALKED, Movement_Bow
 	waitmovement 0
 	msgbox Text_WeHopeToSeeYouAgain

@@ -377,11 +377,11 @@ FourIsland_House1_EventScript_BodySlamTutor::
 	lock
 	faceplayer
 	goto_if_set FLAG_TUTOR_BODY_SLAM, EventScript_BodySlamTaught
-	msgbox Text_BodySlamTeach, MSGBOX_YESNO
+	msgbox JPText_BodySlamTeach, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_BodySlamDeclined
 	call EventScript_CanOnlyBeLearnedOnce
 	goto_if_eq VAR_RESULT, NO, EventScript_BodySlamDeclined
-	msgbox Text_BodySlamWhichMon
+	msgbox JPText_BodySlamWhichMon
 	setvar VAR_0x8005, MOVETUTOR_BODY_SLAM
 	call EventScript_ChooseMoveTutorMon
 	goto_if_eq VAR_RESULT, FALSE, EventScript_BodySlamDeclined
@@ -390,12 +390,12 @@ FourIsland_House1_EventScript_BodySlamTutor::
 	end
 
 EventScript_BodySlamDeclined::
-	msgbox Text_BodySlamDeclined
+	msgbox JPText_BodySlamDeclined
 	release
 	end
 
 EventScript_BodySlamTaught::
-	msgbox Text_BodySlamTaught
+	msgbox JPText_BodySlamTaught
 	release
 	end
 

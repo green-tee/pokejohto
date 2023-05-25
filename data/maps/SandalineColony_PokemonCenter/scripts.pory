@@ -1,0 +1,145 @@
+// Characters
+const LOCALID_BUGSY = 5
+
+mapscripts SandalineColony_PokemonCenter_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION: SandalineColony_PokemonCenter_EventScript_OnTransition
+    MAP_SCRIPT_ON_RESUME: CableClub_OnResume
+    MAP_SCRIPT_ON_FRAME_TABLE [VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER, 1: SandalineColony_PokemonCenter_EventScript_BugsyStartPokeCenterTour]
+}
+
+script SandalineColony_PokemonCenter_EventScript_OnTransition {
+    setrespawn(SPAWN_SANDALINE_COLONY)
+    if (var(VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER) == 2) {
+        # Make sure Bugsy stays in place after control is given to the player.
+        call(SandalineColony_PokemonCenter_EventScript_MoveBugsyToCounter)
+    }
+}
+
+// Move Bugsy to the counter so that he stays there until the player has interacted with the nurse.
+script(local) SandalineColony_PokemonCenter_EventScript_MoveBugsyToCounter {
+    setobjectxyperm(LOCALID_BUGSY, 6, 4)
+}
+
+// Intro to the tutorial on the Pokémon Center.
+// This script carries the tutorial before the player is asked to talk to the nurse.
+script SandalineColony_PokemonCenter_EventScript_BugsyStartPokeCenterTour {
+    lockall
+    applymovement(LOCALID_BUGSY, SandalineColony_PokemonCenter_Movement_WalkInPlaceToTalkToPlayer)
+    waitmovement(LOCALID_BUGSY)
+    turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+    msgbox(SandalineColony_PokemonCenter_Text_Bugsy_ThisIsAPokemonCenter)
+    closemessage
+    applymovement(LOCALID_BUGSY, SandalineColony_PokemonCenter_Movement_Bugsy_WalkToCounter)
+    delay(40)
+    applymovement(OBJ_EVENT_ID_PLAYER, SandalineColony_PokemonCenter_Movement_Player_WalkToCounter)
+    waitmovement(LOCALID_BUGSY)
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+    applymovement(LOCALID_BUGSY, SandalineColony_PokemonCenter_Movement_WalkInPlaceToTalkToPlayer)
+    waitmovement(LOCALID_BUGSY)
+    msgbox(SandalineColony_PokemonCenter_Text_Bugsy_TheMainAttraction)
+    closemessage
+    setvar(VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER, 2)
+    releaseall
+}
+
+movement SandalineColony_PokemonCenter_Movement_WalkInPlaceToTalkToPlayer {
+    walk_in_place_right
+}
+
+movement SandalineColony_PokemonCenter_Movement_Bugsy_WalkToCounter {
+    walk_down
+    walk_right
+    walk_down * 2
+    walk_right * 4
+    walk_up
+    face_right
+}
+
+movement SandalineColony_PokemonCenter_Movement_Player_WalkToCounter {
+    walk_down * 3
+    walk_right * 5
+    walk_up
+    face_left
+}
+
+// This script is executed when the player interacts with the nurse.
+// Only after Bugsy has explained the Pokémon Center, the nurse acts like every other nurse.
+script SandalineColony_PokemonCenter_EventScript_Nurse {
+    lock
+    faceplayer
+    if (var(VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER) < 2) {
+        call(SandalineColony_PokemonCenter_EventScript_NurseBeforeTutorial)
+    } elif (var(VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER) == 2) {
+        call(SandalineColony_PokemonCenter_EventScript_NurseTutorialHeal)
+        call(SandalineColony_PokemonCenter_EventScript_EndPokemonCenterTutorial)
+    } else {
+        call(EventScript_PkmnCenterNurse)
+    }
+    release
+}
+
+// This script is executed when the player talks to the nurse before Bugsy has explained the Pokémon Center.
+script(local) SandalineColony_PokemonCenter_EventScript_NurseBeforeTutorial {
+    message(SandalineColony_PokemonCenter_Text_Nurse_HowMayIHelpYou)
+    waitmessage
+    # TODO: Add multichoice in response to "how may I help you".
+}
+
+// This script is executed when the player talkt to the nurse in Bugsy's tutorial.
+// It behaves like the regual nurse script but with differend dialog and no cable club checks.
+script(local) SandalineColony_PokemonCenter_EventScript_NurseTutorialHeal {
+    # TODO: Recreate the regular EventScript_PkmnCenterNurse with different dialog.
+    msgbox(SandalineColony_PokemonCenter_Text_Nurse_DoYouWantToHeal, MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES) {
+        # TODO: Proceed to heal Player's party for the first time.
+        msgbox(SandalineColony_PokemonCenter_Text_Nurse_MayIHaveYourPokemon)
+        closemessage
+        bufferpartymonnick(STR_VAR_1, 0)
+        msgbox(SandalineColony_PokemonCenter_Text_Scene_PlayerHandsTheParty, MSGBOX_DEFAULT)
+        closemessage
+        applymovement(VAR_LAST_TALKED, SandalineColony_PokemonCenter_Movement_TurnToHealMachine)
+        waitmovement(VAR_LAST_TALKED)
+        msgbox(SandalineColony_PokemonCenter_Text_Nurse_IllPutThemInThisMachine)
+        closemessage
+        special(HealPlayerParty)
+        incrementgamestat(GAME_STAT_USED_POKECENTER)
+        dofieldeffect(FLDEFF_POKECENTER_HEAL)
+        waitfieldeffect(FLDEFF_POKECENTER_HEAL)
+        msgbox(SandalineColony_PokemonCenter_Text_Nurse_Done)
+        closemessage
+        applymovement(VAR_LAST_TALKED, SandalineColony_PokemonCenter_Movement_TurnBackToPlayer)
+        waitmovement(VAR_LAST_TALKED)
+        msgbox(SandalineColony_PokemonCenter_Text_Nurse_ThankYourForYourPatience)
+        closemessage
+        msgbox(SandalineColony_PokemonCenter_Text_Scene_PlayerReceivedMonBack)
+        closemessage
+        applymovement(VAR_LAST_TALKED, Movement_Bow)
+        waitmovement(VAR_LAST_TALKED)
+        msgbox(Text_WeHopeToSeeYouAgain)
+        closemessage
+        setvar(VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER, 3)
+    } else {
+        msgbox(SandalineColony_PokemonCenter_Text_Nurse_WheneverYouWantToHeal)
+        closemessage
+    }
+}
+
+movement SandalineColony_PokemonCenter_Movement_TurnToHealMachine {
+    walk_in_place_faster_left
+}
+
+movement SandalineColony_PokemonCenter_Movement_TurnBackToPlayer {
+    walk_in_place_faster_down
+}
+
+script(local) SandalineColony_PokemonCenter_EventScript_EndPokemonCenterTutorial {
+    # TODO: Make Bugsy walk out and end the tutorial.
+}
+
+script SandalineColony_PokemonCenter_EventScript_Bugsy {
+    # TODO: Implement Bugsy's script.
+}
+
+script SandalineColony_PokemonCenter_EventScript_PreventPlayerFromEscapingHealing {
+    # TODO: Prevent the player from walking away instead of healing in the tutorial.
+}

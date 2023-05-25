@@ -27,13 +27,13 @@ EventScript_PokemonJournalUnused2::
 	release
 	end
 
-FourIsland_PokemonCenter_1F_EventScript_PokemonJournal::
-	lockall
-	famechecker FAMECHECKER_DAISY, 5
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox PokemonJournal_Text_SpecialFeatureDaisyOak
-	releaseall
-	end
+@FourIsland_PokemonCenter_1F_EventScript_PokemonJournal::
+@	lockall
+@	famechecker FAMECHECKER_DAISY, 5
+@	textcolor NPC_TEXT_COLOR_NEUTRAL
+@	msgbox PokemonJournal_Text_SpecialFeatureDaisyOak
+@	releaseall
+@	end
 
 Route4_EventScript_Boy::
 	lock

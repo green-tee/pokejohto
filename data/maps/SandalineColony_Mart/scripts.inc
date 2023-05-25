@@ -44,7 +44,7 @@ SandalineColony_Mart_EventScript_Bugsy::
 	applymovement OBJ_EVENT_ID_PLAYER, SandalineColony_Mart_Movement_Player_OutOfTheWay
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement 5, SandalineColony_Mart_Movement_Bugsy_WalkToClerk
-	delay 90
+	delay 40
 	applymovement OBJ_EVENT_ID_PLAYER, SandalineColony_Mart_Movement_Player_FollowBugsyToClerk
 	waitmovement 5
 	waitmovement OBJ_EVENT_ID_PLAYER
@@ -73,9 +73,10 @@ SandalineColony_Mart_EventScript_Bugsy::
 	applymovement 5, SandalineColony_Mart_Movement_Bugsy_WalkOut
 	waitmovement 5
 	removeobject 5
-	playse SE_WARP_OUT
+	playse SE_EXIT
 	delay 120
 	setvar VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER, 1
+	clearflag FLAG_HIDE_BUGSY_IN_SANDALINE_POKECENTER
 	release
 	return
 

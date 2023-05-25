@@ -52,7 +52,7 @@ text SandalineColony_Mart_Text_ClerkM_ThatWouldBeMoney {
 }
 
 text SandalineColony_Mart_Text_Scene_BugsyPays {
-    "Bugsy paid ¥2,000."
+    "{COLOR DARK_GRAY}Bugsy paid ¥2,000."
 }
 
 text SandalineColony_Mart_Text_ClerkM_YouReceiveAPremierBall {

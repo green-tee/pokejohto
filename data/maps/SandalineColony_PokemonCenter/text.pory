@@ -1,0 +1,74 @@
+text SandalineColony_PokemonCenter_Text_Bugsy_ThisIsAPokemonCenter {
+    "{COLOR GREEN}Bugsy: This is the main hall\n"
+    "of a Pokémon Center, where\l"
+    "you'll spend most of your time\l"
+    "when paying a visit.\p"
+    "Let's head to the counter!"
+}
+
+text SandalineColony_PokemonCenter_Text_Bugsy_TheMainAttraction {
+    "{COLOR GREEN}Bugsy: A Pokémon Center's main\n"
+    "attraction is none other than\l"
+    "the nurse herself!\p"
+    "When your Pokémon are hurt,\n"
+    "your best option is to storm\l"
+    "into a Pokémon Center and ask\l"
+    "the nurse to heal them.\p"
+    "Why don't you give it a shot?\n"
+    "Your Pokémon doesn't need to\l"
+    "be healed right now, but hey,\l"
+    "the service is absolutely free\l"
+    "anyway!"
+}
+
+text SandalineColony_PokemonCenter_Text_Nurse_HowMayIHelpYou {
+    "Hello dear, how may I help you?"
+}
+
+text SandalineColony_PokemonCenter_Text_Nurse_DoYouWantToHeal {
+    "Welcome to Sandline Colony's\n"
+    "Pokémon Center!\p"
+    "Is this your first time in a\n"
+    "Pokémon Center?\p"
+    "My job is to take care of your\n"
+    "Pokémon Party and heal your\l"
+    "companions to perfect health.\p"
+    "Would you like me to heal your\n"
+    "Pokémon?"
+}
+
+text SandalineColony_PokemonCenter_Text_Nurse_WheneverYouWantToHeal {
+    "Whenever you want me to handle\n"
+    "your tired Pokémon,\l"
+    "just let me know!"
+}
+
+text SandalineColony_PokemonCenter_Text_Nurse_MayIHaveYourPokemon {
+    "Sure, may I have your Pokémon\n"
+    "for a few moments?"
+}
+
+text SandalineColony_PokemonCenter_Text_Scene_PlayerHandsTheParty {
+    "{COLOR DARK_GRAY}{PLAYER} handed {STR_VAR_1}\n"
+    "to the nurse."
+}
+
+text SandalineColony_PokemonCenter_Text_Nurse_IllPutThemInThisMachine {
+    "Okay, this is how it's done:\n"
+    "I lay the Poké Ball on this\l"
+    "machine and I start it."
+}
+
+text SandalineColony_PokemonCenter_Text_Nurse_Done {
+    "Aaand{PAUSE 30}.{PAUSE 30}.{PAUSE 30}.{PAUSE 60}Done!"
+}
+
+text SandalineColony_PokemonCenter_Text_Nurse_ThankYourForYourPatience {
+    "Thank you for your patience.\n"
+    "Your Pokémon is well rested.\l"
+    "I'll hand it back to you now."
+}
+
+text SandalineColony_PokemonCenter_Text_Scene_PlayerReceivedMonBack {
+    "{COLOR DARK_GRAY}{PLAYER} received {STR_VAR_1} back."
+}

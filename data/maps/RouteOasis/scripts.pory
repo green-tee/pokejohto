@@ -25,12 +25,12 @@ mapscripts RouteOasis_MapScripts {
 
 script RouteOasis_EventScript_OnTransition {
     if (var(VAR_MAP_SCENE_ROUTE_OASIS) == 1) {
-        # Make sure Joey and Bugsy stay in place after control is given to the player
+        # Make sure Joey and Bugsy stay in place after control is given to the player.
         call(RouteOasis_EventScript_AdjustBugsyAndJoey)
     }
 }
 
-// Make Player face Bugsy at the start of the game, without making it visible to the player
+// Make Player face Bugsy at the start of the game, without making it visible to the player.
 script RouteOasis_EventScript_AdjustPlayerOnStart {
     turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
 }

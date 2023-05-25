@@ -46,7 +46,7 @@ SandalineColony_Mart_Text_ClerkM_ThatWouldBeMoney::
 	.string "¥2,000.$"
 
 SandalineColony_Mart_Text_Scene_BugsyPays::
-	.string "Bugsy paid ¥2,000.$"
+	.string "{COLOR DARK_GRAY}Bugsy paid ¥2,000.$"
 
 SandalineColony_Mart_Text_ClerkM_YouReceiveAPremierBall::
 	.string "{COLOR BLUE}Mart Clerk: as per our policy,\n"

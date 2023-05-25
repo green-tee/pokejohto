@@ -46,7 +46,7 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_CAMPER",
-      "x": 6,
+      "x": 7,
       "y": 6,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -91,7 +91,7 @@
       "x": 3,
       "y": 9,
       "elevation": 3,
-      "dest_map": "MAP_FOUR_ISLAND_POKEMON_CENTER_1F",
+      "dest_map": "MAP_SANDALINE_COLONY_POKEMON_CENTER",
       "dest_warp_id": "2"
     }
   ],

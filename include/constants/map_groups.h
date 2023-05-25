@@ -476,15 +476,15 @@
 #define MAP_THREE_ISLAND_HOUSE4            (6 | (34 << 8))
 #define MAP_THREE_ISLAND_HOUSE5            (7 | (34 << 8))
 
-// gMapGroup_IndoorFourIsland
-#define MAP_FOUR_ISLAND_POKEMON_DAY_CARE  (0 | (35 << 8))
-#define MAP_FOUR_ISLAND_POKEMON_CENTER_1F (1 | (35 << 8))
-#define MAP_FOUR_ISLAND_POKEMON_CENTER_2F (2 | (35 << 8))
-#define MAP_FOUR_ISLAND_HOUSE1            (3 | (35 << 8))
-#define MAP_FOUR_ISLAND_LORELEIS_HOUSE    (4 | (35 << 8))
-#define MAP_FOUR_ISLAND_HARBOR            (5 | (35 << 8))
-#define MAP_FOUR_ISLAND_HOUSE2            (6 | (35 << 8))
-#define MAP_SANDALINE_COLONY_MART         (7 | (35 << 8))
+// gMapGroup_IndoorSandalineColony
+#define MAP_FOUR_ISLAND_POKEMON_DAY_CARE    (0 | (35 << 8))
+#define MAP_SANDALINE_COLONY_POKEMON_CENTER (1 | (35 << 8))
+#define MAP_FOUR_ISLAND_POKEMON_CENTER_2F   (2 | (35 << 8))
+#define MAP_FOUR_ISLAND_HOUSE1              (3 | (35 << 8))
+#define MAP_FOUR_ISLAND_LORELEIS_HOUSE      (4 | (35 << 8))
+#define MAP_FOUR_ISLAND_HARBOR              (5 | (35 << 8))
+#define MAP_FOUR_ISLAND_HOUSE2              (6 | (35 << 8))
+#define MAP_SANDALINE_COLONY_MART           (7 | (35 << 8))
 
 // gMapGroup_IndoorFiveIsland
 #define MAP_FIVE_ISLAND_POKEMON_CENTER_1F (0 | (36 << 8))

@@ -60,7 +60,7 @@ text SandalineColony_PokemonCenter_Text_Nurse_IllPutThemInThisMachine {
 }
 
 text SandalineColony_PokemonCenter_Text_Nurse_Done {
-    "Aaand{PAUSE 30}.{PAUSE 30}.{PAUSE 30}.{PAUSE 60}Done!"
+    "Aaand{PAUSE 30}.{PAUSE 30}.{PAUSE 30}.{PAUSE 60} Done!"
 }
 
 text SandalineColony_PokemonCenter_Text_Nurse_ThankYourForYourPatience {
@@ -71,4 +71,38 @@ text SandalineColony_PokemonCenter_Text_Nurse_ThankYourForYourPatience {
 
 text SandalineColony_PokemonCenter_Text_Scene_PlayerReceivedMonBack {
     "{COLOR DARK_GRAY}{PLAYER} received {STR_VAR_1} back."
+}
+
+text SandalineColony_PokemonCenter_Text_Bugsy_AskTheNurseToHealYourPokemon {
+    "{COLOR GREEN}Bugsy: Come on, ask the nurse to\n"
+    "heal your Pokémon!"
+}
+
+text SandalineColony_PokemonCenter_Text_Bugsy_WhereAreYouGoing {
+    "{COLOR GREEN}Bugsy: Where are you going?"
+}
+
+text SandalineColony_PokemonCenter_Text_Bugsy_PokemonCenterAreImportant {
+    "{COLOR GREEN}Bugsy: Isn't it convenient?\p"
+    "HPs are fully restored,\n"
+    "PPs are fully restored too,\l"
+    "Status Conditions go away,\l"
+    "all of this without the need\l"
+    "to spend a single coin.\p"
+    "A Pokémon Center is a Trainer's\n"
+    "beacon. It's an icon of safety,\l"
+    "the right place to look for when\l"
+    "things get hard."
+}
+
+text SandalineColony_PokemonCenter_Text_Bugsy_HeadToAzaleaTown {
+    "{COLOR GREEN}Bugsy: {PLAYER}, I have nothing\n"
+    "else to say, for now.\p"
+    "You should make your way to\n"
+    "Azalea Town, where my Gym, soon\l"
+    "to be Joey's, is located.\p"
+    "While you head there, Joey is\n"
+    "going to show you something\l"
+    "essential.\p"
+    "Until then!"
 }

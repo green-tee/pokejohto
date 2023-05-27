@@ -36,6 +36,9 @@ mart Mart_StandardItems {
     ITEM_NONE
 }
 
+
+// This script is executed when the player interacts with Bugsy.
+// It starts and completes the Pokémon Mart tutorial.
 script SandalineColony_Mart_EventScript_Bugsy {
     lock
     applymovement(LOCALID_BUGSY, SandalineColony_Mart_Movement_Bugsy_RunInPlace)

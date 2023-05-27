@@ -61,3 +61,33 @@ SandalineColony_PokemonCenter_Text_Nurse_ThankYourForYourPatience::
 
 SandalineColony_PokemonCenter_Text_Scene_PlayerReceivedMonBack::
 	.string "{COLOR DARK_GRAY}{PLAYER} received {STR_VAR_1} back.$"
+
+SandalineColony_PokemonCenter_Text_Bugsy_AskTheNurseToHealYourPokemon::
+	.string "{COLOR GREEN}Bugsy: Come on, ask the nurse to\n"
+	.string "heal your Pokémon!$"
+
+SandalineColony_PokemonCenter_Text_Bugsy_WhereAreYouGoing::
+	.string "{COLOR GREEN}Bugsy: Where are you going?$"
+
+SandalineColony_PokemonCenter_Text_Bugsy_PokemonCenterAreImportant::
+	.string "{COLOR GREEN}Bugsy: Isn't it convenient?\p"
+	.string "HPs are fully restored,\n"
+	.string "PPs are fully restored too,\l"
+	.string "Status Conditions go away,\l"
+	.string "all of this without the need\l"
+	.string "to spend a single coin.\p"
+	.string "A Pokémon Center is a Trainer's\n"
+	.string "beacon. It's an icon of safety,\l"
+	.string "the right place to look for when\l"
+	.string "things get hard.$"
+
+SandalineColony_PokemonCenter_Text_Bugsy_HeadToAzaleaTown::
+	.string "{COLOR GREEN}Bugsy: {PLAYER}, I have nothing\n"
+	.string "else to say, for now.\p"
+	.string "You should make your way to\n"
+	.string "Azalea Town, where my Gym, soon\l"
+	.string "to be Joey's, is located.\p"
+	.string "While you head there, Joey is\n"
+	.string "going to show you something\l"
+	.string "essential.\p"
+	.string "Until then!$"

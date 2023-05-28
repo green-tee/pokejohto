@@ -20,6 +20,11 @@ struct MultichoiceListStruct
     u8 count;
 };
 
+#define MULTICHOICE_LIST(menuActionList) {\
+    .list = menuActionList,\
+    .count = NELEMS(menuActionList)\
+}
+
 static EWRAM_DATA u8 sDelay = 0;
 
 static void DrawVerticalMultichoiceMenu(u8 left, u8 top, u8 mcId, u8 ignoreBpress, u8 initPos);
@@ -378,10 +383,10 @@ static const struct MenuAction sScriptMultiChoiceMenu_TradeColosseumCrush[] = {
     { gOtherText_Exit }
 };
 
-static const struct MenuAction sScriptMultiChoiceMenu_48[] = {
-    { gText_EmptyLinkService1 },
-    { gText_EmptyLinkService2 },
-    { gOtherText_Exit }
+static const struct MenuAction sScriptMultiChoiceMenu_NurseBeforeTutorial[] = {
+    { gText_WhatIsThisPlace },
+    { gText_ImLookingForAFriend },
+    { gText_NothingImGood }
 };
 
 static const struct MenuAction sScriptMultiChoiceMenu_TradeColosseum_2[] = {
@@ -493,71 +498,71 @@ static const struct MenuAction sScriptMultiChoiceMenu_Exit[] = {
 };
 
 const struct MultichoiceListStruct gScriptMultiChoiceMenus[] = {
-    { sScriptMultiChoiceMenu_YesNo,  NELEMS(sScriptMultiChoiceMenu_YesNo)  },
-    { sScriptMultiChoiceMenu_Eeveelutions,  NELEMS(sScriptMultiChoiceMenu_Eeveelutions)  },
-    { sScriptMultiChoiceMenu_TrainerCardIconTint,  NELEMS(sScriptMultiChoiceMenu_TrainerCardIconTint)  },
-    { sScriptMultiChoiceMenu_HOF_Quit,  NELEMS(sScriptMultiChoiceMenu_HOF_Quit)  },
-    { sScriptMultiChoiceMenu_Eggs_Quit,  NELEMS(sScriptMultiChoiceMenu_Eggs_Quit)  },
-    { sScriptMultiChoiceMenu_Victories_Quit,  NELEMS(sScriptMultiChoiceMenu_Victories_Quit)  },
-    { sScriptMultiChoiceMenu_HOF_Eggs_Quit,  NELEMS(sScriptMultiChoiceMenu_HOF_Eggs_Quit)  },
-    { sScriptMultiChoiceMenu_HOF_Victories_Quit,  NELEMS(sScriptMultiChoiceMenu_HOF_Victories_Quit)  },
-    { sScriptMultiChoiceMenu_Eggs_Victories_Quit,  NELEMS(sScriptMultiChoiceMenu_Eggs_Victories_Quit)  },
-    { sScriptMultiChoiceMenu_HOF_Eggs_Victories_Quit,  NELEMS(sScriptMultiChoiceMenu_HOF_Eggs_Victories_Quit)  },
-    { sScriptMultiChoiceMenu_Exit, NELEMS(sScriptMultiChoiceMenu_Exit) },
-    { sScriptMultiChoiceMenu_Exit, NELEMS(sScriptMultiChoiceMenu_Exit) },
-    { sScriptMultiChoiceMenu_Exit, NELEMS(sScriptMultiChoiceMenu_Exit) },
-    { sScriptMultiChoiceMenu_BikeShop, NELEMS(sScriptMultiChoiceMenu_BikeShop) },
-    { sScriptMultiChoiceMenu_GameCornerPokemonPrizes, NELEMS(sScriptMultiChoiceMenu_GameCornerPokemonPrizes) },
-    { sScriptMultiChoiceMenu_TrainerSchoolWhiteboard, NELEMS(sScriptMultiChoiceMenu_TrainerSchoolWhiteboard) },
-    { sScriptMultiChoiceMenu_YesNoInfo, NELEMS(sScriptMultiChoiceMenu_YesNoInfo) },
-    { sScriptMultiChoiceMenu_SingleDoubleMultiInfoExit, NELEMS(sScriptMultiChoiceMenu_SingleDoubleMultiInfoExit) },
-    { sScriptMultiChoiceMenu_YesNoInfo2, NELEMS(sScriptMultiChoiceMenu_YesNoInfo2) },
-    { sScriptMultiChoiceMenu_ChallengeInfoExit, NELEMS(sScriptMultiChoiceMenu_ChallengeInfoExit) },
-    { sScriptMultiChoiceMenu_RooftopB1F, NELEMS(sScriptMultiChoiceMenu_RooftopB1F) },
-    { sScriptMultiChoiceMenu_Helix, NELEMS(sScriptMultiChoiceMenu_Helix) },
-    { sScriptMultiChoiceMenu_Dome, NELEMS(sScriptMultiChoiceMenu_Dome) },
-    { sScriptMultiChoiceMenu_Amber, NELEMS(sScriptMultiChoiceMenu_Amber) },
-    { sScriptMultiChoiceMenu_HelixAmber, NELEMS(sScriptMultiChoiceMenu_HelixAmber) },
-    { sScriptMultiChoiceMenu_DomeAmber, NELEMS(sScriptMultiChoiceMenu_DomeAmber) },
-    { sScriptMultiChoiceMenu_CeladonVendingMachine, NELEMS(sScriptMultiChoiceMenu_CeladonVendingMachine) },
-    { sScriptMultiChoiceMenu_GameCornerCoinPurchaseCounter, NELEMS(sScriptMultiChoiceMenu_GameCornerCoinPurchaseCounter) },
-    { sScriptMultiChoiceMenu_Excellent_NotSoBad, NELEMS(sScriptMultiChoiceMenu_Excellent_NotSoBad) },
-    { sScriptMultiChoiceMenu_RightLeft, NELEMS(sScriptMultiChoiceMenu_RightLeft) },
-    { sScriptMultiChoiceMenu_GameCornerTMPrizes, NELEMS(sScriptMultiChoiceMenu_GameCornerTMPrizes) },
-    { sScriptMultiChoiceMenu_DeptStoreElevator, NELEMS(sScriptMultiChoiceMenu_DeptStoreElevator) },
-    { sScriptMultiChoiceMenu_ThirstyGirlFreshWater, NELEMS(sScriptMultiChoiceMenu_ThirstyGirlFreshWater) },
-    { sScriptMultiChoiceMenu_ThirstyGirlSodaPop, NELEMS(sScriptMultiChoiceMenu_ThirstyGirlSodaPop) },
-    { sScriptMultiChoiceMenu_ThirstyGirlFreshWaterSodaPop, NELEMS(sScriptMultiChoiceMenu_ThirstyGirlFreshWaterSodaPop) },
-    { sScriptMultiChoiceMenu_ThirstyGirlLemonade, NELEMS(sScriptMultiChoiceMenu_ThirstyGirlLemonade) },
-    { sScriptMultiChoiceMenu_ThirstyGirlFreshWaterLemonade, NELEMS(sScriptMultiChoiceMenu_ThirstyGirlFreshWaterLemonade) },
-    { sScriptMultiChoiceMenu_ThirstyGirlSodaPopLemonade, NELEMS(sScriptMultiChoiceMenu_ThirstyGirlSodaPopLemonade) },
-    { sScriptMultiChoiceMenu_ThirstyGirlFreshWaterSodaPopLemonade, NELEMS(sScriptMultiChoiceMenu_ThirstyGirlFreshWaterSodaPopLemonade) },
-    { sScriptMultiChoiceMenu_TradeCenter_Colosseum, NELEMS(sScriptMultiChoiceMenu_TradeCenter_Colosseum) },
-    { sScriptMultiChoiceMenu_Link_Wireless, NELEMS(sScriptMultiChoiceMenu_Link_Wireless) },
-    { sScriptMultiChoiceMenu_GameCornerBattleItemPrizes, NELEMS(sScriptMultiChoiceMenu_GameCornerBattleItemPrizes) },
-    { sScriptMultiChoiceMenu_RocketHideoutElevator, NELEMS(sScriptMultiChoiceMenu_RocketHideoutElevator) },
-    { sScriptMultiChoiceMenu_LinkedDirectUnion, NELEMS(sScriptMultiChoiceMenu_LinkedDirectUnion) },
-    { sScriptMultiChoiceMenu_Island23, NELEMS(sScriptMultiChoiceMenu_Island23) },
-    { sScriptMultiChoiceMenu_Island13, NELEMS(sScriptMultiChoiceMenu_Island13) },
-    { sScriptMultiChoiceMenu_Island12, NELEMS(sScriptMultiChoiceMenu_Island12) },
-    { sScriptMultiChoiceMenu_TradeColosseumCrush, NELEMS(sScriptMultiChoiceMenu_TradeColosseumCrush) },
-    { sScriptMultiChoiceMenu_48, NELEMS(sScriptMultiChoiceMenu_48) },
-    { sScriptMultiChoiceMenu_PokejumpDodrio, NELEMS(sScriptMultiChoiceMenu_PokejumpDodrio) },
-    { sScriptMultiChoiceMenu_TradeColosseum_2, NELEMS(sScriptMultiChoiceMenu_TradeColosseum_2) },
-    { sScriptMultiChoiceMenu_Mushrooms, NELEMS(sScriptMultiChoiceMenu_Mushrooms) },
-    { sScriptMultiChoiceMenu_TradeColosseumBlankCrush, NELEMS(sScriptMultiChoiceMenu_TradeColosseumBlankCrush) },
-    { sScriptMultiChoiceMenu_TradeColosseumBlank, NELEMS(sScriptMultiChoiceMenu_TradeColosseumBlank) },
-    { sScriptMultiChoiceMenu_SeviiNavel, NELEMS(sScriptMultiChoiceMenu_SeviiNavel) },
-    { sScriptMultiChoiceMenu_SeviiBirth, NELEMS(sScriptMultiChoiceMenu_SeviiBirth) },
-    { sScriptMultiChoiceMenu_SeviiNavelBirth, NELEMS(sScriptMultiChoiceMenu_SeviiNavelBirth) },
-    { sScriptMultiChoiceMenu_Seagallop123, NELEMS(sScriptMultiChoiceMenu_Seagallop123) },
-    { sScriptMultiChoiceMenu_SeagallopV23, NELEMS(sScriptMultiChoiceMenu_SeagallopV23) },
-    { sScriptMultiChoiceMenu_SeagallopV13, NELEMS(sScriptMultiChoiceMenu_SeagallopV13) },
-    { sScriptMultiChoiceMenu_SeagallopV12, NELEMS(sScriptMultiChoiceMenu_SeagallopV12) },
-    { sScriptMultiChoiceMenu_SeagallopVermilion, NELEMS(sScriptMultiChoiceMenu_SeagallopVermilion) },
-    { sScriptMultiChoiceMenu_62, NELEMS(sScriptMultiChoiceMenu_62) },
-    { sScriptMultiChoiceMenu_JoinOrLead, NELEMS(sScriptMultiChoiceMenu_JoinOrLead) },
-    { sScriptMultiChoiceMenu_TrainerTowerMode, NELEMS(sScriptMultiChoiceMenu_TrainerTowerMode) }
+    [MULTICHOICE_YES_NO] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_YesNo),
+    [MULTICHOICE_EEVEELUTIONS] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_Eeveelutions),
+    [MULTICHOICE_TRAINER_CARD_ICON_TINT] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_TrainerCardIconTint),
+    [MULTICHOICE_HOF_QUIT] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_HOF_Quit),
+    [MULTICHOICE_EGGS_QUIT] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_Eggs_Quit),
+    [MULTICHOICE_VICTORIES_QUIT] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_Victories_Quit),
+    [MULTICHOICE_HOF_EGGS_QUIT] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_HOF_Eggs_Quit),
+    [MULTICHOICE_HOF_VICTORIES_QUIT] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_HOF_Victories_Quit),
+    [MULTICHOICE_EGGS_VICTORIES_QUIT] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_Eggs_Victories_Quit),
+    [MULTICHOICE_HOF_EGGS_VICTORIES_QUIT] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_HOF_Eggs_Victories_Quit),
+    [MULTICHOICE_EXIT] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_Exit),
+    [MULTICHOICE_EXIT_2] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_Exit),
+    [MULTICHOICE_EXIT_3] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_Exit),
+    [MULTICHOICE_BIKE_SHOP] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_BikeShop),
+    [MULTICHOICE_GAME_CORNER_POKEMON_PRIZES] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_GameCornerPokemonPrizes),
+    [MULTICHOICE_TRAINER_SCHOOL_WHITEBOARD] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_TrainerSchoolWhiteboard),
+    [MULTICHOICE_YES_NO_INFO] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_YesNoInfo),
+    [MULTICHOICE_SINGLE_DOUBLE_MULTI_INFO_EXIT] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_SingleDoubleMultiInfoExit),
+    [MULTICHOICE_YES_NO_INFO_2] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_YesNoInfo2),
+    [MULTICHOICE_CHALLENGE_INFO_EXIT] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_ChallengeInfoExit),
+    [MULTICHOICE_ROOFTOP_B1F] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_RooftopB1F),
+    [MULTICHOICE_HELIX] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_Helix),
+    [MULTICHOICE_DOME] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_Dome),
+    [MULTICHOICE_AMBER] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_Amber),
+    [MULTICHOICE_HELIX_AMBER] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_HelixAmber),
+    [MULTICHOICE_DOME_AMBER] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_DomeAmber),
+    [MULTICHOICE_CELADON_VENDING_MACHINE] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_CeladonVendingMachine),
+    [MULTICHOICE_GAME_CORNER_COIN_PURCHASE_COUNTER] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_GameCornerCoinPurchaseCounter),
+    [MULTICHOICE_EXCELLENT_NOT_SO_BAD] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_Excellent_NotSoBad),
+    [MULTICHOICE_RIGHT_LEFT] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_RightLeft),
+    [MULTICHOICE_GAME_CORNER_TMPRIZES] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_GameCornerTMPrizes),
+    [MULTICHOICE_DEPT_STORE_ELEVATOR] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_DeptStoreElevator),
+    [MULTICHOICE_THIRSTY_GIRL_FRESH_WATER] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_ThirstyGirlFreshWater),
+    [MULTICHOICE_THIRSTY_GIRL_SODA_POP] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_ThirstyGirlSodaPop),
+    [MULTICHOICE_THIRSTY_GIRL_FRESH_WATER_SODA_POP] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_ThirstyGirlFreshWaterSodaPop),
+    [MULTICHOICE_THIRSTY_GIRL_LEMONADE] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_ThirstyGirlLemonade),
+    [MULTICHOICE_THIRSTY_GIRL_FRESH_WATER_LEMONADE] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_ThirstyGirlFreshWaterLemonade),
+    [MULTICHOICE_THIRSTY_GIRL_SODA_POP_LEMONADE] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_ThirstyGirlSodaPopLemonade),
+    [MULTICHOICE_THIRSTY_GIRL_FRESH_WATER_SODA_POP_LEMONADE] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_ThirstyGirlFreshWaterSodaPopLemonade),
+    [MULTICHOICE_TRADE_CENTER_COLOSSEUM] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_TradeCenter_Colosseum),
+    [MULTICHOICE_LINK_WIRELESS] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_Link_Wireless),
+    [MULTICHOICE_GAME_CORNER_BATTLE_ITEM_PRIZES] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_GameCornerBattleItemPrizes),
+    [MULTICHOICE_ROCKET_HIDEOUT_ELEVATOR] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_RocketHideoutElevator),
+    [MULTICHOICE_LINKED_DIRECT_UNION] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_LinkedDirectUnion),
+    [MULTICHOICE_ISLAND_23] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_Island23),
+    [MULTICHOICE_ISLAND_13] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_Island13),
+    [MULTICHOICE_ISLAND_12] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_Island12),
+    [MULTICHOICE_TRADE_COLOSSEUM_CRUSH] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_TradeColosseumCrush),
+    [MULTICHOICE_NURSE_BEFORE_TUTORIAL] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_NurseBeforeTutorial),
+    [MULTICHOICE_POKEJUMP_DODRIO] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_PokejumpDodrio),
+    [MULTICHOICE_TRADE_COLOSSEUM_2] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_TradeColosseum_2),
+    [MULTICHOICE_MUSHROOMS] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_Mushrooms),
+    [MULTICHOICE_TRADE_COLOSSEUM_BLANK_CRUSH] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_TradeColosseumBlankCrush),
+    [MULTICHOICE_TRADE_COLOSSEUM_BLANK] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_TradeColosseumBlank),
+    [MULTICHOICE_SEVII_NAVEL] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_SeviiNavel),
+    [MULTICHOICE_SEVII_BIRTH] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_SeviiBirth),
+    [MULTICHOICE_SEVII_NAVEL_BIRTH] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_SeviiNavelBirth),
+    [MULTICHOICE_SEAGALLOP_123] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_Seagallop123),
+    [MULTICHOICE_SEAGALLOP_V23] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_SeagallopV23),
+    [MULTICHOICE_SEAGALLOP_V13] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_SeagallopV13),
+    [MULTICHOICE_SEAGALLOP_V12] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_SeagallopV12),
+    [MULTICHOICE_SEAGALLOP_VERMILION] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_SeagallopVermilion),
+    [MULTICHOICE_62] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_62),
+    [MULTICHOICE_JOIN_OR_LEAD] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_JoinOrLead),
+    [MULTICHOICE_TRAINER_TOWER_MODE] = MULTICHOICE_LIST(sScriptMultiChoiceMenu_TrainerTowerMode)
 };
 
 // From Cool to Berries goes unused

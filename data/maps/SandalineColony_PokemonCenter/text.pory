@@ -1,3 +1,41 @@
+text SandalineColony_PokemonCenter_Text_Nurse_ThisIsAPokemonCenter {
+    "This is Sandaline Colony's\n"
+    "Pokémon Center.\p"
+    "Pokémon Centers are facilities\n"
+    "which offer various services to\l"
+    "every Pokémon Trainer.\p"
+    "I'm here to take care of tired\n"
+    "Pokémon and heal them to full\l"
+    "health.\p"
+    "On your right you can find a PC\n"
+    "running the AltariOS operating\l"
+    "system, which allows you to\l"
+    "store all your Pokémon on the\l"
+    "Johto Cloud.\p"
+    "Finally, the door on your left\n"
+    "leads to the Pokémon Mart, where\l"
+    "you can buy Items that can help\l"
+    "you on your journey."
+}
+
+text SandalineColony_PokemonCenter_Text_Nurse_YouAreLookingForAFriend {
+    "You are looking for a friend?\p"
+    "If you don't see them in the\n"
+    "hall, you might want to look\l"
+    "inside the Pokémon Mart. Simply\l"
+    "take the door on your left."
+}
+
+text SandalineColony_PokemonCenter_Text_Nurse_TellMeIfYouNeed {
+    "Let me know if you need\n"
+    "anything!"
+}
+
+text SandalineColony_PokemonCenter_Text_Nurse_IsThereAnythingElse {
+    "Is there anything else I can do\n"
+    "for you?"
+}
+
 text SandalineColony_PokemonCenter_Text_Bugsy_ThisIsAPokemonCenter {
     "{COLOR GREEN}Bugsy: This is the main hall\n"
     "of a Pokémon Center, where\l"

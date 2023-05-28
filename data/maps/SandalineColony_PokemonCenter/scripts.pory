@@ -84,8 +84,24 @@ script SandalineColony_PokemonCenter_EventScript_Nurse {
 // This script is executed when the player talks to the nurse before Bugsy has explained the Pokémon Center.
 script(local) SandalineColony_PokemonCenter_EventScript_NurseBeforeTutorial {
     message(SandalineColony_PokemonCenter_Text_Nurse_HowMayIHelpYou)
-    waitmessage
-    # TODO: Add multichoice in response to "how may I help you".
+    do {
+        waitmessage
+        multichoice(10, 6, MULTICHOICE_NURSE_BEFORE_TUTORIAL, TRUE)
+        switch (var(VAR_RESULT)) {
+            case 0:
+                msgbox(SandalineColony_PokemonCenter_Text_Nurse_ThisIsAPokemonCenter)
+            case 1:
+                msgbox(SandalineColony_PokemonCenter_Text_Nurse_YouAreLookingForAFriend)
+            case 2:
+                msgbox(SandalineColony_PokemonCenter_Text_Nurse_TellMeIfYouNeed)
+        }
+        closemessage
+        if (var(VAR_RESULT) != 2) {
+            # If Player decided to quit the dialog, the nurse doesn't have to ask if there's more.
+            message(SandalineColony_PokemonCenter_Text_Nurse_IsThereAnythingElse)
+        }
+        # Repeat the loop until the player chooses to quit the dialog.
+    } while (var(VAR_RESULT) != 2)
 }
 
 // This script is executed when the player talkt to the nurse in Bugsy's tutorial.

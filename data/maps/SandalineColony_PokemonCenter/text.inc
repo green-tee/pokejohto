@@ -1,3 +1,37 @@
+SandalineColony_PokemonCenter_Text_Nurse_ThisIsAPokemonCenter::
+	.string "This is Sandaline Colony's\n"
+	.string "Pokémon Center.\p"
+	.string "Pokémon Centers are facilities\n"
+	.string "which offer various services to\l"
+	.string "every Pokémon Trainer.\p"
+	.string "I'm here to take care of tired\n"
+	.string "Pokémon and heal them to full\l"
+	.string "health.\p"
+	.string "On your right you can find a PC\n"
+	.string "running the AltariOS operating\l"
+	.string "system, which allows you to\l"
+	.string "store all your Pokémon on the\l"
+	.string "Johto Cloud.\p"
+	.string "Finally, the door on your left\n"
+	.string "leads to the Pokémon Mart, where\l"
+	.string "you can buy Items that can help\l"
+	.string "you on your journey.$"
+
+SandalineColony_PokemonCenter_Text_Nurse_YouAreLookingForAFriend::
+	.string "You are looking for a friend?\p"
+	.string "If you don't see them in the\n"
+	.string "hall, you might want to look\l"
+	.string "inside the Pokémon Mart. Simply\l"
+	.string "take the door on your left.$"
+
+SandalineColony_PokemonCenter_Text_Nurse_TellMeIfYouNeed::
+	.string "Let me know if you need\n"
+	.string "anything!$"
+
+SandalineColony_PokemonCenter_Text_Nurse_IsThereAnythingElse::
+	.string "Is there anything else I can do\n"
+	.string "for you?$"
+
 SandalineColony_PokemonCenter_Text_Bugsy_ThisIsAPokemonCenter::
 	.string "{COLOR GREEN}Bugsy: This is the main hall\n"
 	.string "of a Pokémon Center, where\l"
@@ -52,7 +86,7 @@ SandalineColony_PokemonCenter_Text_Nurse_IllPutThemInThisMachine::
 	.string "machine and I start it.$"
 
 SandalineColony_PokemonCenter_Text_Nurse_Done::
-	.string "Aaand{PAUSE 30}.{PAUSE 30}.{PAUSE 30}.{PAUSE 60}Done!$"
+	.string "Aaand{PAUSE 30}.{PAUSE 30}.{PAUSE 30}.{PAUSE 60} Done!$"
 
 SandalineColony_PokemonCenter_Text_Nurse_ThankYourForYourPatience::
 	.string "Thank you for your patience.\n"

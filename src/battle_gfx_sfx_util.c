@@ -816,18 +816,22 @@ void HandleLowHpMusicChange(struct Pokemon *mon, u8 battlerId)
     {
         if (!gBattleSpritesDataPtr->battlerData[battlerId].lowHpSong)
         {
-            if (!gBattleSpritesDataPtr->battlerData[battlerId ^ BIT_FLANK].lowHpSong)
-                PlaySE(SE_LOW_HEALTH);
+            // Since the sound effect doesn't loop anymore, we don't need this check anymore
+            //if (!gBattleSpritesDataPtr->battlerData[battlerId ^ BIT_FLANK].lowHpSong)
+            PlaySE(SE_LOW_HEALTH);
             gBattleSpritesDataPtr->battlerData[battlerId].lowHpSong = 1;
         }
     }
     else
     {
         gBattleSpritesDataPtr->battlerData[battlerId].lowHpSong = 0;
+        // Since the sound effect doesn't loop anymore, we shouldn't need the following
+        /*
         if (!IsDoubleBattle())
             m4aSongNumStop(SE_LOW_HEALTH);
         else if (IsDoubleBattle() && !gBattleSpritesDataPtr->battlerData[battlerId ^ BIT_FLANK].lowHpSong)
             m4aSongNumStop(SE_LOW_HEALTH);
+        */
     }
 }
 

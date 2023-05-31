@@ -101,7 +101,7 @@ SandalineColony_PokemonCenter_EventScript_NurseBeforeTutorial:
 	message SandalineColony_PokemonCenter_Text_Nurse_HowMayIHelpYou
 SandalineColony_PokemonCenter_EventScript_NurseBeforeTutorial_2:
 	waitmessage
-	multichoice 9, 7, MULTICHOICE_NURSE_BEFORE_TUTORIAL, TRUE
+	multichoice 10, 6, MULTICHOICE_NURSE_BEFORE_TUTORIAL, TRUE
 	switch VAR_RESULT
 	case 0, SandalineColony_PokemonCenter_EventScript_NurseBeforeTutorial_6
 	case 1, SandalineColony_PokemonCenter_EventScript_NurseBeforeTutorial_7

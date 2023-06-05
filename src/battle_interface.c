@@ -534,7 +534,9 @@ u8 CreateBattlerHealthboxSprites(u8 a)
             healthboxLeftSpriteId = CreateSprite(&sHealthboxOpponentSpriteTemplates[0], 240, 160, 1);
             healthboxRightSpriteId = CreateSpriteAtEnd(&sHealthboxOpponentSpriteTemplates[0], 240, 160, 1);
 
-            gSprites[healthboxRightSpriteId].oam.tileNum += 32;
+            gSprites[healthboxLeftSpriteId].oam.shape = SPRITE_SHAPE(64x64);
+            gSprites[healthboxRightSpriteId].oam.shape = SPRITE_SHAPE(64x64);
+            gSprites[healthboxRightSpriteId].oam.tileNum += 64;
             data6 = 2;
         }
 
@@ -1535,6 +1537,7 @@ void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
 
     RemoveWindowOnHealthbox(windowId);
 }
+
 void TryAddPokeballIconToHealthbox(u8 healthboxSpriteId, bool8 noStatus)
 {
     u8 battlerId, healthBarSpriteId;

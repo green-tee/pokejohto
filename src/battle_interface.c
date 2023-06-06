@@ -706,10 +706,11 @@ void InitBattlerHealthboxCoords(u8 battler)
     if (!IsDoubleBattle())
     {
         if (GetBattlerSide(battler) != B_SIDE_PLAYER)
-            x = 44, y = 30;
+            x = 32, y = 30;
+            // Original values: x = 44, y = 30;
         else
             x = 168, y = 88;
-            // Original values:x = 158, y = 88;
+            // Original values: x = 158, y = 88;
     }
     else
     {
@@ -758,7 +759,7 @@ static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl)
     else
     {
         objVram = (void *)(OBJ_VRAM0);
-        objVram += spriteTileNum + 0x400;
+        objVram += spriteTileNum + 0x800;
     }
     TextIntoHealthboxObject(objVram, windowTileData, 3);
     RemoveWindowOnHealthbox(windowId);
@@ -773,7 +774,8 @@ void UpdateHpTextInHealthbox(u8 healthboxSpriteId, s16 value, u8 maxOrCurrent)
     u8 *strptr;
     void *objVram;
 
-    if (GetBattlerSide(gSprites[healthboxSpriteId].hMain_Battler) == B_SIDE_PLAYER && !IsDoubleBattle())
+    // if (GetBattlerSide(gSprites[healthboxSpriteId].hMain_Battler) == B_SIDE_PLAYER && !IsDoubleBattle())
+    if (!IsDoubleBattle())
     {
         u8 text[8];
         if (maxOrCurrent != HP_CURRENT) // singles, max
@@ -1603,7 +1605,7 @@ static void UpdateStatusIconInHealthbox(u8 healthboxSpriteId)
     else
     {
         status = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerId]], MON_DATA_STATUS);
-        tileNumAdder = 0x11;
+        tileNumAdder = 0x19;
     }
 
     if (status & STATUS1_SLEEP)

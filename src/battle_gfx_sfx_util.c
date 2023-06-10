@@ -75,7 +75,7 @@ static const struct CompressedSpriteSheet sSpriteSheets_HealthBar[MAX_BATTLERS_C
 {
     {
         .data = gBlankGfxCompressed,
-        .size = 0x100,
+        .size = 0x120,
         .tag = TAG_HEALTHBAR_PLAYER1_TILE,
     },
     {
@@ -85,7 +85,7 @@ static const struct CompressedSpriteSheet sSpriteSheets_HealthBar[MAX_BATTLERS_C
     },
     {
         .data = gBlankGfxCompressed,
-        .size = 0x100,
+        .size = 0x120,
         .tag = TAG_HEALTHBAR_PLAYER2_TILE,
     },
     {

@@ -433,10 +433,10 @@ static bool8 LoadOptionMenuPalette(void)
         LoadBgTiles(1, GetUserWindowGraphics(sOptionMenuPtr->option[MENUITEM_FRAMETYPE])->tiles, 0x120, 0x1AA);
         break;
     case 1:
-        if (gSaveBlock2Ptr->optionsWindowDialogMode == WINDOW_DIALOG_MODE_LIGHT)
-            LoadPalette(GetUserWindowGraphics(sOptionMenuPtr->option[MENUITEM_FRAMETYPE])->paletteLight, 0x20, 0x20);
-        else
+        if (IsDarkModeEnabled())
             LoadPalette(GetUserWindowGraphics(sOptionMenuPtr->option[MENUITEM_FRAMETYPE])->paletteDark, 0x20, 0x20);
+        else
+            LoadPalette(GetUserWindowGraphics(sOptionMenuPtr->option[MENUITEM_FRAMETYPE])->paletteLight, 0x20, 0x20);
         break;
     case 2:
         LoadPalette(sOptionMenuPalette, 0x10, 0x20);

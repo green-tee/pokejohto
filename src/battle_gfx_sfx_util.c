@@ -13,6 +13,7 @@
 #include "battle_main.h"
 #include "battle_anim.h"
 #include "battle_interface.h"
+#include "new_menu_helpers.h"
 #include "constants/battle_anim.h"
 #include "constants/moves.h"
 #include "constants/songs.h"
@@ -95,16 +96,30 @@ static const struct CompressedSpriteSheet sSpriteSheets_HealthBar[MAX_BATTLERS_C
     },
 };
 
-static const struct SpritePalette sSpritePalettes_HealthBoxHealthBar[2] =
+static const struct SpritePalette sSpritePalettes_HealthBoxHealthBar[2][2] =
 {
+    [WINDOW_DIALOG_MODE_LIGHT] =
     {
-        .data = gBattleInterface_BallStatusBarPal,
-        .tag = TAG_HEALTHBOX_PAL,
+        {
+            .data = gBattleInterface_BallStatusBarPal,
+            .tag = TAG_HEALTHBOX_PAL
+        },
+        {
+            .data = gBattleInterface_BallDisplayPal,
+            .tag = TAG_HEALTHBAR_PAL
+        }
     },
+    [WINDOW_DIALOG_MODE_DARK] =
     {
-        .data = gBattleInterface_BallDisplayPal,
-        .tag = TAG_HEALTHBAR_PAL,
-    },
+        {
+            .data = gBattleInterface_HealthboxDarkPal,
+            .tag = TAG_HEALTHBOX_PAL
+        },
+        {
+            .data = gBattleInterface_BallDisplayPal,
+            .tag = TAG_HEALTHBAR_PAL
+        }
+    }
 };
 
 void AllocateBattleSpritesData(void)
@@ -468,8 +483,8 @@ static void BattleLoadAllHealthBoxesGfxAtOnce(void)
     u8 numberOfBattlers = 0;
     u8 i;
 
-    LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[0]);
-    LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[1]);
+    LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[0][0]); // Default light mode, doesn't matter anyway because it's unused
+    LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[0][1]); // Default light mode, doesn't matter anyway because it's unused
     if (!IsDoubleBattle())
     {
         LoadCompressedSpriteSheetUsingHeap(&sSpriteSheet_SinglesPlayerHealthbox);
@@ -496,8 +511,9 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
     {
         if (state == 1)
         {
-            LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[0]);
-            LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[1]);
+            u8 lightOrDark = IsDarkModeEnabled() ? WINDOW_DIALOG_MODE_DARK : WINDOW_DIALOG_MODE_LIGHT;
+            LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[lightOrDark][0]);
+            LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[lightOrDark][1]);
         }
         else if (!IsDoubleBattle())
         {

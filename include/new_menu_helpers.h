@@ -53,5 +53,6 @@ void DrawHelpMessageWindowWithText(const u8 * text);
 void DestroyHelpMessageWindow_(void);
 void LoadSignpostWindowFrameGfx(void);
 void SetDefaultFontsPointer(void);
+bool8 IsDarkModeEnabled(void);
 
 #endif // GUARD_NEW_MENU_HELPERS_H

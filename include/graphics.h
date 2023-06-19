@@ -4333,6 +4333,7 @@ extern const u32 gHealthboxDoublesOpponentGfx[];
 extern const u32 gHealthboxSafariGfx[];
 extern const u32 gBlankGfxCompressed[];
 extern const u16 gBattleInterface_BallStatusBarPal[];
+extern const u16 gBattleInterface_HealthboxDarkPal[];
 extern const u16 gBattleInterface_BallDisplayPal[];
 extern const u32 gInterfaceGfx_HPNumbers[];
 extern const u32 gGhostFrontPic[];
@@ -4874,6 +4875,7 @@ extern const u32 gHoennTrainerCard_Gfx[];
 extern const u32 gFile_graphics_battle_interface_ball_status_bar_sheet[];
 extern const u8 gHealthboxElementsGfxTable[][32];
 extern const u16 gBattleInterface_BallStatusBarPal[];
+extern const u16 gBattleInterface_HealthboxDarkPal[];
 extern const u16 gBattleInterface_BallDisplayPal[];
 extern const u16 gBattleInterface_SummaryBallDisplayGfx[];
 

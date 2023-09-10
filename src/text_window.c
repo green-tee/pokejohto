@@ -96,10 +96,10 @@ void LoadQuestLogWindowTiles(u8 windowId, u16 destOffset)
 static void LoadUserWindowGfxByFrame(u8 windowId, u8 frameType, u16 destOffset, u8 palIdx)
 {
     LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), gUserFrames[frameType].tiles, 0x120, destOffset);
-    if (gSaveBlock2Ptr->optionsWindowDialogMode == WINDOW_DIALOG_MODE_LIGHT)
-        LoadPalette(gUserFrames[frameType].paletteLight, palIdx, 32);
-    else
+    if (IsDarkModeEnabled())
         LoadPalette(gUserFrames[frameType].paletteDark, palIdx, 32);
+    else
+        LoadPalette(gUserFrames[frameType].paletteLight, palIdx, 32);
 }
 
 void LoadUserWindowGfx(u8 windowId, u16 destOffset, u8 palIdx)

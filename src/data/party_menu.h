@@ -610,6 +610,8 @@ static const u8 sHPBarYellowPalIds[] = {73, 74};
 
 static const u8 sHPBarRedPalIds[] = {89, 90};
 
+static const u8 sHPBarBluePalIds[] = {105, 106};
+
 static const u8 sPartyBoxEmptySlotPalIds1[] = {52, 53, 54};
 
 static const u8 sPartyBoxMultiPalIds1[] = {68, 69, 70};

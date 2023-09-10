@@ -2422,8 +2422,11 @@ static void DisplayPartyPokemonHPBar(u16 hp, u16 maxhp, struct PartyMenuBox *men
 
     switch (GetHPBarLevel(hp, maxhp))
     {
-    case HP_BAR_GREEN:
     case HP_BAR_FULL:
+        LoadPalette(GetPartyMenuPalBufferPtr(sHPBarBluePalIds[0]), sHPBarPalOffsets[0] + palNum, 2);
+        LoadPalette(GetPartyMenuPalBufferPtr(sHPBarBluePalIds[1]), sHPBarPalOffsets[1] + palNum, 2);
+        break;
+    case HP_BAR_GREEN:
         LoadPalette(GetPartyMenuPalBufferPtr(sHPBarGreenPalIds[0]), sHPBarPalOffsets[0] + palNum, 2);
         LoadPalette(GetPartyMenuPalBufferPtr(sHPBarGreenPalIds[1]), sHPBarPalOffsets[1] + palNum, 2);
         break;

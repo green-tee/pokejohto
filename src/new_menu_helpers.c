@@ -767,3 +767,8 @@ u8 GetMenuCursorDimensionByFont(u8 fontId, u8 whichDimension)
 {
     return gMenuCursorDimensions[fontId][whichDimension];
 }
+
+bool8 IsDarkModeEnabled(void)
+{
+    return gSaveBlock2Ptr->optionsWindowDialogMode == WINDOW_DIALOG_MODE_DARK;
+}

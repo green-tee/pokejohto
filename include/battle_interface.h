@@ -45,6 +45,24 @@ enum
 #define TAG_STATUS_SUMMARY_BAR_PAL      0xD710
 #define TAG_STATUS_SUMMARY_BALLS_PAL    0xD712
 
+#define HEALTHBOX_PAL_TRANSPARENCY        0
+#define HEALTHBOX_PAL_MARGIN              1
+#define HEALTHBOX_PAL_BORDER              2
+#define HEALTHBOX_PAL_BOTTOM_HALF         3
+#define HEALTHBOX_PAL_SHADOW              4
+#define HEALTHBOX_PAL_BORDER2             5
+#define HEALTHBOX_PAL_TOP_HALF            6
+#define HEALTHBOX_PAL_EXP_BAR_SHADOW      7
+#define HEALTHBOX_PAL_EXP_BAR             8
+#define HEALTHBOX_PAL_GENDER_FEMALE       9
+#define HEALTHBOX_PAL_10                 10
+#define HEALTHBOX_PAL_11                 11
+#define HEALTHBOX_PAL_12                 12
+#define HEALTHBOX_PAL_13                 13
+#define HEALTHBOX_PAL_14                 14
+#define HEALTHBOX_PAL_15                 15
+#define HEALTHBOX_PAL_GENDER_MALE         HEALTHBOX_PAL_EXP_BAR
+
 enum
 {
     HEALTHBOX_ALL,

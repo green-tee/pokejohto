@@ -94,6 +94,10 @@ void EnableNationalPokedex(void)
 
 bool32 IsNationalPokedexEnabled(void)
 {
+    return FlagGet(FLAG_SYS_POKEDEX_GET);
+    // National Pokédex will be enabled by default.
+    // I don't know what gSaveBlock2Ptr->pokedex.unknown2 and VAR_NATIONAL_DEX are for, they're used nowhere else.
+    /*
     if (gSaveBlock2Ptr->pokedex.unknown2 != 0xB9)
         return FALSE;
     if (VarGet(VAR_NATIONAL_DEX) != 0x6258)
@@ -101,6 +105,7 @@ bool32 IsNationalPokedexEnabled(void)
     if (!FlagGet(FLAG_SYS_NATIONAL_DEX))
         return FALSE;
     return TRUE;
+    */
 }
 
 void DisableMysteryGift(void)

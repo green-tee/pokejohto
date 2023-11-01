@@ -1,0 +1,9 @@
+text SandalineColony_RadiosaHostel_1F_Text_ItsAPokedex {
+    "It's the Pokédex that you\n"
+    "received upon arrival in Johto.\p"
+    "Are you picking it up?"
+}
+
+text SandalineColony_RadiosaHostel_1F_Text_PlayerPickedPokedex {
+    "You picked up your Pokédex."
+}

@@ -17155,8 +17155,8 @@
           }
         },
         {
-          "map": "MAP_ROUTE5",
-          "base_label": "sRoute5_FireRed",
+          "map": "MAP_ROUTE33",
+          "base_label": "sRoute33_FireRed",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -17224,8 +17224,8 @@
           }
         },
         {
-          "map": "MAP_ROUTE5",
-          "base_label": "sRoute5_LeafGreen",
+          "map": "MAP_ROUTE33",
+          "base_label": "sRoute33_LeafGreen",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [

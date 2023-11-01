@@ -1,0 +1,84 @@
+// Characters
+const LOCALID_JOEY = 1
+
+// Variables' aliases
+const PLAYER_X_COORD = VAR_TEMP_1
+const PLAYER_Y_COORD = VAR_TEMP_2
+
+mapscripts Route33_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION: Route33_EventScript_OnTransition
+}
+
+script Route33_EventScript_OnTransition {
+    if (var(VAR_MAP_SCENE_ROUTE33) == 1) {
+        # Move Joey to where he should be at the start of tutorial on catching Pokémon.
+        call(Route33_EventScript_PlaceJoeyForCatchingTutorial)
+    }
+}
+
+// Move Joey closer to tall grass for the tutorial on catching Pokémon.
+script(local) Route33_EventScript_PlaceJoeyForCatchingTutorial {
+    setobjectxyperm(LOCALID_JOEY, 54, 15)
+    setobjectmovementtype(LOCALID_JOEY, MOVEMENT_TYPE_FACE_DOWN)
+}
+
+// This script is execute when the player interacts with Joey.
+script Route33_EventScript_Joey {
+    if (var(VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER) <= 2) {
+        msgbox(Route33_Text_Joey_BugsyIsWaiting, MSGBOX_NPC)
+    } else {
+        msgbox(Route33_Text_Joey_BringYourPokedexHere, MSGBOX_NPC)
+    }
+}
+
+// This script is executed when the player attempts to run past Joey before the tutorial on Pokémon Center.
+// It also prevents the player to run past Joey before finding the Pokédex.
+script Route33_EventScript_Joey_Trigger {
+    lockall
+    # The same script is triggered from two different positions.
+    # Depending on the position, Joey has to turn South or North to face Player.
+    getplayerxy(PLAYER_X_COORD, PLAYER_Y_COORD)
+    if (var(PLAYER_Y_COORD) < 13) {
+        turnobject(LOCALID_JOEY, DIR_NORTH)
+    } else {
+        turnobject(LOCALID_JOEY, DIR_SOUTH)
+    }
+    applymovement(LOCALID_JOEY, Route33_Movement_ExclamationMark)
+    playse(SE_PIN)
+    waitmovement(LOCALID_JOEY)
+    waitse
+    delay(90)
+    if (var(VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER) <= 2) {
+        msgbox(Route33_Text_Joey_BlockRoadBugsyIsWaiting, MSGBOX_DEFAULT)
+    } else {
+        msgbox(Route33_Text_Joey_BringYourPokedexHere, MSGBOX_DEFAULT)
+    }
+    closemessage
+    applymovement(OBJ_EVENT_ID_PLAYER, Route33_Movement_ForcePlayerToTheRight)
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+    turnobject(LOCALID_JOEY, DIR_WEST)
+    releaseall
+}
+
+movement Route33_Movement_ExclamationMark {
+    emote_exclamation_mark
+}
+
+movement Route33_Movement_ForcePlayerToTheRight {
+    walk_right * 2
+}
+
+// TODO: Add description comment
+script Route33_EventScript_CatchingTutorialScene {
+    lockall
+    # TODO: Start tutorial on catching Pokémon
+    msgbox("AAAAAAAAAAAAAAAAAAAAAAAAA")
+    closemessage
+    releaseall
+}
+
+// This script is executed when the player reads the sign explaining how ledges work.
+script Route33_EventScript_Sign_Ledges {
+    # TODO: Create proper text.
+    msgbox("TRAINER TIPS!\nAAAAAAAAAAAAAAAA")
+}

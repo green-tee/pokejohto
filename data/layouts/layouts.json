@@ -314,16 +314,16 @@
       "blockdata_filepath": "data/layouts/PewterCity_Gym/map.bin"
     },
     {
-      "id": "LAYOUT_FOUR_ISLAND_LORELEIS_HOUSE",
-      "name": "FourIsland_LoreleisHouse_Layout",
-      "width": 11,
+      "id": "LAYOUT_SANDALINE_COLONY_RADIOSA_HOSTEL_GF",
+      "name": "SandalineColony_RadiosaHostel_GF_Layout",
+      "width": 12,
       "height": 9,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_SafariZoneBuilding",
-      "border_filepath": "data/layouts/FourIsland_LoreleisHouse/border.bin",
-      "blockdata_filepath": "data/layouts/FourIsland_LoreleisHouse/map.bin"
+      "secondary_tileset": "gTileset_BurgledHouse",
+      "border_filepath": "data/layouts/SandalineColony_RadiosaHostel_GF/border.bin",
+      "blockdata_filepath": "data/layouts/SandalineColony_RadiosaHostel_GF/map.bin"
     },
     {
       "id": "LAYOUT_THREE_ISLAND_HOUSE1",
@@ -902,16 +902,16 @@
       "blockdata_filepath": "data/layouts/Route4/map.bin"
     },
     {
-      "id": "LAYOUT_ROUTE5",
-      "name": "Route5_Layout",
+      "id": "LAYOUT_ROUTE33",
+      "name": "Route33_Layout",
       "width": 70,
       "height": 32,
       "border_width": 2,
       "border_height": 4,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_CeruleanCity",
-      "border_filepath": "data/layouts/Route5/border.bin",
-      "blockdata_filepath": "data/layouts/Route5/map.bin"
+      "border_filepath": "data/layouts/Route33/border.bin",
+      "blockdata_filepath": "data/layouts/Route33/map.bin"
     },
     {
       "id": "LAYOUT_ROUTE6",
@@ -3098,16 +3098,16 @@
       "blockdata_filepath": "data/layouts/ViridianCity_House/map.bin"
     },
     {
-      "id": "LAYOUT_FOUR_ISLAND_POKEMON_DAY_CARE",
-      "name": "FourIsland_PokemonDayCare_Layout",
+      "id": "LAYOUT_SANDALINE_COLONY_RADIOSA_HOSTEL_1F",
+      "name": "SandalineColony_RadiosaHostel_1F_Layout",
       "width": 12,
       "height": 9,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_FanClubDaycare",
-      "border_filepath": "data/layouts/FourIsland_PokemonDayCare/border.bin",
-      "blockdata_filepath": "data/layouts/FourIsland_PokemonDayCare/map.bin"
+      "secondary_tileset": "gTileset_BurgledHouse",
+      "border_filepath": "data/layouts/SandalineColony_RadiosaHostel_1F/border.bin",
+      "blockdata_filepath": "data/layouts/SandalineColony_RadiosaHostel_1F/map.bin"
     },
     {
       "id": "LAYOUT_SEAFOAM_ISLANDS_B3F_CURRENT_STOPPED",

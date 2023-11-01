@@ -129,7 +129,7 @@
 // Map Scene
 #define VAR_MAP_SCENE_ROUTE_OASIS                                              0x4050
 #define VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER                              0x4051
-#define VAR_MAP_SCENE_CERULEAN_CITY_RIVAL                                      0x4052
+#define VAR_MAP_SCENE_ROUTE33                                                  0x4052
 #define VAR_VERMILION_CITY_TICKET_CHECK_TRIGGER                                0x4053
 #define VAR_MAP_SCENE_ROUTE22                                                  0x4054
 #define VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB                           0x4055

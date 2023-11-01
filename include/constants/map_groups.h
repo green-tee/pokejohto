@@ -223,7 +223,7 @@
 #define MAP_ROUTE2                               (20 | (3 << 8))
 #define MAP_ROUTE3                               (21 | (3 << 8))
 #define MAP_ROUTE4                               (22 | (3 << 8))
-#define MAP_ROUTE5                               (23 | (3 << 8))
+#define MAP_ROUTE33                              (23 | (3 << 8))
 #define MAP_ROUTE_OASIS                          (24 | (3 << 8))
 #define MAP_ROUTE7                               (25 | (3 << 8))
 #define MAP_ROUTE8                               (26 | (3 << 8))
@@ -477,14 +477,14 @@
 #define MAP_THREE_ISLAND_HOUSE5            (7 | (34 << 8))
 
 // gMapGroup_IndoorSandalineColony
-#define MAP_FOUR_ISLAND_POKEMON_DAY_CARE    (0 | (35 << 8))
-#define MAP_SANDALINE_COLONY_POKEMON_CENTER (1 | (35 << 8))
-#define MAP_FOUR_ISLAND_POKEMON_CENTER_2F   (2 | (35 << 8))
-#define MAP_FOUR_ISLAND_HOUSE1              (3 | (35 << 8))
-#define MAP_FOUR_ISLAND_LORELEIS_HOUSE      (4 | (35 << 8))
-#define MAP_FOUR_ISLAND_HARBOR              (5 | (35 << 8))
-#define MAP_FOUR_ISLAND_HOUSE2              (6 | (35 << 8))
-#define MAP_SANDALINE_COLONY_MART           (7 | (35 << 8))
+#define MAP_SANDALINE_COLONY_RADIOSA_HOSTEL_1F (0 | (35 << 8))
+#define MAP_SANDALINE_COLONY_POKEMON_CENTER    (1 | (35 << 8))
+#define MAP_FOUR_ISLAND_POKEMON_CENTER_2F      (2 | (35 << 8))
+#define MAP_FOUR_ISLAND_HOUSE1                 (3 | (35 << 8))
+#define MAP_SANDALINE_COLONY_RADIOSA_HOSTEL_GF (4 | (35 << 8))
+#define MAP_FOUR_ISLAND_HARBOR                 (5 | (35 << 8))
+#define MAP_FOUR_ISLAND_HOUSE2                 (6 | (35 << 8))
+#define MAP_SANDALINE_COLONY_MART              (7 | (35 << 8))
 
 // gMapGroup_IndoorFiveIsland
 #define MAP_FIVE_ISLAND_POKEMON_CENTER_1F (0 | (36 << 8))

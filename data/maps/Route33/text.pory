@@ -1,0 +1,24 @@
+text Route33_Text_Joey_BugsyIsWaiting {
+    "{COLOR BLUE}Joey: Bugsy is waiting for you\n"
+    "inside the Pokémon Center.\l"
+    "You're way off track here!"
+}
+
+text Route33_Text_Joey_BlockRoadBugsyIsWaiting {
+    "{COLOR BLUE}Joey: {PLAYER}, are you looking\n"
+    "for Bugsy?\p"
+    "He's waiting for you inside the\n"
+    "Pokémon Center.\l"
+    "You're way off track here!"
+}
+
+text Route33_Text_Joey_BringYourPokedexHere {
+    "{COLOR BLUE}Joey: Hey, didn't you receive\n"
+    "a Pokédex when you arrived here?\p"
+    "You told me that you're staying\n"
+    "at Radiosa Hostel. Have you left\l"
+    "your brand new Pokédex there?\p"
+    "I want to show you something\n"
+    "important, but it'd be pretty\l"
+    "cool if you had it with you!"
+}

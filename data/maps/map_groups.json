@@ -262,7 +262,7 @@
     "Route2",
     "Route3",
     "Route4",
-    "Route5",
+    "Route33",
     "RouteOasis",
     "Route7",
     "Route8",
@@ -516,11 +516,11 @@
     "ThreeIsland_House5"
   ],
   "gMapGroup_IndoorSandalineColony": [
-    "FourIsland_PokemonDayCare",
+    "SandalineColony_RadiosaHostel_1F",
     "SandalineColony_PokemonCenter",
     "FourIsland_PokemonCenter_2F",
     "FourIsland_House1",
-    "FourIsland_LoreleisHouse",
+    "SandalineColony_RadiosaHostel_GF",
     "FourIsland_Harbor",
     "FourIsland_House2",
     "SandalineColony_Mart"

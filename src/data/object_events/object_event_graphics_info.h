@@ -1843,12 +1843,12 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TownMap = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Pokedex = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_BUGSY,
+    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_FUCHS,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 128,
     .width = 16,
     .height = 16,
-    .paletteSlot = 2,
+    .paletteSlot = 7,
     .shadowSize = SHADOW_SIZE_S,
     .inanimate = TRUE,
     .disableReflectionPaletteLoad = FALSE,

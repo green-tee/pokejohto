@@ -11,6 +11,7 @@ script SandalineColony_RadiosaHostel_1F_EventScript_Pokedex {
         # If Player has already completed the tutorial on Pokémon Center, unlock tutorial on catching Pokémon.
         if (var(VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER > 2)) {
             setvar(VAR_MAP_SCENE_ROUTE33, 1)
+            clearflag(FLAG_HIDE_ROUTE33_GEODUDE)
         }
     }
     closemessage

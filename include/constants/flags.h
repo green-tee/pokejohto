@@ -52,8 +52,8 @@
 #define FLAG_HIDE_JOEY_IN_ROUTE_OASIS                      0x02C // Hide Joey after intro is over
 #define FLAG_HIDE_BUGSY_IN_SANDALINE_MART                  0x02D // Hide Bugsy after finding him
 #define FLAG_HIDE_BUGSY_IN_SANDALINE_POKECENTER            0x02E // Show Bugsy to tour Pokémon Center, hide Bugsy after tour is over
-#define FLAG_HIDE_ROUTE33_JOEY                              0x02F
-#define FLAG_HIDE_HELIX_FOSSIL                             0x030
+#define FLAG_HIDE_ROUTE33_JOEY                             0x02F // Hide Joey after tutorial on catching Pokémon is over
+#define FLAG_HIDE_ROUTE33_GEODUDE                          0x030 // Show Geodude for tutorial on catching Pokémon, hide Geodude after tutorial on catching Pokémon is over
 #define FLAG_HIDE_NUGGET_BRIDGE_ROCKET                     0x031
 #define FLAG_HIDE_BILL_CLEFAIRY                            0x032
 #define FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE                   0x033

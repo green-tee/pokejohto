@@ -1633,6 +1633,14 @@
 	.2byte \quantity
 	.endm
 
+	@ Counts how many units of an item are in the bag. If 'item' isn't a valid item, 0 ir returned.
+	@ The result is stored into 'quantityvar'.
+	.macro countitem item:req, quantityvar:req
+	.byte 0xd5
+	.2byte \item
+	.2byte \quantityvar
+	.endm
+
 
 @ Supplementary
 

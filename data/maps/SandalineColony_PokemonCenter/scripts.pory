@@ -139,6 +139,7 @@ script(local) SandalineColony_PokemonCenter_EventScript_NurseTutorialHeal {
         # If Player has already picked up the Pokédex, unlock tutorial on catching Pokémon.
         if (flag(FLAG_SYS_POKEDEX_GET)) {
             setvar(VAR_MAP_SCENE_ROUTE33, 1)
+            clearflag(FLAG_HIDE_ROUTE33_GEODUDE)
         }
         call(SandalineColony_PokemonCenter_EventScript_EndPokemonCenterTutorial)
     } else {

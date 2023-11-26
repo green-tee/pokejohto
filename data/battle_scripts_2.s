@@ -52,7 +52,7 @@ gBattlescriptsForSafariActions::
 	.4byte BattleScript_LeftoverWallyPrepToThrow
 
 BattleScript_ThrowBall::
-	jumpifbattletype BATTLE_TYPE_OLD_MAN_TUTORIAL, BattleScript_OldManThrowBall
+	jumpifbattletype BATTLE_TYPE_CATCHING_TUTORIAL, BattleScript_OldManThrowBall
 	jumpifbattletype BATTLE_TYPE_POKEDUDE, BattleScript_PokedudeThrowBall
 	printstring STRINGID_PLAYERUSEDITEM
 	handleballthrow

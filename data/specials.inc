@@ -165,7 +165,7 @@ gSpecials::
 	def_special NullFieldSpecial  @ Wall Clock specials
 	def_special NullFieldSpecial
 	def_special NullFieldSpecial
-	def_special StartOldManTutorialBattle
+	def_special StartCatchingTutorialBattle
 	def_special ChangePokemonNickname
 	def_special ChoosePartyMon
 	def_special NullFieldSpecial  @ Berry Blender/Roulette specials

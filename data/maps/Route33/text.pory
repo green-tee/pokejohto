@@ -22,3 +22,63 @@ text Route33_Text_Joey_BringYourPokedexHere {
     "important, but it'd be pretty\l"
     "cool if you had it with you!"
 }
+
+text Route33_Text_Joey_YouWantToGoToBugsysGym {
+    "{COLOR BLUE}Joey: {PLAYER}!\n"
+    "You're heading to Azalea Town to\l"
+    "battle Bugsy in his Gym, right?\p"
+    "It's going to be hard with\n"
+    "{STR_VAR_1} alone, I'll tell ya!\p"
+    "You'll be better off knowing how\n"
+    "to catch more Pokémon."
+}
+
+text Route33_Text_TrainerTipsLedges {
+    "TRAINER TIPS!\n"
+    "Jump from a one-way ledge to\l"
+    "reach hidden areas or take\l"
+    "little shortcuts. But don't be\l"
+    "too hasty! Once you've jumped\l"
+    "off it, there's no jumping back!"
+}
+
+text Route33_Text_Joey_ThereIsAGeodude {
+    "{COLOR BLUE}Joey: Look! That's a Geodude\n"
+    "over there! It's rare to see one\l"
+    "on this Route!"
+}
+
+text Route33_Text_Joey_JustWatch {
+    "{COLOR BLUE}Joey: Just watch!"
+}
+
+text Route33_Text_Joey_Yell {
+    "{COLOR BLUE}Joey: HEEEEEEEEERE!!!!!"
+}
+
+text Route33_Text_Joey_ThisIsHowYouCatch {
+    "{COLOR BLUE}Joey: See? This is how you catch\n"
+    "wild Pokémon. Throw a Poké Ball\l"
+    "at them and hope it stays shut!\p"
+    "But let me tell ya, it's a lot\n"
+    "easier to catch Pokémon that\l"
+    "have been weakened, than to\l"
+    "catch Pokémon in mint condition."
+}
+
+text Route33_Text_CatchEasierExplanation {
+    "Wild Pokémon with few HPs left\n"
+    "are easier to catch. Poké Balls\l"
+    "thrown at them have a higher\l"
+    "chance of success.\p"
+    "To maximize your odds, try to\n"
+    "deal damage until the Pokémon\l"
+    "you want to catch is left with\l"
+    "just 1 HP.\p"
+    "Inflicting a Status Condition on\n"
+    "a wild Pokémon will raise your\l"
+    "chances even more.\p"
+    "Be careful not to knock it out,\n"
+    "because fainting a wild Pokémon\l"
+    "will end the battle instantly."
+}

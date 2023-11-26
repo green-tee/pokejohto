@@ -288,12 +288,12 @@ static void DoTrainerBattle(void)
     IncrementGameStat(GAME_STAT_TRAINER_BATTLES);
 }
 
-void StartOldManTutorialBattle(void)
+void StartCatchingTutorialBattle(void)
 {
-    CreateMaleMon(&gEnemyParty[0], SPECIES_WEEDLE, 5);
+    CreateMaleMon(&gEnemyParty[0], SPECIES_GEODUDE, 5);
     LockPlayerFieldControls();
     gMain.savedCallback = CB2_ReturnToFieldContinueScriptPlayMapMusic;
-    gBattleTypeFlags = BATTLE_TYPE_OLD_MAN_TUTORIAL;
+    gBattleTypeFlags = BATTLE_TYPE_CATCHING_TUTORIAL;
     CreateBattleStartTask(B_TRANSITION_SLICED_SCREEN, 0);
 }
 

@@ -174,6 +174,7 @@ SandalineColony_PokemonCenter_EventScript_NurseTutorialHeal_4:
 
 SandalineColony_PokemonCenter_EventScript_NurseTutorialHeal_5:
 	setvar VAR_MAP_SCENE_ROUTE33, 1
+	clearflag FLAG_HIDE_ROUTE33_GEODUDE
 	goto SandalineColony_PokemonCenter_EventScript_NurseTutorialHeal_4
 
 

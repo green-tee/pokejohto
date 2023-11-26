@@ -151,7 +151,7 @@ static void Task_ItemContext_Deposit(u8 taskId);
 static void Task_SelectQuantityToDeposit(u8 taskId);
 static void Task_TryDoItemDeposit(u8 taskId);
 static bool8 BagIsTutorial(void);
-static void Task_Bag_OldManTutorial(u8 taskId);
+static void Task_Bag_CatchingTutorial(u8 taskId);
 static void Task_Pokedude_FadeFromBag(u8 taskId);
 static void Task_Pokedude_WaitFadeAndExitBag(u8 taskId);
 static void Task_Bag_TeachyTvRegister(u8 taskId);
@@ -610,7 +610,7 @@ static u8 CreateBagInputHandlerTask(u8 location)
     switch (location)
     {
     case ITEMMENULOCATION_OLD_MAN:
-        return CreateTask(Task_Bag_OldManTutorial, 0);
+        return CreateTask(Task_Bag_CatchingTutorial, 0);
     case ITEMMENULOCATION_TTVSCR_REGISTER:
         return CreateTask(Task_Bag_TeachyTvRegister, 0);
     case ITEMMENULOCATION_TTVSCR_TMS:
@@ -2106,7 +2106,7 @@ void InitOldManBag(void)
     GoToBagMenu(ITEMMENULOCATION_OLD_MAN, OPEN_BAG_ITEMS, SetCB2ToReshowScreenAfterMenu2);
 }
 
-static void Task_Bag_OldManTutorial(u8 taskId)
+static void Task_Bag_CatchingTutorial(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
     if (!gPaletteFade.active)

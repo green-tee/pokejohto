@@ -504,6 +504,15 @@ bool8 ScrCmd_checkitemtype(struct ScriptContext * ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_countitem(struct ScriptContext * ctx)
+{
+    u16 itemId = VarGet(ScriptReadHalfword(ctx));
+    u16 *pQuantity = GetVarPointer(ScriptReadHalfword(ctx));
+
+    *pQuantity = CountBagItem(itemId);
+    return FALSE;
+}
+
 bool8 ScrCmd_addpcitem(struct ScriptContext * ctx)
 {
     u16 itemId = VarGet(ScriptReadHalfword(ctx));

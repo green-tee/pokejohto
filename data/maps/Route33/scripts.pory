@@ -1,9 +1,11 @@
 // Characters
 const LOCALID_JOEY = 1
+const LOCALID_GEODUDE = 2
 
 // Variables' aliases
 const PLAYER_X_COORD = VAR_TEMP_1
 const PLAYER_Y_COORD = VAR_TEMP_2
+const POKE_BALLS_IN_BAG = VAR_TEMP_3
 
 mapscripts Route33_MapScripts {
     MAP_SCRIPT_ON_TRANSITION: Route33_EventScript_OnTransition
@@ -68,17 +70,134 @@ movement Route33_Movement_ForcePlayerToTheRight {
     walk_right * 2
 }
 
-// TODO: Add description comment
+// This script starts the scene where the tutorial on catching Pokémon occurs.
 script Route33_EventScript_CatchingTutorialScene {
     lockall
-    # TODO: Start tutorial on catching Pokémon
-    msgbox("AAAAAAAAAAAAAAAAAAAAAAAAA")
+    fadescreenspeed(FADE_TO_BLACK, 0)
+    # Since this script can be triggered from two different positions, the camera must be padded accordingly.
+    call(Route33_EventScript_NormalizeCameraAndPlayer)
+    fadescreenspeed(FADE_FROM_BLACK, 0)
+    bufferspeciesname(STR_VAR_1, VAR_STARTER_MON)
+    msgbox(Route33_Text_Joey_YouWantToGoToBugsysGym)
     closemessage
+    delay(30)
+    applymovement(LOCALID_JOEY, Route33_Movement_TurnToGeodude)
+    waitmovement(LOCALID_JOEY)
+    msgbox(Route33_Text_Joey_ThereIsAGeodude)
+    closemessage
+    applymovement(OBJ_EVENT_ID_PLAYER, Route33_Movement_TurnToGeodude)
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+    special(SpawnCameraObject)
+    applymovement(OBJ_EVENT_ID_CAMERA, Route33_Movement_PadCameraToGeodude)
+    waitmovement(OBJ_EVENT_ID_CAMERA)
+    special(RemoveCameraObject)
+    applymovement(LOCALID_JOEY, Route33_Movement_Joey_TurnToPlayer)
+    waitmovement(LOCALID_JOEY)
+    msgbox(Route33_Text_Joey_JustWatch)
+    closemessage
+    turnobject(LOCALID_JOEY, DIR_SOUTH)
+    fadeoutbgm(4)
+    playse(SE_SUPER_EFFECTIVE)
+    msgbox(Route33_Text_Joey_Yell)
+    waitse
+    closemessage
+    setobjectmovementtype(LOCALID_GEODUDE, MOVEMENT_TYPE_FACE_UP)
+    playse(SE_PIN)
+    applymovement(LOCALID_GEODUDE, Route33_Movement_Geodude_Surprise)
+    waitse
+    waitmovement(LOCALID_GEODUDE)
+    delay(30)
+    playmoncry(SPECIES_GEODUDE, CRY_MODE_NORMAL)
+    waitmoncry
+    special(SpawnCameraObject)
+    applymovement(OBJ_EVENT_ID_CAMERA, Route33_Movement_PadCameraBackFromGeodude)
+    applymovement(LOCALID_GEODUDE, Route33_Movement_Geodude_Attack)
+    waitmovement(LOCALID_GEODUDE)
+    waitmovement(OBJ_EVENT_ID_CAMERA)
+    special(RemoveCameraObject)
+    setflag(FLAG_HIDE_ROUTE33_GEODUDE)
+    special(StartCatchingTutorialBattle)
+    waitstate
+    turnobject(LOCALID_JOEY, DIR_EAST)
+    delay(6)
+    turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+    msgbox(Route33_Text_Joey_ThisIsHowYouCatch)
+    closemessage
+    msgbox(Route33_Text_CatchEasierExplanation)
+    closemessage
+    call(Route33_EventScript_GiveSomePokeBallsToPlayer)
+    setvar(VAR_MAP_SCENE_ROUTE33, 2)
     releaseall
+}
+
+// This script sets Player's position and the camera to a fixed location.
+// The tutorial on catching Pokémon can be triggered from two different positions.
+// This script makes it so that it looks the same whatever spot the player trigggered the script from.
+script(local) Route33_EventScript_NormalizeCameraAndPlayer {
+    getplayerxy(PLAYER_X_COORD, PLAYER_Y_COORD)
+    setobjectxy(OBJ_EVENT_ID_PLAYER, 55, 15)
+    special(SpawnCameraObject)
+    if (var(PLAYER_X_COORD) < 55) {
+        applymovement(OBJ_EVENT_ID_CAMERA, Route33_Movement_FixCameraDownRight)
+    } else {
+        applymovement(OBJ_EVENT_ID_CAMERA, Route33_Movement_FixCameraDown)
+    }
+    waitmovement(OBJ_EVENT_ID_CAMERA)
+    special(RemoveCameraObject)
+    turnobject(LOCALID_JOEY, DIR_EAST)
+    turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+}
+
+movement Route33_Movement_FixCameraDown {
+    walk_faster_down
+}
+
+movement Route33_Movement_FixCameraDownRight {
+    walk_faster_right
+    walk_faster_down
+}
+
+movement Route33_Movement_TurnToGeodude {
+    walk_in_place_slow_down
+}
+
+movement Route33_Movement_PadCameraToGeodude {
+    walk_slower_down * 3
+}
+
+movement Route33_Movement_Joey_TurnToPlayer {
+    walk_in_place_right
+}
+
+movement Route33_Movement_Geodude_Surprise {
+    face_up_fast
+    emote_exclamation_mark
+}
+
+movement Route33_Movement_Geodude_Attack {
+    walk_faster_up * 2
+}
+
+movement Route33_Movement_PadCameraBackFromGeodude {
+    walk_faster_up * 3
+}
+
+// This script counts how many vanilla Poké Balls the player has.
+// Joey will say different things depending on how many the player has.
+// If the player has less than 15, Joey gives some so that the player will have 20.
+script(local) Route33_EventScript_GiveSomePokeBallsToPlayer {
+    countitem(ITEM_POKE_BALL, POKE_BALLS_IN_BAG)
+    # TODO: Add dialog to Joey and give Poké Balls to the player.
+    if (var(POKE_BALLS_IN_BAG) == 0) {
+        # Joey points out that Player has no Poké Balls
+    } elif (var(POKE_BALLS_IN_BAG) < 15) {
+        # Joey points out that Player has some Poké Balls
+    } else {
+        # joey will give no Poké Balls
+    }
 }
 
 // This script is executed when the player reads the sign explaining how ledges work.
 script Route33_EventScript_Sign_Ledges {
-    # TODO: Create proper text.
-    msgbox("TRAINER TIPS!\nAAAAAAAAAAAAAAAA")
+    msgbox(Route33_Text_TrainerTipsLedges, MSGBOX_SIGN)
 }

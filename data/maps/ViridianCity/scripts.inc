@@ -140,7 +140,7 @@ ViridianCity_EventScript_TutorialUnused::
 	msgbox ViridianCity_Text_ThatWasEducationalTakeThis
 	goto_if_questlog EventScript_ReleaseEnd
 	special QuestLog_CutRecording
-	special StartOldManTutorialBattle
+	special StartCatchingTutorialBattle
 	waitstate
 	release
 	end
@@ -230,7 +230,7 @@ ViridianCity_EventScript_DoTutorialBattle::
 	closemessage
 	goto_if_questlog EventScript_ReleaseEnd
 	special QuestLog_CutRecording
-	special StartOldManTutorialBattle
+	special StartCatchingTutorialBattle
 	waitstate
 	lock
 	faceplayer

@@ -22,5 +22,6 @@ SandalineColony_RadiosaHostel_1F_EventScript_Pokedex_2:
 
 SandalineColony_RadiosaHostel_1F_EventScript_Pokedex_4:
 	setvar VAR_MAP_SCENE_ROUTE33, 1
+	clearflag FLAG_HIDE_ROUTE33_GEODUDE
 	goto SandalineColony_RadiosaHostel_1F_EventScript_Pokedex_1
 

@@ -116,6 +116,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Pidgeot;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Jigglypuff;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Pidgey;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Chansey;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Geodude;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Omanyte;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kangaskhan;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Pikachu;
@@ -272,6 +273,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_JIGGLYPUFF]               = &gObjectEventGraphicsInfo_Jigglypuff,
     [OBJ_EVENT_GFX_PIDGEY]                   = &gObjectEventGraphicsInfo_Pidgey,
     [OBJ_EVENT_GFX_CHANSEY]                  = &gObjectEventGraphicsInfo_Chansey,
+    [OBJ_EVENT_GFX_GEODUDE]                  = &gObjectEventGraphicsInfo_Geodude,
+    [OBJ_EVENT_GFX_AAAAAAA]                  = &gObjectEventGraphicsInfo_Omanyte, // I'd put NULL here but I'll leave it like this just to be safe
     [OBJ_EVENT_GFX_OMANYTE]                  = &gObjectEventGraphicsInfo_Omanyte,
     [OBJ_EVENT_GFX_KANGASKHAN]               = &gObjectEventGraphicsInfo_Kangaskhan,
     [OBJ_EVENT_GFX_PIKACHU]                  = &gObjectEventGraphicsInfo_Pikachu,

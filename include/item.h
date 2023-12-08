@@ -45,6 +45,7 @@ void GetBerryCountString(u8 *dst, const u8 *berryName, u32 quantity);
 void CopyItemName(u16 itemId, u8 *string);
 void CopyItemNameHandlePlural(u16 itemId, u8 *string, u32 quantity);
 bool8 IsBagPocketNonEmpty(u8 pocket);
+u16 CountBagItem(u16 itemId);
 bool8 CheckBagHasItem(u16 itemId, u16 count);
 bool8 CheckBagHasSpace(u16 itemId, u16 count);
 bool8 RemoveBagItem(u16 itemId, u16 count);

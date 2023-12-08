@@ -1,5 +1,5 @@
 RouteOasis_Text_Bugsy_YouWantToBecomeATrainer::
-	.string "{COLOR GREEN}Bugsy: So, {PLAYER}...\p"
+	.string "{COLOR GREEN}Bugsy: So, {PLAYER}…\p"
 	.string "Since you want to take on the\n"
 	.string "Gyms' Challenge, it's time\l"
 	.string "you're given your first\l"
@@ -117,10 +117,10 @@ RouteOasis_Text_Joey_WhichOneShouldIPick::
 RouteOasis_Text_Joey_AdvantageOverPlayerOrOverBugsy::
 	.string "{COLOR BLUE}Joey: If I pick {STR_VAR_2}, I'll\n"
 	.string "have an advantage over\l"
-	.string "{PLAYER}'s {STR_VAR_1}...\p"
+	.string "{PLAYER}'s {STR_VAR_1}…\p"
 	.string "But if I go with {STR_VAR_3},\n"
 	.string "I can knock out Bugsy's\l"
-	.string "{STR_VAR_2} with ease...$"
+	.string "{STR_VAR_2} with ease…$"
 
 RouteOasis_Text_Joey_IllTakeThisOne::
 	.string "{COLOR BLUE}Joey: Do I even need to ask?\n"
@@ -179,7 +179,7 @@ RouteOasis_Text_Joey_AfterHeLoses::
 	.string "Did you notice that your Pokémon\n"
 	.string "has become stronger?\l"
 	.string "That's right, defeating other\l"
-	.string "Pokémon is the key to... well,\l"
+	.string "Pokémon is the key to… well,\l"
 	.string "defeat even more Pokémon!\p"
 	.string "To win battles more easily, you\n"
 	.string "have to win battles that you can\l"

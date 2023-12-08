@@ -151,7 +151,7 @@ static void Task_ItemContext_Deposit(u8 taskId);
 static void Task_SelectQuantityToDeposit(u8 taskId);
 static void Task_TryDoItemDeposit(u8 taskId);
 static bool8 BagIsTutorial(void);
-static void Task_Bag_OldManTutorial(u8 taskId);
+static void Task_Bag_CatchingTutorial(u8 taskId);
 static void Task_Pokedude_FadeFromBag(u8 taskId);
 static void Task_Pokedude_WaitFadeAndExitBag(u8 taskId);
 static void Task_Bag_TeachyTvRegister(u8 taskId);
@@ -276,7 +276,7 @@ static const TaskFunc sItemContextTaskFuncs[] = {
     [ITEMMENULOCATION_ITEMPC] = Task_ItemContext_Deposit,
     [ITEMMENULOCATION_PCBOX]  = Task_ItemContext_PcBoxGive,
     [ITEMMENULOCATION_BATTLE] = Task_ItemContext_FieldOrBattle,
-    [ITEMMENULOCATION_OLD_MAN] = NULL
+    [ITEMMENULOCATION_JOEY] = NULL
 };
 
 static const struct YesNoFuncTable sYesNoMenu_Toss = {
@@ -331,7 +331,7 @@ void GoToBagMenu(u8 location, u8 pocket, MainCallback bagCallback)
         sBagMenuDisplay->pocketSwitchArrowsTask = 0xFF;
         if (location == ITEMMENULOCATION_ITEMPC)
             sBagMenuDisplay->pocketSwitchMode = 1;
-        else if (location == ITEMMENULOCATION_OLD_MAN)
+        else if (location == ITEMMENULOCATION_JOEY)
             sBagMenuDisplay->pocketSwitchMode = 2;
         else
             sBagMenuDisplay->pocketSwitchMode = 0;
@@ -609,8 +609,8 @@ static u8 CreateBagInputHandlerTask(u8 location)
 {
     switch (location)
     {
-    case ITEMMENULOCATION_OLD_MAN:
-        return CreateTask(Task_Bag_OldManTutorial, 0);
+    case ITEMMENULOCATION_JOEY:
+        return CreateTask(Task_Bag_CatchingTutorial, 0);
     case ITEMMENULOCATION_TTVSCR_REGISTER:
         return CreateTask(Task_Bag_TeachyTvRegister, 0);
     case ITEMMENULOCATION_TTVSCR_TMS:
@@ -1364,7 +1364,7 @@ static void OpenContextMenu(u8 taskId)
             sContextMenuNumItems = 1;
         }
         break;
-    case ITEMMENULOCATION_OLD_MAN:
+    case ITEMMENULOCATION_JOEY:
     case ITEMMENULOCATION_TTVSCR_CATCHING:
         sContextMenuItemsPtr = sContextMenuItems_BattleUse;
         sContextMenuNumItems = 2;
@@ -2051,7 +2051,7 @@ bool8 UseRegisteredKeyItemOnField(void)
 static bool8 BagIsTutorial(void)
 {
     if (
-        gBagMenuState.location == ITEMMENULOCATION_OLD_MAN 
+        gBagMenuState.location == ITEMMENULOCATION_JOEY 
      || gBagMenuState.location == ITEMMENULOCATION_TTVSCR_CATCHING 
      || gBagMenuState.location == ITEMMENULOCATION_TTVSCR_STATUS 
      || gBagMenuState.location == ITEMMENULOCATION_TTVSCR_REGISTER 
@@ -2098,15 +2098,17 @@ static void RestorePlayerBag(void)
     Free(sBackupPlayerBag);
 }
 
-void InitOldManBag(void)
+void InitJoeyBag(void)
 {
     BackUpPlayerBag();
     AddBagItem(ITEM_POTION, 1);
-    AddBagItem(ITEM_POKE_BALL, 1);
-    GoToBagMenu(ITEMMENULOCATION_OLD_MAN, OPEN_BAG_ITEMS, SetCB2ToReshowScreenAfterMenu2);
+    AddBagItem(ITEM_POKE_BALL, 31);
+    AddBagItem(ITEM_PREMIER_BALL, 3);
+    AddBagItem(ITEM_GREAT_BALL, 6);
+    GoToBagMenu(ITEMMENULOCATION_JOEY, OPEN_BAG_ITEMS, SetCB2ToReshowScreenAfterMenu2);
 }
 
-static void Task_Bag_OldManTutorial(u8 taskId)
+static void Task_Bag_CatchingTutorial(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
     if (!gPaletteFade.active)

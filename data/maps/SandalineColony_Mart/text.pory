@@ -17,7 +17,7 @@ text SandalineColony_Mart_Text_ClerkM_ThatGuyIsWaitingForSomeone {
     "The shelves over there?\p"
     "I swear, I'm sure I've seen him\n"
     "somewhere, but I just can't\l"
-    "remember where..."
+    "remember where…" 
 }
 
 text SandalineColony_Mart_Text_Bugsy_TookYouAWhile {

@@ -2556,7 +2556,7 @@ static void PokedudeAction_PrintVoiceoverMessage(void)
     case 2:
         gBattle_BG0_Y = 0;
         BattleStringExpandPlaceholdersToDisplayedString(GetPokedudeText());
-        BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_OAK_OLD_MAN);
+        BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_OAK_JOEY);
         ++gPokedudeBattlerStates[gActiveBattler]->timer;
         break;
     case 3:
@@ -2617,7 +2617,7 @@ static void PokedudeAction_PrintMessageWithHealthboxPals(void)
         break;
     case 3:
         BattleStringExpandPlaceholdersToDisplayedString(GetPokedudeText());
-        BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_OAK_OLD_MAN);
+        BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_OAK_JOEY);
         ++gPokedudeBattlerStates[gActiveBattler]->timer;
         break;
     case 4:

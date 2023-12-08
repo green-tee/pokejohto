@@ -40,7 +40,7 @@
 #define B_ACTION_SAFARI_BAIT               6
 #define B_ACTION_SAFARI_GO_NEAR            7
 #define B_ACTION_SAFARI_RUN                8
-#define B_ACTION_OLDMAN_THROW              9
+#define B_ACTION_JOEY_THROW                9
 #define B_ACTION_EXEC_SCRIPT               10
 #define B_ACTION_TRY_FINISH                11
 #define B_ACTION_FINISHED                  12

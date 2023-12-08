@@ -277,8 +277,8 @@ void SetControllerToSafari(void);
 void SetControllerToPokedude(void);
 void InitPokedudePartyAndOpponent(void);
 
-// oak and old man controller
-void SetControllerToOakOrOldMan(void);
+// oak and joey controller
+void SetControllerToOakOrJoey(void);
 
 // These flags are set to signal that the indicated message
 // was already emitted
@@ -292,12 +292,12 @@ void SetControllerToOakOrOldMan(void);
 //
 #define FIRST_BATTLE_MSG_FLAG_PARTY_MENU     0x8
 
-bool8 BtlCtrl_OakOldMan_TestState2Flag(u8 mask);
-void BtlCtrl_OakOldMan_SetState2Flag(u8 mask);
+bool8 BtlCtrl_OakJoey_TestState2Flag(u8 mask);
+void BtlCtrl_OakJoey_SetState2Flag(u8 mask);
 void PrintOakText_InflictingDamageIsKey(void);
 void PrintOakText_HowDisappointing(void);
 void PrintOakText_OakNoRunningFromATrainer(void);
-void OakOldManHandleInputChooseMove(void);
+void OakJoeyHandleInputChooseMove(void);
 void BtlCtrl_DrawVoiceoverMessageFrame(void);
 void BtlCtrl_RemoveVoiceoverMessageFrame(void);
 

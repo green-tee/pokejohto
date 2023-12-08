@@ -98,8 +98,8 @@ static void InitSinglePlayerBtlControllers(void)
         {
             if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
                 gBattlerControllerFuncs[0] = SetControllerToSafari;
-            else if (gBattleTypeFlags & (BATTLE_TYPE_OLD_MAN_TUTORIAL | BATTLE_TYPE_FIRST_BATTLE))
-                gBattlerControllerFuncs[0] = SetControllerToOakOrOldMan;
+            else if (gBattleTypeFlags & (BATTLE_TYPE_CATCHING_TUTORIAL | BATTLE_TYPE_FIRST_BATTLE))
+                gBattlerControllerFuncs[0] = SetControllerToOakOrJoey;
             else
                 gBattlerControllerFuncs[0] = SetControllerToPlayer;
             gBattlerPositions[0] = B_POSITION_PLAYER_LEFT;

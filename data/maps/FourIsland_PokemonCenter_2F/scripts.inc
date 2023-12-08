@@ -17,3 +17,17 @@ FourIsland_PokemonCenter_2F_EventScript_TradeCenter::
 FourIsland_PokemonCenter_2F_EventScript_RecordCorner::
 	call CableClub_EventScript_RecordCorner
 	end
+
+FourIsland_PokemonCenter_2F_EventScript_TestCountItem::
+	lock
+	faceplayer
+	countitem ITEM_POKE_BALL, VAR_TEMP_1
+	buffernumberstring STR_VAR_1, VAR_TEMP_1
+	msgbox FourIsland_PokemonCenter_2F_EventScript_TestCountItem_Text_0
+	closemessage
+	release
+	return
+
+
+FourIsland_PokemonCenter_2F_EventScript_TestCountItem_Text_0:
+	.string "You have {STR_VAR_1} Poké Balls.$"

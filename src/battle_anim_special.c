@@ -771,7 +771,7 @@ void AnimTask_ThrowBallSpecial(u8 taskId)
     u8 subpriority;
     u8 spriteId;
 
-    if (gBattleTypeFlags & BATTLE_TYPE_OLD_MAN_TUTORIAL)
+    if (gBattleTypeFlags & BATTLE_TYPE_CATCHING_TUTORIAL)
     {
         x = 28;
         y = 11;

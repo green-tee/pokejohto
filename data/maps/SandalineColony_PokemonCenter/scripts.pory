@@ -1,7 +1,7 @@
 // Characters
 const LOCALID_BUGSY = 5
 
-// Variables' alieases
+// Variables' aliases
 const PLAYER_X_COORD = VAR_TEMP_1
 const PLAYER_Y_COORD = VAR_TEMP_2
 
@@ -104,7 +104,7 @@ script(local) SandalineColony_PokemonCenter_EventScript_NurseBeforeTutorial {
     } while (var(VAR_RESULT) != 2)
 }
 
-// This script is executed when the player talkt to the nurse in Bugsy's tutorial.
+// This script is executed when the player talks to the nurse in Bugsy's tutorial.
 // It behaves like the regual nurse script but with differend dialog and no cable club checks.
 script(local) SandalineColony_PokemonCenter_EventScript_NurseTutorialHeal {
     msgbox(SandalineColony_PokemonCenter_Text_Nurse_DoYouWantToHeal, MSGBOX_YESNO)
@@ -136,6 +136,11 @@ script(local) SandalineColony_PokemonCenter_EventScript_NurseTutorialHeal {
         closemessage
         # Set the variable so that the tutorial can finish.
         setvar(VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER, 3)
+        # If Player has already picked up the Pokédex, unlock tutorial on catching Pokémon.
+        if (flag(FLAG_SYS_POKEDEX_GET)) {
+            setvar(VAR_MAP_SCENE_ROUTE33, 1)
+            clearflag(FLAG_HIDE_ROUTE33_GEODUDE)
+        }
         call(SandalineColony_PokemonCenter_EventScript_EndPokemonCenterTutorial)
     } else {
         # The tutorial won't finish until the player has chosen the option to heal.

@@ -11,8 +11,8 @@ MtMoon_B2F_OnTransition::
 	end
 
 MtMoon_B2F_EventScript_ShowFossils::
-	clearflag FLAG_HIDE_DOME_FOSSIL
-	clearflag FLAG_HIDE_HELIX_FOSSIL
+	@clearflag FLAG_HIDE_ROUTE33_JOEY
+	@clearflag FLAG_HIDE_ROUTE33_GEODUDE
 	return
 
 MtMoon_B2F_EventScript_MiguelTrigger::

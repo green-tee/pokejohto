@@ -1,5 +1,5 @@
 text RouteOasis_Text_Bugsy_YouWantToBecomeATrainer {
-    "{COLOR GREEN}Bugsy: So, {PLAYER}...\p"
+    "{COLOR GREEN}Bugsy: So, {PLAYER}…\p"
     "Since you want to take on the\n"
     "Gyms' Challenge, it's time\l"
     "you're given your first\l"
@@ -136,10 +136,10 @@ text RouteOasis_Text_Joey_WhichOneShouldIPick {
 text RouteOasis_Text_Joey_AdvantageOverPlayerOrOverBugsy {
     "{COLOR BLUE}Joey: If I pick {STR_VAR_2}, I'll\n"
     "have an advantage over\l"
-    "{PLAYER}'s {STR_VAR_1}...\p"
+    "{PLAYER}'s {STR_VAR_1}…\p"
     "But if I go with {STR_VAR_3},\n"
     "I can knock out Bugsy's\l"
-    "{STR_VAR_2} with ease..."
+    "{STR_VAR_2} with ease…"
 }
 
 text RouteOasis_Text_Joey_IllTakeThisOne {
@@ -210,7 +210,7 @@ text RouteOasis_Text_Joey_AfterHeLoses {
     "Did you notice that your Pokémon\n"
     "has become stronger?\l"
     "That's right, defeating other\l"
-    "Pokémon is the key to... well,\l"
+    "Pokémon is the key to… well,\l"
     "defeat even more Pokémon!\p"
     "To win battles more easily, you\n"
     "have to win battles that you can\l"

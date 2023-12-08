@@ -93,7 +93,7 @@
 #define VAR_0x402F                         0x402F
 
 #define VAR_ICE_STEP_COUNT                 0x4030
-#define VAR_STARTER_MON                    0x4031 // 0: Bulbasaur, 1: Squirtle, 2: Charmander
+#define VAR_STARTER_MON                    0x4031 // SPECIES_CHIKORITA, SPECIES_CYNDAQUIL, SPECIES_TOTODILE
 #define VAR_0x4032                         0x4032
 #define VAR_ENIGMA_BERRY_AVAILABLE         0x4033
 
@@ -129,7 +129,7 @@
 // Map Scene
 #define VAR_MAP_SCENE_ROUTE_OASIS                                              0x4050
 #define VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER                              0x4051
-#define VAR_MAP_SCENE_CERULEAN_CITY_RIVAL                                      0x4052
+#define VAR_MAP_SCENE_ROUTE33                                                  0x4052
 #define VAR_VERMILION_CITY_TICKET_CHECK_TRIGGER                                0x4053
 #define VAR_MAP_SCENE_ROUTE22                                                  0x4054
 #define VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB                           0x4055

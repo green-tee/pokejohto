@@ -839,7 +839,7 @@ static const u8 sMapFlyDestinations[][3] = {
     [MAPSEC_ROUTE_2             - MAPSECS_KANTO] = {MAP(ROUTE2),                                0},
     [MAPSEC_ROUTE_3             - MAPSECS_KANTO] = {MAP(ROUTE3),                                0},
     [MAPSEC_ROUTE_4             - MAPSECS_KANTO] = {MAP(ROUTE4),                                0},
-    [MAPSEC_ROUTE_5             - MAPSECS_KANTO] = {MAP(ROUTE5),                                0},
+    [MAPSEC_ROUTE_33            - MAPSECS_KANTO] = {MAP(ROUTE33),                               0},
     [MAPSEC_ROUTE_6             - MAPSECS_KANTO] = {MAP(ROUTE_OASIS),                           0},
     [MAPSEC_ROUTE_7             - MAPSECS_KANTO] = {MAP(ROUTE7),                                0},
     [MAPSEC_ROUTE_8             - MAPSECS_KANTO] = {MAP(ROUTE8),                                0},
@@ -3295,7 +3295,7 @@ static void GetPlayerPositionOnRegionMap_HandleOverrides(void)
             sMapCursor->y = 13;
         }
         break;
-    case MAPSEC_ROUTE_5:
+    case MAPSEC_ROUTE_33:
         if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(VIRIDIAN_CITY))
         {
             sMapCursor->x = 14;

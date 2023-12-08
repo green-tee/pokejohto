@@ -109,6 +109,25 @@ bool8 IsPocketNotEmpty(u8 pocketId)
     return FALSE;
 }
 
+u16 CountBagItem(u16 itemId)
+{
+    u8 i;
+    u8 pocket = ItemId_GetPocket(itemId);
+
+    if (pocket == 0) {return 0;}
+
+    --pocket;
+    // Check for item slots that contains the item
+    for (i = 0; i < gBagPockets[pocket].capacity; ++i)
+    {
+        if (gBagPockets[pocket].itemSlots[i].itemId == itemId)
+        {
+            return GetBagItemQuantity(&gBagPockets[pocket].itemSlots[i].quantity);
+        }
+    }
+    return 0;
+}
+
 bool8 CheckBagHasItem(u16 itemId, u16 count)
 {
     u8 i;

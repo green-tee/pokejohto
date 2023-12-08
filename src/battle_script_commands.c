@@ -1005,11 +1005,11 @@ static void Cmd_accuracycheck(void)
     u16 move = T2_READ_16(gBattlescriptCurrInstr + 5);
 
     if ((gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE
-        && !BtlCtrl_OakOldMan_TestState2Flag(1)
+        && !BtlCtrl_OakJoey_TestState2Flag(1)
         && gBattleMoves[move].power != 0
         && GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
      || (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE
-        && !BtlCtrl_OakOldMan_TestState2Flag(2)
+        && !BtlCtrl_OakJoey_TestState2Flag(2)
         && gBattleMoves[move].power == 0
         && GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
      || (gBattleTypeFlags & BATTLE_TYPE_POKEDUDE))
@@ -1195,9 +1195,9 @@ static void Cmd_critcalc(void)
 
     if ((gBattleMons[gBattlerTarget].ability != ABILITY_BATTLE_ARMOR && gBattleMons[gBattlerTarget].ability != ABILITY_SHELL_ARMOR)
      && !(gStatuses3[gBattlerAttacker] & STATUS3_CANT_SCORE_A_CRIT)
-     && !(gBattleTypeFlags & BATTLE_TYPE_OLD_MAN_TUTORIAL)
+     && !(gBattleTypeFlags & BATTLE_TYPE_CATCHING_TUTORIAL)
      && !(Random() % sCriticalHitChance[critChance])
-     && (!(gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE) || BtlCtrl_OakOldMan_TestState2Flag(1))
+     && (!(gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE) || BtlCtrl_OakJoey_TestState2Flag(1))
      && !(gBattleTypeFlags & BATTLE_TYPE_POKEDUDE))
         gCritPercentageMultiplier = 150;
     else
@@ -4519,7 +4519,7 @@ static void Cmd_switchinanim(void)
     if (GetBattlerSide(gActiveBattler) == B_SIDE_OPPONENT
         && !(gBattleTypeFlags & (BATTLE_TYPE_LINK
                                  | BATTLE_TYPE_LEGENDARY
-                                 | BATTLE_TYPE_OLD_MAN_TUTORIAL
+                                 | BATTLE_TYPE_CATCHING_TUTORIAL
                                  | BATTLE_TYPE_POKEDUDE
                                  | BATTLE_TYPE_EREADER_TRAINER
                                  | BATTLE_TYPE_GHOST)))
@@ -9485,11 +9485,11 @@ static void Cmd_handleballthrow(void)
         MarkBattlerForControllerExec(gActiveBattler);
         gBattlescriptCurrInstr = BattleScript_TrainerBallBlock;
     }
-    else if (gBattleTypeFlags & (BATTLE_TYPE_POKEDUDE | BATTLE_TYPE_OLD_MAN_TUTORIAL))
+    else if (gBattleTypeFlags & (BATTLE_TYPE_POKEDUDE | BATTLE_TYPE_CATCHING_TUTORIAL))
     {
         BtlController_EmitBallThrowAnim(BUFFER_A, BALL_3_SHAKES_SUCCESS);
         MarkBattlerForControllerExec(gActiveBattler);
-        gBattlescriptCurrInstr = BattleScript_OldMan_Pokedude_CaughtMessage;
+        gBattlescriptCurrInstr = BattleScript_Joey_Pokedude_CaughtMessage;
     }
     else
     {

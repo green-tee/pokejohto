@@ -1,0 +1,3 @@
+text SandalineColony_RadiosaHostel_GF_Text_Dummy {
+    "throw new CanineDeityException();"
+}

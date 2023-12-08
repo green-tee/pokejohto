@@ -18,66 +18,66 @@
 #include "constants/songs.h"
 #include "constants/items.h"
 
-static void OakOldManHandleGetMonData(void);
-static void OakOldManHandleGetRawMonData(void);
-static void OakOldManHandleSetMonData(void);
-static void OakOldManHandleSetRawMonData(void);
-static void OakOldManHandleLoadMonSprite(void);
-static void OakOldManHandleSwitchInAnim(void);
-static void OakOldManHandleReturnMonToBall(void);
-static void OakOldManHandleDrawTrainerPic(void);
-static void OakOldManHandleTrainerSlide(void);
-static void OakOldManHandleTrainerSlideBack(void);
-static void OakOldManHandleFaintAnimation(void);
-static void OakOldManHandlePaletteFade(void);
-static void OakOldManHandleSuccessBallThrowAnim(void);
-static void OakOldManHandleBallThrowAnim(void);
-static void OakOldManHandlePause(void);
-static void OakOldManHandleMoveAnimation(void);
-static void OakOldManHandlePrintString(void);
-static void OakOldManHandlePrintSelectionString(void);
-static void OakOldManHandleChooseAction(void);
-static void OakOldManHandleUnknownYesNoBox(void);
-static void OakOldManHandleChooseMove(void);
-static void OakOldManHandleChooseItem(void);
-static void OakOldManHandleChoosePokemon(void);
-static void OakOldManHandleCmd23(void);
-static void OakOldManHandleHealthBarUpdate(void);
-static void OakOldManHandleExpUpdate(void);
-static void OakOldManHandleStatusIconUpdate(void);
-static void OakOldManHandleStatusAnimation(void);
-static void OakOldManHandleStatusXor(void);
-static void OakOldManHandleDataTransfer(void);
-static void OakOldManHandleDMA3Transfer(void);
-static void OakOldManHandlePlayBGM(void);
-static void OakOldManHandleCmd32(void);
-static void OakOldManHandleTwoReturnValues(void);
-static void OakOldManHandleChosenMonReturnValue(void);
-static void OakOldManHandleOneReturnValue(void);
-static void OakOldManHandleOneReturnValue_Duplicate(void);
-static void OakOldManHandleCmd37(void);
-static void OakOldManHandleCmd38(void);
-static void OakOldManHandleCmd39(void);
-static void OakOldManHandleCmd40(void);
-static void OakOldManHandleHitAnimation(void);
-static void OakOldManHandleCmd42(void);
-static void OakOldManHandlePlaySE(void);
-static void OakOldManHandlePlayFanfare(void);
-static void OakOldManHandleFaintingCry(void);
-static void OakOldManHandleIntroSlide(void);
-static void OakOldManHandleIntroTrainerBallThrow(void);
-static void OakOldManHandleDrawPartyStatusSummary(void);
-static void OakOldManHandleHidePartyStatusSummary(void);
-static void OakOldManHandleEndBounceEffect(void);
-static void OakOldManHandleSpriteInvisibility(void);
-static void OakOldManHandleBattleAnimation(void);
-static void OakOldManHandleLinkStandbyMsg(void);
-static void OakOldManHandleResetActionMoveSelection(void);
-static void OakOldManHandleCmd55(void);
-static void OakOldManCmdEnd(void);
+static void OakJoeyHandleGetMonData(void);
+static void OakJoeyHandleGetRawMonData(void);
+static void OakJoeyHandleSetMonData(void);
+static void OakJoeyHandleSetRawMonData(void);
+static void OakJoeyHandleLoadMonSprite(void);
+static void OakJoeyHandleSwitchInAnim(void);
+static void OakJoeyHandleReturnMonToBall(void);
+static void OakJoeyHandleDrawTrainerPic(void);
+static void OakJoeyHandleTrainerSlide(void);
+static void OakJoeyHandleTrainerSlideBack(void);
+static void OakJoeyHandleFaintAnimation(void);
+static void OakJoeyHandlePaletteFade(void);
+static void OakJoeyHandleSuccessBallThrowAnim(void);
+static void OakJoeyHandleBallThrowAnim(void);
+static void OakJoeyHandlePause(void);
+static void OakJoeyHandleMoveAnimation(void);
+static void OakJoeyHandlePrintString(void);
+static void OakJoeyHandlePrintSelectionString(void);
+static void OakJoeyHandleChooseAction(void);
+static void OakJoeyHandleUnknownYesNoBox(void);
+static void OakJoeyHandleChooseMove(void);
+static void OakJoeyHandleChooseItem(void);
+static void OakJoeyHandleChoosePokemon(void);
+static void OakJoeyHandleCmd23(void);
+static void OakJoeyHandleHealthBarUpdate(void);
+static void OakJoeyHandleExpUpdate(void);
+static void OakJoeyHandleStatusIconUpdate(void);
+static void OakJoeyHandleStatusAnimation(void);
+static void OakJoeyHandleStatusXor(void);
+static void OakJoeyHandleDataTransfer(void);
+static void OakJoeyHandleDMA3Transfer(void);
+static void OakJoeyHandlePlayBGM(void);
+static void OakJoeyHandleCmd32(void);
+static void OakJoeyHandleTwoReturnValues(void);
+static void OakJoeyHandleChosenMonReturnValue(void);
+static void OakJoeyHandleOneReturnValue(void);
+static void OakJoeyHandleOneReturnValue_Duplicate(void);
+static void OakJoeyHandleCmd37(void);
+static void OakJoeyHandleCmd38(void);
+static void OakJoeyHandleCmd39(void);
+static void OakJoeyHandleCmd40(void);
+static void OakJoeyHandleHitAnimation(void);
+static void OakJoeyHandleCmd42(void);
+static void OakJoeyHandlePlaySE(void);
+static void OakJoeyHandlePlayFanfare(void);
+static void OakJoeyHandleFaintingCry(void);
+static void OakJoeyHandleIntroSlide(void);
+static void OakJoeyHandleIntroTrainerBallThrow(void);
+static void OakJoeyHandleDrawPartyStatusSummary(void);
+static void OakJoeyHandleHidePartyStatusSummary(void);
+static void OakJoeyHandleEndBounceEffect(void);
+static void OakJoeyHandleSpriteInvisibility(void);
+static void OakJoeyHandleBattleAnimation(void);
+static void OakJoeyHandleLinkStandbyMsg(void);
+static void OakJoeyHandleResetActionMoveSelection(void);
+static void OakJoeyHandleCmd55(void);
+static void OakJoeyCmdEnd(void);
 
-static void OakOldManBufferRunCommand(void);
-static void OakOldManBufferExecCompleted(void);
+static void OakJoeyBufferRunCommand(void);
+static void OakJoeyBufferExecCompleted(void);
 static void WaitForMonSelection(void);
 static void CompleteWhenChoseItem(void);
 static void PrintOakText_KeepAnEyeOnHP(void);
@@ -90,94 +90,94 @@ static void Task_PrepareToGiveExpWithExpBar(u8 taskId);
 static void Task_GiveExpWithExpBar(u8 taskId);
 static void Task_UpdateLvlInHealthbox(u8 taskId);
 static void PrintOakTextWithMainBgDarkened(const u8 *text, u8 delay);
-static u32 CopyOakOldManMonData(u8 monId, u8 *dst);
-static void SetOakOldManMonData(u8 monId);
-static void OakOldManDoMoveAnimation(void);
+static u32 CopyOakJoeyMonData(u8 monId, u8 *dst);
+static void SetOakJoeyMonData(u8 monId);
+static void OakJoeyDoMoveAnimation(void);
 static void HandleInputChooseAction(void);
 static void Task_StartSendOutAnim(u8 taskId);
 
-static void (*const sOakOldManBufferCommands[CONTROLLER_CMDS_COUNT])(void) =
+static void (*const sOakJoeyBufferCommands[CONTROLLER_CMDS_COUNT])(void) =
 {
-    OakOldManHandleGetMonData,
-    OakOldManHandleGetRawMonData,
-    OakOldManHandleSetMonData,
-    OakOldManHandleSetRawMonData,
-    OakOldManHandleLoadMonSprite,
-    OakOldManHandleSwitchInAnim,
-    OakOldManHandleReturnMonToBall,
-    OakOldManHandleDrawTrainerPic,
-    OakOldManHandleTrainerSlide,
-    OakOldManHandleTrainerSlideBack,
-    OakOldManHandleFaintAnimation,
-    OakOldManHandlePaletteFade,
-    OakOldManHandleSuccessBallThrowAnim,
-    OakOldManHandleBallThrowAnim,
-    OakOldManHandlePause,
-    OakOldManHandleMoveAnimation,
-    OakOldManHandlePrintString,
-    OakOldManHandlePrintSelectionString,
-    OakOldManHandleChooseAction,
-    OakOldManHandleUnknownYesNoBox,
-    OakOldManHandleChooseMove,
-    OakOldManHandleChooseItem,
-    OakOldManHandleChoosePokemon,
-    OakOldManHandleCmd23,
-    OakOldManHandleHealthBarUpdate,
-    OakOldManHandleExpUpdate,
-    OakOldManHandleStatusIconUpdate,
-    OakOldManHandleStatusAnimation,
-    OakOldManHandleStatusXor,
-    OakOldManHandleDataTransfer,
-    OakOldManHandleDMA3Transfer,
-    OakOldManHandlePlayBGM,
-    OakOldManHandleCmd32,
-    OakOldManHandleTwoReturnValues,
-    OakOldManHandleChosenMonReturnValue,
-    OakOldManHandleOneReturnValue,
-    OakOldManHandleOneReturnValue_Duplicate,
-    OakOldManHandleCmd37,
-    OakOldManHandleCmd38,
-    OakOldManHandleCmd39,
-    OakOldManHandleCmd40,
-    OakOldManHandleHitAnimation,
-    OakOldManHandleCmd42,
-    OakOldManHandlePlaySE,
-    OakOldManHandlePlayFanfare,
-    OakOldManHandleFaintingCry,
-    OakOldManHandleIntroSlide,
-    OakOldManHandleIntroTrainerBallThrow,
-    OakOldManHandleDrawPartyStatusSummary,
-    OakOldManHandleHidePartyStatusSummary,
-    OakOldManHandleEndBounceEffect,
-    OakOldManHandleSpriteInvisibility,
-    OakOldManHandleBattleAnimation,
-    OakOldManHandleLinkStandbyMsg,
-    OakOldManHandleResetActionMoveSelection,
-    OakOldManHandleCmd55,
-    OakOldManCmdEnd,
+    OakJoeyHandleGetMonData,
+    OakJoeyHandleGetRawMonData,
+    OakJoeyHandleSetMonData,
+    OakJoeyHandleSetRawMonData,
+    OakJoeyHandleLoadMonSprite,
+    OakJoeyHandleSwitchInAnim,
+    OakJoeyHandleReturnMonToBall,
+    OakJoeyHandleDrawTrainerPic,
+    OakJoeyHandleTrainerSlide,
+    OakJoeyHandleTrainerSlideBack,
+    OakJoeyHandleFaintAnimation,
+    OakJoeyHandlePaletteFade,
+    OakJoeyHandleSuccessBallThrowAnim,
+    OakJoeyHandleBallThrowAnim,
+    OakJoeyHandlePause,
+    OakJoeyHandleMoveAnimation,
+    OakJoeyHandlePrintString,
+    OakJoeyHandlePrintSelectionString,
+    OakJoeyHandleChooseAction,
+    OakJoeyHandleUnknownYesNoBox,
+    OakJoeyHandleChooseMove,
+    OakJoeyHandleChooseItem,
+    OakJoeyHandleChoosePokemon,
+    OakJoeyHandleCmd23,
+    OakJoeyHandleHealthBarUpdate,
+    OakJoeyHandleExpUpdate,
+    OakJoeyHandleStatusIconUpdate,
+    OakJoeyHandleStatusAnimation,
+    OakJoeyHandleStatusXor,
+    OakJoeyHandleDataTransfer,
+    OakJoeyHandleDMA3Transfer,
+    OakJoeyHandlePlayBGM,
+    OakJoeyHandleCmd32,
+    OakJoeyHandleTwoReturnValues,
+    OakJoeyHandleChosenMonReturnValue,
+    OakJoeyHandleOneReturnValue,
+    OakJoeyHandleOneReturnValue_Duplicate,
+    OakJoeyHandleCmd37,
+    OakJoeyHandleCmd38,
+    OakJoeyHandleCmd39,
+    OakJoeyHandleCmd40,
+    OakJoeyHandleHitAnimation,
+    OakJoeyHandleCmd42,
+    OakJoeyHandlePlaySE,
+    OakJoeyHandlePlayFanfare,
+    OakJoeyHandleFaintingCry,
+    OakJoeyHandleIntroSlide,
+    OakJoeyHandleIntroTrainerBallThrow,
+    OakJoeyHandleDrawPartyStatusSummary,
+    OakJoeyHandleHidePartyStatusSummary,
+    OakJoeyHandleEndBounceEffect,
+    OakJoeyHandleSpriteInvisibility,
+    OakJoeyHandleBattleAnimation,
+    OakJoeyHandleLinkStandbyMsg,
+    OakJoeyHandleResetActionMoveSelection,
+    OakJoeyHandleCmd55,
+    OakJoeyCmdEnd,
 };
 
-static void OakOldManDummy(void)
+static void OakJoeyDummy(void)
 {
 }
 
-void SetControllerToOakOrOldMan(void)
+void SetControllerToOakOrJoey(void)
 {
-    gBattlerControllerFuncs[gActiveBattler] = OakOldManBufferRunCommand;
+    gBattlerControllerFuncs[gActiveBattler] = OakJoeyBufferRunCommand;
     gBattleStruct->simulatedInputState[0] = 0;
     gBattleStruct->simulatedInputState[1] = 0;
     gBattleStruct->simulatedInputState[2] = 0;
     gBattleStruct->simulatedInputState[3] = 0;
 }
 
-static void OakOldManBufferRunCommand(void)
+static void OakJoeyBufferRunCommand(void)
 {
     if (gBattleControllerExecFlags & gBitTable[gActiveBattler])
     {
-        if (gBattleBufferA[gActiveBattler][0] < NELEMS(sOakOldManBufferCommands))
-            sOakOldManBufferCommands[gBattleBufferA[gActiveBattler][0]]();
+        if (gBattleBufferA[gActiveBattler][0] < NELEMS(sOakJoeyBufferCommands))
+            sOakJoeyBufferCommands[gBattleBufferA[gActiveBattler][0]]();
         else
-            OakOldManBufferExecCompleted();
+            OakJoeyBufferExecCompleted();
     }
 }
 
@@ -207,7 +207,7 @@ static void HandleInputChooseAction(void)
             BtlController_EmitTwoReturnValues(1, B_ACTION_RUN, 0);
             break;
         }
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
     }
     else if (JOY_NEW(DPAD_LEFT))
     {
@@ -266,7 +266,7 @@ static void HandleInputChooseAction(void)
             }
             PlaySE(SE_SELECT);
             BtlController_EmitTwoReturnValues(1, B_ACTION_CANCEL_PARTNER, 0);
-            OakOldManBufferExecCompleted();
+            OakJoeyBufferExecCompleted();
         }
     }
     else if (JOY_NEW(START_BUTTON))
@@ -301,7 +301,7 @@ static void SimulateInputChooseAction(void)
             // Open bag
             PlaySE(SE_SELECT);
             BtlController_EmitTwoReturnValues(1, B_ACTION_USE_ITEM, 0);
-            OakOldManBufferExecCompleted();
+            OakJoeyBufferExecCompleted();
         }
         break;
     }
@@ -310,16 +310,16 @@ static void SimulateInputChooseAction(void)
 static void CompleteOnBattlerSpriteCallbackDummy(void)
 {
     if (gSprites[gBattlerSpriteIds[gActiveBattler]].callback == SpriteCallbackDummy)
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
 }
 
 static void CompleteOnInactiveTextPrinter(void)
 {
     if (!IsTextPrinterActive(0))
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManSetBattleEndCallbacks(void)
+static void OakJoeySetBattleEndCallbacks(void)
 {
     if (!gPaletteFade.active)
     {
@@ -332,14 +332,14 @@ static void OakOldManSetBattleEndCallbacks(void)
 static void CompleteOnSpecialAnimDone(void)
 {
     if (!gDoingBattleAnim)
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
 }
 
-void OakOldManHandleInputChooseMove(void)
+void OakJoeyHandleInputChooseMove(void)
 {
     HandleInputChooseMove();
     if (!(gBattleControllerExecFlags & gBitTable[gActiveBattler]))
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
 }
 
 static void OpenPartyMenuToChooseMon(void)
@@ -364,7 +364,7 @@ static void WaitForMonSelection(void)
             BtlController_EmitChosenMonReturnValue(1, gSelectedMonPartyId, gBattlePartyCurrentOrder);
         else
             BtlController_EmitChosenMonReturnValue(1, 6, NULL);
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
     }
 }
 
@@ -378,7 +378,7 @@ static void OpenBagAndChooseItem(void)
         if (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
             CB2_BagMenuFromBattle();
         else
-            InitOldManBag();
+            InitJoeyBag();
     }
 }
 
@@ -386,17 +386,17 @@ static void CompleteWhenChoseItem(void)
 {
     if (gMain.callback2 == BattleMainCB2 && !gPaletteFade.active)
     {
-        if (!BtlCtrl_OakOldMan_TestState2Flag(FIRST_BATTLE_MSG_FLAG_HP_RESTORE)
+        if (!BtlCtrl_OakJoey_TestState2Flag(FIRST_BATTLE_MSG_FLAG_HP_RESTORE)
          && gSpecialVar_ItemId == ITEM_POTION
          && gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
         {
-            BtlCtrl_OakOldMan_SetState2Flag(FIRST_BATTLE_MSG_FLAG_HP_RESTORE);
+            BtlCtrl_OakJoey_SetState2Flag(FIRST_BATTLE_MSG_FLAG_HP_RESTORE);
             gBattlerControllerFuncs[gActiveBattler] = PrintOakText_KeepAnEyeOnHP;
         }
         else
         {
             BtlController_EmitOneReturnValue(1, gSpecialVar_ItemId);
-            OakOldManBufferExecCompleted();
+            OakJoeyBufferExecCompleted();
         }
     }
 }
@@ -619,7 +619,7 @@ static void FreeMonSpriteAfterFaintAnim(void)
         FreeOamMatrix(gSprites[gBattlerSpriteIds[gActiveBattler]].oam.matrixNum);
         DestroySprite(&gSprites[gBattlerSpriteIds[gActiveBattler]]);
         SetHealthboxSpriteInvisible(gHealthboxSpriteIds[gActiveBattler]);
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
     }
 }
 
@@ -650,7 +650,7 @@ static void PrintOakText_ForPetesSake(void)
         break;
     case 2:
         BattleStringExpandPlaceholdersToDisplayedString(gText_ForPetesSake);
-        BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_OAK_OLD_MAN);
+        BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_OAK_JOEY);
         ++gBattleStruct->simulatedInputState[0];
         break;
     case 3:
@@ -669,7 +669,7 @@ static void PrintOakText_ForPetesSake(void)
         if (!gPaletteFade.active)
         {
             BattleStringExpandPlaceholdersToDisplayedString(gText_TheTrainerThat);
-            BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_OAK_OLD_MAN);
+            BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_OAK_JOEY);
             ++gBattleStruct->simulatedInputState[0];
         }
         break;
@@ -689,7 +689,7 @@ static void PrintOakText_ForPetesSake(void)
         if (!gPaletteFade.active)
         {
             BattleStringExpandPlaceholdersToDisplayedString(gText_TryBattling);
-            BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_OAK_OLD_MAN);
+            BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_OAK_JOEY);
             ++gBattleStruct->simulatedInputState[0];
         }
         break;
@@ -710,7 +710,7 @@ static void PrintOakText_ForPetesSake(void)
             DoFreeHealthboxPalsForLevelUp(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT));
             BtlCtrl_RemoveVoiceoverMessageFrame();
             gBattleStruct->simulatedInputState[0] = 0;
-            OakOldManBufferExecCompleted();
+            OakJoeyBufferExecCompleted();
         }
         break;
     }
@@ -773,7 +773,7 @@ static void PrintOakTextWithMainBgDarkened(const u8 *text, u8 delay)
         break;
     case 3:
         BattleStringExpandPlaceholdersToDisplayedString(text);
-        BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_OAK_OLD_MAN);
+        BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_OAK_JOEY);
         ++gBattleStruct->simulatedInputState[0];
         break;
     case 4:
@@ -792,7 +792,7 @@ static void PrintOakTextWithMainBgDarkened(const u8 *text, u8 delay)
         {
             BtlCtrl_RemoveVoiceoverMessageFrame();
             if (GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER)
-                OakOldManBufferExecCompleted();
+                OakJoeyBufferExecCompleted();
             else
                 OpponentBufferExecCompleted();
             gBattleCommunication[MSG_DISPLAY] = 0;
@@ -841,7 +841,7 @@ static void PrintOakText_KeepAnEyeOnHP(void)
         break;
     case 3:
         BattleStringExpandPlaceholdersToDisplayedString(gText_KeepAnEyeOnHP);
-        BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_OAK_OLD_MAN);
+        BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_OAK_JOEY);
         ++gBattleStruct->simulatedInputState[0];
         break;
     case 4:
@@ -872,7 +872,7 @@ static void PrintOakText_KeepAnEyeOnHP(void)
         {
             BtlCtrl_RemoveVoiceoverMessageFrame();
             BtlController_EmitOneReturnValue(1, gSpecialVar_ItemId);
-            OakOldManBufferExecCompleted();
+            OakJoeyBufferExecCompleted();
             gBattleStruct->simulatedInputState[0] = 0;
         }
         break;
@@ -891,14 +891,14 @@ static void CompleteOnHealthbarDone(void)
     else
     {
         HandleLowHpMusicChange(&gPlayerParty[gBattlerPartyIndexes[gActiveBattler]], gActiveBattler);
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
     }
 }
 
 static void CompleteOnInactiveTextPrinter2(void)
 {
     if (!IsTextPrinterActive(0))
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
 }
 
 static void DoHitAnimBlinkSpriteEffect(void)
@@ -910,7 +910,7 @@ static void DoHitAnimBlinkSpriteEffect(void)
         gSprites[spriteId].data[1] = 0;
         gSprites[spriteId].invisible = FALSE;
         gDoingBattleAnim = FALSE;
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
     }
     else
     {
@@ -927,25 +927,25 @@ static void DoSwitchOutAnimation(void)
         FreeSpriteOamMatrix(&gSprites[gBattlerSpriteIds[gActiveBattler]]);
         DestroySprite(&gSprites[gBattlerSpriteIds[gActiveBattler]]);
         SetHealthboxSpriteInvisible(gHealthboxSpriteIds[gActiveBattler]);
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
     }
 }
 
 static void CompleteOnBattlerSpriteCallbackDummy2(void)
 {
     if (gSprites[gBattlerSpriteIds[gActiveBattler]].callback == SpriteCallbackDummy)
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
 }
 
 static void CompleteOnFinishedBattleAnimation(void)
 {
     if (!gBattleSpritesDataPtr->healthBoxesData[gActiveBattler].animFromTableActive)
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManBufferExecCompleted(void)
+static void OakJoeyBufferExecCompleted(void)
 {
-    gBattlerControllerFuncs[gActiveBattler] = OakOldManBufferRunCommand;
+    gBattlerControllerFuncs[gActiveBattler] = OakJoeyBufferRunCommand;
     if (gBattleTypeFlags & BATTLE_TYPE_LINK)
     {
         u8 playerId = GetMultiplayerId();
@@ -962,10 +962,10 @@ static void OakOldManBufferExecCompleted(void)
 static void CompleteOnFinishedStatusAnimation(void)
 {
     if (!gBattleSpritesDataPtr->healthBoxesData[gActiveBattler].statusAnimActive)
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleGetMonData(void)
+static void OakJoeyHandleGetMonData(void)
 {
     u8 monData[sizeof(struct Pokemon) * 2 + 56]; // this allows to get full data of two pokemon, trying to get more will result in overwriting data
     u32 size = 0;
@@ -974,7 +974,7 @@ static void OakOldManHandleGetMonData(void)
 
     if (gBattleBufferA[gActiveBattler][2] == 0)
     {
-        size += CopyOakOldManMonData(gBattlerPartyIndexes[gActiveBattler], monData);
+        size += CopyOakJoeyMonData(gBattlerPartyIndexes[gActiveBattler], monData);
     }
     else
     {
@@ -982,15 +982,15 @@ static void OakOldManHandleGetMonData(void)
         for (i = 0; i < PARTY_SIZE; ++i)
         {
             if (monToCheck & 1)
-                size += CopyOakOldManMonData(i, monData + size);
+                size += CopyOakJoeyMonData(i, monData + size);
             monToCheck >>= 1;
         }
     }
     BtlController_EmitDataTransfer(BUFFER_B, size, monData);
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static u32 CopyOakOldManMonData(u8 monId, u8 *dst)
+static u32 CopyOakJoeyMonData(u8 monId, u8 *dst)
 {
     struct BattlePokemon battleMon;
     struct MovePpInfo moveData;
@@ -1295,19 +1295,19 @@ static u32 CopyOakOldManMonData(u8 monId, u8 *dst)
     return size;
 }
 
-static void OakOldManHandleGetRawMonData(void)
+static void OakJoeyHandleGetRawMonData(void)
 {
     PlayerHandleGetRawMonData();
 }
 
-static void OakOldManHandleSetMonData(void)
+static void OakJoeyHandleSetMonData(void)
 {
     u8 monToCheck;
     u8 i;
 
     if (gBattleBufferA[gActiveBattler][2] == 0)
     {
-        SetOakOldManMonData(gBattlerPartyIndexes[gActiveBattler]);
+        SetOakJoeyMonData(gBattlerPartyIndexes[gActiveBattler]);
     }
     else
     {
@@ -1315,14 +1315,14 @@ static void OakOldManHandleSetMonData(void)
         for (i = 0; i < PARTY_SIZE; ++i)
         {
             if (monToCheck & 1)
-                SetOakOldManMonData(i);
+                SetOakJoeyMonData(i);
             monToCheck >>= 1;
         }
     }
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void SetOakOldManMonData(u8 monId)
+static void SetOakJoeyMonData(u8 monId)
 {
     struct BattlePokemon *battlePokemon = (struct BattlePokemon *)&gBattleBufferA[gActiveBattler][3];
     struct MovePpInfo *moveData = (struct MovePpInfo *)&gBattleBufferA[gActiveBattler][3];
@@ -1539,22 +1539,22 @@ static void SetOakOldManMonData(u8 monId)
     HandleLowHpMusicChange(&gPlayerParty[gBattlerPartyIndexes[gActiveBattler]], gActiveBattler);
 }
 
-static void OakOldManHandleSetRawMonData(void)
+static void OakJoeyHandleSetRawMonData(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleLoadMonSprite(void)
+static void OakJoeyHandleLoadMonSprite(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleSwitchInAnim(void)
+static void OakJoeyHandleSwitchInAnim(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleReturnMonToBall(void)
+static void OakJoeyHandleReturnMonToBall(void)
 {
     if (gBattleBufferA[gActiveBattler][1] == 0)
     {
@@ -1566,11 +1566,11 @@ static void OakOldManHandleReturnMonToBall(void)
         FreeSpriteOamMatrix(&gSprites[gBattlerSpriteIds[gActiveBattler]]);
         DestroySprite(&gSprites[gBattlerSpriteIds[gActiveBattler]]);
         SetHealthboxSpriteInvisible(gHealthboxSpriteIds[gActiveBattler]);
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
     }
 }
 
-static void OakOldManHandleDrawTrainerPic(void)
+static void OakJoeyHandleDrawTrainerPic(void)
 {
     if (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
     {
@@ -1583,11 +1583,11 @@ static void OakOldManHandleDrawTrainerPic(void)
     }
     else
     {
-        DecompressTrainerBackPalette(TRAINER_BACK_PIC_OLD_MAN, gActiveBattler);
-        SetMultiuseSpriteTemplateToTrainerBack(TRAINER_BACK_PIC_OLD_MAN, GetBattlerPosition(gActiveBattler));
+        DecompressTrainerBackPalette(TRAINER_BACK_PIC_LEADER_JOEY, gActiveBattler);
+        SetMultiuseSpriteTemplateToTrainerBack(TRAINER_BACK_PIC_LEADER_JOEY, GetBattlerPosition(gActiveBattler));
         gBattlerSpriteIds[gActiveBattler] = CreateSprite(&gMultiuseSpriteTemplate,
                                                          80,
-                                                         (8 - gTrainerBackPicCoords[TRAINER_BACK_PIC_OLD_MAN].size) * 4 + 80,
+                                                         (8 - gTrainerBackPicCoords[TRAINER_BACK_PIC_LEADER_JOEY].size) * 4 + 80,
                                                          30);
     }
     gSprites[gBattlerSpriteIds[gActiveBattler]].oam.paletteNum = gActiveBattler;
@@ -1597,7 +1597,7 @@ static void OakOldManHandleDrawTrainerPic(void)
     gBattlerControllerFuncs[gActiveBattler] = CompleteOnBattlerSpriteCallbackDummy;
 }
 
-static void OakOldManHandleTrainerSlide(void)
+static void OakJoeyHandleTrainerSlide(void)
 {
     if (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
     {
@@ -1610,11 +1610,11 @@ static void OakOldManHandleTrainerSlide(void)
     }
     else
     {
-        DecompressTrainerBackPalette(TRAINER_BACK_PIC_OLD_MAN, gActiveBattler);
-        SetMultiuseSpriteTemplateToTrainerBack(TRAINER_BACK_PIC_OLD_MAN, GetBattlerPosition(gActiveBattler));
+        DecompressTrainerBackPalette(TRAINER_BACK_PIC_LEADER_JOEY, gActiveBattler);
+        SetMultiuseSpriteTemplateToTrainerBack(TRAINER_BACK_PIC_LEADER_JOEY, GetBattlerPosition(gActiveBattler));
         gBattlerSpriteIds[gActiveBattler] = CreateSprite(&gMultiuseSpriteTemplate,
                                                          80,
-                                                         (8 - gTrainerBackPicCoords[TRAINER_BACK_PIC_OLD_MAN].size) * 4 + 80,
+                                                         (8 - gTrainerBackPicCoords[TRAINER_BACK_PIC_LEADER_JOEY].size) * 4 + 80,
                                                          30);
     }
     gSprites[gBattlerSpriteIds[gActiveBattler]].oam.paletteNum = gActiveBattler;
@@ -1624,12 +1624,12 @@ static void OakOldManHandleTrainerSlide(void)
     gBattlerControllerFuncs[gActiveBattler] = CompleteOnBattlerSpriteCallbackDummy2;
 }
 
-static void OakOldManHandleTrainerSlideBack(void)
+static void OakJoeyHandleTrainerSlideBack(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleFaintAnimation(void)
+static void OakJoeyHandleFaintAnimation(void)
 {
     if (gBattleSpritesDataPtr->healthBoxesData[gActiveBattler].animationState == 0)
     {
@@ -1652,12 +1652,12 @@ static void OakOldManHandleFaintAnimation(void)
     }
 }
 
-static void OakOldManHandlePaletteFade(void)
+static void OakJoeyHandlePaletteFade(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleSuccessBallThrowAnim(void)
+static void OakJoeyHandleSuccessBallThrowAnim(void)
 {
     gBattleSpritesDataPtr->animationData->ballThrowCaseId = BALL_3_SHAKES_SUCCESS;
     gDoingBattleAnim = TRUE;
@@ -1665,7 +1665,7 @@ static void OakOldManHandleSuccessBallThrowAnim(void)
     gBattlerControllerFuncs[gActiveBattler] = CompleteOnSpecialAnimDone;
 }
 
-static void OakOldManHandleBallThrowAnim(void)
+static void OakJoeyHandleBallThrowAnim(void)
 {
     u8 ballThrowCaseId = gBattleBufferA[gActiveBattler][1];
 
@@ -1675,12 +1675,12 @@ static void OakOldManHandleBallThrowAnim(void)
     gBattlerControllerFuncs[gActiveBattler] = CompleteOnSpecialAnimDone;
 }
 
-static void OakOldManHandlePause(void)
+static void OakJoeyHandlePause(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleMoveAnimation(void)
+static void OakJoeyHandleMoveAnimation(void)
 {
     u16 move = gBattleBufferA[gActiveBattler][1] | (gBattleBufferA[gActiveBattler][2] << 8);
 
@@ -1693,16 +1693,16 @@ static void OakOldManHandleMoveAnimation(void)
     gTransformedPersonalities[gActiveBattler] = gAnimDisableStructPtr->transformedMonPersonality;
     if (IsMoveWithoutAnimation(move, gAnimMoveTurn)) // always returns FALSE
     {
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
     }
     else
     {
         gBattleSpritesDataPtr->healthBoxesData[gActiveBattler].animationState = 0;
-        gBattlerControllerFuncs[gActiveBattler] = OakOldManDoMoveAnimation;
+        gBattlerControllerFuncs[gActiveBattler] = OakJoeyDoMoveAnimation;
     }
 }
 
-static void OakOldManDoMoveAnimation(void)
+static void OakJoeyDoMoveAnimation(void)
 {
     u16 move = gBattleBufferA[gActiveBattler][1] | (gBattleBufferA[gActiveBattler][2] << 8);
 
@@ -1737,22 +1737,22 @@ static void OakOldManDoMoveAnimation(void)
             CopyAllBattleSpritesInvisibilities();
             TrySetBehindSubstituteSpriteBit(gActiveBattler, gBattleBufferA[gActiveBattler][1] | (gBattleBufferA[gActiveBattler][2] << 8));
             gBattleSpritesDataPtr->healthBoxesData[gActiveBattler].animationState = 0;
-            OakOldManBufferExecCompleted();
+            OakJoeyBufferExecCompleted();
         }
         break;
     }
 }
 
-static void OakOldManHandlePrintString(void)
+static void OakJoeyHandlePrintString(void)
 {
     u16 *stringId;
 
     gBattle_BG0_X = 0;
     gBattle_BG0_Y = 0;
     stringId = (u16 *)(&gBattleBufferA[gActiveBattler][2]);
-    if (gBattleTypeFlags & BATTLE_TYPE_OLD_MAN_TUTORIAL && *stringId == 1)
+    if (gBattleTypeFlags & BATTLE_TYPE_CATCHING_TUTORIAL && *stringId == 1)
     {
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
     }
     else
     {
@@ -1766,9 +1766,9 @@ static void OakOldManHandlePrintString(void)
             switch (*stringId)
             {
             case STRINGID_DEFENDERSSTATFELL:
-                if (!BtlCtrl_OakOldMan_TestState2Flag(FIRST_BATTLE_MSG_FLAG_STAT_CHG))
+                if (!BtlCtrl_OakJoey_TestState2Flag(FIRST_BATTLE_MSG_FLAG_STAT_CHG))
                 {
-                    BtlCtrl_OakOldMan_SetState2Flag(FIRST_BATTLE_MSG_FLAG_STAT_CHG);
+                    BtlCtrl_OakJoey_SetState2Flag(FIRST_BATTLE_MSG_FLAG_STAT_CHG);
                     gBattlerControllerFuncs[gActiveBattler] = PrintOakText_LoweringStats;
                     return;
                 }
@@ -1788,12 +1788,12 @@ static void OakOldManHandlePrintString(void)
     }
 }
 
-static void OakOldManHandlePrintSelectionString(void)
+static void OakJoeyHandlePrintSelectionString(void)
 {
     if (GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER)
-        OakOldManHandlePrintString();
+        OakJoeyHandlePrintString();
     else
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
 }
 
 static void HandleChooseActionAfterDma3(void)
@@ -1809,7 +1809,7 @@ static void HandleChooseActionAfterDma3(void)
     }
 }
 
-static void OakOldManHandleChooseAction(void)
+static void OakJoeyHandleChooseAction(void)
 {
     s32 i;
 
@@ -1822,13 +1822,13 @@ static void OakOldManHandleChooseAction(void)
     if (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
         BattleStringExpandPlaceholdersToDisplayedString(gText_WhatWillPkmnDo);
     else
-        BattleStringExpandPlaceholdersToDisplayedString(gText_WhatWillOldManDo);
+        BattleStringExpandPlaceholdersToDisplayedString(gText_WhatWillJoeyDo);
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_ACTION_PROMPT);
 }
 
-static void OakOldManHandleUnknownYesNoBox(void)
+static void OakJoeyHandleUnknownYesNoBox(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
 static void OakHandleChooseMove_WaitDma3(void)
@@ -1837,11 +1837,11 @@ static void OakHandleChooseMove_WaitDma3(void)
     {
         gBattle_BG0_X = 0;
         gBattle_BG0_Y = 320;
-        gBattlerControllerFuncs[gActiveBattler] = OakOldManHandleInputChooseMove;
+        gBattlerControllerFuncs[gActiveBattler] = OakJoeyHandleInputChooseMove;
     }
 }
 
-static void OakOldManHandleChooseMove(void)
+static void OakJoeyHandleChooseMove(void)
 {
     if (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
     {
@@ -1862,14 +1862,14 @@ static void OakOldManHandleChooseMove(void)
             {
                 PlaySE(SE_SELECT);
                 BtlController_EmitTwoReturnValues(1, 10, 0x100);
-                OakOldManBufferExecCompleted();
+                OakJoeyBufferExecCompleted();
             }
             break;
         }
     }
 }
 
-static void OakOldManHandleChooseItem(void)
+static void OakJoeyHandleChooseItem(void)
 {
     s32 i;
 
@@ -1880,7 +1880,7 @@ static void OakOldManHandleChooseItem(void)
         gBattlePartyCurrentOrder[i] = gBattleBufferA[gActiveBattler][i + 1];
 }
 
-static void OakOldManHandleChoosePokemon(void)
+static void OakJoeyHandleChoosePokemon(void)
 {
     s32 i;
 
@@ -1896,12 +1896,12 @@ static void OakOldManHandleChoosePokemon(void)
     gBattlerInMenuId = gActiveBattler;
 }
 
-static void OakOldManHandleCmd23(void)
+static void OakJoeyHandleCmd23(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleHealthBarUpdate(void)
+static void OakJoeyHandleHealthBarUpdate(void)
 {
     s16 hpVal;
 
@@ -1924,13 +1924,13 @@ static void OakOldManHandleHealthBarUpdate(void)
     gBattlerControllerFuncs[gActiveBattler] = CompleteOnHealthbarDone;
 }
 
-static void OakOldManHandleExpUpdate(void)
+static void OakJoeyHandleExpUpdate(void)
 {
     u8 monId = gBattleBufferA[gActiveBattler][1];
 
     if (GetMonData(&gPlayerParty[monId], MON_DATA_LEVEL) >= MAX_LEVEL)
     {
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
     }
     else
     {
@@ -1944,90 +1944,90 @@ static void OakOldManHandleExpUpdate(void)
         gTasks[taskId].tExpTask_monId = monId;
         gTasks[taskId].tExpTask_gainedExp = expPointsToGive;
         gTasks[taskId].tExpTask_battler = gActiveBattler;
-        gBattlerControllerFuncs[gActiveBattler] = OakOldManDummy;
+        gBattlerControllerFuncs[gActiveBattler] = OakJoeyDummy;
     }
 }
 
-static void OakOldManHandleStatusIconUpdate(void)
+static void OakJoeyHandleStatusIconUpdate(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleStatusAnimation(void)
+static void OakJoeyHandleStatusAnimation(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleStatusXor(void)
+static void OakJoeyHandleStatusXor(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleDataTransfer(void)
+static void OakJoeyHandleDataTransfer(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleDMA3Transfer(void)
+static void OakJoeyHandleDMA3Transfer(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandlePlayBGM(void)
+static void OakJoeyHandlePlayBGM(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleCmd32(void)
+static void OakJoeyHandleCmd32(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleTwoReturnValues(void)
+static void OakJoeyHandleTwoReturnValues(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleChosenMonReturnValue(void)
+static void OakJoeyHandleChosenMonReturnValue(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleOneReturnValue(void)
+static void OakJoeyHandleOneReturnValue(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleOneReturnValue_Duplicate(void)
+static void OakJoeyHandleOneReturnValue_Duplicate(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleCmd37(void)
+static void OakJoeyHandleCmd37(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleCmd38(void)
+static void OakJoeyHandleCmd38(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleCmd39(void)
+static void OakJoeyHandleCmd39(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleCmd40(void)
+static void OakJoeyHandleCmd40(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleHitAnimation(void)
+static void OakJoeyHandleHitAnimation(void)
 {
     if (gSprites[gBattlerSpriteIds[gActiveBattler]].invisible == TRUE)
     {
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
     }
     else
     {
@@ -2038,39 +2038,39 @@ static void OakOldManHandleHitAnimation(void)
     }
 }
 
-static void OakOldManHandleCmd42(void)
+static void OakJoeyHandleCmd42(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandlePlaySE(void)
+static void OakJoeyHandlePlaySE(void)
 {
     PlaySE(gBattleBufferA[gActiveBattler][1] | (gBattleBufferA[gActiveBattler][2] << 8));
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandlePlayFanfare(void)
+static void OakJoeyHandlePlayFanfare(void)
 {
     PlayFanfare(gBattleBufferA[gActiveBattler][1] | (gBattleBufferA[gActiveBattler][2] << 8));
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleFaintingCry(void)
+static void OakJoeyHandleFaintingCry(void)
 {
     u16 species = GetMonData(&gPlayerParty[gBattlerPartyIndexes[gActiveBattler]], MON_DATA_SPECIES);
 
     PlayCry_Normal(species, 25);
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleIntroSlide(void)
+static void OakJoeyHandleIntroSlide(void)
 {
     HandleIntroSlide(gBattleBufferA[gActiveBattler][1]);
     gIntroSlideFlags |= 1;
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleIntroTrainerBallThrow(void)
+static void OakJoeyHandleIntroTrainerBallThrow(void)
 {
     u8 paletteNum;
     u8 taskId;
@@ -2099,7 +2099,7 @@ static void OakOldManHandleIntroTrainerBallThrow(void)
     {
         if (gBattleSpritesDataPtr->healthBoxesData[gActiveBattler].partyStatusSummaryShown)
             gTasks[gBattlerStatusSummaryTaskId[gActiveBattler]].func = Task_HidePartyStatusSummary;
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
     }
 }
 
@@ -2145,12 +2145,12 @@ static void Task_StartSendOutAnim(u8 taskId)
     }
 }
 
-static void OakOldManHandleDrawPartyStatusSummary(void)
+static void OakJoeyHandleDrawPartyStatusSummary(void)
 {
     if (gBattleBufferA[gActiveBattler][1] != 0
      && GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER)
     {
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
     }
     else
     {
@@ -2159,39 +2159,39 @@ static void OakOldManHandleDrawPartyStatusSummary(void)
                                                                                       (struct HpAndStatus *)&gBattleBufferA[gActiveBattler][4],
                                                                                       gBattleBufferA[gActiveBattler][1],
                                                                                       gBattleBufferA[gActiveBattler][2]);
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
     }
 }
 
-static void OakOldManHandleHidePartyStatusSummary(void)
+static void OakJoeyHandleHidePartyStatusSummary(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleEndBounceEffect(void)
+static void OakJoeyHandleEndBounceEffect(void)
 {
     EndBounceEffect(gActiveBattler, BOUNCE_HEALTHBOX);
     EndBounceEffect(gActiveBattler, BOUNCE_MON);
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleSpriteInvisibility(void)
+static void OakJoeyHandleSpriteInvisibility(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleBattleAnimation(void)
+static void OakJoeyHandleBattleAnimation(void)
 {
     u8 animationId = gBattleBufferA[gActiveBattler][1];
     u16 argument = gBattleBufferA[gActiveBattler][2] | (gBattleBufferA[gActiveBattler][3] << 8);
 
     if (TryHandleLaunchBattleTableAnimation(gActiveBattler, gActiveBattler, gActiveBattler, animationId, argument))
-        OakOldManBufferExecCompleted();
+        OakJoeyBufferExecCompleted();
     else
         gBattlerControllerFuncs[gActiveBattler] = CompleteOnFinishedBattleAnimation;
 }
 
-static void OakOldManHandleLinkStandbyMsg(void)
+static void OakJoeyHandleLinkStandbyMsg(void)
 {
     switch (gBattleBufferA[gActiveBattler][1])
     {
@@ -2203,34 +2203,34 @@ static void OakOldManHandleLinkStandbyMsg(void)
     case 2:
         break;
     }
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleResetActionMoveSelection(void)
+static void OakJoeyHandleResetActionMoveSelection(void)
 {
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
 }
 
-static void OakOldManHandleCmd55(void)
+static void OakJoeyHandleCmd55(void)
 {
     gBattleOutcome = gBattleBufferA[gActiveBattler][1];
     FadeOutMapMusic(5);
     BeginFastPaletteFade(3);
-    OakOldManBufferExecCompleted();
+    OakJoeyBufferExecCompleted();
     if (!(gBattleTypeFlags & BATTLE_TYPE_IS_MASTER) && gBattleTypeFlags & BATTLE_TYPE_LINK)
-        gBattlerControllerFuncs[gActiveBattler] = OakOldManSetBattleEndCallbacks;
+        gBattlerControllerFuncs[gActiveBattler] = OakJoeySetBattleEndCallbacks;
 }
 
-static void OakOldManCmdEnd(void)
+static void OakJoeyCmdEnd(void)
 {
 }
 
-bool8 BtlCtrl_OakOldMan_TestState2Flag(u8 mask)
+bool8 BtlCtrl_OakJoey_TestState2Flag(u8 mask)
 {
     return gBattleStruct->simulatedInputState[2] & mask;
 }
 
-void BtlCtrl_OakOldMan_SetState2Flag(u8 mask)
+void BtlCtrl_OakJoey_SetState2Flag(u8 mask)
 {
     gBattleStruct->simulatedInputState[2] |= mask;
 }

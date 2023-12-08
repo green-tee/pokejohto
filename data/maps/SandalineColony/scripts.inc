@@ -7,3 +7,8 @@ SandalineColony_EventScript_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_SANDALINE_COLONY
 	return
 
+
+SandalineColony_EventScript_RadiosaHostelSign::
+	msgbox SandalineColony_Text_RadiosaHostel, MSGBOX_SIGN
+	return
+

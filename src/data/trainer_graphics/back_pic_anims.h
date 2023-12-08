@@ -24,10 +24,11 @@ static const union AnimCmd sAnimCmd_Pokedude_1[] = {
     ANIMCMD_END
 };
 
-static const union AnimCmd sAnimCmd_OldMan_1[] = {
-    ANIMCMD_FRAME(1, 24),
-    ANIMCMD_FRAME(2, 9),
-    ANIMCMD_FRAME(3, 24),
+static const union AnimCmd sAnimCmd_Joey_1[] = {
+    ANIMCMD_FRAME(1, 20),
+    ANIMCMD_FRAME(2, 6),
+    ANIMCMD_FRAME(3, 6),
+    ANIMCMD_FRAME(4, 24),
     ANIMCMD_FRAME(0, 9),
     ANIMCMD_END
 };
@@ -65,9 +66,9 @@ const union AnimCmd *const sBackAnims_Pokedude[] = {
     sAnimCmd_Pokedude_1
 };
 
-const union AnimCmd *const sBackAnims_OldMan[] = {
+const union AnimCmd *const sBackAnims_Joey[] = {
     sAnim_GeneralFrame0,
-    sAnimCmd_OldMan_1
+    sAnimCmd_Joey_1
 };
 
 const union AnimCmd *const sBackAnims_RSBrendan[] = {
@@ -86,5 +87,5 @@ const union AnimCmd *const *const gTrainerBackAnimsPtrTable[] = {
     sBackAnims_RSBrendan,
     sBackAnims_RSMay,
     sBackAnims_Pokedude,
-    sBackAnims_OldMan
+    sBackAnims_Joey
 };

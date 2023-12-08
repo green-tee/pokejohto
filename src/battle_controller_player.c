@@ -706,7 +706,7 @@ static void HandleMoveSwitching(void)
             }
         }
         if (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
-            gBattlerControllerFuncs[gActiveBattler] = OakOldManHandleInputChooseMove;
+            gBattlerControllerFuncs[gActiveBattler] = OakJoeyHandleInputChooseMove;
         else
             gBattlerControllerFuncs[gActiveBattler] = HandleInputChooseMove;
         gMoveSelectionCursor[gActiveBattler] = gMultiUsePlayerCursor;
@@ -721,7 +721,7 @@ static void HandleMoveSwitching(void)
         MoveSelectionDestroyCursorAt(gMultiUsePlayerCursor);
         MoveSelectionCreateCursorAt(gMoveSelectionCursor[gActiveBattler], 0);
         if (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
-            gBattlerControllerFuncs[gActiveBattler] = OakOldManHandleInputChooseMove;
+            gBattlerControllerFuncs[gActiveBattler] = OakJoeyHandleInputChooseMove;
         else
             gBattlerControllerFuncs[gActiveBattler] = HandleInputChooseMove;
         MoveSelectionDisplayPpString();

@@ -45,7 +45,7 @@ static const u16 sDexAreas_Kanto[][2] = {
     { MAPSEC_ROUTE_2,             13 },
     { MAPSEC_ROUTE_3,             14 },
     { MAPSEC_ROUTE_4,             15 },
-    { MAPSEC_ROUTE_5,             16 },
+    { MAPSEC_ROUTE_33,            16 },
     { MAPSEC_ROUTE_6,             17 },
     { MAPSEC_ROUTE_7,             18 },
     { MAPSEC_ROUTE_8,             19 },

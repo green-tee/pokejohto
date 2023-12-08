@@ -5,7 +5,7 @@
 
 void StartWildBattle(void);
 void StartRoamerBattle(void);
-void StartOldManTutorialBattle(void);
+void StartCatchingTutorialBattle(void);
 void StartScriptedWildBattle(void);
 void StartMarowakBattle(void);
 void StartSouthernIslandBattle(void);

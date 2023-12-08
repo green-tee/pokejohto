@@ -1,0 +1,21 @@
+mapscripts SandalineColony_RadiosaHostel_1F_MapScripts {}
+
+// This script is executed when the player interacts with the Pokédex.
+// The Player will be given the option to pick up the Pokédex and unlock the tutorial on catching Pokémon.
+// The tutorial will only be unlocked if the tutorial on the Pokémon Center has been cleared too.
+script SandalineColony_RadiosaHostel_1F_EventScript_Pokedex {
+    msgbox(SandalineColony_RadiosaHostel_1F_Text_ItsAPokedex, MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES) {
+        playfanfare(MUS_OBTAIN_KEY_ITEM)
+        msgbox(SandalineColony_RadiosaHostel_1F_Text_PlayerPickedPokedex)
+        waitfanfare
+        removeobject(VAR_LAST_TALKED)
+        setflag(FLAG_SYS_POKEDEX_GET)
+        # If Player has already completed the tutorial on Pokémon Center, unlock tutorial on catching Pokémon.
+        if (var(VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER) > 2) {
+            setvar(VAR_MAP_SCENE_ROUTE33, 1)
+            clearflag(FLAG_HIDE_ROUTE33_GEODUDE)
+        }
+    }
+    closemessage
+}

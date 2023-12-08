@@ -1273,6 +1273,18 @@ static const struct SpriteFrameImage sPicTable_Pidgeot[] = {
     overworld_frame(gObjectEventPic_Pidgeot, 2, 2, 2),
 };
 
+static const struct SpriteFrameImage sPicTable_Geodude[] = {
+    overworld_frame(gObjectEventPic_Geodude, 4, 4, 0),
+    overworld_frame(gObjectEventPic_Geodude, 4, 4, 1),
+    overworld_frame(gObjectEventPic_Geodude, 4, 4, 2),
+    overworld_frame(gObjectEventPic_Geodude, 4, 4, 0),
+    overworld_frame(gObjectEventPic_Geodude, 4, 4, 0),
+    overworld_frame(gObjectEventPic_Geodude, 4, 4, 1),
+    overworld_frame(gObjectEventPic_Geodude, 4, 4, 1),
+    overworld_frame(gObjectEventPic_Geodude, 4, 4, 2),
+    overworld_frame(gObjectEventPic_Geodude, 4, 4, 2)
+};
+
 static const struct SpriteFrameImage sPicTable_Omanyte[] = {
     overworld_frame(gObjectEventPic_Omanyte, 2, 2, 0),
     overworld_frame(gObjectEventPic_Omanyte, 2, 2, 1),

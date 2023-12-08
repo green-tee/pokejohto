@@ -38,4 +38,4 @@ PalletTown_Text_FatManPlayerHasPokemon::
 	.string "Technology is incredible! Some guys\n"
 	.string "managed to reverse-engineer old\l"
 	.string "Pokémon games for the GBA!\p"
-	.string "I... I can't even fathom.$"
+	.string "I… I can't even fathom.$"

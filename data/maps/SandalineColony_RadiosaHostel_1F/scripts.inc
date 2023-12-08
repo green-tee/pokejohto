@@ -1,0 +1,27 @@
+SandalineColony_RadiosaHostel_1F_MapScripts::
+	.byte 0
+
+
+SandalineColony_RadiosaHostel_1F_EventScript_Pokedex::
+	msgbox SandalineColony_RadiosaHostel_1F_Text_ItsAPokedex, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq SandalineColony_RadiosaHostel_1F_EventScript_Pokedex_2
+SandalineColony_RadiosaHostel_1F_EventScript_Pokedex_1:
+	closemessage
+	return
+
+SandalineColony_RadiosaHostel_1F_EventScript_Pokedex_2:
+	playfanfare MUS_OBTAIN_KEY_ITEM
+	msgbox SandalineColony_RadiosaHostel_1F_Text_PlayerPickedPokedex
+	waitfanfare
+	removeobject VAR_LAST_TALKED
+	setflag FLAG_SYS_POKEDEX_GET
+	compare VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER, 2
+	goto_if_gt SandalineColony_RadiosaHostel_1F_EventScript_Pokedex_4
+	goto SandalineColony_RadiosaHostel_1F_EventScript_Pokedex_1
+
+SandalineColony_RadiosaHostel_1F_EventScript_Pokedex_4:
+	setvar VAR_MAP_SCENE_ROUTE33, 1
+	clearflag FLAG_HIDE_ROUTE33_GEODUDE
+	goto SandalineColony_RadiosaHostel_1F_EventScript_Pokedex_1
+

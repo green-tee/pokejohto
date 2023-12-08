@@ -53,7 +53,7 @@ static void HandleAction_SafariZoneBallThrow(void);
 static void HandleAction_ThrowBait(void);
 static void HandleAction_ThrowRock(void);
 static void HandleAction_SafariZoneRun(void);
-static void HandleAction_OldManBallThrow(void);
+static void HandleAction_JoeyBallThrow(void);
 static void HandleAction_TryFinish(void);
 static void HandleAction_NothingIsFainted(void);
 static void HandleAction_ActionFinished(void);
@@ -574,7 +574,7 @@ static void (*const sTurnActionsFuncsTable[])(void) =
     [B_ACTION_SAFARI_BAIT]            = HandleAction_ThrowBait,
     [B_ACTION_SAFARI_GO_NEAR]         = HandleAction_ThrowRock,
     [B_ACTION_SAFARI_RUN]             = HandleAction_SafariZoneRun,
-    [B_ACTION_OLDMAN_THROW]           = HandleAction_OldManBallThrow,
+    [B_ACTION_JOEY_THROW]             = HandleAction_JoeyBallThrow,
     [B_ACTION_EXEC_SCRIPT]            = HandleAction_RunBattleScript,
     [B_ACTION_TRY_FINISH]             = HandleAction_TryFinish,
     [B_ACTION_FINISHED]               = HandleAction_ActionFinished,
@@ -2605,7 +2605,7 @@ static void BattleIntroDrawTrainersOrMonsSprites(void)
                                     | BATTLE_TYPE_POKEDUDE
                                     | BATTLE_TYPE_LINK
                                     | BATTLE_TYPE_GHOST
-                                    | BATTLE_TYPE_OLD_MAN_TUTORIAL
+                                    | BATTLE_TYPE_CATCHING_TUTORIAL
                                     | BATTLE_TYPE_LEGENDARY)))
             {
                 HandleSetPokedexFlag(SpeciesToNationalPokedexNum(gBattleMons[gActiveBattler].species), FLAG_SET_SEEN, gBattleMons[gActiveBattler].personality);
@@ -2624,7 +2624,7 @@ static void BattleIntroDrawTrainersOrMonsSprites(void)
                                             | BATTLE_TYPE_POKEDUDE
                                             | BATTLE_TYPE_LINK
                                             | BATTLE_TYPE_GHOST
-                                            | BATTLE_TYPE_OLD_MAN_TUTORIAL
+                                            | BATTLE_TYPE_CATCHING_TUTORIAL
                                             | BATTLE_TYPE_LEGENDARY)))
                 {
                     HandleSetPokedexFlag(SpeciesToNationalPokedexNum(gBattleMons[gActiveBattler].species), FLAG_SET_SEEN, gBattleMons[gActiveBattler].personality);
@@ -2780,7 +2780,7 @@ static void BattleIntroRecordMonsToDex(void)
                                    | BATTLE_TYPE_POKEDUDE
                                    | BATTLE_TYPE_LINK
                                    | BATTLE_TYPE_GHOST
-                                   | BATTLE_TYPE_OLD_MAN_TUTORIAL
+                                   | BATTLE_TYPE_CATCHING_TUTORIAL
                                    | BATTLE_TYPE_LEGENDARY)))
                 HandleSetPokedexFlag(SpeciesToNationalPokedexNum(gBattleMons[gActiveBattler].species), FLAG_SET_SEEN, gBattleMons[gActiveBattler].personality);
         gBattleMainFunc = BattleIntroPrintPlayerSendsOut;
@@ -3341,7 +3341,7 @@ static void HandleTurnActionSelectionState(void)
                     gHitMarker |= HITMARKER_RUN;
                     gBattleCommunication[gActiveBattler]++;
                     break;
-                case B_ACTION_OLDMAN_THROW:
+                case B_ACTION_JOEY_THROW:
                     gBattleCommunication[gActiveBattler]++;
                     break;
                 }
@@ -3825,7 +3825,7 @@ static void HandleEndTurn_FinishBattle(void)
 {
     if (gCurrentActionFuncId == B_ACTION_TRY_FINISH || gCurrentActionFuncId == B_ACTION_FINISHED)
     {
-        if (!(gBattleTypeFlags & (BATTLE_TYPE_TRAINER_TOWER | BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_OLD_MAN_TUTORIAL | BATTLE_TYPE_BATTLE_TOWER | BATTLE_TYPE_SAFARI | BATTLE_TYPE_FIRST_BATTLE | BATTLE_TYPE_LINK)))
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_TRAINER_TOWER | BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_CATCHING_TUTORIAL | BATTLE_TYPE_BATTLE_TOWER | BATTLE_TYPE_SAFARI | BATTLE_TYPE_FIRST_BATTLE | BATTLE_TYPE_LINK)))
         {
             for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++)
             {
@@ -4419,7 +4419,7 @@ static void HandleAction_SafariZoneRun(void)
     gBattleOutcome = B_OUTCOME_RAN;
 }
 
-static void HandleAction_OldManBallThrow(void)
+static void HandleAction_JoeyBallThrow(void)
 {
     gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
     gBattle_BG0_X = 0;

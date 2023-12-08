@@ -301,9 +301,9 @@ static void CompleteOnHealthbarDone(void)
     }
     else
     {
-        if (!BtlCtrl_OakOldMan_TestState2Flag(1) && (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE))
+        if (!BtlCtrl_OakJoey_TestState2Flag(1) && (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE))
         {
-            BtlCtrl_OakOldMan_SetState2Flag(1);
+            BtlCtrl_OakJoey_SetState2Flag(1);
             gBattlerControllerFuncs[gActiveBattler] = PrintOakText_InflictingDamageIsKey;
         }
         else

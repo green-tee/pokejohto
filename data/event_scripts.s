@@ -296,7 +296,7 @@ gStdScriptsEnd::
 	.include "data/maps/Route2/scripts.inc"
 	.include "data/maps/Route3/scripts.inc"
 	.include "data/maps/Route4/scripts.inc"
-	.include "data/maps/Route5/scripts.inc"
+	.include "data/maps/Route33/scripts.inc"
 	.include "data/maps/RouteOasis/scripts.inc"
 	.include "data/maps/Route7/scripts.inc"
 	.include "data/maps/Route8/scripts.inc"
@@ -486,11 +486,11 @@ gStdScriptsEnd::
 	.include "data/maps/ThreeIsland_House3/scripts.inc"
 	.include "data/maps/ThreeIsland_House4/scripts.inc"
 	.include "data/maps/ThreeIsland_House5/scripts.inc"
-	.include "data/maps/FourIsland_PokemonDayCare/scripts.inc"
+	.include "data/maps/SandalineColony_RadiosaHostel_GF/scripts.inc"
+	.include "data/maps/SandalineColony_RadiosaHostel_1F/scripts.inc"
 	.include "data/maps/SandalineColony_PokemonCenter/scripts.inc"
 	.include "data/maps/FourIsland_PokemonCenter_2F/scripts.inc"
 	.include "data/maps/FourIsland_House1/scripts.inc"
-	.include "data/maps/FourIsland_LoreleisHouse/scripts.inc"
 	.include "data/maps/FourIsland_Harbor/scripts.inc"
 	.include "data/maps/FourIsland_House2/scripts.inc"
 	.include "data/maps/SandalineColony_Mart/scripts.inc"
@@ -627,7 +627,7 @@ gStdScriptsEnd::
 	.include "data/maps/Route2/text.inc"
 	.include "data/maps/Route3/text.inc"
 	.include "data/maps/Route4/text.inc"
-	.include "data/maps/Route5/text.inc"
+	.include "data/maps/Route33/text.inc"
 	.include "data/maps/RouteOasis/text.inc"
 	.include "data/maps/Route7/text.inc"
 	.include "data/maps/Route8/text.inc"
@@ -788,7 +788,8 @@ gStdScriptsEnd::
 	.include "data/maps/ThreeIsland_House5/text.inc"
 	.include "data/maps/SandalineColony_PokemonCenter/text.inc"
 	.include "data/maps/FourIsland_House1/text.inc"
-	.include "data/maps/FourIsland_LoreleisHouse/text.inc"
+	.include "data/maps/SandalineColony_RadiosaHostel_GF/text.inc"
+	.include "data/maps/SandalineColony_RadiosaHostel_1F/text.inc"
 	.include "data/maps/SandalineColony_Mart/text.inc"
 	.include "data/maps/FiveIsland_PokemonCenter_1F/text.inc"
 	.include "data/maps/FiveIsland_House1/text.inc"
@@ -1013,55 +1014,7 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_CYNDAQUIL_BALL
 	setflag FLAG_HIDE_TOTODILE_BALL
 	setflag FLAG_HIDE_BUGSY_IN_SANDALINE_POKECENTER
-	@setflag FLAG_HIDE_BUGSY_IN_ROUTE_OASIS
-	@setflag FLAG_HIDE_JOEY_IN_ROUTE_OASIS
-	@setflag FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
-	@setflag FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
-	@setflag FLAG_HIDE_POKEHOUSE_FUJI
-	@setflag FLAG_HIDE_LIFT_KEY
-	@setflag FLAG_HIDE_SILPH_SCOPE
-	@setflag FLAG_HIDE_CERULEAN_RIVAL
-	@setflag FLAG_HIDE_SS_ANNE_RIVAL
-	@setflag FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
-	@setflag FLAG_HIDE_SAFFRON_CIVILIANS
-	@setflag FLAG_HIDE_ROUTE_22_RIVAL
-	@setflag FLAG_HIDE_OAK_IN_CHAMP_ROOM
-	@setflag FLAG_HIDE_CREDITS_RIVAL
-	@setflag FLAG_HIDE_CREDITS_OAK
-	@setflag FLAG_HIDE_CINNABAR_BILL
-	@setflag FLAG_HIDE_CINNABAR_SEAGALLOP
-	@setflag FLAG_HIDE_CINNABAR_POKECENTER_BILL
-	@setflag FLAG_HIDE_LORELEI_IN_HER_HOUSE
-	@setflag FLAG_HIDE_SAFFRON_FAN_CLUB_BLACKBELT
-	@setflag FLAG_HIDE_SAFFRON_FAN_CLUB_ROCKER
-	@setflag FLAG_HIDE_SAFFRON_FAN_CLUB_WOMAN
-	@setflag FLAG_HIDE_SAFFRON_FAN_CLUB_BEAUTY
-	@setflag FLAG_HIDE_TWO_ISLAND_GAME_CORNER_LOSTELLE
-	@setflag FLAG_HIDE_TWO_ISLAND_GAME_CORNER_BIKER
-	@setflag FLAG_HIDE_TWO_ISLAND_WOMAN
-	@setflag FLAG_HIDE_TWO_ISLAND_BEAUTY
-	@setflag FLAG_HIDE_TWO_ISLAND_SUPER_NERD
-	@setflag FLAG_HIDE_LOSTELLE_IN_HER_HOME
-	@setflag FLAG_HIDE_THREE_ISLAND_LONE_BIKER
-	@setflag FLAG_HIDE_FOUR_ISLAND_RIVAL
-	@setflag FLAG_HIDE_DOTTED_HOLE_SCIENTIST
-	@setflag FLAG_HIDE_RESORT_GORGEOUS_SELPHY
-	@setflag FLAG_HIDE_RESORT_GORGEOUS_INSIDE_SELPHY
-	@setflag FLAG_HIDE_SELPHYS_BUTLER
-	@setflag FLAG_HIDE_DEOXYS
-	@setflag FLAG_HIDE_LORELEI_HOUSE_MEOWTH_DOLL
-	@setflag FLAG_HIDE_LORELEI_HOUSE_CHANSEY_DOLL
-	@setflag FLAG_HIDE_LORELEIS_HOUSE_NIDORAN_F_DOLL
-	@setflag FLAG_HIDE_LORELEI_HOUSE_JIGGLYPUFF_DOLL
-	@setflag FLAG_HIDE_LORELEIS_HOUSE_NIDORAN_M_DOLL
-	@setflag FLAG_HIDE_LORELEIS_HOUSE_FEAROW_DOLL
-	@setflag FLAG_HIDE_LORELEIS_HOUSE_PIDGEOT_DOLL
-	@setflag FLAG_HIDE_LORELEIS_HOUSE_LAPRAS_DOLL
-	@setflag FLAG_HIDE_POSTGAME_GOSSIPERS
-	@setflag FLAG_HIDE_FAME_CHECKER_ERIKA_JOURNALS
-	@setflag FLAG_HIDE_FAME_CHECKER_KOGA_JOURNAL
-	@setflag FLAG_HIDE_FAME_CHECKER_LT_SURGE_JOURNAL
-	@setflag FLAG_HIDE_SAFFRON_CITY_POKECENTER_SABRINA_JOURNALS
+	setflag FLAG_HIDE_ROUTE33_GEODUDE
 	setvar VAR_MASSAGE_COOLDOWN_STEP_COUNTER, 500
 	end
 

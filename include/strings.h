@@ -229,7 +229,7 @@ extern const u8 gText_WhatWillPkmnDo[];
 // battle_script_commands
 extern const u8 gText_BattleYesNoChoice[];
 
-// battle_controller_oak_old_man
+// battle_controller_oak_joey
 extern const u8 gText_ForPetesSake[];
 extern const u8 gText_TheTrainerThat[];
 extern const u8 gText_TryBattling[];
@@ -239,7 +239,7 @@ extern const u8 gText_KeepAnEyeOnHP[];
 extern const u8 gText_OakNoRunningFromATrainer[];
 extern const u8 gText_WinEarnsPrizeMoney[];
 extern const u8 gText_HowDissapointing[];
-extern const u8 gText_WhatWillOldManDo[];
+extern const u8 gText_WhatWillJoeyDo[];
 
 // battle_controller_pokedude
 extern const u8 Pokedude_Text_SpeedierBattlerGoesFirst[];

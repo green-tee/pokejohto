@@ -16,7 +16,7 @@ SandalineColony_Mart_Text_ClerkM_ThatGuyIsWaitingForSomeone::
 	.string "The shelves over there?\p"
 	.string "I swear, I'm sure I've seen him\n"
 	.string "somewhere, but I just can't\l"
-	.string "remember where...$"
+	.string "remember where…$"
 
 SandalineColony_Mart_Text_Bugsy_TookYouAWhile::
 	.string "{COLOR GREEN}Bugsy: Took you long enough!\p"

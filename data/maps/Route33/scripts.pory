@@ -6,12 +6,14 @@ const LOCALID_GEODUDE = 2
 const PLAYER_X_COORD = VAR_TEMP_1
 const PLAYER_Y_COORD = VAR_TEMP_2
 const POKE_BALLS_IN_BAG = VAR_TEMP_3
+const POKE_BALLS_TO_GIVE = VAR_TEMP_4
 
 mapscripts Route33_MapScripts {
-    MAP_SCRIPT_ON_TRANSITION: Route33_EventScript_OnTransition
+    MAP_SCRIPT_ON_TRANSITION: Route33_OnTransition
+    MAP_SCRIPT_ON_RESUME: Route33_OnResume
 }
 
-script Route33_EventScript_OnTransition {
+script Route33_OnTransition {
     if (var(VAR_MAP_SCENE_ROUTE33) == 1) {
         # Move Joey to where he should be at the start of tutorial on catching Pokémon.
         call(Route33_EventScript_PlaceJoeyForCatchingTutorial)
@@ -22,6 +24,13 @@ script Route33_EventScript_OnTransition {
 script(local) Route33_EventScript_PlaceJoeyForCatchingTutorial {
     setobjectxyperm(LOCALID_JOEY, 54, 15)
     setobjectmovementtype(LOCALID_JOEY, MOVEMENT_TYPE_FACE_DOWN)
+}
+
+script Route33_OnResume {
+    if (flag(FLAG_SYS_SPECIAL_WILD_BATTLE)) {
+        # Joey's tutorial on catching Pokémon has ended, Geodude needs to be removed.
+        removeobject(LOCALID_GEODUDE)
+    }
 }
 
 // This script is execute when the player interacts with Joey.
@@ -45,7 +54,7 @@ script Route33_EventScript_Joey_Trigger {
     } else {
         turnobject(LOCALID_JOEY, DIR_SOUTH)
     }
-    applymovement(LOCALID_JOEY, Route33_Movement_ExclamationMark)
+    applymovement(LOCALID_JOEY, Movement_ExclamationMark)
     playse(SE_PIN)
     waitmovement(LOCALID_JOEY)
     waitse
@@ -56,17 +65,17 @@ script Route33_EventScript_Joey_Trigger {
         msgbox(Route33_Text_Joey_BringYourPokedexHere, MSGBOX_DEFAULT)
     }
     closemessage
-    applymovement(OBJ_EVENT_ID_PLAYER, Route33_Movement_ForcePlayerToTheRight)
+    applymovement(OBJ_EVENT_ID_PLAYER, Movement_ForcePlayerToTheRight)
     waitmovement(OBJ_EVENT_ID_PLAYER)
     turnobject(LOCALID_JOEY, DIR_WEST)
     releaseall
 }
 
-movement Route33_Movement_ExclamationMark {
+movement Movement_ExclamationMark {
     emote_exclamation_mark
 }
 
-movement Route33_Movement_ForcePlayerToTheRight {
+movement Movement_ForcePlayerToTheRight {
     walk_right * 2
 }
 
@@ -81,17 +90,17 @@ script Route33_EventScript_CatchingTutorialScene {
     msgbox(Route33_Text_Joey_YouWantToGoToBugsysGym)
     closemessage
     delay(30)
-    applymovement(LOCALID_JOEY, Route33_Movement_TurnToGeodude)
+    applymovement(LOCALID_JOEY, Movement_TurnToGeodude)
     waitmovement(LOCALID_JOEY)
     msgbox(Route33_Text_Joey_ThereIsAGeodude)
     closemessage
-    applymovement(OBJ_EVENT_ID_PLAYER, Route33_Movement_TurnToGeodude)
+    applymovement(OBJ_EVENT_ID_PLAYER, Movement_TurnToGeodude)
     waitmovement(OBJ_EVENT_ID_PLAYER)
     special(SpawnCameraObject)
-    applymovement(OBJ_EVENT_ID_CAMERA, Route33_Movement_PadCameraToGeodude)
+    applymovement(OBJ_EVENT_ID_CAMERA, Movement_PadCameraToGeodude)
     waitmovement(OBJ_EVENT_ID_CAMERA)
     special(RemoveCameraObject)
-    applymovement(LOCALID_JOEY, Route33_Movement_Joey_TurnToPlayer)
+    applymovement(LOCALID_JOEY, Movement_Joey_TurnToPlayer)
     waitmovement(LOCALID_JOEY)
     msgbox(Route33_Text_Joey_JustWatch)
     closemessage
@@ -103,21 +112,23 @@ script Route33_EventScript_CatchingTutorialScene {
     closemessage
     setobjectmovementtype(LOCALID_GEODUDE, MOVEMENT_TYPE_FACE_UP)
     playse(SE_PIN)
-    applymovement(LOCALID_GEODUDE, Route33_Movement_Geodude_Surprise)
+    applymovement(LOCALID_GEODUDE, Movement_Geodude_Surprise)
     waitse
     waitmovement(LOCALID_GEODUDE)
     delay(30)
     playmoncry(SPECIES_GEODUDE, CRY_MODE_NORMAL)
     waitmoncry
     special(SpawnCameraObject)
-    applymovement(OBJ_EVENT_ID_CAMERA, Route33_Movement_PadCameraBackFromGeodude)
-    applymovement(LOCALID_GEODUDE, Route33_Movement_Geodude_Attack)
+    applymovement(OBJ_EVENT_ID_CAMERA, Movement_PadCameraBackFromGeodude)
+    applymovement(LOCALID_GEODUDE, Movement_Geodude_Attack)
     waitmovement(LOCALID_GEODUDE)
     waitmovement(OBJ_EVENT_ID_CAMERA)
     special(RemoveCameraObject)
-    setflag(FLAG_HIDE_ROUTE33_GEODUDE)
+    # Set FLAG_SYS_SPECIAL_WILD_BATTLE in order to be able to hide Geodude after the tutorial battle without a fadescreen
+    setflag(FLAG_SYS_SPECIAL_WILD_BATTLE)
     special(StartCatchingTutorialBattle)
     waitstate
+    clearflag(FLAG_SYS_SPECIAL_WILD_BATTLE)
     turnobject(LOCALID_JOEY, DIR_EAST)
     delay(6)
     turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
@@ -126,6 +137,36 @@ script Route33_EventScript_CatchingTutorialScene {
     msgbox(Route33_Text_CatchEasierExplanation)
     closemessage
     call(Route33_EventScript_GiveSomePokeBallsToPlayer)
+    msgbox(Route33_Text_Joey_YouCanBuyPokeBalls)
+    closemessage
+    delay(30)
+    applymovement(LOCALID_JOEY, Movement_TurnToGeodude)
+    waitmovement(LOCALID_JOEY)
+    delay(30)
+    msgbox(Route33_Text_Joey_WeAreDoneHere)
+    closemessage
+    delay(30)
+    applymovement(LOCALID_JOEY, Movement_Joey_TurnToPlayer)
+    waitmovement(LOCALID_JOEY)
+    msgbox(Route33_Text_Joey_ImGoing)
+    closemessage
+    call(Route33_EventScript_JoeyStartWalkAway)
+    delay(20)
+    msgbox(Route33_Text_Joey_Dots)
+    closemessage
+    applymovement(LOCALID_JOEY, Movement_WalkBackToPlayer)
+    waitmovement(LOCALID_JOEY)
+    turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+    call(Route33_EventScript_NicknamingStarter)
+    msgbox(Route33_Text_Joey_NowWeAreReallyDone)
+    closemessage
+    call(Route33_EventScript_JoeyStartWalkAway)
+    msgbox(Route33_Text_Joey_ComeUpWithEnjoey)
+    closemessage
+    applymovement(LOCALID_JOEY, Movement_FinishWalkingAway)
+    waitmovement(LOCALID_JOEY)
+    removeobject(LOCALID_JOEY)
+    delay(60)
     setvar(VAR_MAP_SCENE_ROUTE33, 2)
     releaseall
 }
@@ -138,9 +179,9 @@ script(local) Route33_EventScript_NormalizeCameraAndPlayer {
     setobjectxy(OBJ_EVENT_ID_PLAYER, 55, 15)
     special(SpawnCameraObject)
     if (var(PLAYER_X_COORD) < 55) {
-        applymovement(OBJ_EVENT_ID_CAMERA, Route33_Movement_FixCameraDownRight)
+        applymovement(OBJ_EVENT_ID_CAMERA, Movement_FixCameraDownRight)
     } else {
-        applymovement(OBJ_EVENT_ID_CAMERA, Route33_Movement_FixCameraDown)
+        applymovement(OBJ_EVENT_ID_CAMERA, Movement_FixCameraDown)
     }
     waitmovement(OBJ_EVENT_ID_CAMERA)
     special(RemoveCameraObject)
@@ -148,37 +189,37 @@ script(local) Route33_EventScript_NormalizeCameraAndPlayer {
     turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
 }
 
-movement Route33_Movement_FixCameraDown {
+movement Movement_FixCameraDown {
     walk_faster_down
 }
 
-movement Route33_Movement_FixCameraDownRight {
+movement Movement_FixCameraDownRight {
     walk_faster_right
     walk_faster_down
 }
 
-movement Route33_Movement_TurnToGeodude {
+movement Movement_TurnToGeodude {
     walk_in_place_slow_down
 }
 
-movement Route33_Movement_PadCameraToGeodude {
+movement Movement_PadCameraToGeodude {
     walk_slower_down * 3
 }
 
-movement Route33_Movement_Joey_TurnToPlayer {
+movement Movement_Joey_TurnToPlayer {
     walk_in_place_right
 }
 
-movement Route33_Movement_Geodude_Surprise {
+movement Movement_Geodude_Surprise {
     face_up_fast
     emote_exclamation_mark
 }
 
-movement Route33_Movement_Geodude_Attack {
+movement Movement_Geodude_Attack {
     walk_faster_up * 2
 }
 
-movement Route33_Movement_PadCameraBackFromGeodude {
+movement Movement_PadCameraBackFromGeodude {
     walk_faster_up * 3
 }
 
@@ -187,14 +228,68 @@ movement Route33_Movement_PadCameraBackFromGeodude {
 // If the player has less than 15, Joey gives some so that the player will have 20.
 script(local) Route33_EventScript_GiveSomePokeBallsToPlayer {
     countitem(ITEM_POKE_BALL, POKE_BALLS_IN_BAG)
-    # TODO: Add dialog to Joey and give Poké Balls to the player.
     if (var(POKE_BALLS_IN_BAG) == 0) {
-        # Joey points out that Player has no Poké Balls
+        # Joey points out that Player has no Poké Balls.
+        msgbox(Route33_Text_Joey_YouHaveNoPokeBalls)
+        closemessage
+        giveitem(ITEM_POKE_BALL, 20)
     } elif (var(POKE_BALLS_IN_BAG) < 15) {
-        # Joey points out that Player has some Poké Balls
+        # Joey points out that Player has some Poké Balls.
+        msgbox(Route33_Text_Joey_YouHaveSomePokeBalls)
+        closemessage
+        setvar(POKE_BALLS_TO_GIVE, 20)
+        subvar(POKE_BALLS_TO_GIVE, POKE_BALLS_IN_BAG)
+        giveitem(ITEM_POKE_BALL, POKE_BALLS_TO_GIVE)
     } else {
-        # joey will give no Poké Balls
+        # Joey will give no Poké Balls.
+        msgbox(Route33_Text_Joey_YouHaveALotOfPokeBalls)
+        closemessage
     }
+}
+
+// This script moves Joey to the south towards Azalea Town.
+// Player faces Joey while he is walking and Joey stops after a few steps.
+// This script is separate so that it can be called twice.
+script(local) Route33_EventScript_JoeyStartWalkAway {
+    applymovement(OBJ_EVENT_ID_PLAYER, Movement_TurnToGeodude)
+    applymovement(LOCALID_JOEY, Movement_WalkAwayFake)
+    waitmovement(LOCALID_JOEY)
+}
+
+movement Movement_WalkAwayFake {
+    walk_down * 2
+}
+
+movement Movement_WalkBackToPlayer {
+    walk_up * 2
+    face_right
+}
+
+// This script handles the nicknaming of Player's starter.
+// Joey asks twice if the player wants to nickname the starter.
+script(local) Route33_EventScript_NicknamingStarter {
+    bufferspeciesname(STR_VAR_1, VAR_STARTER_MON)
+    msgbox(Route33_Text_Joey_DoYouWantToNicknameYourPokemon, MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        # Ask a second and final time.
+        msgbox(Route33_Text_Joey_AreYouSure, MSGBOX_YESNO)
+    }
+    if (var(VAR_RESULT) == YES) {
+        # The player answered "Yes" the first or the second time.
+        setvar(VAR_0x8004, 0)
+        call(EventScript_ChangePokemonNickname)
+    } else {
+        # The player answered "No" both times.
+        msgbox(Route33_Text_Joey_OkNevermindThen)
+        closemessage
+    }
+}
+
+movement Movement_FinishWalkingAway {
+    walk_down * 2
+    walk_left * 7
+    walk_up * 6
+    walk_left
 }
 
 // This script is executed when the player reads the sign explaining how ledges work.

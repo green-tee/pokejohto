@@ -173,7 +173,7 @@
 #define TRAINER_BACK_PIC_RUBY_SAPPHIRE_BRENDAN  2
 #define TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY      3
 #define TRAINER_BACK_PIC_POKEDUDE               4
-#define TRAINER_BACK_PIC_OLD_MAN                5
+#define TRAINER_BACK_PIC_LEADER_JOEY            5
 
 // Special Trainer Ids.
 #define TRAINER_UNION_ROOM          0xC00

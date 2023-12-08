@@ -82,3 +82,80 @@ text Route33_Text_CatchEasierExplanation {
     "because fainting a wild Pokémon\l"
     "will end the battle instantly."
 }
+
+text Route33_Text_Joey_YouHaveNoPokeBalls {
+    "{COLOR BLUE}Joey: You don't have any\n"
+    "Poké Balls with you, do you?\p"
+    "Don't worry, I'll give you some.\n"
+    "A bunch, even. Here!"
+}
+
+text Route33_Text_Joey_YouHaveSomePokeBalls {
+    "{COLOR BLUE}Joey: I see you already have\n"
+    "some Poké Balls with you.\l"
+    "I'll give you a few more. Here!"
+}
+
+text Route33_Text_Joey_YouHaveALotOfPokeBalls {
+    "{COLOR BLUE}Joey: Wow! I see you already\n"
+    "have quite the number of\l"
+    "Poké Balls with you."
+}
+
+text Route33_Text_Joey_YouCanBuyPokeBalls {
+    "{COLOR BLUE}Joey: Of course, if you run low\n"
+    "on Poké Balls, you can always\l"
+    "buy more at any Pokémon Center.\p"
+    "Occasionally you might even find\n"
+    "some spare Poké Balls laying on\l"
+    "the ground. Don't think too much\l"
+    "about it and pick them up.\p"
+    "You don't want to leave waste\n"
+    "on the ground, right?"
+}
+
+text Route33_Text_Joey_WeAreDoneHere {
+    "{COLOR BLUE}Joey: Alright, we're done here.\p"
+    "Azalea Town is right past this\n"
+    "Route. Wild Pokémon love hiding\l"
+    "in tall grass.\p"
+    "You're going to meet a few\n"
+    "Pokémon Trainers looking to pick\l"
+    "a fight. Since you're going to\l"
+    "challenge Bugsy in his Gym,\l"
+    "a couple of battles beforehand\l"
+    "are a must!"
+}
+
+text Route33_Text_Joey_ImGoing {
+    "{COLOR BLUE}Joey: I'm going. See ya!"
+}
+
+text Route33_Text_Joey_Dots {
+    "{COLOR BLUE}Joey: .{PAUSE 25} .{PAUSE 25} .{PAUSE 25}"
+}
+
+text Route33_Text_Joey_DoYouWantToNicknameYourPokemon {
+    "{COLOR BLUE}Joey: Say, {PLAYER}, would you\n"
+    "like to give a nickname to your\l"
+    "{STR_VAR_1}?"
+}
+
+text Route33_Text_Joey_AreYouSure {
+    "{COLOR BLUE}Joey: Are you sure?\n"
+    "I'm not gonna ask again!"
+}
+
+text Route33_Text_Joey_OkNevermindThen {
+    "{COLOR BLUE}Joey: OK, nevermind then."
+}
+
+text Route33_Text_Joey_NowWeAreReallyDone {
+    "{COLOR BLUE}Joey: Now we're really done!\n"
+    "Enjoy your walk!"
+}
+
+text Route33_Text_Joey_ComeUpWithEnjoey {
+    "{COLOR BLUE}Joey: He he he… I think I should\n"
+    "say “Enjoey” from now on!"
+}

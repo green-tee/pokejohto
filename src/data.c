@@ -68,12 +68,13 @@ const struct SpriteFrameImage gTrainerBackPicTable_Pokedude[] =
     gTrainerBackPic_Pokedude + 0x1800, 0x0800,
 };
 
-const struct SpriteFrameImage gTrainerBackPicTable_OldMan[] =
+const struct SpriteFrameImage gTrainerBackPicTable_LeaderJoey[] =
 {
-    gTrainerBackPic_OldMan, 0x0800,
-    gTrainerBackPic_OldMan + 0x0800, 0x0800,
-    gTrainerBackPic_OldMan + 0x1000, 0x0800,
-    gTrainerBackPic_OldMan + 0x1800, 0x0800,
+    gTrainerBackPic_LeaderJoey, 0x0800,
+    gTrainerBackPic_LeaderJoey + 0x0800, 0x0800,
+    gTrainerBackPic_LeaderJoey + 0x1000, 0x0800,
+    gTrainerBackPic_LeaderJoey + 0x1800, 0x0800,
+    gTrainerBackPic_LeaderJoey + 0x2000, 0x0800
 };
 
 const struct SpriteFrameImage gTrainerBackPicTable_RSBrendan[] =

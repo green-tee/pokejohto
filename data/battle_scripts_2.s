@@ -52,13 +52,13 @@ gBattlescriptsForSafariActions::
 	.4byte BattleScript_LeftoverWallyPrepToThrow
 
 BattleScript_ThrowBall::
-	jumpifbattletype BATTLE_TYPE_CATCHING_TUTORIAL, BattleScript_OldManThrowBall
+	jumpifbattletype BATTLE_TYPE_CATCHING_TUTORIAL, BattleScript_JoeyThrowBall
 	jumpifbattletype BATTLE_TYPE_POKEDUDE, BattleScript_PokedudeThrowBall
 	printstring STRINGID_PLAYERUSEDITEM
 	handleballthrow
 
-BattleScript_OldManThrowBall::
-	printstring STRINGID_OLDMANUSEDITEM
+BattleScript_JoeyThrowBall::
+	printstring STRINGID_JOEYUSEDITEM
 	handleballthrow
 
 BattleScript_PokedudeThrowBall::
@@ -96,7 +96,7 @@ BattleScript_CaughtPokemonDone::
 	setbyte gBattleOutcome, B_OUTCOME_CAUGHT
 	finishturn
 
-BattleScript_OldMan_Pokedude_CaughtMessage::
+BattleScript_Joey_Pokedude_CaughtMessage::
 	printstring STRINGID_GOTCHAPKMNCAUGHT2
 	setbyte gBattleOutcome, B_OUTCOME_CAUGHT
 	endlinkbattle

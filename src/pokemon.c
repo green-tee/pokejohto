@@ -1556,12 +1556,12 @@ static const struct SpriteTemplate sTrainerBackSpriteTemplates[] =
         .affineAnims = gAffineAnims_BattleSpritePlayerSide,
         .callback = SpriteCB_AllyMon,
     },
-    [TRAINER_BACK_PIC_OLD_MAN] = {
+    [TRAINER_BACK_PIC_LEADER_JOEY] = {
         .tileTag = TAG_NONE,
         .paletteTag = 0,
         .oam = &gOamData_BattlerPlayer,
         .anims = NULL, 
-        .images = gTrainerBackPicTable_OldMan,
+        .images = gTrainerBackPicTable_LeaderJoey,
         .affineAnims = gAffineAnims_BattleSpritePlayerSide,
         .callback = SpriteCB_AllyMon,
     },

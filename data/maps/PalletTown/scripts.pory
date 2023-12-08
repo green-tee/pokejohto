@@ -27,5 +27,5 @@ text PalletTown_Text_FatManJustGavePokemon {
 }
 
 text PalletTown_Text_FatManPlayerHasPokemon {
-    format("Technology is incredible! Some guys managed to reverse-engineer old Pokémon games for the GBA!\pI... I can't even fathom.")
+    format("Technology is incredible! Some guys managed to reverse-engineer old Pokémon games for the GBA!\pI… I can't even fathom.")
 }

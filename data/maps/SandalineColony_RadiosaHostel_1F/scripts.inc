@@ -16,8 +16,8 @@ SandalineColony_RadiosaHostel_1F_EventScript_Pokedex_2:
 	waitfanfare
 	removeobject VAR_LAST_TALKED
 	setflag FLAG_SYS_POKEDEX_GET
-	compare VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER > 2, 0
-	goto_if_ne SandalineColony_RadiosaHostel_1F_EventScript_Pokedex_4
+	compare VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER, 2
+	goto_if_gt SandalineColony_RadiosaHostel_1F_EventScript_Pokedex_4
 	goto SandalineColony_RadiosaHostel_1F_EventScript_Pokedex_1
 
 SandalineColony_RadiosaHostel_1F_EventScript_Pokedex_4:

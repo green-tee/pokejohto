@@ -5840,7 +5840,7 @@ static u8 GetPartyLayoutFromBattleType(void)
 
 void OpenPartyMenuInTutorialBattle(u8 partyAction)
 {
-    if (!BtlCtrl_OakOldMan_TestState2Flag(FIRST_BATTLE_MSG_FLAG_PARTY_MENU) && (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE))
+    if (!BtlCtrl_OakJoey_TestState2Flag(FIRST_BATTLE_MSG_FLAG_PARTY_MENU) && (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE))
     {
         InitPartyMenu(PARTY_MENU_TYPE_IN_BATTLE,
                       GetPartyLayoutFromBattleType(),
@@ -5849,7 +5849,7 @@ void OpenPartyMenuInTutorialBattle(u8 partyAction)
                       PARTY_MSG_NONE,
                       Task_FirstBattleEnterParty_WaitFadeIn,
                       SetCB2ToReshowScreenAfterMenu);
-        BtlCtrl_OakOldMan_SetState2Flag(FIRST_BATTLE_MSG_FLAG_PARTY_MENU);
+        BtlCtrl_OakJoey_SetState2Flag(FIRST_BATTLE_MSG_FLAG_PARTY_MENU);
     }
     else
     {
@@ -5881,7 +5881,7 @@ void Pokedude_ChooseMonForInBattleItem(void)
 
 void EnterPartyFromItemMenuInBattle(void)
 {
-    if (!BtlCtrl_OakOldMan_TestState2Flag(FIRST_BATTLE_MSG_FLAG_PARTY_MENU) && (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE))
+    if (!BtlCtrl_OakJoey_TestState2Flag(FIRST_BATTLE_MSG_FLAG_PARTY_MENU) && (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE))
     {
         InitPartyMenu(PARTY_MENU_TYPE_IN_BATTLE,
                       GetPartyLayoutFromBattleType(),
@@ -5890,7 +5890,7 @@ void EnterPartyFromItemMenuInBattle(void)
                       PARTY_MSG_NONE,
                       Task_FirstBattleEnterParty_WaitFadeIn,
                       CB2_BagMenuFromBattle);
-        BtlCtrl_OakOldMan_SetState2Flag(FIRST_BATTLE_MSG_FLAG_PARTY_MENU);
+        BtlCtrl_OakJoey_SetState2Flag(FIRST_BATTLE_MSG_FLAG_PARTY_MENU);
     }
     else
     {

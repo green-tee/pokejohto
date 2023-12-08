@@ -53,7 +53,7 @@ static void HandleAction_SafariZoneBallThrow(void);
 static void HandleAction_ThrowBait(void);
 static void HandleAction_ThrowRock(void);
 static void HandleAction_SafariZoneRun(void);
-static void HandleAction_OldManBallThrow(void);
+static void HandleAction_JoeyBallThrow(void);
 static void HandleAction_TryFinish(void);
 static void HandleAction_NothingIsFainted(void);
 static void HandleAction_ActionFinished(void);
@@ -574,7 +574,7 @@ static void (*const sTurnActionsFuncsTable[])(void) =
     [B_ACTION_SAFARI_BAIT]            = HandleAction_ThrowBait,
     [B_ACTION_SAFARI_GO_NEAR]         = HandleAction_ThrowRock,
     [B_ACTION_SAFARI_RUN]             = HandleAction_SafariZoneRun,
-    [B_ACTION_OLDMAN_THROW]           = HandleAction_OldManBallThrow,
+    [B_ACTION_JOEY_THROW]             = HandleAction_JoeyBallThrow,
     [B_ACTION_EXEC_SCRIPT]            = HandleAction_RunBattleScript,
     [B_ACTION_TRY_FINISH]             = HandleAction_TryFinish,
     [B_ACTION_FINISHED]               = HandleAction_ActionFinished,
@@ -3341,7 +3341,7 @@ static void HandleTurnActionSelectionState(void)
                     gHitMarker |= HITMARKER_RUN;
                     gBattleCommunication[gActiveBattler]++;
                     break;
-                case B_ACTION_OLDMAN_THROW:
+                case B_ACTION_JOEY_THROW:
                     gBattleCommunication[gActiveBattler]++;
                     break;
                 }
@@ -4419,7 +4419,7 @@ static void HandleAction_SafariZoneRun(void)
     gBattleOutcome = B_OUTCOME_RAN;
 }
 
-static void HandleAction_OldManBallThrow(void)
+static void HandleAction_JoeyBallThrow(void)
 {
     gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
     gBattle_BG0_X = 0;

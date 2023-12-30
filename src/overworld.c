@@ -976,15 +976,25 @@ void SetCurrentMapLayout(u16 mapLayoutId)
     gMapHeader.mapLayout = GetMapLayout();
 }
 
-void Overworld_SetWarpDestinationFromWarp(struct WarpData * warp)
+void Overworld_SetWarpDestinationFromWarp(struct WarpData *warp)
 {
     sWarpDestination = *warp;
 }
 
 // Routines related to map music
 
-static u16 GetLocationMusic(struct WarpData * warp)
+static bool8 ShouldMusSandalineOverrideLocationMusic(struct WarpData *warp) {
+    // Music is only overridden in Route 33 when VAR_MAP_SCENE_ROUTE33 is less than 2
+    // (i.e. tutorial on catching Pokémon hasn't been completed).
+    return warp->mapGroup == MAP_GROUP(ROUTE33)
+        && warp->mapNum == MAP_NUM(ROUTE33)
+        && VarGet(VAR_MAP_SCENE_ROUTE33) < 2;
+}
+
+static u16 GetLocationMusic(struct WarpData *warp)
 {
+    if (ShouldMusSandalineOverrideLocationMusic(warp))
+        return MUS_SANDALINE;
     return Overworld_GetMapHeaderByGroupAndId(warp->mapGroup, warp->mapNum)->music;
 }
 

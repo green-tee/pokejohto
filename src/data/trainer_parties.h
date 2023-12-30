@@ -153,17 +153,30 @@ static const struct TrainerMonNoItemDefaultMoves sParty_EliteFourGlacia[] = {DUM
 static const struct TrainerMonNoItemDefaultMoves sParty_EliteFourDrake[] = {DUMMY_TRAINER_MON};
 
 // Start of actual trainer data
-static const struct TrainerMonNoItemDefaultMoves sParty_YoungsterBen[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_YoungsterJoey[] = {
     {
         .iv = 0,
-        .lvl = 11,
-        .species = SPECIES_RATTATA,
+        .lvl = 6,
+        .species = SPECIES_SPEAROW
     },
     {
         .iv = 0,
-        .lvl = 11,
-        .species = SPECIES_EKANS,
+        .lvl = 7,
+        .species = SPECIES_RATTATA
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_YoungsterTimmy[] = {
+    {
+        .iv = 0,
+        .lvl = 7,
+        .species = SPECIES_HOOTHOOT
     },
+    {
+        .iv = 0,
+        .lvl = 7,
+        .species = SPECIES_HOOTHOOT
+    }
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_YoungsterCalvin[] = {
@@ -192,29 +205,16 @@ static const struct TrainerMonNoItemDefaultMoves sParty_YoungsterJosh[] = {
     },
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_YoungsterTimmy[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_YoungsterBen[] = {
     {
         .iv = 0,
-        .lvl = 14,
-        .species = SPECIES_SANDSHREW,
-    },
-    {
-        .iv = 0,
-        .lvl = 14,
-        .species = SPECIES_EKANS,
-    },
-};
-
-static const struct TrainerMonNoItemDefaultMoves sParty_YoungsterJoey[] = {
-    {
-        .iv = 0,
-        .lvl = 15,
+        .lvl = 11,
         .species = SPECIES_RATTATA,
     },
     {
         .iv = 0,
-        .lvl = 15,
-        .species = SPECIES_SPEAROW,
+        .lvl = 11,
+        .species = SPECIES_EKANS,
     },
 };
 

@@ -1,15 +1,14 @@
-Route33_EventScript_YoungsterJoey::
-	trainerbattle_single TRAINER_YOUNGSTER_JOEY, Route33_Text_YoungsterJoeyIntro, Route33_Text_YoungsterJoeyDefeat
-	msgbox Route33_Text_YoungsterJoeyPostBattle, MSGBOX_AUTOCLOSE
-	return
+script Route33_EventScript_YoungsterJoey {
+    trainerbattle_single(TRAINER_YOUNGSTER_JOEY, Route33_Text_YoungsterJoeyIntro, Route33_Text_YoungsterJoeyDefeat)
+    msgbox(Route33_Text_YoungsterJoeyPostBattle, MSGBOX_AUTOCLOSE)
+}
 
+script Route33_EventScript_YoungsterTimmy {
+	trainerbattle_single(TRAINER_YOUNGSTER_TIMMY, Route33_Text_YoungsterTimmyIntro, Route33_Text_YoungsterTimmyDefeat)
+	msgbox(Route33_Text_YoungsterTimmyPostBattle, MSGBOX_AUTOCLOSE)
+}
 
-Route33_EventScript_YoungsterTimmy::
-	trainerbattle_single TRAINER_YOUNGSTER_TIMMY, Route33_Text_YoungsterTimmyIntro, Route33_Text_YoungsterTimmyDefeat
-	msgbox Route33_Text_YoungsterTimmyPostBattle, MSGBOX_AUTOCLOSE
-	return
-
-
+raw `
 Route3_EventScript_Ben::
 	trainerbattle_single TRAINER_YOUNGSTER_BEN, Route3_Text_BenIntro, Route3_Text_BenDefeat
 	specialvar VAR_RESULT, ShouldTryRematchBattle
@@ -2733,3 +2732,4 @@ SevenIsland_TanobyRuins_EventScript_CliffordRematch::
 	trainerbattle_rematch TRAINER_GENTLEMAN_CLIFFORD, SevenIsland_TanobyRuins_Text_CliffordRematchIntro, SevenIsland_TanobyRuins_Text_CliffordDefeat
 	msgbox SevenIsland_TanobyRuins_Text_CliffordPostBattle, MSGBOX_AUTOCLOSE
 	end
+`

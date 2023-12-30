@@ -284,7 +284,7 @@ gSongTable::
 	song mus_cycling, 0, 0
 	song mus_encounter_rocket, 0, 0
 	song mus_encounter_girl, 0, 0
-	song mus_encounter_boy, 0, 0
+	song mus_encounter_youngster, 0, 0
 	song mus_hall_of_fame, 0, 0
 	song mus_viridian_forest, 0, 0
 	song mus_mt_moon, 0, 0

@@ -1,5 +1,5 @@
 SandalineColony_PokemonCenter_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, SandalineColony_PokemonCenter_EventScript_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, SandalineColony_PokemonCenter_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, SandalineColony_PokemonCenter_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
@@ -9,13 +9,13 @@ SandalineColony_PokemonCenter_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	.2byte 0
 
 
-SandalineColony_PokemonCenter_EventScript_OnTransition::
+SandalineColony_PokemonCenter_OnTransition::
 	setrespawn SPAWN_SANDALINE_COLONY
 	compare VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER, 2
-	goto_if_eq SandalineColony_PokemonCenter_EventScript_OnTransition_1
+	goto_if_eq SandalineColony_PokemonCenter_OnTransition_1
 	return
 
-SandalineColony_PokemonCenter_EventScript_OnTransition_1:
+SandalineColony_PokemonCenter_OnTransition_1:
 	call SandalineColony_PokemonCenter_EventScript_MoveBugsyToCounter
 	return
 
@@ -27,17 +27,17 @@ SandalineColony_PokemonCenter_EventScript_MoveBugsyToCounter:
 
 SandalineColony_PokemonCenter_EventScript_BugsyStartPokeCenterTour::
 	lockall
-	applymovement 5, SandalineColony_PokemonCenter_Movement_WalkInPlaceToTalkToPlayer
+	applymovement 5, Movement_WalkInPlaceToTalkToPlayer
 	waitmovement 5
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	msgbox SandalineColony_PokemonCenter_Text_Bugsy_ThisIsAPokemonCenter
 	closemessage
-	applymovement 5, SandalineColony_PokemonCenter_Movement_Bugsy_WalkToCounter
+	applymovement 5, Movement_Bugsy_WalkToCounter
 	delay 40
-	applymovement OBJ_EVENT_ID_PLAYER, SandalineColony_PokemonCenter_Movement_Player_WalkToCounter
+	applymovement OBJ_EVENT_ID_PLAYER, Movement_Player_WalkToCounter
 	waitmovement 5
 	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement 5, SandalineColony_PokemonCenter_Movement_WalkInPlaceToTalkToPlayer
+	applymovement 5, Movement_WalkInPlaceToTalkToPlayer
 	waitmovement 5
 	msgbox SandalineColony_PokemonCenter_Text_Bugsy_TheMainAttraction
 	closemessage
@@ -46,11 +46,11 @@ SandalineColony_PokemonCenter_EventScript_BugsyStartPokeCenterTour::
 	return
 
 
-SandalineColony_PokemonCenter_Movement_WalkInPlaceToTalkToPlayer:
+Movement_WalkInPlaceToTalkToPlayer:
 	walk_in_place_right
 	step_end
 
-SandalineColony_PokemonCenter_Movement_Bugsy_WalkToCounter:
+Movement_Bugsy_WalkToCounter:
 	walk_down
 	walk_right
 	walk_down
@@ -63,7 +63,7 @@ SandalineColony_PokemonCenter_Movement_Bugsy_WalkToCounter:
 	face_right
 	step_end
 
-SandalineColony_PokemonCenter_Movement_Player_WalkToCounter:
+Movement_Player_WalkToCounter:
 	walk_down
 	walk_down
 	walk_down
@@ -146,7 +146,7 @@ SandalineColony_PokemonCenter_EventScript_NurseTutorialHeal_1:
 	bufferpartymonnick STR_VAR_1, 0
 	msgbox SandalineColony_PokemonCenter_Text_Scene_PlayerHandsTheParty, MSGBOX_DEFAULT
 	closemessage
-	applymovement VAR_LAST_TALKED, SandalineColony_PokemonCenter_Movement_TurnToHealMachine
+	applymovement VAR_LAST_TALKED, Movement_TurnToHealMachine
 	waitmovement VAR_LAST_TALKED
 	msgbox SandalineColony_PokemonCenter_Text_Nurse_IllPutThemInThisMachine
 	closemessage
@@ -156,7 +156,7 @@ SandalineColony_PokemonCenter_EventScript_NurseTutorialHeal_1:
 	waitfieldeffect FLDEFF_POKECENTER_HEAL
 	msgbox SandalineColony_PokemonCenter_Text_Nurse_Done
 	closemessage
-	applymovement VAR_LAST_TALKED, SandalineColony_PokemonCenter_Movement_TurnBackToPlayer
+	applymovement VAR_LAST_TALKED, Movement_TurnBackToPlayer
 	waitmovement VAR_LAST_TALKED
 	msgbox SandalineColony_PokemonCenter_Text_Nurse_ThankYourForYourPatience
 	closemessage
@@ -178,11 +178,11 @@ SandalineColony_PokemonCenter_EventScript_NurseTutorialHeal_5:
 	goto SandalineColony_PokemonCenter_EventScript_NurseTutorialHeal_4
 
 
-SandalineColony_PokemonCenter_Movement_TurnToHealMachine:
+Movement_TurnToHealMachine:
 	walk_in_place_faster_left
 	step_end
 
-SandalineColony_PokemonCenter_Movement_TurnBackToPlayer:
+Movement_TurnBackToPlayer:
 	walk_in_place_faster_down
 	step_end
 
@@ -191,14 +191,14 @@ SandalineColony_PokemonCenter_EventScript_EndPokemonCenterTutorial:
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	msgbox SandalineColony_PokemonCenter_Text_Bugsy_PokemonCenterAreImportant
 	closemessage
-	applymovement 5, SandalineColony_PokemonCenter_Movement_LookAtDoor
+	applymovement 5, Movement_LookAtDoor
 	waitmovement 5
 	delay 90
-	applymovement 5, SandalineColony_PokemonCenter_Movement_FacePlayerSlowly
+	applymovement 5, Movement_FacePlayerSlowly
 	waitmovement 5
 	msgbox SandalineColony_PokemonCenter_Text_Bugsy_HeadToAzaleaTown
 	closemessage
-	applymovement 5, SandalineColony_PokemonCenter_Movement_LeavePokeCenter
+	applymovement 5, Movement_LeavePokeCenter
 	waitmovement 5
 	removeobject 5
 	playse SE_EXIT
@@ -216,7 +216,7 @@ SandalineColony_PokemonCenter_EventScript_PreventPlayerFromEscapingHealing::
 	getplayerxy VAR_TEMP_1, VAR_TEMP_2
 	compare VAR_TEMP_1, 8
 	goto_if_lt SandalineColony_PokemonCenter_EventScript_PreventPlayerFromEscapingHealing_2
-	applymovement 5, SandalineColony_PokemonCenter_Movement_TurnEast
+	applymovement 5, Movement_TurnEast
 SandalineColony_PokemonCenter_EventScript_PreventPlayerFromEscapingHealing_1:
 	msgbox SandalineColony_PokemonCenter_Text_Bugsy_WhereAreYouGoing
 	waitmovement 5
@@ -235,53 +235,53 @@ SandalineColony_PokemonCenter_EventScript_PreventPlayerFromEscapingHealing_5:
 	return
 
 SandalineColony_PokemonCenter_EventScript_PreventPlayerFromEscapingHealing_2:
-	applymovement 5, SandalineColony_PokemonCenter_Movement_TurnSouth
+	applymovement 5, Movement_TurnSouth
 	goto SandalineColony_PokemonCenter_EventScript_PreventPlayerFromEscapingHealing_1
 
 SandalineColony_PokemonCenter_EventScript_PreventPlayerFromEscapingHealing_7:
-	applymovement OBJ_EVENT_ID_PLAYER, SandalineColony_PokemonCenter_Movement_WalkBackToCounterFromLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Movement_WalkBackToCounterFromLeft
 	goto SandalineColony_PokemonCenter_EventScript_PreventPlayerFromEscapingHealing_5
 
 SandalineColony_PokemonCenter_EventScript_PreventPlayerFromEscapingHealing_8:
-	applymovement OBJ_EVENT_ID_PLAYER, SandalineColony_PokemonCenter_Movement_WalkBackToCounterFromBelow
+	applymovement OBJ_EVENT_ID_PLAYER, Movement_WalkBackToCounterFromBelow
 	goto SandalineColony_PokemonCenter_EventScript_PreventPlayerFromEscapingHealing_5
 
 SandalineColony_PokemonCenter_EventScript_PreventPlayerFromEscapingHealing_9:
-	applymovement OBJ_EVENT_ID_PLAYER, SandalineColony_PokemonCenter_Movement_WalkBackToCounterFromRight
+	applymovement OBJ_EVENT_ID_PLAYER, Movement_WalkBackToCounterFromRight
 	goto SandalineColony_PokemonCenter_EventScript_PreventPlayerFromEscapingHealing_5
 
 
-SandalineColony_PokemonCenter_Movement_WalkBackToCounterFromLeft:
+Movement_WalkBackToCounterFromLeft:
 	walk_right
 	walk_right
 	step_end
 
-SandalineColony_PokemonCenter_Movement_WalkBackToCounterFromBelow:
+Movement_WalkBackToCounterFromBelow:
 	walk_up
 	step_end
 
-SandalineColony_PokemonCenter_Movement_WalkBackToCounterFromRight:
+Movement_WalkBackToCounterFromRight:
 	walk_left
 	walk_left
 	step_end
 
-SandalineColony_PokemonCenter_Movement_TurnSouth:
+Movement_TurnSouth:
 	walk_in_place_down
 	step_end
 
-SandalineColony_PokemonCenter_Movement_TurnEast:
+Movement_TurnEast:
 	walk_in_place_right
 	step_end
 
-SandalineColony_PokemonCenter_Movement_LookAtDoor:
+Movement_LookAtDoor:
 	walk_in_place_slow_down
 	step_end
 
-SandalineColony_PokemonCenter_Movement_FacePlayerSlowly:
+Movement_FacePlayerSlowly:
 	walk_in_place_slow_right
 	step_end
 
-SandalineColony_PokemonCenter_Movement_LeavePokeCenter:
+Movement_LeavePokeCenter:
 	walk_down
 	walk_down
 	walk_right

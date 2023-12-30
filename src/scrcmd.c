@@ -31,6 +31,7 @@
 #include "battle_setup.h"
 #include "shop.h"
 #include "slot_machine.h"
+#include "sliding_blocks.h"
 #include "field_effect.h"
 #include "fieldmap.h"
 #include "field_door.h"
@@ -437,10 +438,11 @@ bool8 ScrCmd_compare_var_to_var(struct ScriptContext * ctx)
 }
 
 // Note: addvar doesn't support adding from a variable in vanilla.
+// However, I added support because it makes no sense not to.
 bool8 ScrCmd_addvar(struct ScriptContext * ctx)
 {
     u16 *ptr = GetVarPointer(ScriptReadHalfword(ctx));
-    *ptr += ScriptReadHalfword(ctx);
+    *ptr += VarGet(ScriptReadHalfword(ctx));
     return FALSE;
 }
 
@@ -1995,12 +1997,14 @@ bool8 ScrCmd_setberrytree(struct ScriptContext * ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_getpokenewsactive(struct ScriptContext * ctx)
+bool8 ScrCmd_playslidingblocks(struct ScriptContext * ctx)
 {
-//    u16 value = VarGet(ScriptReadHalfword(ctx));
-//
-//    gSpecialVar_Result = GetPriceReduction(value);
-    return FALSE;
+    // TODO: figure out how to implement it, I guess.
+    u8 puzzleId = VarGet(ScriptReadByte(ctx));
+
+    PlaySlidingBlocks(puzzleId, CB2_ReturnToFieldContinueScriptPlayMapMusic);
+    ScriptContext_Stop();
+    return TRUE;
 }
 
 bool8 ScrCmd_choosecontestmon(struct ScriptContext * ctx)

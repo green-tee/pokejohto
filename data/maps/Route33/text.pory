@@ -159,3 +159,36 @@ text Route33_Text_Joey_ComeUpWithEnjoey {
     "{COLOR BLUE}Joey: He he he… I think I should\n"
     "say “Enjoey” from now on!"
 }
+
+text Route33_Text_YoungsterJoeyIntro {
+    "When two Trainers' eyes meet,\n"
+    "the two shall have a battle!"
+}
+
+text Route33_Text_YoungsterJoeyDefeat {
+    "My… my Pokémon!"
+}
+
+text Route33_Text_YoungsterJoeyPostBattle {
+    "No way, you're friends with that\n"
+    "Joey guy? My name's Joey too!\p"
+    "My brother told me that guy used\n"
+    "to brag a lot about his Rattata\l"
+    "8 years ago or so."
+}
+
+text Route33_Text_YoungsterTimmyIntro {
+    "I challenge you with my cool\n"
+    "Hoothoot pair!"
+}
+
+text Route33_Text_YoungsterTimmyDefeat {
+    "Spark!"
+}
+
+text Route33_Text_YoungsterTimmyPostBattle {
+    "Pokémon can have different\n"
+    "colors than the rest of their\l"
+    "Species. But such Pokémon are\l"
+    "not easy to encounter."
+}

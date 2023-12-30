@@ -2,7 +2,7 @@
 #define GUARD_CONSTANTS_OPPONENTS_H
 
 #define TRAINER_NONE                               0
-// Dummy trainers for all the RS trainer classes
+// Relevant trainers (tutorials, bosses etc.)
 #define TRAINER_JOEY_FIRST_BATTLE_CHIKORITA        1
 #define TRAINER_JOEY_FIRST_BATTLE_CYNDAQUIL        2
 #define TRAINER_JOEY_FIRST_BATTLE_TOTODILE         3
@@ -91,12 +91,12 @@
 #define TRAINER_LEADER_WALLACE                    86
 #define TRAINER_ELITE_FOUR_GLACIA                 87
 #define TRAINER_ELITE_FOUR_DRAKE                  88
-// Actual FRLG trainers start here
-#define TRAINER_YOUNGSTER_BEN                     89
-#define TRAINER_YOUNGSTER_CALVIN                  90
+// Regular trainers start here
+#define TRAINER_YOUNGSTER_JOEY                    89
+#define TRAINER_YOUNGSTER_TIMMY                   90
 #define TRAINER_YOUNGSTER_JOSH                    91
-#define TRAINER_YOUNGSTER_TIMMY                   92
-#define TRAINER_YOUNGSTER_JOEY                    93
+#define TRAINER_YOUNGSTER_CALVIN                  92
+#define TRAINER_YOUNGSTER_BEN                     93
 #define TRAINER_YOUNGSTER_DAN                     94
 #define TRAINER_YOUNGSTER_CHAD                    95
 #define TRAINER_YOUNGSTER_TYLER                   96

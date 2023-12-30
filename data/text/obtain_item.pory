@@ -1,3 +1,21 @@
+text Text_ObtainedTheX {
+    "You obtained the {STR_VAR_2}!"
+}
+
+text Text_ObtainedNumberX {
+    "You obtained {STR_VAR_1} {STR_VAR_2}!"
+}
+
+text Text_PutItemAway {
+    "The {STR_VAR_2} went\n"
+    "in the {STR_VAR_3}."
+}
+
+text Text_BagIsFull {
+    "Your Bag is full…"
+}
+
+raw `
 Text_FoundOneItem::
 	.string "{PLAYER} found one {STR_VAR_2}!$"
 
@@ -36,15 +54,4 @@ Text_DecorTransferredToPC::
 	.string "The {STR_VAR_2} was transferred\n"
 	.string "to the PC.$"
 
-Text_ObtainedTheX::
-	.string "You obtained the {STR_VAR_2}!$"
-
-Text_ObtainedNumberX::
-	.string "You obtained {STR_VAR_1} {STR_VAR_2}!$"
-
-Text_PutItemAway::
-	.string "The {STR_VAR_2} went\n"
-	.string "in the {STR_VAR_3}.$"
-
-Text_BagIsFull::
-	.string "Your Bag is full…$"
+`

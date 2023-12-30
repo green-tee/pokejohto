@@ -166,8 +166,9 @@ script Route33_EventScript_CatchingTutorialScene {
     applymovement(LOCALID_JOEY, Movement_FinishWalkingAway)
     waitmovement(LOCALID_JOEY)
     removeobject(LOCALID_JOEY)
-    delay(60)
     setvar(VAR_MAP_SCENE_ROUTE33, 2)
+    fadedefaultbgm
+    delay(60)
     releaseall
 }
 
@@ -286,7 +287,7 @@ script(local) Route33_EventScript_NicknamingStarter {
 }
 
 movement Movement_FinishWalkingAway {
-    walk_down * 2
+    walk_down
     walk_left * 7
     walk_up * 6
     walk_left

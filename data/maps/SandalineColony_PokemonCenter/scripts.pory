@@ -6,12 +6,12 @@ const PLAYER_X_COORD = VAR_TEMP_1
 const PLAYER_Y_COORD = VAR_TEMP_2
 
 mapscripts SandalineColony_PokemonCenter_MapScripts {
-    MAP_SCRIPT_ON_TRANSITION: SandalineColony_PokemonCenter_EventScript_OnTransition
+    MAP_SCRIPT_ON_TRANSITION: SandalineColony_PokemonCenter_OnTransition
     MAP_SCRIPT_ON_RESUME: CableClub_OnResume
     MAP_SCRIPT_ON_FRAME_TABLE [VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER, 1: SandalineColony_PokemonCenter_EventScript_BugsyStartPokeCenterTour]
 }
 
-script SandalineColony_PokemonCenter_EventScript_OnTransition {
+script SandalineColony_PokemonCenter_OnTransition {
     setrespawn(SPAWN_SANDALINE_COLONY)
     if (var(VAR_MAP_SCENE_SANDALINE_COLONY_POKECENTER) == 2) {
         # Make sure Bugsy stays in place after control is given to the player.
@@ -28,17 +28,17 @@ script(local) SandalineColony_PokemonCenter_EventScript_MoveBugsyToCounter {
 // This script carries the tutorial before the player is asked to talk to the nurse.
 script SandalineColony_PokemonCenter_EventScript_BugsyStartPokeCenterTour {
     lockall
-    applymovement(LOCALID_BUGSY, SandalineColony_PokemonCenter_Movement_WalkInPlaceToTalkToPlayer)
+    applymovement(LOCALID_BUGSY, Movement_WalkInPlaceToTalkToPlayer)
     waitmovement(LOCALID_BUGSY)
     turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
     msgbox(SandalineColony_PokemonCenter_Text_Bugsy_ThisIsAPokemonCenter)
     closemessage
-    applymovement(LOCALID_BUGSY, SandalineColony_PokemonCenter_Movement_Bugsy_WalkToCounter)
+    applymovement(LOCALID_BUGSY, Movement_Bugsy_WalkToCounter)
     delay(40)
-    applymovement(OBJ_EVENT_ID_PLAYER, SandalineColony_PokemonCenter_Movement_Player_WalkToCounter)
+    applymovement(OBJ_EVENT_ID_PLAYER, Movement_Player_WalkToCounter)
     waitmovement(LOCALID_BUGSY)
     waitmovement(OBJ_EVENT_ID_PLAYER)
-    applymovement(LOCALID_BUGSY, SandalineColony_PokemonCenter_Movement_WalkInPlaceToTalkToPlayer)
+    applymovement(LOCALID_BUGSY, Movement_WalkInPlaceToTalkToPlayer)
     waitmovement(LOCALID_BUGSY)
     msgbox(SandalineColony_PokemonCenter_Text_Bugsy_TheMainAttraction)
     closemessage
@@ -46,11 +46,11 @@ script SandalineColony_PokemonCenter_EventScript_BugsyStartPokeCenterTour {
     releaseall
 }
 
-movement SandalineColony_PokemonCenter_Movement_WalkInPlaceToTalkToPlayer {
+movement Movement_WalkInPlaceToTalkToPlayer {
     walk_in_place_right
 }
 
-movement SandalineColony_PokemonCenter_Movement_Bugsy_WalkToCounter {
+movement Movement_Bugsy_WalkToCounter {
     walk_down
     walk_right
     walk_down * 2
@@ -59,7 +59,7 @@ movement SandalineColony_PokemonCenter_Movement_Bugsy_WalkToCounter {
     face_right
 }
 
-movement SandalineColony_PokemonCenter_Movement_Player_WalkToCounter {
+movement Movement_Player_WalkToCounter {
     walk_down * 3
     walk_right * 5
     walk_up
@@ -114,7 +114,7 @@ script(local) SandalineColony_PokemonCenter_EventScript_NurseTutorialHeal {
         bufferpartymonnick(STR_VAR_1, 0)
         msgbox(SandalineColony_PokemonCenter_Text_Scene_PlayerHandsTheParty, MSGBOX_DEFAULT)
         closemessage
-        applymovement(VAR_LAST_TALKED, SandalineColony_PokemonCenter_Movement_TurnToHealMachine)
+        applymovement(VAR_LAST_TALKED, Movement_TurnToHealMachine)
         waitmovement(VAR_LAST_TALKED)
         msgbox(SandalineColony_PokemonCenter_Text_Nurse_IllPutThemInThisMachine)
         closemessage
@@ -124,7 +124,7 @@ script(local) SandalineColony_PokemonCenter_EventScript_NurseTutorialHeal {
         waitfieldeffect(FLDEFF_POKECENTER_HEAL)
         msgbox(SandalineColony_PokemonCenter_Text_Nurse_Done)
         closemessage
-        applymovement(VAR_LAST_TALKED, SandalineColony_PokemonCenter_Movement_TurnBackToPlayer)
+        applymovement(VAR_LAST_TALKED, Movement_TurnBackToPlayer)
         waitmovement(VAR_LAST_TALKED)
         msgbox(SandalineColony_PokemonCenter_Text_Nurse_ThankYourForYourPatience)
         closemessage
@@ -149,11 +149,11 @@ script(local) SandalineColony_PokemonCenter_EventScript_NurseTutorialHeal {
     }
 }
 
-movement SandalineColony_PokemonCenter_Movement_TurnToHealMachine {
+movement Movement_TurnToHealMachine {
     walk_in_place_faster_left
 }
 
-movement SandalineColony_PokemonCenter_Movement_TurnBackToPlayer {
+movement Movement_TurnBackToPlayer {
     walk_in_place_faster_down
 }
 
@@ -164,14 +164,14 @@ script(local) SandalineColony_PokemonCenter_EventScript_EndPokemonCenterTutorial
     turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
     msgbox(SandalineColony_PokemonCenter_Text_Bugsy_PokemonCenterAreImportant)
     closemessage
-    applymovement(LOCALID_BUGSY, SandalineColony_PokemonCenter_Movement_LookAtDoor)
+    applymovement(LOCALID_BUGSY, Movement_LookAtDoor)
     waitmovement(LOCALID_BUGSY)
     delay(90)
-    applymovement(LOCALID_BUGSY, SandalineColony_PokemonCenter_Movement_FacePlayerSlowly)
+    applymovement(LOCALID_BUGSY, Movement_FacePlayerSlowly)
     waitmovement(LOCALID_BUGSY)
     msgbox(SandalineColony_PokemonCenter_Text_Bugsy_HeadToAzaleaTown)
     closemessage
-    applymovement(LOCALID_BUGSY, SandalineColony_PokemonCenter_Movement_LeavePokeCenter)
+    applymovement(LOCALID_BUGSY, Movement_LeavePokeCenter)
     waitmovement(LOCALID_BUGSY)
     removeobject(LOCALID_BUGSY)
     playse(SE_EXIT)
@@ -191,9 +191,9 @@ script SandalineColony_PokemonCenter_EventScript_PreventPlayerFromEscapingHealin
     # Depending on the position, Bugsy has to turn South or East to face Player.
     getplayerxy(PLAYER_X_COORD, PLAYER_Y_COORD)
     if (var(PLAYER_X_COORD) < 8) {
-        applymovement(LOCALID_BUGSY, SandalineColony_PokemonCenter_Movement_TurnSouth)
+        applymovement(LOCALID_BUGSY, Movement_TurnSouth)
     } else {
-        applymovement(LOCALID_BUGSY, SandalineColony_PokemonCenter_Movement_TurnEast)
+        applymovement(LOCALID_BUGSY, Movement_TurnEast)
     }
     msgbox(SandalineColony_PokemonCenter_Text_Bugsy_WhereAreYouGoing)
     waitmovement(LOCALID_BUGSY)
@@ -205,46 +205,46 @@ script SandalineColony_PokemonCenter_EventScript_PreventPlayerFromEscapingHealin
     # Depending on the positon, Player walks in the opposite direction as the one it came from.
     switch (var(VAR_RESULT)) {
         case DIR_WEST:
-            applymovement(OBJ_EVENT_ID_PLAYER, SandalineColony_PokemonCenter_Movement_WalkBackToCounterFromLeft)
+            applymovement(OBJ_EVENT_ID_PLAYER, Movement_WalkBackToCounterFromLeft)
         case DIR_SOUTH:
-            applymovement(OBJ_EVENT_ID_PLAYER, SandalineColony_PokemonCenter_Movement_WalkBackToCounterFromBelow)
+            applymovement(OBJ_EVENT_ID_PLAYER, Movement_WalkBackToCounterFromBelow)
         case DIR_EAST:
-            applymovement(OBJ_EVENT_ID_PLAYER, SandalineColony_PokemonCenter_Movement_WalkBackToCounterFromRight)
+            applymovement(OBJ_EVENT_ID_PLAYER, Movement_WalkBackToCounterFromRight)
     }
     waitmovement(OBJ_EVENT_ID_PLAYER)
     turnobject(LOCALID_BUGSY, DIR_EAST)
     releaseall
 }
 
-movement SandalineColony_PokemonCenter_Movement_WalkBackToCounterFromLeft {
+movement Movement_WalkBackToCounterFromLeft {
     walk_right * 2
 }
 
-movement SandalineColony_PokemonCenter_Movement_WalkBackToCounterFromBelow {
+movement Movement_WalkBackToCounterFromBelow {
     walk_up
 }
 
-movement SandalineColony_PokemonCenter_Movement_WalkBackToCounterFromRight {
+movement Movement_WalkBackToCounterFromRight {
     walk_left * 2
 }
 
-movement SandalineColony_PokemonCenter_Movement_TurnSouth {
+movement Movement_TurnSouth {
     walk_in_place_down
 }
 
-movement SandalineColony_PokemonCenter_Movement_TurnEast {
+movement Movement_TurnEast {
     walk_in_place_right
 }
 
-movement SandalineColony_PokemonCenter_Movement_LookAtDoor {
+movement Movement_LookAtDoor {
     walk_in_place_slow_down
 }
 
-movement SandalineColony_PokemonCenter_Movement_FacePlayerSlowly {
+movement Movement_FacePlayerSlowly {
     walk_in_place_slow_right
 }
 
-movement SandalineColony_PokemonCenter_Movement_LeavePokeCenter {
+movement Movement_LeavePokeCenter {
     walk_down * 2
     walk_right
     walk_down * 2

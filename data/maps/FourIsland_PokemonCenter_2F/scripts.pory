@@ -29,3 +29,10 @@ script FourIsland_PokemonCenter_2F_EventScript_TestCountItem {
     closemessage
     release
 }
+
+script FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks {
+	lock
+	faceplayer
+	playslidingblocks(0)
+	release
+}

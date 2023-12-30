@@ -1,103 +1,67 @@
-Std_ObtainItem::
-	copyvar VAR_PREV_TEXT_COLOR, VAR_TEXT_COLOR
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	additem VAR_0x8000, VAR_0x8001
-	copyvar VAR_0x8007, VAR_RESULT
-	call EventScript_ObtainItemMessage
-	copyvar VAR_TEXT_COLOR, VAR_PREV_TEXT_COLOR
-	return
+script Std_ObtainItem {
+    copyvar(VAR_PREV_TEXT_COLOR, VAR_TEXT_COLOR)
+    textcolor(NPC_TEXT_COLOR_NEUTRAL)
+    additem(VAR_0x8000, VAR_0x8001)
+    copyvar(VAR_0x8007, VAR_RESULT)
+    call(EventScript_ObtainItemMessage)
+    copyvar(VAR_TEXT_COLOR, VAR_PREV_TEXT_COLOR)
+}
 
+script(local) EventScript_ObtainItemMessage {
+    bufferitemnameplural(STR_VAR_2, VAR_0x8000, VAR_0x8001)
+    checkitemtype(VAR_0x8000)
+    call(EventScript_BufferPocketNameTryFanfare)
+    if (var(VAR_0x8007) == TRUE) {
+        call(EventScript_CorrectObtainItemMessage)
+    	waitfanfare
+    	waitmessage
+    	msgbox(Text_PutItemAway)
+    	setvar(VAR_RESULT, TRUE)
+    } else {
+        setvar(VAR_RESULT, FALSE)
+    }
+}
 
-EventScript_ObtainItemMessage:
-	bufferitemnameplural STR_VAR_2, VAR_0x8000, VAR_0x8001
-	checkitemtype VAR_0x8000
-	call EventScript_BufferPocketNameTryFanfare
-	compare VAR_0x8007, TRUE
-	goto_if_eq EventScript_ObtainItemMessage_1
-	setvar VAR_RESULT, FALSE
-	return
+script(local) EventScript_BufferPocketNameTryFanfare {
+    switch (var(VAR_RESULT)) {
+        case POCKET_ITEMS:
+            bufferstdstring(STR_VAR_3, STDSTRING_ITEMS_POCKET)
+            if (var(VAR_0x8007) == TRUE) {
+                playfanfare(MUS_OBTAIN_ITEM)
+            }
+        case POCKET_KEY_ITEMS:
+            bufferstdstring(STR_VAR_3, STDSTRING_KEY_ITEMS_POCKET)
+            if (var(VAR_0x8007) == TRUE) {
+                playfanfare(MUS_OBTAIN_KEY_ITEM)
+            }
+        case POCKET_POKE_BALLS:
+            bufferstdstring(STR_VAR_3, STDSTRING_POKEBALLS_POCKET)
+            if (var(VAR_0x8007) == TRUE) {
+                playfanfare(MUS_OBTAIN_ITEM)
+            }
+        case POCKET_TM_CASE:
+            bufferstdstring(STR_VAR_3, STDSTRING_TM_CASE)
+            if (var(VAR_0x8007) == TRUE) {
+                playfanfare(MUS_OBTAIN_TMHM)
+            }
+        case POCKET_BERRY_POUCH:
+            bufferstdstring(STR_VAR_3, STDSTRING_BERRY_POUCH)
+            if (var(VAR_0x8007) == TRUE) {
+                playfanfare(MUS_OBTAIN_BERRY)
+            }
+    }
+}
 
-EventScript_ObtainItemMessage_1:
-	call EventScript_CorrectObtainItemMessage
-	waitfanfare
-	waitmessage
-	msgbox Text_PutItemAway
-	setvar VAR_RESULT, TRUE
-	return
+script(local) EventScript_CorrectObtainItemMessage {
+    if (var(VAR_0x8001) == 1) {
+        message(Text_ObtainedTheX)
+    } else {
+        buffernumberstring(STR_VAR_1, VAR_0x8001)
+        message(Text_ObtainedNumberX)
+    }
+}
 
-
-EventScript_BufferPocketNameTryFanfare:
-	switch VAR_RESULT
-	case POCKET_ITEMS, EventScript_BufferPocketNameTryFanfare_2
-	case POCKET_KEY_ITEMS, EventScript_BufferPocketNameTryFanfare_3
-	case POCKET_POKE_BALLS, EventScript_BufferPocketNameTryFanfare_4
-	case POCKET_TM_CASE, EventScript_BufferPocketNameTryFanfare_5
-	case POCKET_BERRY_POUCH, EventScript_BufferPocketNameTryFanfare_6
-	return
-
-EventScript_BufferPocketNameTryFanfare_2:
-	bufferstdstring STR_VAR_3, STDSTRING_ITEMS_POCKET
-	compare VAR_0x8007, TRUE
-	goto_if_eq EventScript_BufferPocketNameTryFanfare_7
-	return
-
-EventScript_BufferPocketNameTryFanfare_3:
-	bufferstdstring STR_VAR_3, STDSTRING_KEY_ITEMS_POCKET
-	compare VAR_0x8007, TRUE
-	goto_if_eq EventScript_BufferPocketNameTryFanfare_9
-	return
-
-EventScript_BufferPocketNameTryFanfare_4:
-	bufferstdstring STR_VAR_3, STDSTRING_POKEBALLS_POCKET
-	compare VAR_0x8007, TRUE
-	goto_if_eq EventScript_BufferPocketNameTryFanfare_11
-	return
-
-EventScript_BufferPocketNameTryFanfare_5:
-	bufferstdstring STR_VAR_3, STDSTRING_TM_CASE
-	compare VAR_0x8007, TRUE
-	goto_if_eq EventScript_BufferPocketNameTryFanfare_13
-	return
-
-EventScript_BufferPocketNameTryFanfare_6:
-	bufferstdstring STR_VAR_3, STDSTRING_BERRY_POUCH
-	compare VAR_0x8007, TRUE
-	goto_if_eq EventScript_BufferPocketNameTryFanfare_15
-	return
-
-EventScript_BufferPocketNameTryFanfare_7:
-	playfanfare MUS_OBTAIN_ITEM
-	return
-
-EventScript_BufferPocketNameTryFanfare_9:
-	playfanfare MUS_OBTAIN_KEY_ITEM
-	return
-
-EventScript_BufferPocketNameTryFanfare_11:
-	playfanfare MUS_OBTAIN_ITEM
-	return
-
-EventScript_BufferPocketNameTryFanfare_13:
-	playfanfare MUS_OBTAIN_TMHM
-	return
-
-EventScript_BufferPocketNameTryFanfare_15:
-	playfanfare MUS_OBTAIN_BERRY
-	return
-
-
-EventScript_CorrectObtainItemMessage:
-	compare VAR_0x8001, 1
-	goto_if_eq EventScript_CorrectObtainItemMessage_1
-	buffernumberstring STR_VAR_1, VAR_0x8001
-	message Text_ObtainedNumberX
-	return
-
-EventScript_CorrectObtainItemMessage_1:
-	message Text_ObtainedTheX
-	return
-
-
+raw `
 EventScript_RestorePrevTextColor::
 	copyvar VAR_TEXT_COLOR, VAR_PREV_TEXT_COLOR
 	return
@@ -251,3 +215,4 @@ EventScript_NoCaseForHiddenCoins::
 	setvar VAR_RESULT, 0
 	releaseall
 	end
+`

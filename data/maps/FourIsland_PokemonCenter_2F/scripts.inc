@@ -29,5 +29,13 @@ FourIsland_PokemonCenter_2F_EventScript_TestCountItem::
 	return
 
 
+FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks::
+	lock
+	faceplayer
+	playslidingblocks 0
+	release
+	return
+
+
 FourIsland_PokemonCenter_2F_EventScript_TestCountItem_Text_0:
 	.string "You have {STR_VAR_1} Poké Balls.$"

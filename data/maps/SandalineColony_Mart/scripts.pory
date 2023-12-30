@@ -41,25 +41,25 @@ mart Mart_StandardItems {
 // It starts and completes the Pokémon Mart tutorial.
 script SandalineColony_Mart_EventScript_Bugsy {
     lock
-    applymovement(LOCALID_BUGSY, SandalineColony_Mart_Movement_Bugsy_RunInPlace)
+    applymovement(LOCALID_BUGSY, Movement_Bugsy_RunInPlace)
     waitmovement(LOCALID_BUGSY)
     msgbox(SandalineColony_Mart_Text_Bugsy_TookYouAWhile)
     closemessage
-    applymovement(OBJ_EVENT_ID_PLAYER, SandalineColony_Mart_Movement_Player_OutOfTheWay)
+    applymovement(OBJ_EVENT_ID_PLAYER, Movement_Player_OutOfTheWay)
     waitmovement(OBJ_EVENT_ID_PLAYER)
-    applymovement(LOCALID_BUGSY, SandalineColony_Mart_Movement_Bugsy_WalkToClerk)
+    applymovement(LOCALID_BUGSY, Movement_Bugsy_WalkToClerk)
     delay(40)
-    applymovement(OBJ_EVENT_ID_PLAYER, SandalineColony_Mart_Movement_Player_FollowBugsyToClerk)
+    applymovement(OBJ_EVENT_ID_PLAYER, Movement_Player_FollowBugsyToClerk)
     waitmovement(LOCALID_BUGSY)
     waitmovement(OBJ_EVENT_ID_PLAYER)
     turnobject(LOCALID_BUGSY, DIR_EAST)
     msgbox(SandalineColony_Mart_Text_Bugsy_ThisIsAMart)
     closemessage
-    applymovement(LOCALID_BUGSY, SandalineColony_Mart_Movement_TurnToClerk)
+    applymovement(LOCALID_BUGSY, Movement_TurnToClerk)
     waitmovement(LOCALID_BUGSY)
     msgbox(SandalineColony_Mart_Text_Bugsy_IdLikeToBuyPokeBalls)
     closemessage
-    applymovement(LOCALID_CLERK_M, SandalineColony_Mart_Movement_ClerkM_GivePokeBallsToBugsy)
+    applymovement(LOCALID_CLERK_M, Movement_ClerkM_GivePokeBallsToBugsy)
     waitmovement(LOCALID_CLERK_M)
     msgbox(SandalineColony_Mart_Text_ClerkM_ThatWouldBeMoney)
     closemessage
@@ -74,7 +74,7 @@ script SandalineColony_Mart_EventScript_Bugsy {
     turnobject(LOCALID_BUGSY, DIR_EAST)
     msgbox(SandalineColony_Mart_Text_Bugsy_ItemsCostMoney)
     closemessage
-    applymovement(LOCALID_BUGSY, SandalineColony_Mart_Movement_Bugsy_WalkOut)
+    applymovement(LOCALID_BUGSY, Movement_Bugsy_WalkOut)
     waitmovement(LOCALID_BUGSY)
     removeobject(LOCALID_BUGSY)
     playse(SE_EXIT)
@@ -84,35 +84,35 @@ script SandalineColony_Mart_EventScript_Bugsy {
     release
 }
 
-movement SandalineColony_Mart_Movement_Bugsy_RunInPlace {
+movement Movement_Bugsy_RunInPlace {
     walk_in_place_fast_left * 5
 }
 
-movement SandalineColony_Mart_Movement_Player_OutOfTheWay {
+movement Movement_Player_OutOfTheWay {
     walk_down
     face_up
 }
 
-movement SandalineColony_Mart_Movement_Bugsy_WalkToClerk {
+movement Movement_Bugsy_WalkToClerk {
     walk_left
     walk_up * 3
     walk_left * 6
 }
 
-movement SandalineColony_Mart_Movement_Player_FollowBugsyToClerk {
+movement Movement_Player_FollowBugsyToClerk {
     walk_up * 4
     walk_left * 5
 }
 
-movement SandalineColony_Mart_Movement_TurnToClerk {
+movement Movement_TurnToClerk {
     walk_in_place_left
 }
 
-movement SandalineColony_Mart_Movement_ClerkM_GivePokeBallsToBugsy {
+movement Movement_ClerkM_GivePokeBallsToBugsy {
     walk_in_place_slow_right
 }
 
-movement SandalineColony_Mart_Movement_Bugsy_WalkOut {
+movement Movement_Bugsy_WalkOut {
     walk_down * 5
     walk_left
     walk_down

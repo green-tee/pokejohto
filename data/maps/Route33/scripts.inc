@@ -165,8 +165,9 @@ Route33_EventScript_CatchingTutorialScene::
 	applymovement 1, Movement_FinishWalkingAway
 	waitmovement 1
 	removeobject 1
-	delay 60
 	setvar VAR_MAP_SCENE_ROUTE33, 2
+	fadedefaultbgm
+	delay 60
 	releaseall
 	return
 
@@ -264,11 +265,9 @@ Route33_EventScript_JoeyStartWalkAway:
 Movement_WalkAwayFake:
 	walk_down
 	walk_down
-	walk_down
 	step_end
 
 Movement_WalkBackToPlayer:
-	walk_up
 	walk_up
 	walk_up
 	face_right
@@ -297,6 +296,7 @@ Route33_EventScript_NicknamingStarter_4:
 
 
 Movement_FinishWalkingAway:
+	walk_down
 	walk_left
 	walk_left
 	walk_left

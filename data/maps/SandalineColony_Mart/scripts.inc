@@ -37,25 +37,25 @@ Mart_StandardItems:
 
 SandalineColony_Mart_EventScript_Bugsy::
 	lock
-	applymovement 5, SandalineColony_Mart_Movement_Bugsy_RunInPlace
+	applymovement 5, Movement_Bugsy_RunInPlace
 	waitmovement 5
 	msgbox SandalineColony_Mart_Text_Bugsy_TookYouAWhile
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, SandalineColony_Mart_Movement_Player_OutOfTheWay
+	applymovement OBJ_EVENT_ID_PLAYER, Movement_Player_OutOfTheWay
 	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement 5, SandalineColony_Mart_Movement_Bugsy_WalkToClerk
+	applymovement 5, Movement_Bugsy_WalkToClerk
 	delay 40
-	applymovement OBJ_EVENT_ID_PLAYER, SandalineColony_Mart_Movement_Player_FollowBugsyToClerk
+	applymovement OBJ_EVENT_ID_PLAYER, Movement_Player_FollowBugsyToClerk
 	waitmovement 5
 	waitmovement OBJ_EVENT_ID_PLAYER
 	turnobject 5, DIR_EAST
 	msgbox SandalineColony_Mart_Text_Bugsy_ThisIsAMart
 	closemessage
-	applymovement 5, SandalineColony_Mart_Movement_TurnToClerk
+	applymovement 5, Movement_TurnToClerk
 	waitmovement 5
 	msgbox SandalineColony_Mart_Text_Bugsy_IdLikeToBuyPokeBalls
 	closemessage
-	applymovement 1, SandalineColony_Mart_Movement_ClerkM_GivePokeBallsToBugsy
+	applymovement 1, Movement_ClerkM_GivePokeBallsToBugsy
 	waitmovement 1
 	msgbox SandalineColony_Mart_Text_ClerkM_ThatWouldBeMoney
 	closemessage
@@ -70,7 +70,7 @@ SandalineColony_Mart_EventScript_Bugsy::
 	turnobject 5, DIR_EAST
 	msgbox SandalineColony_Mart_Text_Bugsy_ItemsCostMoney
 	closemessage
-	applymovement 5, SandalineColony_Mart_Movement_Bugsy_WalkOut
+	applymovement 5, Movement_Bugsy_WalkOut
 	waitmovement 5
 	removeobject 5
 	playse SE_EXIT
@@ -81,7 +81,7 @@ SandalineColony_Mart_EventScript_Bugsy::
 	return
 
 
-SandalineColony_Mart_Movement_Bugsy_RunInPlace:
+Movement_Bugsy_RunInPlace:
 	walk_in_place_fast_left
 	walk_in_place_fast_left
 	walk_in_place_fast_left
@@ -89,12 +89,12 @@ SandalineColony_Mart_Movement_Bugsy_RunInPlace:
 	walk_in_place_fast_left
 	step_end
 
-SandalineColony_Mart_Movement_Player_OutOfTheWay:
+Movement_Player_OutOfTheWay:
 	walk_down
 	face_up
 	step_end
 
-SandalineColony_Mart_Movement_Bugsy_WalkToClerk:
+Movement_Bugsy_WalkToClerk:
 	walk_left
 	walk_up
 	walk_up
@@ -107,7 +107,7 @@ SandalineColony_Mart_Movement_Bugsy_WalkToClerk:
 	walk_left
 	step_end
 
-SandalineColony_Mart_Movement_Player_FollowBugsyToClerk:
+Movement_Player_FollowBugsyToClerk:
 	walk_up
 	walk_up
 	walk_up
@@ -119,15 +119,15 @@ SandalineColony_Mart_Movement_Player_FollowBugsyToClerk:
 	walk_left
 	step_end
 
-SandalineColony_Mart_Movement_TurnToClerk:
+Movement_TurnToClerk:
 	walk_in_place_left
 	step_end
 
-SandalineColony_Mart_Movement_ClerkM_GivePokeBallsToBugsy:
+Movement_ClerkM_GivePokeBallsToBugsy:
 	walk_in_place_slow_right
 	step_end
 
-SandalineColony_Mart_Movement_Bugsy_WalkOut:
+Movement_Bugsy_WalkOut:
 	walk_down
 	walk_down
 	walk_down

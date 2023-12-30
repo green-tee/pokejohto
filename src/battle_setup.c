@@ -168,6 +168,23 @@ static const struct TrainerBattleParameter sContinueScriptDoubleBattleParams[] =
     {&sTrainerBattleEndScript,      TRAINER_PARAM_LOAD_SCRIPT_RET_ADDR},
 };
 
+static const u16 sTrainerEncounterMusicTable[] = {
+    [TRAINER_ENCOUNTER_MUSIC_BOY]         = MUS_ENCOUNTER_YOUNGSTER,
+    [TRAINER_ENCOUNTER_MUSIC_MALE]        = MUS_ENCOUNTER_YOUNGSTER,
+    [TRAINER_ENCOUNTER_MUSIC_FEMALE]      = MUS_ENCOUNTER_GIRL,
+    [TRAINER_ENCOUNTER_MUSIC_GIRL]        = MUS_ENCOUNTER_GIRL,
+    [TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS]  = MUS_ENCOUNTER_ROCKET,
+    [TRAINER_ENCOUNTER_MUSIC_AQUA]        = MUS_ENCOUNTER_ROCKET,
+    [TRAINER_ENCOUNTER_MUSIC_MAGMA]       = MUS_ENCOUNTER_ROCKET,
+    [TRAINER_ENCOUNTER_MUSIC_COOL]        = MUS_ENCOUNTER_RIVAL,
+    [TRAINER_ENCOUNTER_MUSIC_SWIMMER]     = MUS_ENCOUNTER_RIVAL,
+    [TRAINER_ENCOUNTER_MUSIC_HIKER]       = MUS_ENCOUNTER_RIVAL,
+    [TRAINER_ENCOUNTER_MUSIC_INTERVIEWER] = MUS_ENCOUNTER_RIVAL,
+    [TRAINER_ENCOUNTER_MUSIC_RICH]        = MUS_ENCOUNTER_RIVAL,
+    [TRAINER_ENCOUNTER_MUSIC_INTENSE]     = MUS_ENCOUNTER_GYM_LEADER,
+    [TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR]  = MUS_ENCOUNTER_GYM_LEADER
+};
+
 
 #define tState data[0]
 #define tTransition data[1]
@@ -1007,32 +1024,17 @@ void ShowTrainerCantBattleSpeech(void)
 void PlayTrainerEncounterMusic(void)
 {
     u16 music;
+    u8 encounterMusicId;
 
     if (!QL_IS_PLAYBACK_STATE
      && sTrainerBattleMode != TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC
      && sTrainerBattleMode != TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC)
     {
-        switch (GetTrainerEncounterMusicId(gTrainerBattleOpponent_A))
-        {
-        case TRAINER_ENCOUNTER_MUSIC_FEMALE:
-        case TRAINER_ENCOUNTER_MUSIC_GIRL:
-        case TRAINER_ENCOUNTER_MUSIC_TWINS:
-            music = MUS_ENCOUNTER_GIRL;
-            break;
-        case TRAINER_ENCOUNTER_MUSIC_MALE:
-        case TRAINER_ENCOUNTER_MUSIC_INTENSE:
-        case TRAINER_ENCOUNTER_MUSIC_COOL:
-        case TRAINER_ENCOUNTER_MUSIC_SWIMMER:
-        case TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR:
-        case TRAINER_ENCOUNTER_MUSIC_HIKER:
-        case TRAINER_ENCOUNTER_MUSIC_INTERVIEWER:
-        case TRAINER_ENCOUNTER_MUSIC_RICH:
-            music = MUS_ENCOUNTER_BOY;
-            break;
-        default:
-            music = MUS_ENCOUNTER_ROCKET;
-            break;
-        }
+        encounterMusicId = GetTrainerEncounterMusicId(gTrainerBattleOpponent_A);
+        if (encounterMusicId < ARRAY_COUNT(sTrainerEncounterMusicTable))
+            music = sTrainerEncounterMusicTable[encounterMusicId];
+        else
+            music = MUS_VS_GYM_LEADER_LAST_MON; // This should never play. If it does, something isn't set up right.
         PlayNewMapMusic(music);
     }
 }

@@ -216,8 +216,8 @@ $(MID_SUBDIR)/mus_silph.s: %.s: %.mid
 $(MID_SUBDIR)/mus_encounter_girl.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G143 -V051
 
-$(MID_SUBDIR)/mus_encounter_boy.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G144 -V090
+$(MID_SUBDIR)/mus_encounter_youngster.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G008 -V090
 
 $(MID_SUBDIR)/mus_game_corner.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G132 -V090

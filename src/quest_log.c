@@ -597,7 +597,7 @@ void sub_8111438(void)
     struct PokemonAndSomethingElse *r9 = AllocZeroed(sizeof(struct PokemonAndSomethingElse));
     u16 r0, r3, r5, r6;
 
-    CreateMon(&r9->mon, SPECIES_RATTATA, 1, 0x20, FALSE, 0, 0, 0);
+    CreateMon(&r9->mon, SPECIES_RATTATA, 1, 0x20, FALSE, 0, 0, 0, SHINY_LOCKED);
     r0 = VarGet(VAR_QUEST_LOG_MON_COUNTS);
     r9->sanePartyCount = r0 >> 12;
     r9->saneBoxesCount = r0 % 0x1000;

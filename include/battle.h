@@ -72,6 +72,7 @@ struct TrainerMonNoItemDefaultMoves
 {
     u16 iv;
     u8 lvl;
+    u8 isShiny;
     u16 species;
 };
 
@@ -79,6 +80,7 @@ struct TrainerMonItemDefaultMoves
 {
     u16 iv;
     u8 lvl;
+    u8 isShiny;
     u16 species;
     u16 heldItem;
 };
@@ -87,6 +89,7 @@ struct TrainerMonNoItemCustomMoves
 {
     u16 iv;
     u8 lvl;
+    u8 isShiny;
     u16 species;
     u16 moves[4];
 };
@@ -95,10 +98,13 @@ struct TrainerMonItemCustomMoves
 {
     u16 iv;
     u8 lvl;
+    u8 isShiny;
     u16 species;
     u16 heldItem;
     u16 moves[4];
 };
+
+#define TRAINER_MON_SHININESS(trainerMon) ((trainerMon).isShiny == TRUE ? SHINY_GUARANTEED : SHINY_LOCKED)
 
 union TrainerMonPtr
 {

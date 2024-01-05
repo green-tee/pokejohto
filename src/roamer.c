@@ -100,7 +100,7 @@ void CreateInitialRoamerMon(void)
 {
     struct Pokemon * mon = &gEnemyParty[0];
     u16 species = GetRoamerSpecies();
-    CreateMon(mon, species, 50, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
+    CreateMon(mon, species, 50, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0, SHINY_LOCKED);
     ROAMER->species = species;
     ROAMER->level = 50;
     ROAMER->status = 0;
@@ -208,7 +208,7 @@ void CreateRoamerMonInstance(void)
     u32 status;
     struct Pokemon *mon = &gEnemyParty[0];
     ZeroEnemyPartyMons();
-    CreateMonWithIVsPersonality(mon, ROAMER->species, ROAMER->level, ROAMER->ivs, ROAMER->personality);
+    CreateMonWithIVsPersonality(mon, ROAMER->species, ROAMER->level, ROAMER->ivs, ROAMER->personality, SHINY_LOCKED);
 // The roamer's status field is u8, but SetMonData expects status to be u32, so will set the roamer's status
 // using the status field and the following 3 bytes (cool, beauty, and cute).
 #ifdef BUGFIX

@@ -692,7 +692,9 @@ static void FillBattleTowerTrainerParty(void)
                 battleTowerMons[battleMonIndex].species,
                 level,
                 fixedIV,
-                battleTowerMons[battleMonIndex].evSpread);
+                battleTowerMons[battleMonIndex].evSpread,
+                SHINY_LOCKED
+            );
 
             // Give the chosen pokemon its specified moves.
             for (i = 0; i < 4; i++)

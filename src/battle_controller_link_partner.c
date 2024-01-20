@@ -457,6 +457,7 @@ static u32 CopyLinkPartnerMonData(u8 monId, u8 *dst)
         battleMon.spAttackIV = GetMonData(&gPlayerParty[monId], MON_DATA_SPATK_IV);
         battleMon.spDefenseIV = GetMonData(&gPlayerParty[monId], MON_DATA_SPDEF_IV);
         battleMon.personality = GetMonData(&gPlayerParty[monId], MON_DATA_PERSONALITY);
+        battleMon.isShiny = IsMonShiny(&gPlayerParty[monId]);
         battleMon.status1 = GetMonData(&gPlayerParty[monId], MON_DATA_STATUS);
         battleMon.level = GetMonData(&gPlayerParty[monId], MON_DATA_LEVEL);
         battleMon.hp = GetMonData(&gPlayerParty[monId], MON_DATA_HP);
@@ -795,6 +796,7 @@ static void SetLinkPartnerMonData(u8 monId)
             iv = battlePokemon->spDefenseIV;
             SetMonData(&gPlayerParty[monId], MON_DATA_SPDEF_IV, &iv);
             SetMonData(&gPlayerParty[monId], MON_DATA_PERSONALITY, &battlePokemon->personality);
+            SetMonData(&gPlayerParty[monId], MON_DATA_IS_SHINY, &battlePokemon->isShiny);
             SetMonData(&gPlayerParty[monId], MON_DATA_STATUS, &battlePokemon->status1);
             SetMonData(&gPlayerParty[monId], MON_DATA_LEVEL, &battlePokemon->level);
             SetMonData(&gPlayerParty[monId], MON_DATA_HP, &battlePokemon->hp);

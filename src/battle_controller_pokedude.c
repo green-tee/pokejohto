@@ -768,6 +768,7 @@ static u32 CopyPokedudeMonData(u8 monId, u8 *dst)
         battleMon.spAttackIV = GetMonData(mon, MON_DATA_SPATK_IV);
         battleMon.spDefenseIV = GetMonData(mon, MON_DATA_SPDEF_IV);
         battleMon.personality = GetMonData(mon, MON_DATA_PERSONALITY);
+        battleMon.isShiny = IsMonShiny(mon);
         battleMon.status1 = GetMonData(mon, MON_DATA_STATUS);
         battleMon.level = GetMonData(mon, MON_DATA_LEVEL);
         battleMon.hp = GetMonData(mon, MON_DATA_HP);
@@ -1110,6 +1111,7 @@ static void SetPokedudeMonData(u8 monId)
         iv = battlePokemon->spDefenseIV;
         SetMonData(mon, MON_DATA_SPDEF_IV, &iv);
         SetMonData(mon, MON_DATA_PERSONALITY, &battlePokemon->personality);
+        SetMonData(mon, MON_DATA_IS_SHINY, &battlePokemon->isShiny);
         SetMonData(mon, MON_DATA_STATUS, &battlePokemon->status1);
         SetMonData(mon, MON_DATA_LEVEL, &battlePokemon->level);
         SetMonData(mon, MON_DATA_HP, &battlePokemon->hp);
@@ -2691,7 +2693,7 @@ void InitPokedudePartyAndOpponent(void)
             mon = &gPlayerParty[myIdx++];
         else
             mon = &gEnemyParty[opIdx++];
-        CreateMonWithGenderNatureLetter(mon, data[i].species, data[i].level, 0, data[i].gender, data[i].nature, 0);
+        CreateMonWithGenderNatureLetter(mon, data[i].species, data[i].level, 0, data[i].gender, data[i].nature, 0, SHINY_LOCKED);
         for (j = 0; j < 4; ++j)
             SetMonMoveSlot(mon, data[i].moves[j], j);
     } while (data[++i].side != 0xFF);

@@ -307,7 +307,7 @@ static void DoTrainerBattle(void)
 
 void StartCatchingTutorialBattle(void)
 {
-    CreateMaleMon(&gEnemyParty[0], SPECIES_GEODUDE, 5);
+    CreateMaleMon(&gEnemyParty[0], SPECIES_GEODUDE, 5, SHINY_LOCKED);
     LockPlayerFieldControls();
     gMain.savedCallback = CB2_ReturnToFieldContinueScriptPlayMapMusic;
     gBattleTypeFlags = BATTLE_TYPE_CATCHING_TUTORIAL;
@@ -331,7 +331,7 @@ void StartMarowakBattle(void)
     if (CheckBagHasItem(ITEM_SILPH_SCOPE, 1))
     {
         gBattleTypeFlags = BATTLE_TYPE_GHOST | BATTLE_TYPE_GHOST_UNVEILED;
-        CreateMonWithGenderNatureLetter(gEnemyParty, SPECIES_MAROWAK, 30, 31, MON_FEMALE, NATURE_SERIOUS, 0);
+        CreateMonWithGenderNatureLetter(gEnemyParty, SPECIES_MAROWAK, 30, 31, MON_FEMALE, NATURE_SERIOUS, 0, SHINY_RANDOM);
     }
     else
     {

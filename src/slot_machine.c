@@ -318,7 +318,7 @@ static const u16 sSpritePal_Clefairy[] = INCBIN_U16("graphics/slot_machine/unk_l
 static const u32 sSpriteTiles_Clefairy[] = INCBIN_U32("graphics/slot_machine/unk_lg_8464a3c.4bpp.lz");
 #endif
 static const u16 sSpritePal_Digits[] = INCBIN_U16("graphics/slot_machine/unk_8465524.gbapal");
-static const u32 sSpriteTiles_Digits[] = INCBIN_U32("graphics/slot_machine/unk_8465544.4bpp.lz");
+static const u32 sSpriteTiles_Digits[] = INCBIN_U32("graphics/slot_machine/slot_digits.4bpp.lz");
 
 static const struct CompressedSpriteSheet sSpriteSheets[] = {
     {(const void *)sSpriteTiles_ReelIcons, 0xe00, 0},
@@ -654,7 +654,7 @@ static const u16 sBgPal_10[] = INCBIN_U16("graphics/slot_machine/unk_8465950.gba
 static const u16 sBgPal_20[] = INCBIN_U16("graphics/slot_machine/unk_8465970.gbapal");
 static const u16 sBgPal_30[] = INCBIN_U16("graphics/slot_machine/unk_8465990.gbapal");
 static const u16 sBgPal_40[] = INCBIN_U16("graphics/slot_machine/unk_84659b0.gbapal");
-static const u32 sBg2Tiles_00[] = INCBIN_U32("graphics/slot_machine/unk_84659d0.4bpp.lz");
+static const u32 sBg2Tiles_00[] = INCBIN_U32("graphics/slot_machine/slot_frame_tiles.4bpp.lz");
 static const u32 sBg2Map[] = INCBIN_U32("graphics/slot_machine/unk_84661d4.bin.lz");
 static const u16 sBgPal_50[] = INCBIN_U16("graphics/slot_machine/unk_84664bc.gbapal");
 static const u16 sBgPal_VictoryFlash[] = INCBIN_U16("graphics/slot_machine/unk_84664dc.gbapal","graphics/slot_machine/unk_84664fc.gbapal", "graphics/slot_machine/unk_846651c.gbapal");

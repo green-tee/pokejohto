@@ -212,6 +212,11 @@ extern const u8 gString_OutOfCoins[];
 extern const u8 gString_QuitPlaying[];
 extern const u8 gString_SlotMachineControls[];
 
+// sliding_blocks
+extern const u8 gString_GiveUpPuzzle[];
+extern const u8 gString_ResetPuzzle[];
+extern const u8 gString_SlidingBlocksControls[];
+
 // battle_controller_safari
 extern const u8 gText_EmptyString3[];
 extern const u8 gText_SafariZoneMenu[];

@@ -987,6 +987,9 @@ const u8 gText_NickHatchPrompt[] = _("Would you like to nickname the newly\nhatc
 const u8 gString_OutOfCoins[] = _("You've run out of Coins.\nGame over!");
 const u8 gString_QuitPlaying[] = _("Quit playing?");
 const u8 gString_SlotMachineControls[] = _("{DPAD_LEFTRIGHT}Combos {DPAD_DOWN}Wager {A_BUTTON}Stop {B_BUTTON}Exit");
+const u8 gString_GiveUpPuzzle[] = _("Give up on this puzzle?");
+const u8 gString_ResetPuzzle[] = _("Do you want to start over?");
+const u8 gString_SlidingBlocksControls[] = _("{DPAD_ANY}Move {START_BUTTON}Reset {B_BUTTON}Give up");
 const u8 gText_TeachyTV[] = _("おしえテレビ");
 const u8 gText_End[] = _("おしまい");
 

@@ -1,3 +1,5 @@
+
+/*
 #include "main.h"
 #include "malloc.h"
 #include "global.h"
@@ -10,7 +12,8 @@
 struct SlidingBlocksState
 {
     MainCallback savedCallback;
-    u8 state;
+    u8 openingState;
+    u8 puzzleState;
     u8 taskId;
     u8 layoutId;
 };
@@ -42,7 +45,8 @@ void PlaySlidingBlocks(u8 puzzleId, MainCallback savedCallback)
 static void InitSlidingBlocksState(struct SlidingBlocksState *ptr)
 {
     // TODO: Define fields of struct SlidingBlocksState and initialize them here.
-    u8 state = 0;
+    ptr->puzzleState = 0;
+    ptr->openingState = 0;
 }
 
 static void CB2_InitSlidingBlocks(void)
@@ -60,6 +64,15 @@ static void CB2_InitSlidingBlocks(void)
     }
 }
 
+static void CB2_OpenSlidingBlocks(void)
+{
+    switch (sSlidingBlocksState->openingState)
+    {
+        case 0:
+            NullVBlankHBlankCallbacks();
+    }
+}
+
 static void MainTask_SlidingBlocksGameLoop(u8 taskId) {
     if (JOY_NEW(B_BUTTON)) {
         DestroyTask(taskId);
@@ -73,4 +86,1001 @@ static void CB2_RunSlidingBlocks(void) {
     AnimateSprites();
     BuildOamBuffer();
     UpdatePaletteFade();
+}
+*/
+
+#include "global.h"
+#include "gflib.h"
+#include "decompress.h"
+#include "task.h"
+#include "coins.h"
+#include "quest_log.h"
+#include "overworld.h"
+#include "menu.h"
+#include "new_menu_helpers.h"
+#include "text_window.h"
+#include "random.h"
+#include "trig.h"
+#include "strings.h"
+#include "constants/songs.h"
+
+#define SLOT_IMAGE_7         0
+#define SLOT_IMAGE_ROCKET    1
+#define SLOT_IMAGE_PIKACHU   2
+#define SLOT_IMAGE_PSYDUCK   3
+#define SLOT_IMAGE_CHERRIES  4
+#define SLOT_IMAGE_MAGNEMITE 5
+#define SLOT_IMAGE_SHELLDER  6
+
+#define SLOT_PAYOUT_NONE      0
+#define SLOT_PAYOUT_CHERRIES2 1
+#define SLOT_PAYOUT_CHERRIES3 2
+#define SLOT_PAYOUT_MAGSHELL  3
+#define SLOT_PAYOUT_PIKAPSY   4
+#define SLOT_PAYOUT_ROCKET    5
+#define SLOT_PAYOUT_7         6
+
+#define ROWATTR_COL1POS 0
+#define ROWATTR_COL2POS 1
+#define ROWATTR_COL3POS 2
+#define ROWATTR_MINBET  3
+
+#define SLOTTASK_GFX_INIT            0
+#define SLOTTASK_FADEOUT_EXIT        1
+#define SLOTTASK_UPDATE_LINE_LIGHTS  2
+#define SLOTTASK_CLEFAIRY_BOUNCE     3
+#define SLOTTASK_ANIM_WIN            4
+#define SLOTTASK_END_ANIM_WIN        5
+#define SLOTTASK_ANIM_LOSE           6
+#define SLOTTASK_ANIM_BETTING        7
+#define SLOTTASK_SHOW_AMOUNTS        8
+#define SLOTTASK_MSG_NO_COINS        9
+#define SLOTTASK_ASK_QUIT           10
+#define SLOTTASK_DESTROY_YESNO      11
+#define SLOTTASK_PRESS_BUTTON       12
+#define SLOTTASK_RELEASE_BUTTONS    13
+#define SLOTTASK_SHOWHELP           14
+#define SLOTTASK_HIDEHELP           15
+
+#define SLOT_NUM_BLOCKS 16
+
+struct SlidingBlocksState
+{
+    MainCallback savedCallback;
+    u16 machineidx;
+    u8 taskId;
+    u16 blocksInitialLayout[4][4];
+    u16 blocksCurrentLayout[4][4];
+};
+
+struct SlidingBlocksGfxManager
+{
+    struct Sprite *blocksSprites[SLOT_NUM_BLOCKS];
+    struct Sprite *clefairySprites[2];
+};
+
+struct SlidingBlocksSetupTaskDataSub_0000
+{
+    u16 funcno;
+    u8 state;
+    bool8 active;
+};
+
+struct SlidingBlocksSetupTaskData
+{
+    struct SlidingBlocksSetupTaskDataSub_0000 tasks[8];
+    u8 reelButtonToPress;
+    // align 2
+    s32 bg1X;
+    bool32 yesNoMenuActive;
+    u16 buttonPressedTiles[3][4];
+    u16 buttonReleasedTiles[3][4];
+    u8 field_005C[0x800];
+    u8 bg0TilemapBuffer[0x800];
+    u8 bg1TilemapBuffer[0x800];
+    u8 bg2TilemapBuffer[0x800];
+    u8 bg3TilemapBuffer[0x800];
+}; // size: 285C
+
+struct LineStateTileIdxList
+{
+    const u16 * tiles;
+    u32 count;
+};
+
+static EWRAM_DATA struct SlidingBlocksState * sSlidingBlocksState = NULL;
+static EWRAM_DATA struct SlidingBlocksGfxManager * sSlidingBlocksGfxManager = NULL;
+
+static void InitSlidingBlocksState(struct SlidingBlocksState * ptr);
+static void CB2_InitSlidingBlocks(void);
+static void CleanSupSlidingBlocksState(void);
+static void CB2_RunSlidingBlocks(void);
+static void MainTask_SlotsGameLoop(u8 taskId);
+static void MainTask_ShowHelp(u8 taskId);
+static void MainTask_ConfirmExitGame(u8 taskId);
+static void MainTask_ExitSlots(u8 taskId);
+static void SetMainTask(TaskFunc taskFunc);
+static void InitGfxManager(struct SlidingBlocksGfxManager * manager);
+static bool32 CreateSlidingBlocks(void);
+static void DestroySlidingBlocks(void);
+static struct SlidingBlocksSetupTaskData * GetSlidingBlocksSetupTaskDataPtr(void);
+static void Task_SlidingBlocks(u8 taskId);
+static void SetSlidingBlocksSetupTask(u16 funcno, u8 taskId);
+static bool32 IsSlidingBlocksSetupTaskActive(u8 taskId);
+static bool8 SlotsTask_GraphicsInit(u8 *state, struct SlidingBlocksSetupTaskData * ptr);
+static bool8 SlotsTask_FadeOut(u8 *state, struct SlidingBlocksSetupTaskData * ptr);
+static bool8 SlotsTask_UpdateCoinsDisplay(u8 *state, struct SlidingBlocksSetupTaskData * ptr);
+static bool8 SlotsTask_AskQuitPlaying(u8 *state, struct SlidingBlocksSetupTaskData * ptr);
+static bool8 SlotsTask_DestroyYesNoMenu(u8 *state, struct SlidingBlocksSetupTaskData * ptr);
+static void Slot_PrintOnWindow0(const u8 * str);
+static void Slot_ClearWindow0(void);
+static void Slot_CreateYesNoMenu(u8 cursorPos);
+static void Slot_DestroyYesNoMenu(void);
+static void InitReelButtonTileMem(void);
+
+static const u8 sReelIconAnimByReelAndPos[][21] = {
+    {
+        SLOT_IMAGE_7,
+        SLOT_IMAGE_PSYDUCK,
+        SLOT_IMAGE_CHERRIES,
+        SLOT_IMAGE_ROCKET,
+        SLOT_IMAGE_PIKACHU,
+        SLOT_IMAGE_SHELLDER,
+        SLOT_IMAGE_PIKACHU,
+        SLOT_IMAGE_MAGNEMITE,
+        SLOT_IMAGE_7,
+        SLOT_IMAGE_SHELLDER,
+        SLOT_IMAGE_PSYDUCK,
+        SLOT_IMAGE_ROCKET,
+        SLOT_IMAGE_CHERRIES,
+        SLOT_IMAGE_PIKACHU,
+        SLOT_IMAGE_SHELLDER,
+        SLOT_IMAGE_7,
+        SLOT_IMAGE_MAGNEMITE,
+        SLOT_IMAGE_PIKACHU,
+        SLOT_IMAGE_ROCKET,
+        SLOT_IMAGE_SHELLDER,
+        SLOT_IMAGE_PIKACHU
+    }, {
+        SLOT_IMAGE_7,
+        SLOT_IMAGE_MAGNEMITE,
+        SLOT_IMAGE_CHERRIES,
+        SLOT_IMAGE_PSYDUCK,
+        SLOT_IMAGE_ROCKET,
+        SLOT_IMAGE_MAGNEMITE,
+        SLOT_IMAGE_CHERRIES,
+        SLOT_IMAGE_PSYDUCK,
+        SLOT_IMAGE_PIKACHU,
+        SLOT_IMAGE_MAGNEMITE,
+        SLOT_IMAGE_CHERRIES,
+        SLOT_IMAGE_PSYDUCK,
+        SLOT_IMAGE_7,
+        SLOT_IMAGE_MAGNEMITE,
+        SLOT_IMAGE_CHERRIES,
+        SLOT_IMAGE_ROCKET,
+        SLOT_IMAGE_PSYDUCK,
+        SLOT_IMAGE_SHELLDER,
+        SLOT_IMAGE_MAGNEMITE,
+        SLOT_IMAGE_PSYDUCK,
+        SLOT_IMAGE_CHERRIES
+    }, {
+        SLOT_IMAGE_7,
+        SLOT_IMAGE_PSYDUCK,
+        SLOT_IMAGE_SHELLDER,
+        SLOT_IMAGE_MAGNEMITE,
+        SLOT_IMAGE_PIKACHU,
+        SLOT_IMAGE_PSYDUCK,
+        SLOT_IMAGE_SHELLDER,
+        SLOT_IMAGE_MAGNEMITE,
+        SLOT_IMAGE_PIKACHU,
+        SLOT_IMAGE_PSYDUCK,
+        SLOT_IMAGE_MAGNEMITE,
+        SLOT_IMAGE_SHELLDER,
+        SLOT_IMAGE_PIKACHU,
+        SLOT_IMAGE_PSYDUCK,
+        SLOT_IMAGE_MAGNEMITE,
+        SLOT_IMAGE_SHELLDER,
+        SLOT_IMAGE_PIKACHU,
+        SLOT_IMAGE_PSYDUCK,
+        SLOT_IMAGE_MAGNEMITE,
+        SLOT_IMAGE_SHELLDER,
+        SLOT_IMAGE_ROCKET
+    },
+};
+
+//static const u16 sSpritePal_ReelIcons_0[] = INCBIN_U16("graphics/slot_machine/unk_8464974.gbapal");
+//static const u16 sSpritePal_ReelIcons_1[] = INCBIN_U16("graphics/slot_machine/unk_8464994.gbapal");
+//static const u16 sSpritePal_ReelIcons_2[] = INCBIN_U16("graphics/slot_machine/unk_84649b4.gbapal");
+//static const u16 sSpritePal_ReelIcons_3[] = INCBIN_U16("graphics/slot_machine/unk_84649d4.gbapal");
+//static const u16 sSpritePal_ReelIcons_4[] = INCBIN_U16("graphics/slot_machine/unk_84649f4.gbapal");
+static const u16 sSpritePal_Blocks[] = INCBIN_U16("graphics/sliding_blocks/puzzle_ho_oh.gbapal");
+static const u32 sSpriteTiles_Blocks[] = INCBIN_U32("graphics/sliding_blocks/puzzle_ho_oh.4bpp.lz");
+#if 1 // defined(FIRERED)
+//static const u32 sSpriteTiles_ReelIcons[] = INCBIN_U32("graphics/slot_machine/unk_8464a14.4bpp.lz");
+static const u16 sSpritePal_Clefairy[] = INCBIN_U16("graphics/slot_machine/unk_846506c.gbapal");
+static const u32 sSpriteTiles_Clefairy[] = INCBIN_U32("graphics/slot_machine/unk_846506c.4bpp.lz");
+#elif defined(LEAFGREEN)
+//static const u32 sSpriteTiles_ReelIcons[] = INCBIN_U32("graphics/slot_machine/unk_lg_8464434.4bpp.lz");
+static const u16 sSpritePal_Clefairy[] = INCBIN_U16("graphics/slot_machine/unk_lg_8464a3c.gbapal");
+static const u32 sSpriteTiles_Clefairy[] = INCBIN_U32("graphics/slot_machine/unk_lg_8464a3c.4bpp.lz");
+#endif
+//static const u16 sSpritePal_Digits[] = INCBIN_U16("graphics/slot_machine/unk_8465524.gbapal");
+//static const u32 sSpriteTiles_Digits[] = INCBIN_U32("graphics/slot_machine/slot_digits.4bpp.lz");
+
+static const struct CompressedSpriteSheet sSpriteSheets[] = {
+    //{(const void *)sSpriteTiles_ReelIcons, 0xe00, 0},
+    {(const void *)sSpriteTiles_Blocks, 0x2000, 0},
+    {(const void *)sSpriteTiles_Clefairy,  0xc00, 1},
+    //{(const void *)sSpriteTiles_Digits,    0x280, 2},
+};
+
+static const struct SpritePalette sSpritePalettes[] = {
+    //{sSpritePal_ReelIcons_0, 0},
+    //{sSpritePal_ReelIcons_1, 1},
+    //{sSpritePal_ReelIcons_2, 2},
+    //{sSpritePal_ReelIcons_3, 3},
+    //{sSpritePal_ReelIcons_4, 4},
+    {sSpritePal_Blocks, 0},
+    {sSpritePal_Clefairy,  1},
+    //{sSpritePal_Digits,      6},
+    {NULL}
+};
+
+static const u8 sReelIconBldY[] = {
+    0x10, 0x10, 0x10, 0x10, 0x0f, 0x0e, 0x0d, 0x0d, 0x0c, 0x0b, 0x0a, 0x0a, 0x09, 0x08, 0x07, 0x07, 0x06, 0x05, 0x04, 0x04, 0x03, 0x02, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x02, 0x03, 0x03, 0x04, 0x05, 0x06, 0x06, 0x07, 0x08, 0x09, 0x09, 0x0a, 0x0b, 0x0c, 0x0c, 0x0d, 0x0e, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f
+};
+
+static const struct OamData sOamData_Blocks = {
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(32x32),
+    .x = 0,
+    .matrixNum = 0,
+    .size = SPRITE_SIZE(32x32),
+    .tileNum = 0,
+    .priority = 1,
+    .paletteNum = 0,
+    .affineParam = 0
+};
+
+static const struct OamData sOamData_Clefairy = {
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = ST_OAM_SQUARE,
+    .x = 0,
+    .matrixNum = 0,
+    .size = ST_OAM_SIZE_2,
+    .tileNum = 0,
+    .priority = 1,
+    .paletteNum = 1,
+    .affineParam = 0
+};
+
+static const union AnimCmd sAnimCmd_Clefairy_Neutral[] = {
+    ANIMCMD_FRAME(0, 4),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sAnimCmd_Clefairy_Spinning[] = {
+    ANIMCMD_FRAME( 0, 24),
+    ANIMCMD_FRAME(16, 24),
+    ANIMCMD_JUMP(0)
+};
+
+static const union AnimCmd sAnimCmd_Clefairy_Payout[] = {
+    ANIMCMD_FRAME(32, 28),
+    ANIMCMD_FRAME(48, 28),
+    ANIMCMD_JUMP(0)
+};
+
+static const union AnimCmd sAnimCmd_Clefairy_Lose[] = {
+    ANIMCMD_FRAME(64, 12),
+    ANIMCMD_FRAME(80, 12),
+    ANIMCMD_JUMP(0)
+};
+
+static const union AnimCmd *const sAnimTable_Clefairy[] = {
+    sAnimCmd_Clefairy_Neutral,
+    sAnimCmd_Clefairy_Spinning,
+    sAnimCmd_Clefairy_Payout,
+    sAnimCmd_Clefairy_Lose
+};
+
+static const struct SpriteTemplate sSpriteTemplate_Blocks = {
+    .tileTag = 0,
+    .paletteTag = 0,
+    .oam = &sOamData_Blocks,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy
+};
+
+static const struct SpriteTemplate sSpriteTemplate_Clefairy = {
+    .tileTag = 1,
+    .paletteTag = 1,
+    .oam = &sOamData_Clefairy,
+    .anims = sAnimTable_Clefairy,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy
+};
+
+bool8 (*const sSlidingBlocksSetupTasks[])(u8 *, struct SlidingBlocksSetupTaskData *) = {
+    [SLOTTASK_GFX_INIT] = SlotsTask_GraphicsInit,
+    [SLOTTASK_FADEOUT_EXIT] = SlotsTask_FadeOut,
+    [SLOTTASK_ASK_QUIT] = SlotsTask_AskQuitPlaying,
+    [SLOTTASK_DESTROY_YESNO] = SlotsTask_DestroyYesNoMenu
+};
+
+static const u16 sBgWallPal[] = INCBIN_U16("graphics/sliding_blocks/bg.gbapal");
+static const u32 sBgWallTiles[] = INCBIN_U32("graphics/sliding_blocks/bg_wall.4bpp.lz");
+static const u32 sBgWallMap[] = INCBIN_U32("graphics/sliding_blocks/bg_wall_tilemap.bin.lz");
+#if defined(FIRERED)
+//static const u16 sBgPal_00[] = INCBIN_U16("graphics/slot_machine/unk_8465930.gbapal");
+//static const u32 sBg2Tiles_00[] = INCBIN_U32("graphics/slot_machine/slot_frame_tiles.4bpp.lz");
+static const u32 sBg2Map[] = INCBIN_U32("graphics/slot_machine/unk_84661d4.bin.lz");
+static const u16 sBgPal_50[] = INCBIN_U16("graphics/slot_machine/unk_84664bc.gbapal");
+#elif defined(LEAFGREEN)
+//static const u16 sBgPal_00[] = INCBIN_U16("graphics/slot_machine/unk_lg_84652bc.gbapal");
+//static const u32 sBg2Tiles_00[] = INCBIN_U32("graphics/slot_machine/unk_lg_846535c.4bpp.lz");
+static const u32 sBg2Map[] = INCBIN_U32("graphics/slot_machine/unk_lg_8465ab8.bin.lz");
+static const u16 sBgPal_50[] = INCBIN_U16("graphics/slot_machine/unk_lg_8465d9c.gbapal");
+
+#endif
+static const u32 sBg2Tiles_C0[] = INCBIN_U32("graphics/slot_machine/unk_846653c.4bpp.lz");
+static const u16 sBgPal_70[] = INCBIN_U16("graphics/slot_machine/unk_84665c0.gbapal");
+#if defined(FIRERED)
+static const u32 sBg1Tiles[] = INCBIN_U32("graphics/slot_machine/unk_8466620.4bpp.lz");
+static const u32 sBg1Map[] = INCBIN_U32("graphics/slot_machine/unk_8466998.bin.lz");
+#elif defined(LEAFGREEN)
+static const u32 sBg1Tiles[] = INCBIN_U32("graphics/slot_machine/unk_lg_8465f00.4bpp.lz");
+static const u32 sBg1Map[] = INCBIN_U32("graphics/slot_machine/unk_lg_8466278.bin.lz");
+#endif
+
+static const struct BgTemplate sBgTemplates[] = {
+    {
+        .bg = 0,
+        .charBaseIndex = 0,
+        .mapBaseIndex = 29,
+        .screenSize = 0,
+        .paletteMode = 0,
+        .priority = 0,
+        .baseTile = 0x000
+    }, {
+        .bg = 3,
+        .charBaseIndex = 3,
+        .mapBaseIndex = 31,
+        .screenSize = 0,
+        .paletteMode = 0,
+        .priority = 3,
+        .baseTile = 0x000
+    }, {
+        .bg = 2,
+        .charBaseIndex = 2,
+        .mapBaseIndex = 30,
+        .screenSize = 0,
+        .paletteMode = 0,
+        .priority = 2,
+        .baseTile = 0x000
+    }, {
+        .bg = 1,
+        .charBaseIndex = 1,
+        .mapBaseIndex = 28,
+        .screenSize = 0,
+        .paletteMode = 0,
+        .priority = 0,
+        .baseTile = 0x000
+    }
+};
+
+static const struct WindowTemplate sWindowTemplates[] = {
+    {
+        .bg = 0,
+        .tilemapLeft = 5,
+        .tilemapTop = 15,
+        .width = 20,
+        .height = 4,
+        .paletteNum = 0x0f,
+        .baseBlock = 0x04f
+    }, {
+        .bg = 0,
+        .tilemapLeft = 0,
+        .tilemapTop = 0,
+        .width = 30,
+        .height = 2,
+        .paletteNum = 0x0e,
+        .baseBlock = 0x013
+    },
+    DUMMY_WIN_TEMPLATE
+};
+
+static const u16 sLineTiles_TLBR[] = {
+    0x00a4, 0x00a5, 0x00a6, 0x00c4, 0x00c5, 0x00c6, 0x00c7, 0x00e7, 0x012c, 0x014c, 0x0191, 0x01b1, 0x01f6, 0x0216, 0x0217, 0x0218, 0x0219, 0x0237, 0x0238, 0x0239
+};
+
+static const u16 sLineTiles_TopRow[] = {
+    0x00e4, 0x00e5, 0x00e6, 0x00f7, 0x00f8, 0x00f9, 0x0104, 0x0105, 0x0106, 0x0107, 0x010c, 0x0111, 0x0116, 0x0117, 0x0118, 0x0119, 0x0124, 0x0125, 0x0126, 0x0137, 0x0138, 0x0139
+};
+
+static const u16 sLineTiles_MiddleRow[] = {
+    0x0144, 0x0145, 0x0146, 0x0157, 0x0158, 0x0159, 0x0164, 0x0165, 0x0166, 0x0167, 0x016c, 0x0171, 0x0176, 0x0177, 0x0178, 0x0179, 0x0184, 0x0185, 0x0186, 0x0197, 0x0198, 0x0199
+};
+
+static const u16 sLineTiles_BottomRow[] = {
+    0x01a4, 0x01a5, 0x01a6, 0x01b7, 0x01b8, 0x01b9, 0x01c4, 0x01c5, 0x01c6, 0x01c7, 0x01cc, 0x01d1, 0x01d6, 0x01d7, 0x01d8, 0x01d9, 0x01e4, 0x01e5, 0x01e6, 0x01f7, 0x01f8, 0x01f9
+};
+
+static const u16 sLineTiles_BLTR[] = {
+    0x0204, 0x0205, 0x0206, 0x0224, 0x0225, 0x0226, 0x01e7, 0x0207, 0x018c, 0x01ac, 0x0131, 0x0151, 0x00d6, 0x00f6, 0x00b7, 0x00b8, 0x00b9, 0x00d7, 0x00d8, 0x00d9
+};
+
+static const struct LineStateTileIdxList sLineStateTileIdxs[] = {
+    { sLineTiles_TLBR, NELEMS(sLineTiles_TLBR) },
+    { sLineTiles_TopRow, NELEMS(sLineTiles_TopRow) },
+    { sLineTiles_MiddleRow, NELEMS(sLineTiles_MiddleRow) },
+    { sLineTiles_BottomRow, NELEMS(sLineTiles_BottomRow) },
+    { sLineTiles_BLTR, NELEMS(sLineTiles_BLTR) }
+};
+
+static const u8 sWInningLineFlashPalIdxs[2] = {2, 4};
+
+static const struct WindowTemplate sYesNoWindowTemplate = {
+    .bg = 0,
+    .tilemapLeft = 19,
+    .tilemapTop = 9,
+    .width = 6,
+    .height = 4,
+    .paletteNum = 15,
+    .baseBlock = 0x9F
+};
+
+static const u16 sReelButtonMapTileIdxs[][4] = {
+    {0x0229, 0x022a, 0x0249, 0x024a},
+    {0x022e, 0x022f, 0x024e, 0x024f},
+    {0x0233, 0x0234, 0x0253, 0x0254}
+};
+
+void PlaySlidingBlocks(u16 machineIdx, MainCallback savedCallback)
+{
+    ResetTasks();
+    sSlidingBlocksState = Alloc(sizeof(*sSlidingBlocksState));
+    if (sSlidingBlocksState == NULL)
+        SetMainCallback2(savedCallback);
+    else
+    {
+        if (machineIdx > 5)
+            machineIdx = 0;
+        sSlidingBlocksState->machineidx = machineIdx;
+        sSlidingBlocksState->savedCallback = savedCallback;
+        InitSlidingBlocksState(sSlidingBlocksState);
+        SetMainCallback2(CB2_InitSlidingBlocks);
+    }
+}
+
+static void InitSlidingBlocksState(struct SlidingBlocksState * ptr)
+{
+    u32 i;
+    u32 j;
+
+    for (i = 0; i < 4; i++) {
+        for (j = 0; j < 4; j++) {
+            ptr->blocksInitialLayout[i][j] = i * 4 + j;
+            ptr->blocksCurrentLayout[i][j] = i * 4 + j;
+        }
+    }
+}
+
+static void CB2_InitSlidingBlocks(void)
+{
+    RunTasks();
+    AnimateSprites();
+    BuildOamBuffer();
+
+    switch (gMain.state)
+    {
+    case 0:
+        if (CreateSlidingBlocks())
+        {
+            SetMainCallback2(sSlidingBlocksState->savedCallback);
+            CleanSupSlidingBlocksState();
+        }
+        else
+        {
+            SetSlidingBlocksSetupTask(SLOTTASK_GFX_INIT, 0);
+            gMain.state++;
+        }
+        break;
+    case 1:
+        if (!IsSlidingBlocksSetupTaskActive(0))
+        {
+            sSlidingBlocksState->taskId = CreateTask(MainTask_SlotsGameLoop, 0);
+            SetMainCallback2(CB2_RunSlidingBlocks);
+        }
+        break;
+    }
+}
+
+static void CleanSupSlidingBlocksState(void)
+{
+    DestroySlidingBlocks();
+    if (sSlidingBlocksState != NULL)
+    {
+        Free(sSlidingBlocksState);
+        sSlidingBlocksState = NULL;
+    }
+}
+
+static void CB2_RunSlidingBlocks(void)
+{
+    RunTasks();
+    AnimateSprites();
+    BuildOamBuffer();
+    UpdatePaletteFade();
+}
+
+static void MainTask_SlotsGameLoop(u8 taskId)
+{
+    s16 * data = gTasks[taskId].data;
+
+    switch (data[0])
+    {
+    case 0:
+        // Betting Phase
+        if (JOY_NEW(B_BUTTON))
+        {
+            SetMainTask(MainTask_ConfirmExitGame);
+        }
+        break;
+    }
+}
+
+static void MainTask_ConfirmExitGame(u8 taskId)
+{
+    s16 * data = gTasks[taskId].data;
+
+    switch (data[0])
+    {
+    case 0:
+        SetSlidingBlocksSetupTask(SLOTTASK_ASK_QUIT, 0);
+        data[0]++;
+        break;
+    case 1:
+        if (!IsSlidingBlocksSetupTaskActive(0))
+            data[0]++;
+        break;
+    case 2:
+        switch (Menu_ProcessInputNoWrapClearOnChoose())
+        {
+        case 0:
+            data[0] = 3;
+            break;
+        case 1:
+        case -1:
+            SetSlidingBlocksSetupTask(SLOTTASK_DESTROY_YESNO, 0);
+            data[0] = 4;
+            break;
+        }
+        break;
+    case 3:
+        if (!IsSlidingBlocksSetupTaskActive(0))
+            SetMainTask(MainTask_ExitSlots);
+        break;
+    case 4:
+        if (!IsSlidingBlocksSetupTaskActive(0))
+            SetMainTask(MainTask_SlotsGameLoop);
+        break;
+    }
+}
+
+static void MainTask_ExitSlots(u8 taskId)
+{
+    s16 * data = gTasks[taskId].data;
+
+    switch (data[0])
+    {
+    case 0:
+        SetSlidingBlocksSetupTask(SLOTTASK_FADEOUT_EXIT, 0);
+        data[0]++;
+        break;
+    case 1:
+        if (!IsSlidingBlocksSetupTaskActive(0))
+        {
+            SetMainCallback2(sSlidingBlocksState->savedCallback);
+            CleanSupSlidingBlocksState();
+        }
+        break;
+    }
+}
+
+static void SetMainTask(TaskFunc taskFunc)
+{
+    gTasks[sSlidingBlocksState->taskId].func = taskFunc;
+    gTasks[sSlidingBlocksState->taskId].data[0] = 0;
+}
+
+static bool32 LoadSpriteGraphicsAndAllocateManager(void)
+{
+    s32 i;
+
+    for (i = 0; i < NELEMS(sSpriteSheets); i++)
+        LoadCompressedSpriteSheet(&sSpriteSheets[i]);
+    LoadSpritePalettes(sSpritePalettes);
+    sSlidingBlocksGfxManager = Alloc(sizeof(*sSlidingBlocksGfxManager));
+    if (sSlidingBlocksGfxManager == NULL)
+        return FALSE;
+    InitGfxManager(sSlidingBlocksGfxManager);
+    return TRUE;
+}
+
+static void DestroyGfxManager(void)
+{
+    if (sSlidingBlocksGfxManager != NULL)
+    {
+        Free(sSlidingBlocksGfxManager);
+        sSlidingBlocksGfxManager = NULL;
+    }
+}
+
+static void InitGfxManager(struct SlidingBlocksGfxManager * manager)
+{
+    u32 i;
+    for (i = 0; i < 4; i++) {
+        manager->blocksSprites[i] = NULL;
+    }
+    /*
+    for (i = 0; i < 3; i++)
+    {
+        manager->field_00[i] = 0;
+        for (j = 0; j < 5; j++)
+        {
+            manager->reelIconSprites[i][j] = NULL;
+        }
+    }
+    */
+}
+
+static void HBlankCB_SlidingBlocks(void)
+{
+    s32 vcount = REG_VCOUNT - 0x2B;
+    if (vcount < 0x54u)
+    {
+        REG_BLDY = sReelIconBldY[vcount];
+    }
+    else
+    {
+        REG_BLDY = 0;
+    }
+}
+
+static void CreateBlocksSprites(void)
+{
+    u32 i;
+    u32 spriteId;
+    const u32 xs[] = {
+        0x48, 0x68, 0x88, 0xA8,
+        0x48, 0x68, 0x88, 0xA8,
+        0x48, 0x68, 0x88, 0xA8,
+        0x48, 0x68, 0x88, 0xA8
+    };
+    const u32 ys[] = {
+        0x28, 0x28, 0x28, 0x28,
+        0x48, 0x48, 0x48, 0x48,
+        0x68, 0x68, 0x68, 0x68,
+        0x88, 0x88, 0x88, 0x88
+    };
+
+    for (i = 0; i < SLOT_NUM_BLOCKS; i++) {
+        spriteId = CreateSprite(&sSpriteTemplate_Blocks, xs[i], ys[i], 1);
+        sSlidingBlocksGfxManager->blocksSprites[i] = &gSprites[spriteId];
+        sSlidingBlocksGfxManager->blocksSprites[i]->oam.tileNum = i * 16;
+    }
+}
+
+static void CreateClefairySprites(void)
+{
+    s32 spriteId;
+
+    spriteId = CreateSprite(&sSpriteTemplate_Clefairy, 0x10, 0x88, 1);
+    sSlidingBlocksGfxManager->clefairySprites[0] = &gSprites[spriteId];
+    spriteId = CreateSprite(&sSpriteTemplate_Clefairy, 0xE0, 0x88, 1);
+    sSlidingBlocksGfxManager->clefairySprites[1] = &gSprites[spriteId];
+    sSlidingBlocksGfxManager->clefairySprites[1]->hFlip = TRUE;
+}
+
+static void DrawBlock(struct Sprite *sprite, u32 dstBlockIndex, u16 layoutPosition) {
+    u32 i;
+    u32 dstBlockIndexX = dstBlockIndex % 2;
+    u32 dstBlockIndexY = dstBlockIndex / 2;
+    for (i = 0; i < 4; i++) {
+        CpuCopy32(
+            &sSpriteTiles_Blocks[TILE_SIZE_4BPP * i * 16 + TILE_SIZE_4BPP * layoutPosition],
+            (void *)(OBJ_VRAM0 + sprite->oam.tileNum + dstBlockIndexY * 0x20 + dstBlockIndexX * 4 + i * 8),
+            4 * TILE_SIZE_4BPP
+        );
+    }
+}
+
+static void DrawBlocksInitialLayout(struct SlidingBlocksGfxManager *manager) {
+    u32 i;
+    u32 j;
+    for (i = 0; i < 4; i++) {
+        for (j = 0; j < 4; j++) {
+            DrawBlock(manager->blocksSprites[i], j, sSlidingBlocksState->blocksInitialLayout[i][j]);
+        }
+    }
+}
+
+static bool32 CreateSlidingBlocks(void)
+{
+    s32 i;
+
+    struct SlidingBlocksSetupTaskData * ptr = Alloc(sizeof(struct SlidingBlocksSetupTaskData));
+    if (ptr == NULL)
+        return FALSE;
+    for (i = 0; i < 8; i++)
+        ptr->tasks[i].active = 0;
+    ptr->yesNoMenuActive = FALSE;
+    SetWordTaskArg(CreateTask(Task_SlidingBlocks, 2), 0, (uintptr_t)ptr);
+    return FALSE;
+}
+
+static void DestroySlidingBlocks(void)
+{
+    if (FuncIsActiveTask(Task_SlidingBlocks))
+    {
+        Free(GetSlidingBlocksSetupTaskDataPtr());
+        DestroyTask(FindTaskIdByFunc(Task_SlidingBlocks));
+    }
+    DestroyGfxManager();
+    FreeAllWindowBuffers();
+}
+
+static void Task_SlidingBlocks(u8 taskId)
+{
+    struct SlidingBlocksSetupTaskData * ptr = (void *)GetWordTaskArg(taskId, 0);
+    s32 i;
+
+    for (i = 0; i < 8; i++)
+    {
+        if (ptr->tasks[i].active)
+            ptr->tasks[i].active = sSlidingBlocksSetupTasks[ptr->tasks[i].funcno](&ptr->tasks[i].state, ptr);
+    }
+}
+
+static void VBlankCB_SlidingBlocks(void)
+{
+    TransferPlttBuffer();
+    LoadOam();
+    ProcessSpriteCopyRequests();
+}
+
+static struct SlidingBlocksSetupTaskData * GetSlidingBlocksSetupTaskDataPtr(void)
+{
+    return (void *)GetWordTaskArg(FindTaskIdByFunc(Task_SlidingBlocks), 0);
+}
+
+static void SetSlidingBlocksSetupTask(u16 funcno, u8 taskId)
+{
+    struct SlidingBlocksSetupTaskData * ptr = GetSlidingBlocksSetupTaskDataPtr();
+    ptr->tasks[taskId].funcno = funcno;
+    ptr->tasks[taskId].state = 0;
+    ptr->tasks[taskId].active = sSlidingBlocksSetupTasks[funcno](&ptr->tasks[taskId].state, ptr);
+}
+
+static bool32 IsSlidingBlocksSetupTaskActive(u8 taskId)
+{
+    return GetSlidingBlocksSetupTaskDataPtr()->tasks[taskId].active;
+}
+
+static inline void LoadColor(u16 color, u16 *pal)
+{
+    *pal = color;
+    LoadPalette(pal, 0x00, 0x02);
+}
+
+static bool8 SlotsTask_GraphicsInit(u8 * state, struct SlidingBlocksSetupTaskData * ptr)
+{
+    u16 pal[2];
+    u8 textColor[3];
+    u32 x;
+
+    switch (*state)
+    {
+    case 0:
+        BlendPalettes(PALETTES_ALL, 16, RGB_BLACK);
+        (*state)++;
+        break;
+    case 1:
+        SetVBlankCallback(NULL);
+        ResetSpriteData();
+        FreeAllSpritePalettes();
+        RequestDma3Fill(0, (void *)OAM, OAM_SIZE, DMA3_32BIT);
+        RequestDma3Fill(0, (void *)VRAM, 0x20, DMA3_32BIT);
+        RequestDma3Fill(0, (void *)(VRAM + 0xC000), 0x20, DMA3_32BIT);
+        SetGpuReg(REG_OFFSET_DISPCNT, 0);
+        ResetBgPositions();
+        ResetBgsAndClearDma3BusyFlags(FALSE);
+        InitBgsFromTemplates(0, sBgTemplates, NELEMS(sBgTemplates));
+        InitWindows(sWindowTemplates);
+
+        SetBgTilemapBuffer(3, ptr->bg3TilemapBuffer);
+        FillBgTilemapBufferRect_Palette0(3, 0, 0, 0, 32, 32);
+        CopyBgTilemapBufferToVram(3);
+
+        ResetTempTileDataBuffers();
+        DecompressAndCopyTileDataToVram(2, sBgWallTiles, 0, 0x00, 0);
+        //DecompressAndCopyTileDataToVram(2, sBg2Tiles_00, 0, 0x00, 0);
+        DecompressAndCopyTileDataToVram(2, sBg2Tiles_C0, 0, 0xC0, 0);
+        SetBgTilemapBuffer(2, ptr->bg2TilemapBuffer);
+        CopyToBgTilemapBuffer(2, sBgWallMap, 0, 0x00);
+        //CopyToBgTilemapBuffer(2, sBg2Map, 0, 0x00);
+        CopyBgTilemapBufferToVram(2);
+        LoadPalette(sBgWallPal, 0x00, 0xA0);
+        //LoadPalette(sBgPal_00, 0x00, 0xA0);
+        LoadPalette(sBgPal_50, 0x50, 0x20);
+        LoadPalette(sBgPal_70, 0x70, 0x60);
+        LoadColor(RGB(30, 30, 31), pal);
+        LoadUserWindowGfx2(0, 0x00A, 0xD0);
+        LoadStdWindowGfxOnBg(0, 0x001, 0xF0);
+
+        SetBgTilemapBuffer(0, ptr->bg0TilemapBuffer);
+        FillBgTilemapBufferRect_Palette0(0, 0, 0, 2, 32, 30);
+        DecompressAndCopyTileDataToVram(1, sBg1Tiles, 0, 0, 0);
+        DecompressAndCopyTileDataToVram(1, sBg1Map, 0, 0, 1);
+        CopyBgTilemapBufferToVram(1);
+
+        LoadPalette(GetTextWindowPalette(2), 0xE0, 0x20);
+        FillWindowPixelBuffer(1, 0xFF);
+        PutWindowTilemap(1);
+
+        x = 236 - GetStringWidth(FONT_0, gString_SlidingBlocksControls, 0);
+        textColor[0] = TEXT_DYNAMIC_COLOR_6;
+        textColor[1] = TEXT_COLOR_WHITE;
+        textColor[2] = TEXT_COLOR_DARK_GRAY;
+        AddTextPrinterParameterized3(1, FONT_0, x, 0, textColor, 0, gString_SlidingBlocksControls);
+        CopyBgTilemapBufferToVram(0);
+
+        SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_MODE_0 | 0x20 | DISPCNT_OBJ_1D_MAP | DISPCNT_OBJ_ON);
+        //SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG3 | BLDCNT_TGT1_OBJ | BLDCNT_TGT1_BD | BLDCNT_EFFECT_DARKEN);
+        LoadSpriteGraphicsAndAllocateManager();
+        CreateBlocksSprites();
+        CreateClefairySprites();
+        BlendPalettes(PALETTES_ALL, 0x10, RGB_BLACK);
+        SetVBlankCallback(VBlankCB_SlidingBlocks);
+        SetHBlankCallback(HBlankCB_SlidingBlocks);
+        (*state)++;
+        break;
+    case 2:
+        //DrawBlocksInitialLayout(sSlidingBlocksGfxManager);
+        (*state)++;
+        break;
+    case 3:
+        if (!FreeTempTileDataBuffersIfPossible())
+        {
+            ShowBg(0);
+            ShowBg(3);
+            ShowBg(2);
+            HideBg(1);
+            //InitReelButtonTileMem();
+            BlendPalettes(PALETTES_ALL, 0x10, RGB_BLACK);
+            BeginNormalPaletteFade(PALETTES_ALL, -1, 16, 0, RGB_BLACK);
+            EnableInterrupts(INTR_FLAG_VBLANK | INTR_FLAG_HBLANK);
+            (*state)++;
+        }
+        break;
+    case 4:
+        UpdatePaletteFade();
+        if (!gPaletteFade.active)
+            return FALSE;
+        break;
+    }
+    return TRUE;
+}
+
+static bool8 SlotsTask_FadeOut(u8 * state, struct SlidingBlocksSetupTaskData * ptr)
+{
+    switch (*state)
+    {
+    case 0:
+        BeginNormalPaletteFade(PALETTES_ALL, -1, 0, 16, 0);
+        (*state)++;
+        break;
+    case 1:
+        if (!gPaletteFade.active)
+            return FALSE;
+        break;
+    }
+    return TRUE;
+}
+
+static bool8 SlotsTask_AskQuitPlaying(u8 * state, struct SlidingBlocksSetupTaskData * ptr)
+{
+    switch (*state)
+    {
+    case 0:
+        Slot_PrintOnWindow0(gString_GiveUpPuzzle);
+        Slot_CreateYesNoMenu(0);
+        CopyWindowToVram(0, COPYWIN_FULL);
+        (*state)++;
+        break;
+    case 1:
+        if (!IsDma3ManagerBusyWithBgCopy())
+            return FALSE;
+        break;
+    }
+    return TRUE;
+}
+
+static bool8 SlotsTask_DestroyYesNoMenu(u8 * state, struct SlidingBlocksSetupTaskData * ptr)
+{
+    switch (*state)
+    {
+    case 0:
+        Slot_ClearWindow0();
+        Slot_DestroyYesNoMenu();
+        CopyWindowToVram(0, COPYWIN_FULL);
+        (*state)++;
+        break;
+    case 1:
+        if (!IsDma3ManagerBusyWithBgCopy())
+            return FALSE;
+        break;
+    }
+    return TRUE;
+}
+
+static void Slot_PrintOnWindow0(const u8 * str)
+{
+    FillWindowPixelBuffer(0, PIXEL_FILL(1));
+    PutWindowTilemap(0);
+    DrawTextBorderOuter(0, 0x001, 15);
+    AddTextPrinterParameterized5(0, FONT_2, str, 1, 2, TEXT_SKIP_DRAW, NULL, 1, 2);
+}
+
+static void Slot_ClearWindow0(void)
+{
+    rbox_fill_rectangle(0);
+}
+
+static void Slot_CreateYesNoMenu(u8 cursorPos)
+{
+    CreateYesNoMenu(&sYesNoWindowTemplate, FONT_2, 0, 2, 10, 13, cursorPos);
+    Menu_MoveCursorNoWrapAround(cursorPos);
+    GetSlidingBlocksSetupTaskDataPtr()->yesNoMenuActive = TRUE;
+}
+
+static void Slot_DestroyYesNoMenu(void)
+{
+    struct SlidingBlocksSetupTaskData * data = GetSlidingBlocksSetupTaskDataPtr();
+    if (data->yesNoMenuActive)
+    {
+        DestroyYesNoMenu();
+        data->yesNoMenuActive = FALSE;
+    }
+}
+
+static void InitReelButtonTileMem(void)
+{
+    s32 i, j;
+    struct SlidingBlocksSetupTaskData * data = GetSlidingBlocksSetupTaskDataPtr();
+    u16 * buffer = GetBgTilemapBuffer(2);
+
+    for (i = 0; i < 3; i++)
+    {
+        for (j = 0; j < 4; j++)
+        {
+            u16 idx = sReelButtonMapTileIdxs[i][j];
+            data->buttonReleasedTiles[i][j] = buffer[idx];
+            data->buttonPressedTiles[i][j] = j + 0xC0;
+        }
+    }
 }

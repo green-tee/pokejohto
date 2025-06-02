@@ -17,7 +17,7 @@ EVENTOBJGFXDIR := graphics/object_events
 FIELDEFFECTSGFXDIR := graphics/field_effects
 MISCGFXDIR := graphics/misc
 TEXTWINDOWGFXDIR := graphics/text_window
-SLOTMACHINEGFXDIR := graphics/slot_machine
+SLIDINGBLOCKSGFXDIR := graphics/sliding_blocks
 TEACHYTVGFXDIR := graphics/teachy_tv
 SSANNEGFXDIR := graphics/ss_anne
 ITEMPCGFXDIR := graphics/item_pc
@@ -493,8 +493,14 @@ $(TEXTWINDOWGFXDIR)/signpost.4bpp: %.4bpp: %.png
 $(SLOTMACHINEGFXDIR)/unk_8466620.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 66
 
-$(SLOTMACHINEGFXDIR)/unk_84659d0.4bpp: %.4bpp: %.png
+$(SLOTMACHINEGFXDIR)/slot_frame_tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 138
+
+$(SLIDINGBLOCKSGFXDIR)/bg_wall.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -num_tiles 63
+
+$(SLIDINGBLOCKSGFXDIR)/puzzle_ho_oh.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
 
 $(TEACHYTVGFXDIR)/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 233

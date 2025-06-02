@@ -1,94 +1,3 @@
-
-/*
-#include "main.h"
-#include "malloc.h"
-#include "global.h"
-#include "constants/field_weather.h"
-#include "field_weather.h"
-#include "task.h"
-#include "gba/gba.h"
-#include "palette.h"
-
-struct SlidingBlocksState
-{
-    MainCallback savedCallback;
-    u8 openingState;
-    u8 puzzleState;
-    u8 taskId;
-    u8 layoutId;
-};
-
-static EWRAM_DATA bool8 (*sStartMenuCallback)(void) = NULL;
-static EWRAM_DATA struct SlidingBlocksState *sSlidingBlocksState = NULL;
-
-static void InitSlidingBlocksState(struct SlidingBlocksState *ptr);
-static void CB2_InitSlidingBlocks(void);
-static void MainTask_SlidingBlocksGameLoop(u8 taskId);
-static void CB2_RunSlidingBlocks(void);
-
-void PlaySlidingBlocks(u8 puzzleId, MainCallback savedCallback)
-{
-    ResetTasks();
-    sSlidingBlocksState = Alloc(sizeof(*sSlidingBlocksState));
-    if (sSlidingBlocksState == NULL)
-        SetMainCallback2(savedCallback);
-    else
-    {
-        sSlidingBlocksState->layoutId = puzzleId;
-        sSlidingBlocksState->savedCallback = savedCallback;
-        InitSlidingBlocksState(sSlidingBlocksState);
-        FadeScreen(FADE_TO_BLACK, 0);
-        SetMainCallback2(CB2_InitSlidingBlocks);
-    }
-}
-
-static void InitSlidingBlocksState(struct SlidingBlocksState *ptr)
-{
-    // TODO: Define fields of struct SlidingBlocksState and initialize them here.
-    ptr->puzzleState = 0;
-    ptr->openingState = 0;
-}
-
-static void CB2_InitSlidingBlocks(void)
-{
-    // TODO: Figure out what is supposed to be done here and do it.
-    RunTasks();
-    AnimateSprites();
-    BuildOamBuffer();
-    UpdatePaletteFade();
-
-    if (!gPaletteFade.active) {
-        // Set main callback 2 to next step.
-        sSlidingBlocksState->taskId = CreateTask(MainTask_SlidingBlocksGameLoop, 0);
-        SetMainCallback2(CB2_RunSlidingBlocks);
-    }
-}
-
-static void CB2_OpenSlidingBlocks(void)
-{
-    switch (sSlidingBlocksState->openingState)
-    {
-        case 0:
-            NullVBlankHBlankCallbacks();
-    }
-}
-
-static void MainTask_SlidingBlocksGameLoop(u8 taskId) {
-    if (JOY_NEW(B_BUTTON)) {
-        DestroyTask(taskId);
-        SetMainCallback2(sSlidingBlocksState->savedCallback);
-        Free(sSlidingBlocksState);
-    }
-}
-
-static void CB2_RunSlidingBlocks(void) {
-    RunTasks();
-    AnimateSprites();
-    BuildOamBuffer();
-    UpdatePaletteFade();
-}
-*/
-
 #include "global.h"
 #include "gflib.h"
 #include "decompress.h"
@@ -112,37 +21,21 @@ static void CB2_RunSlidingBlocks(void) {
 #define SLOT_IMAGE_MAGNEMITE 5
 #define SLOT_IMAGE_SHELLDER  6
 
-#define SLOT_PAYOUT_NONE      0
-#define SLOT_PAYOUT_CHERRIES2 1
-#define SLOT_PAYOUT_CHERRIES3 2
-#define SLOT_PAYOUT_MAGSHELL  3
-#define SLOT_PAYOUT_PIKAPSY   4
-#define SLOT_PAYOUT_ROCKET    5
-#define SLOT_PAYOUT_7         6
+#define SLIDINGTASK_GFX_INIT      0
+#define SLIDINGTASK_FADEOUT_EXIT  1
+#define SLIDINGTASK_ASK_QUIT      2
+#define SLIDINGTASK_DESTROY_YESNO 3
 
-#define ROWATTR_COL1POS 0
-#define ROWATTR_COL2POS 1
-#define ROWATTR_COL3POS 2
-#define ROWATTR_MINBET  3
+#define SLIDINGMOVE_NONE  0
+#define SLIDINGMOVE_UP    1
+#define SLIDINGMOVE_DOWN  2
+#define SLIDINGMOVE_LEFT  3
+#define SLIDINGMOVE_RIGHT 4
 
-#define SLOTTASK_GFX_INIT            0
-#define SLOTTASK_FADEOUT_EXIT        1
-#define SLOTTASK_UPDATE_LINE_LIGHTS  2
-#define SLOTTASK_CLEFAIRY_BOUNCE     3
-#define SLOTTASK_ANIM_WIN            4
-#define SLOTTASK_END_ANIM_WIN        5
-#define SLOTTASK_ANIM_LOSE           6
-#define SLOTTASK_ANIM_BETTING        7
-#define SLOTTASK_SHOW_AMOUNTS        8
-#define SLOTTASK_MSG_NO_COINS        9
-#define SLOTTASK_ASK_QUIT           10
-#define SLOTTASK_DESTROY_YESNO      11
-#define SLOTTASK_PRESS_BUTTON       12
-#define SLOTTASK_RELEASE_BUTTONS    13
-#define SLOTTASK_SHOWHELP           14
-#define SLOTTASK_HIDEHELP           15
+#define INDEX_X 0
+#define INDEX_Y 1
 
-#define SLOT_NUM_BLOCKS 16
+#define SLIDING_NUM_BLOCKS 16
 
 struct SlidingBlocksState
 {
@@ -151,11 +44,14 @@ struct SlidingBlocksState
     u8 taskId;
     u16 blocksInitialLayout[4][4];
     u16 blocksCurrentLayout[4][4];
+    u16 hollowIndex[2];
+    bool32 isSliding;
+    u32 currentMove;
 };
 
 struct SlidingBlocksGfxManager
 {
-    struct Sprite *blocksSprites[SLOT_NUM_BLOCKS];
+    struct Sprite *blocksSprites[SLIDING_NUM_BLOCKS];
     struct Sprite *clefairySprites[2];
 };
 
@@ -175,7 +71,6 @@ struct SlidingBlocksSetupTaskData
     bool32 yesNoMenuActive;
     u16 buttonPressedTiles[3][4];
     u16 buttonReleasedTiles[3][4];
-    u8 field_005C[0x800];
     u8 bg0TilemapBuffer[0x800];
     u8 bg1TilemapBuffer[0x800];
     u8 bg2TilemapBuffer[0x800];
@@ -195,10 +90,13 @@ static void InitSlidingBlocksState(struct SlidingBlocksState * ptr);
 static void CB2_InitSlidingBlocks(void);
 static void CleanSupSlidingBlocksState(void);
 static void CB2_RunSlidingBlocks(void);
-static void MainTask_SlotsGameLoop(u8 taskId);
+static void MainTask_SlidingBlocksGameLoop(u8 taskId);
 static void MainTask_ShowHelp(u8 taskId);
 static void MainTask_ConfirmExitGame(u8 taskId);
 static void MainTask_ExitSlots(u8 taskId);
+static void MainTask_ProcessMove(u8 taskId);
+static void MainTask_SlideBlock(u8 taskId);
+static void MainTask_Bump(u8 taskId);
 static void SetMainTask(TaskFunc taskFunc);
 static void InitGfxManager(struct SlidingBlocksGfxManager * manager);
 static bool32 CreateSlidingBlocks(void);
@@ -207,85 +105,21 @@ static struct SlidingBlocksSetupTaskData * GetSlidingBlocksSetupTaskDataPtr(void
 static void Task_SlidingBlocks(u8 taskId);
 static void SetSlidingBlocksSetupTask(u16 funcno, u8 taskId);
 static bool32 IsSlidingBlocksSetupTaskActive(u8 taskId);
-static bool8 SlotsTask_GraphicsInit(u8 *state, struct SlidingBlocksSetupTaskData * ptr);
-static bool8 SlotsTask_FadeOut(u8 *state, struct SlidingBlocksSetupTaskData * ptr);
-static bool8 SlotsTask_UpdateCoinsDisplay(u8 *state, struct SlidingBlocksSetupTaskData * ptr);
-static bool8 SlotsTask_AskQuitPlaying(u8 *state, struct SlidingBlocksSetupTaskData * ptr);
-static bool8 SlotsTask_DestroyYesNoMenu(u8 *state, struct SlidingBlocksSetupTaskData * ptr);
+static bool8 SlidingTask_GraphicsInit(u8 *state, struct SlidingBlocksSetupTaskData * ptr);
+static bool8 SlidingTask_FadeOut(u8 *state, struct SlidingBlocksSetupTaskData * ptr);
+static bool8 SlidingTask_AskQuitPlaying(u8 *state, struct SlidingBlocksSetupTaskData * ptr);
+static bool8 SlidingTask_DestroyYesNoMenu(u8 *state, struct SlidingBlocksSetupTaskData * ptr);
 static void Slot_PrintOnWindow0(const u8 * str);
 static void Slot_ClearWindow0(void);
 static void Slot_CreateYesNoMenu(u8 cursorPos);
 static void Slot_DestroyYesNoMenu(void);
 static void InitReelButtonTileMem(void);
 
-static const u8 sReelIconAnimByReelAndPos[][21] = {
-    {
-        SLOT_IMAGE_7,
-        SLOT_IMAGE_PSYDUCK,
-        SLOT_IMAGE_CHERRIES,
-        SLOT_IMAGE_ROCKET,
-        SLOT_IMAGE_PIKACHU,
-        SLOT_IMAGE_SHELLDER,
-        SLOT_IMAGE_PIKACHU,
-        SLOT_IMAGE_MAGNEMITE,
-        SLOT_IMAGE_7,
-        SLOT_IMAGE_SHELLDER,
-        SLOT_IMAGE_PSYDUCK,
-        SLOT_IMAGE_ROCKET,
-        SLOT_IMAGE_CHERRIES,
-        SLOT_IMAGE_PIKACHU,
-        SLOT_IMAGE_SHELLDER,
-        SLOT_IMAGE_7,
-        SLOT_IMAGE_MAGNEMITE,
-        SLOT_IMAGE_PIKACHU,
-        SLOT_IMAGE_ROCKET,
-        SLOT_IMAGE_SHELLDER,
-        SLOT_IMAGE_PIKACHU
-    }, {
-        SLOT_IMAGE_7,
-        SLOT_IMAGE_MAGNEMITE,
-        SLOT_IMAGE_CHERRIES,
-        SLOT_IMAGE_PSYDUCK,
-        SLOT_IMAGE_ROCKET,
-        SLOT_IMAGE_MAGNEMITE,
-        SLOT_IMAGE_CHERRIES,
-        SLOT_IMAGE_PSYDUCK,
-        SLOT_IMAGE_PIKACHU,
-        SLOT_IMAGE_MAGNEMITE,
-        SLOT_IMAGE_CHERRIES,
-        SLOT_IMAGE_PSYDUCK,
-        SLOT_IMAGE_7,
-        SLOT_IMAGE_MAGNEMITE,
-        SLOT_IMAGE_CHERRIES,
-        SLOT_IMAGE_ROCKET,
-        SLOT_IMAGE_PSYDUCK,
-        SLOT_IMAGE_SHELLDER,
-        SLOT_IMAGE_MAGNEMITE,
-        SLOT_IMAGE_PSYDUCK,
-        SLOT_IMAGE_CHERRIES
-    }, {
-        SLOT_IMAGE_7,
-        SLOT_IMAGE_PSYDUCK,
-        SLOT_IMAGE_SHELLDER,
-        SLOT_IMAGE_MAGNEMITE,
-        SLOT_IMAGE_PIKACHU,
-        SLOT_IMAGE_PSYDUCK,
-        SLOT_IMAGE_SHELLDER,
-        SLOT_IMAGE_MAGNEMITE,
-        SLOT_IMAGE_PIKACHU,
-        SLOT_IMAGE_PSYDUCK,
-        SLOT_IMAGE_MAGNEMITE,
-        SLOT_IMAGE_SHELLDER,
-        SLOT_IMAGE_PIKACHU,
-        SLOT_IMAGE_PSYDUCK,
-        SLOT_IMAGE_MAGNEMITE,
-        SLOT_IMAGE_SHELLDER,
-        SLOT_IMAGE_PIKACHU,
-        SLOT_IMAGE_PSYDUCK,
-        SLOT_IMAGE_MAGNEMITE,
-        SLOT_IMAGE_SHELLDER,
-        SLOT_IMAGE_ROCKET
-    },
+static const u16 sProtoLayout[4][4] = {
+    {0x1, 0x3, 0xE, 0x6},
+    {0x9, 0x0, 0x4, 0x2},
+    {0x7, 0xC, 0xB, 0xF},
+    {0xD, 0x5, 0xA, 0x8}
 };
 
 //static const u16 sSpritePal_ReelIcons_0[] = INCBIN_U16("graphics/slot_machine/unk_8464974.gbapal");
@@ -415,10 +249,10 @@ static const struct SpriteTemplate sSpriteTemplate_Clefairy = {
 };
 
 bool8 (*const sSlidingBlocksSetupTasks[])(u8 *, struct SlidingBlocksSetupTaskData *) = {
-    [SLOTTASK_GFX_INIT] = SlotsTask_GraphicsInit,
-    [SLOTTASK_FADEOUT_EXIT] = SlotsTask_FadeOut,
-    [SLOTTASK_ASK_QUIT] = SlotsTask_AskQuitPlaying,
-    [SLOTTASK_DESTROY_YESNO] = SlotsTask_DestroyYesNoMenu
+    [SLIDINGTASK_GFX_INIT] = SlidingTask_GraphicsInit,
+    [SLIDINGTASK_FADEOUT_EXIT] = SlidingTask_FadeOut,
+    [SLIDINGTASK_ASK_QUIT] = SlidingTask_AskQuitPlaying,
+    [SLIDINGTASK_DESTROY_YESNO] = SlidingTask_DestroyYesNoMenu
 };
 
 static const u16 sBgWallPal[] = INCBIN_U16("graphics/sliding_blocks/bg.gbapal");
@@ -549,6 +383,19 @@ static const u16 sReelButtonMapTileIdxs[][4] = {
     {0x0233, 0x0234, 0x0253, 0x0254}
 };
 
+static const u32 sSlidingBlocksXs[] = {
+    0x48, 0x68, 0x88, 0xA8,
+    0x48, 0x68, 0x88, 0xA8,
+    0x48, 0x68, 0x88, 0xA8,
+    0x48, 0x68, 0x88, 0xA8
+};
+static const u32 sSlidingBlocksYs[] = {
+    0x28, 0x28, 0x28, 0x28,
+    0x48, 0x48, 0x48, 0x48,
+    0x68, 0x68, 0x68, 0x68,
+    0x88, 0x88, 0x88, 0x88
+};
+
 void PlaySlidingBlocks(u16 machineIdx, MainCallback savedCallback)
 {
     ResetTasks();
@@ -568,15 +415,21 @@ void PlaySlidingBlocks(u16 machineIdx, MainCallback savedCallback)
 
 static void InitSlidingBlocksState(struct SlidingBlocksState * ptr)
 {
-    u32 i;
-    u32 j;
+    u32 x;
+    u32 y;
 
-    for (i = 0; i < 4; i++) {
-        for (j = 0; j < 4; j++) {
-            ptr->blocksInitialLayout[i][j] = i * 4 + j;
-            ptr->blocksCurrentLayout[i][j] = i * 4 + j;
+    for (y = 0; y < 4; y++) {
+        for (x = 0; x < 4; x++) {
+            ptr->blocksInitialLayout[y][x] = sProtoLayout[y][x];
+            ptr->blocksCurrentLayout[y][x] = sProtoLayout[y][x];
+            if (ptr->blocksCurrentLayout[y][x] == 0) {
+                ptr->hollowIndex[INDEX_X] = x;
+                ptr->hollowIndex[INDEX_Y] = y;
+            }
         }
     }
+    ptr->isSliding = FALSE;
+    ptr->currentMove = SLIDINGMOVE_NONE;
 }
 
 static void CB2_InitSlidingBlocks(void)
@@ -595,14 +448,14 @@ static void CB2_InitSlidingBlocks(void)
         }
         else
         {
-            SetSlidingBlocksSetupTask(SLOTTASK_GFX_INIT, 0);
+            SetSlidingBlocksSetupTask(SLIDINGTASK_GFX_INIT, 0);
             gMain.state++;
         }
         break;
     case 1:
         if (!IsSlidingBlocksSetupTaskActive(0))
         {
-            sSlidingBlocksState->taskId = CreateTask(MainTask_SlotsGameLoop, 0);
+            sSlidingBlocksState->taskId = CreateTask(MainTask_SlidingBlocksGameLoop, 0);
             SetMainCallback2(CB2_RunSlidingBlocks);
         }
         break;
@@ -627,7 +480,7 @@ static void CB2_RunSlidingBlocks(void)
     UpdatePaletteFade();
 }
 
-static void MainTask_SlotsGameLoop(u8 taskId)
+static void MainTask_SlidingBlocksGameLoop(u8 taskId)
 {
     s16 * data = gTasks[taskId].data;
 
@@ -638,6 +491,18 @@ static void MainTask_SlotsGameLoop(u8 taskId)
         if (JOY_NEW(B_BUTTON))
         {
             SetMainTask(MainTask_ConfirmExitGame);
+        } else if (JOY_NEW(START_BUTTON)) {
+            // Handle reset request
+        } else if (JOY_NEW(DPAD_ANY)) {
+            if (JOY_NEW(DPAD_UP))
+                sSlidingBlocksState->currentMove = SLIDINGMOVE_UP;
+            else if (JOY_NEW(DPAD_DOWN))
+                sSlidingBlocksState->currentMove = SLIDINGMOVE_DOWN;
+            else if (JOY_NEW(DPAD_LEFT))
+                sSlidingBlocksState->currentMove = SLIDINGMOVE_LEFT;
+            else if (JOY_NEW(DPAD_RIGHT))
+                sSlidingBlocksState->currentMove = SLIDINGMOVE_RIGHT;
+            SetMainTask(MainTask_ProcessMove);
         }
         break;
     }
@@ -650,7 +515,7 @@ static void MainTask_ConfirmExitGame(u8 taskId)
     switch (data[0])
     {
     case 0:
-        SetSlidingBlocksSetupTask(SLOTTASK_ASK_QUIT, 0);
+        SetSlidingBlocksSetupTask(SLIDINGTASK_ASK_QUIT, 0);
         data[0]++;
         break;
     case 1:
@@ -665,7 +530,7 @@ static void MainTask_ConfirmExitGame(u8 taskId)
             break;
         case 1:
         case -1:
-            SetSlidingBlocksSetupTask(SLOTTASK_DESTROY_YESNO, 0);
+            SetSlidingBlocksSetupTask(SLIDINGTASK_DESTROY_YESNO, 0);
             data[0] = 4;
             break;
         }
@@ -676,7 +541,7 @@ static void MainTask_ConfirmExitGame(u8 taskId)
         break;
     case 4:
         if (!IsSlidingBlocksSetupTaskActive(0))
-            SetMainTask(MainTask_SlotsGameLoop);
+            SetMainTask(MainTask_SlidingBlocksGameLoop);
         break;
     }
 }
@@ -688,7 +553,7 @@ static void MainTask_ExitSlots(u8 taskId)
     switch (data[0])
     {
     case 0:
-        SetSlidingBlocksSetupTask(SLOTTASK_FADEOUT_EXIT, 0);
+        SetSlidingBlocksSetupTask(SLIDINGTASK_FADEOUT_EXIT, 0);
         data[0]++;
         break;
     case 1:
@@ -696,6 +561,131 @@ static void MainTask_ExitSlots(u8 taskId)
         {
             SetMainCallback2(sSlidingBlocksState->savedCallback);
             CleanSupSlidingBlocksState();
+        }
+        break;
+    }
+}
+
+static void MainTask_ProcessMove(u8 taskId) {
+    switch (sSlidingBlocksState->currentMove) {
+    case SLIDINGMOVE_UP:
+        if (sSlidingBlocksState->hollowIndex[INDEX_Y] < 3)
+            SetMainTask(MainTask_SlideBlock);
+        else
+            SetMainTask(MainTask_Bump);
+        break;
+    case SLIDINGMOVE_DOWN:
+        if (sSlidingBlocksState->hollowIndex[INDEX_Y] > 0)
+            SetMainTask(MainTask_SlideBlock);
+        else
+            SetMainTask(MainTask_Bump);
+        break;
+    case SLIDINGMOVE_LEFT:
+        if (sSlidingBlocksState->hollowIndex[INDEX_X] < 3)
+            SetMainTask(MainTask_SlideBlock);
+        else
+            SetMainTask(MainTask_Bump);
+        break;
+    case SLIDINGMOVE_RIGHT:
+        if (sSlidingBlocksState->hollowIndex[INDEX_X] > 0)
+            SetMainTask(MainTask_SlideBlock);
+        else
+            SetMainTask(MainTask_Bump);
+        break;
+    }
+}
+
+static void MainTask_SlideBlock(u8 taskId) {
+    s16 *data = gTasks[taskId].data;
+    u32 hollowIndexX = sSlidingBlocksState->hollowIndex[INDEX_X];
+    u32 hollowIndexY = sSlidingBlocksState->hollowIndex[INDEX_Y];
+    u32 targetIndexX; // X index of the block that needs to be moved
+    u32 targetIndexY; // Y index of the block that needs to be moved
+    u16 hollowContent;
+    struct Sprite *hollowSprite;
+    struct Sprite *targetSprite;
+
+
+    switch (sSlidingBlocksState->currentMove) {
+        case SLIDINGMOVE_UP:
+            targetIndexX = hollowIndexX;
+            targetIndexY = hollowIndexY + 1;
+            break;
+        case SLIDINGMOVE_DOWN:
+            targetIndexX = hollowIndexX;
+            targetIndexY = hollowIndexY - 1;
+            break;
+        case SLIDINGMOVE_LEFT:
+            targetIndexX = hollowIndexX + 1;
+            targetIndexY = hollowIndexY;
+            break;
+        case SLIDINGMOVE_RIGHT:
+            targetIndexX = hollowIndexX - 1;
+            targetIndexY = hollowIndexY;
+            break;
+        default:
+            targetIndexX = hollowIndexX;
+            targetIndexY = hollowIndexY;
+            break;
+    }
+
+    switch (data[0]) {
+        case 0:
+            sSlidingBlocksState->isSliding = TRUE;
+            PlaySE(SE_M_STRENGTH);
+            data[0]++;
+            data[1] = 32;
+            break;
+        case 1:
+            if (data[1] > 0) {
+                hollowSprite = sSlidingBlocksGfxManager->blocksSprites[sSlidingBlocksState->blocksCurrentLayout[hollowIndexY][hollowIndexX]];
+                targetSprite = sSlidingBlocksGfxManager->blocksSprites[sSlidingBlocksState->blocksCurrentLayout[targetIndexY][targetIndexX]];
+                if (targetIndexX > hollowIndexX) {
+                    hollowSprite->x++;
+                    targetSprite->x--;
+                }
+                if (targetIndexX < hollowIndexX) {
+                    hollowSprite->x--;
+                    targetSprite->x++;
+                }
+                if (targetIndexY > hollowIndexY) {
+                    hollowSprite->y++;
+                    targetSprite->y--;
+                }
+                if (targetIndexY < hollowIndexY) {
+                    hollowSprite->y--;
+                    targetSprite->y++;
+                }
+                data[1]--;
+            } else {
+                sSlidingBlocksState->isSliding = FALSE;
+                data[0]++;
+            }
+            break;
+        case 2:
+            // Swap hollow place with target block
+            hollowContent = sSlidingBlocksState->blocksCurrentLayout[hollowIndexY][hollowIndexX]; // Will always be 0
+            sSlidingBlocksState->blocksCurrentLayout[hollowIndexY][hollowIndexX] = sSlidingBlocksState->blocksCurrentLayout[targetIndexY][targetIndexX];
+            sSlidingBlocksState->blocksCurrentLayout[targetIndexY][targetIndexX] = hollowContent;
+            sSlidingBlocksState->hollowIndex[INDEX_X] = targetIndexX;
+            sSlidingBlocksState->hollowIndex[INDEX_Y] = targetIndexY;
+            SetMainTask(MainTask_SlidingBlocksGameLoop);
+            break;
+    }
+}
+
+static void MainTask_Bump(u8 taskId) {
+    s16 *data = gTasks[taskId].data;
+
+    switch (data[0]) {
+    case 0:
+        PlaySE(SE_WALL_HIT);
+        data[0]++;
+        break;
+    case 1:
+        if (!IsSEPlaying()) {
+            sSlidingBlocksState->currentMove = SLIDINGMOVE_NONE;
+            SetMainTask(MainTask_SlidingBlocksGameLoop);
         }
         break;
     }
@@ -764,24 +754,26 @@ static void HBlankCB_SlidingBlocks(void)
 static void CreateBlocksSprites(void)
 {
     u32 i;
+    u32 x;
+    u32 y;
+    u32 spriteIndex;
     u32 spriteId;
-    const u32 xs[] = {
-        0x48, 0x68, 0x88, 0xA8,
-        0x48, 0x68, 0x88, 0xA8,
-        0x48, 0x68, 0x88, 0xA8,
-        0x48, 0x68, 0x88, 0xA8
-    };
-    const u32 ys[] = {
-        0x28, 0x28, 0x28, 0x28,
-        0x48, 0x48, 0x48, 0x48,
-        0x68, 0x68, 0x68, 0x68,
-        0x88, 0x88, 0x88, 0x88
-    };
+    struct Sprite *currentSprite;
 
-    for (i = 0; i < SLOT_NUM_BLOCKS; i++) {
-        spriteId = CreateSprite(&sSpriteTemplate_Blocks, xs[i], ys[i], 1);
+    for (i = 0; i < SLIDING_NUM_BLOCKS; i++) {
+        spriteId = CreateSprite(&sSpriteTemplate_Blocks, sSlidingBlocksXs[i], sSlidingBlocksYs[i], 1);
         sSlidingBlocksGfxManager->blocksSprites[i] = &gSprites[spriteId];
-        sSlidingBlocksGfxManager->blocksSprites[i]->oam.tileNum = i * 16;
+        currentSprite = &gSprites[spriteId];
+        currentSprite->oam.tileNum = i * 16;
+    }
+    sSlidingBlocksGfxManager->blocksSprites[0]->invisible = TRUE;
+    for (y = 0; y < 4; y++) {
+        for (x = 0; x < 4; x++) {
+            spriteIndex = y * 4 + x;
+            currentSprite = sSlidingBlocksGfxManager->blocksSprites[sSlidingBlocksState->blocksCurrentLayout[y][x]];
+            currentSprite->x = sSlidingBlocksXs[spriteIndex];
+            currentSprite->y = sSlidingBlocksYs[spriteIndex];
+        }
     }
 }
 
@@ -887,7 +879,7 @@ static inline void LoadColor(u16 color, u16 *pal)
     LoadPalette(pal, 0x00, 0x02);
 }
 
-static bool8 SlotsTask_GraphicsInit(u8 * state, struct SlidingBlocksSetupTaskData * ptr)
+static bool8 SlidingTask_GraphicsInit(u8 * state, struct SlidingBlocksSetupTaskData * ptr)
 {
     u16 pal[2];
     u8 textColor[3];
@@ -986,7 +978,7 @@ static bool8 SlotsTask_GraphicsInit(u8 * state, struct SlidingBlocksSetupTaskDat
     return TRUE;
 }
 
-static bool8 SlotsTask_FadeOut(u8 * state, struct SlidingBlocksSetupTaskData * ptr)
+static bool8 SlidingTask_FadeOut(u8 * state, struct SlidingBlocksSetupTaskData * ptr)
 {
     switch (*state)
     {
@@ -1002,7 +994,7 @@ static bool8 SlotsTask_FadeOut(u8 * state, struct SlidingBlocksSetupTaskData * p
     return TRUE;
 }
 
-static bool8 SlotsTask_AskQuitPlaying(u8 * state, struct SlidingBlocksSetupTaskData * ptr)
+static bool8 SlidingTask_AskQuitPlaying(u8 * state, struct SlidingBlocksSetupTaskData * ptr)
 {
     switch (*state)
     {
@@ -1020,7 +1012,7 @@ static bool8 SlotsTask_AskQuitPlaying(u8 * state, struct SlidingBlocksSetupTaskD
     return TRUE;
 }
 
-static bool8 SlotsTask_DestroyYesNoMenu(u8 * state, struct SlidingBlocksSetupTaskData * ptr)
+static bool8 SlidingTask_DestroyYesNoMenu(u8 * state, struct SlidingBlocksSetupTaskData * ptr)
 {
     switch (*state)
     {

@@ -502,6 +502,9 @@ $(SLIDINGBLOCKSGFXDIR)/bg_wall.4bpp: %.4bpp: %.png
 $(SLIDINGBLOCKSGFXDIR)/puzzle_ho_oh.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
+$(SLIDINGBLOCKSGFXDIR)/arrows.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
 $(TEACHYTVGFXDIR)/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 233
 

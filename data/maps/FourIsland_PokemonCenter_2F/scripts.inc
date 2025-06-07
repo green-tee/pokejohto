@@ -32,10 +32,30 @@ FourIsland_PokemonCenter_2F_EventScript_TestCountItem::
 FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks::
 	lock
 	faceplayer
+	msgbox FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks_Text_0
+	closemessage
 	playslidingblocks 0
+	compare VAR_RESULT, 0
+	goto_if_eq FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks_2
+	msgbox FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks_Text_2
+FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks_1:
+	closemessage
 	release
 	return
+
+FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks_2:
+	msgbox FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks_Text_1
+	goto FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks_1
 
 
 FourIsland_PokemonCenter_2F_EventScript_TestCountItem_Text_0:
 	.string "You have {STR_VAR_1} Poké Balls.$"
+
+FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks_Text_0:
+	.string "Trying sliding blocks.$"
+
+FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks_Text_1:
+	.string "Skill issue.$"
+
+FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks_Text_2:
+	.string "Whatever.$"

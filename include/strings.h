@@ -215,6 +215,7 @@ extern const u8 gString_SlotMachineControls[];
 // sliding_blocks
 extern const u8 gString_GiveUpPuzzle[];
 extern const u8 gString_ResetPuzzle[];
+extern const u8 gString_PuzzleSolved[];
 extern const u8 gString_SlidingBlocksControls[];
 
 // battle_controller_safari

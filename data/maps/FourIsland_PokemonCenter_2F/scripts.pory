@@ -33,6 +33,15 @@ script FourIsland_PokemonCenter_2F_EventScript_TestCountItem {
 script FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks {
 	lock
 	faceplayer
+	msgbox("Trying sliding blocks.")
+	closemessage
 	playslidingblocks(0)
+	if (var(VAR_RESULT) == 0) {
+		msgbox("Skill issue.")
+		closemessage
+	} else {
+		msgbox("Whatever.")
+		closemessage
+	}
 	release
 }

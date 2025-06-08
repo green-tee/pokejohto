@@ -6,7 +6,7 @@ SevenIsland_SevaultCanyon_House_MapScripts::
 SevenIsland_SevaultCanyon_House_EventScript_BaldingMan::
 	lock
 	goto_if_set FLAG_TEMP_2, SevenIsland_SevaultCanyon_House_EventScript_AlreadyDanced
-	playbgm MUS_SCHOOL, 0
+	playbgm MUS_ROWDY_RUMBLE, 0
 	applymovement LOCALID_BALDING_MAN, SevenIsland_SevaultCanyon_House_Movement_ChanseyDance
 	waitmovement 0
 	fadedefaultbgm
@@ -22,7 +22,7 @@ SevenIsland_SevaultCanyon_House_EventScript_BaldingMan::
 	call EventScript_RestorePrevTextColor
 	call_if_ne VAR_FACING, DIR_SOUTH, SevenIsland_SevaultCanyon_House_EventScript_PlayerFaceDown
 	delay 30
-	playbgm MUS_SCHOOL, 0
+	playbgm MUS_ROWDY_RUMBLE, 0
 	applymovement OBJ_EVENT_ID_PLAYER, SevenIsland_SevaultCanyon_House_Movement_ChanseyDance
 	waitmovement 0
 	fadedefaultbgm

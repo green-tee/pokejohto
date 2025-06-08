@@ -35,7 +35,9 @@ script FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks {
 	faceplayer
 	msgbox("Trying sliding blocks.")
 	closemessage
+	playbgm(MUS_ROWDY_RUMBLE, 0)
 	playslidingblocks(0)
+	fadedefaultbgm
 	if (var(VAR_RESULT) == 0) {
 		msgbox("Skill issue.")
 		closemessage

@@ -34,17 +34,20 @@ FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks::
 	faceplayer
 	msgbox FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks_Text_0
 	closemessage
+	playbgm MUS_ROWDY_RUMBLE, 0
 	playslidingblocks 0
+	fadedefaultbgm
 	compare VAR_RESULT, 0
 	goto_if_eq FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks_2
 	msgbox FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks_Text_2
-FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks_1:
 	closemessage
+FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks_1:
 	release
 	return
 
 FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks_2:
 	msgbox FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks_Text_1
+	closemessage
 	goto FourIsland_PokemonCenter_2F_EventScript_TestSlidingBlocks_1
 
 

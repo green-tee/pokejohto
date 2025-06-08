@@ -168,8 +168,8 @@ $(MID_SUBDIR)/mus_teachy_tv_show.s: %.s: %.mid
 $(MID_SUBDIR)/mus_mt_moon.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G147 -V090
 
-$(MID_SUBDIR)/mus_school.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G012 -V100 -P1
+$(MID_SUBDIR)/mus_rowdy_rumble.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G149 -V090 -P1
 
 $(MID_SUBDIR)/mus_poke_tower.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G165 -V090

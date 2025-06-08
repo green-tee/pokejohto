@@ -877,7 +877,7 @@ SECTIONS {
         sound/songs/midi/mus_evolution.o(.rodata);
         sound/songs/midi/mus_vs_gym_leader_last_mon.o(.rodata);
         sound/songs/midi/mus_rs_vs_trainer.o(.rodata);
-        sound/songs/midi/mus_school.o(.rodata);
+        sound/songs/midi/mus_rowdy_rumble.o(.rodata);
         sound/songs/midi/mus_slots_jackpot.o(.rodata);
         sound/songs/midi/mus_slots_win.o(.rodata);
         sound/songs/midi/mus_move_deleted.o(.rodata);

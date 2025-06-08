@@ -271,7 +271,7 @@
 #define MUS_EVOLUTION              264 // MUS_SHINKA
 #define MUS_VS_GYM_LEADER_LAST_MON 265 // MUS_BATTLE32
 #define MUS_RS_VS_TRAINER          266 // MUS_BATTLE20
-#define MUS_SCHOOL                 267 // MUS_P_SCHOOL
+#define MUS_ROWDY_RUMBLE           267 // MUS_P_SCHOOL
 #define MUS_SLOTS_JACKPOT          268 // MUS_ME_B_BIG
 #define MUS_SLOTS_WIN              269 // MUS_ME_B_SMALL
 #define MUS_MOVE_DELETED           270 // MUS_ME_WASURE

@@ -53,7 +53,6 @@ struct SlidingBlocksGfxManager
 {
     struct Sprite *blocksSprites[SLIDING_NUM_BLOCKS];
     struct Sprite *arrowsSprite;
-    struct Sprite *clefairySprites[2];
     u32 hollowSpriteIndex;
 };
 
@@ -120,7 +119,6 @@ static void SlidingBlocks_PrintOnWindow0(const u8 * str);
 static void SlidingBlocks_ClearWindow0(void);
 static void SlidingBlocks_CreateYesNoMenu(u8 cursorPos);
 static void SlidingBlocks_DestroyYesNoMenu(void);
-static void InitReelButtonTileMem(void);
 
 static const u16 sProtoLayout[4][4] = {
     {0x1, 0x3, 0xE, 0x6},
@@ -139,18 +137,14 @@ static const u16 sBabyDifficultyLayout[4][4] = {
 static const u16 sSpritePal_Blocks[] = INCBIN_U16("graphics/sliding_blocks/puzzle.gbapal");
 static const u32 sSpriteTiles_Blocks[] = INCBIN_U32("graphics/sliding_blocks/puzzle_ho_oh.4bpp.lz");
 static const u32 sSpriteTiles_Arrows[] = INCBIN_U32("graphics/sliding_blocks/arrows.4bpp.lz");
-static const u16 sSpritePal_Clefairy[] = INCBIN_U16("graphics/slot_machine/unk_846506c.gbapal");
-static const u32 sSpriteTiles_Clefairy[] = INCBIN_U32("graphics/slot_machine/unk_846506c.4bpp.lz");
 
 static const struct CompressedSpriteSheet sSpriteSheets[] = {
     {(const void *)sSpriteTiles_Blocks,  0x2000, 0},
     {(const void *)sSpriteTiles_Arrows,  0x2A00, 1},
-    {(const void *)sSpriteTiles_Clefairy, 0xC00, 2},
 };
 
 static const struct SpritePalette sSpritePalettes[] = {
     {sSpritePal_Blocks, 0},
-    {sSpritePal_Clefairy,  1},
     {NULL}
 };
 
@@ -190,52 +184,6 @@ static const struct OamData sOamData_Arrows = {
     .priority = 1,
     .paletteNum = 0,
     .affineParam = 0
-};
-
-static const struct OamData sOamData_Clefairy = {
-    .y = 0,
-    .affineMode = ST_OAM_AFFINE_OFF,
-    .objMode = ST_OAM_OBJ_NORMAL,
-    .mosaic = FALSE,
-    .bpp = ST_OAM_4BPP,
-    .shape = ST_OAM_SQUARE,
-    .x = 0,
-    .matrixNum = 0,
-    .size = ST_OAM_SIZE_2,
-    .tileNum = 0,
-    .priority = 1,
-    .paletteNum = 1,
-    .affineParam = 0
-};
-
-static const union AnimCmd sAnimCmd_Clefairy_Neutral[] = {
-    ANIMCMD_FRAME(0, 4),
-    ANIMCMD_END
-};
-
-static const union AnimCmd sAnimCmd_Clefairy_Spinning[] = {
-    ANIMCMD_FRAME( 0, 24),
-    ANIMCMD_FRAME(16, 24),
-    ANIMCMD_JUMP(0)
-};
-
-static const union AnimCmd sAnimCmd_Clefairy_Payout[] = {
-    ANIMCMD_FRAME(32, 28),
-    ANIMCMD_FRAME(48, 28),
-    ANIMCMD_JUMP(0)
-};
-
-static const union AnimCmd sAnimCmd_Clefairy_Lose[] = {
-    ANIMCMD_FRAME(64, 12),
-    ANIMCMD_FRAME(80, 12),
-    ANIMCMD_JUMP(0)
-};
-
-static const union AnimCmd *const sAnimTable_Clefairy[] = {
-    sAnimCmd_Clefairy_Neutral,
-    sAnimCmd_Clefairy_Spinning,
-    sAnimCmd_Clefairy_Payout,
-    sAnimCmd_Clefairy_Lose
 };
 
 static const union AnimCmd sAnimCmd_Arrows_Converge[] = {
@@ -284,16 +232,6 @@ static const struct SpriteTemplate sSpriteTemplate_Arrows = {
     .callback = SpriteCallbackDummy
 };
 
-static const struct SpriteTemplate sSpriteTemplate_Clefairy = {
-    .tileTag = 2,
-    .paletteTag = 1,
-    .oam = &sOamData_Clefairy,
-    .anims = sAnimTable_Clefairy,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
-};
-
 bool8 (*const sSlidingBlocksSetupTasks[])(u8 *, struct SlidingBlocksSetupTaskData *) = {
     [SLIDINGTASK_GFX_INIT] = SlidingTask_GraphicsInit,
     [SLIDINGTASK_FADEOUT_EXIT] = SlidingTask_FadeOut,
@@ -306,15 +244,11 @@ static const u16 sBgWallPal[] = INCBIN_U16("graphics/sliding_blocks/bg.gbapal");
 static const u32 sBgWallTiles[] = INCBIN_U32("graphics/sliding_blocks/bg_wall.4bpp.lz");
 static const u32 sBgWallMap[] = INCBIN_U32("graphics/sliding_blocks/bg_wall_tilemap.bin.lz");
 #if defined(FIRERED)
-static const u32 sBg2Map[] = INCBIN_U32("graphics/slot_machine/unk_84661d4.bin.lz");
 static const u16 sBgPal_50[] = INCBIN_U16("graphics/slot_machine/unk_84664bc.gbapal");
 #elif defined(LEAFGREEN)
-
-static const u32 sBg2Map[] = INCBIN_U32("graphics/slot_machine/unk_lg_8465ab8.bin.lz");
 static const u16 sBgPal_50[] = INCBIN_U16("graphics/slot_machine/unk_lg_8465d9c.gbapal");
-
 #endif
-static const u32 sBg2Tiles_C0[] = INCBIN_U32("graphics/slot_machine/unk_846653c.4bpp.lz");
+
 static const u16 sBgPal_70[] = INCBIN_U16("graphics/slot_machine/unk_84665c0.gbapal");
 #if defined(FIRERED)
 static const u32 sBg1Tiles[] = INCBIN_U32("graphics/slot_machine/unk_8466620.4bpp.lz");
@@ -381,36 +315,6 @@ static const struct WindowTemplate sWindowTemplates[] = {
     DUMMY_WIN_TEMPLATE
 };
 
-static const u16 sLineTiles_TLBR[] = {
-    0x00a4, 0x00a5, 0x00a6, 0x00c4, 0x00c5, 0x00c6, 0x00c7, 0x00e7, 0x012c, 0x014c, 0x0191, 0x01b1, 0x01f6, 0x0216, 0x0217, 0x0218, 0x0219, 0x0237, 0x0238, 0x0239
-};
-
-static const u16 sLineTiles_TopRow[] = {
-    0x00e4, 0x00e5, 0x00e6, 0x00f7, 0x00f8, 0x00f9, 0x0104, 0x0105, 0x0106, 0x0107, 0x010c, 0x0111, 0x0116, 0x0117, 0x0118, 0x0119, 0x0124, 0x0125, 0x0126, 0x0137, 0x0138, 0x0139
-};
-
-static const u16 sLineTiles_MiddleRow[] = {
-    0x0144, 0x0145, 0x0146, 0x0157, 0x0158, 0x0159, 0x0164, 0x0165, 0x0166, 0x0167, 0x016c, 0x0171, 0x0176, 0x0177, 0x0178, 0x0179, 0x0184, 0x0185, 0x0186, 0x0197, 0x0198, 0x0199
-};
-
-static const u16 sLineTiles_BottomRow[] = {
-    0x01a4, 0x01a5, 0x01a6, 0x01b7, 0x01b8, 0x01b9, 0x01c4, 0x01c5, 0x01c6, 0x01c7, 0x01cc, 0x01d1, 0x01d6, 0x01d7, 0x01d8, 0x01d9, 0x01e4, 0x01e5, 0x01e6, 0x01f7, 0x01f8, 0x01f9
-};
-
-static const u16 sLineTiles_BLTR[] = {
-    0x0204, 0x0205, 0x0206, 0x0224, 0x0225, 0x0226, 0x01e7, 0x0207, 0x018c, 0x01ac, 0x0131, 0x0151, 0x00d6, 0x00f6, 0x00b7, 0x00b8, 0x00b9, 0x00d7, 0x00d8, 0x00d9
-};
-
-static const struct LineStateTileIdxList sLineStateTileIdxs[] = {
-    { sLineTiles_TLBR, NELEMS(sLineTiles_TLBR) },
-    { sLineTiles_TopRow, NELEMS(sLineTiles_TopRow) },
-    { sLineTiles_MiddleRow, NELEMS(sLineTiles_MiddleRow) },
-    { sLineTiles_BottomRow, NELEMS(sLineTiles_BottomRow) },
-    { sLineTiles_BLTR, NELEMS(sLineTiles_BLTR) }
-};
-
-static const u8 sWInningLineFlashPalIdxs[2] = {2, 4};
-
 static const struct WindowTemplate sYesNoWindowTemplate = {
     .bg = 0,
     .tilemapLeft = 19,
@@ -419,12 +323,6 @@ static const struct WindowTemplate sYesNoWindowTemplate = {
     .height = 4,
     .paletteNum = 15,
     .baseBlock = 0x9F
-};
-
-static const u16 sReelButtonMapTileIdxs[][4] = {
-    {0x0229, 0x022a, 0x0249, 0x024a},
-    {0x022e, 0x022f, 0x024e, 0x024f},
-    {0x0233, 0x0234, 0x0253, 0x0254}
 };
 
 static const u32 sSlidingBlocksXs[] = {
@@ -898,17 +796,6 @@ static void CreateArrowsSprite(void) {
     sSlidingBlocksGfxManager->arrowsSprite = &gSprites[spriteId];
 }
 
-static void CreateClefairySprites(void)
-{
-    s32 spriteId;
-
-    spriteId = CreateSprite(&sSpriteTemplate_Clefairy, 0x10, 0x88, 1);
-    sSlidingBlocksGfxManager->clefairySprites[0] = &gSprites[spriteId];
-    spriteId = CreateSprite(&sSpriteTemplate_Clefairy, 0xE0, 0x88, 1);
-    sSlidingBlocksGfxManager->clefairySprites[1] = &gSprites[spriteId];
-    sSlidingBlocksGfxManager->clefairySprites[1]->hFlip = TRUE;
-}
-
 static bool32 CreateSlidingBlocks(void)
 {
     s32 i;
@@ -1017,14 +904,10 @@ static bool8 SlidingTask_GraphicsInit(u8 * state, struct SlidingBlocksSetupTaskD
 
         ResetTempTileDataBuffers();
         DecompressAndCopyTileDataToVram(2, sBgWallTiles, 0, 0x00, 0);
-        //DecompressAndCopyTileDataToVram(2, sBg2Tiles_00, 0, 0x00, 0);
-        DecompressAndCopyTileDataToVram(2, sBg2Tiles_C0, 0, 0xC0, 0);
         SetBgTilemapBuffer(2, ptr->bg2TilemapBuffer);
         CopyToBgTilemapBuffer(2, sBgWallMap, 0, 0x00);
-        //CopyToBgTilemapBuffer(2, sBg2Map, 0, 0x00);
         CopyBgTilemapBufferToVram(2);
         LoadPalette(sBgWallPal, 0x00, 0xA0);
-        //LoadPalette(sBgPal_00, 0x00, 0xA0);
         LoadPalette(sBgPal_50, 0x50, 0x20);
         LoadPalette(sBgPal_70, 0x70, 0x60);
         LoadColor(RGB(30, 30, 31), pal);
@@ -1038,11 +921,11 @@ static bool8 SlidingTask_GraphicsInit(u8 * state, struct SlidingBlocksSetupTaskD
         CopyBgTilemapBufferToVram(1);
 
         LoadPalette(GetTextWindowPalette(2), 0xE0, 0x20);
-        FillWindowPixelBuffer(1, 0xFF);
+        FillWindowPixelBuffer(1, 0x00);
         PutWindowTilemap(1);
 
         x = (240 - GetStringWidth(FONT_0, gString_SlidingBlocksControls, 0)) / 2;
-        textColor[0] = TEXT_DYNAMIC_COLOR_6;
+        textColor[0] = TEXT_COLOR_TRANSPARENT;
         textColor[1] = TEXT_COLOR_WHITE;
         textColor[2] = TEXT_COLOR_DARK_GRAY;
         AddTextPrinterParameterized3(1, FONT_0, x, 0, textColor, 0, gString_SlidingBlocksControls);
@@ -1053,7 +936,6 @@ static bool8 SlidingTask_GraphicsInit(u8 * state, struct SlidingBlocksSetupTaskD
         LoadSpriteGraphicsAndAllocateManager();
         CreateArrowsSprite();
         CreateBlocksSprites(0);
-        CreateClefairySprites();
         BlendPalettes(PALETTES_ALL, 0x10, RGB_BLACK);
         SetVBlankCallback(VBlankCB_SlidingBlocks);
         SetHBlankCallback(HBlankCB_SlidingBlocks);
@@ -1070,7 +952,6 @@ static bool8 SlidingTask_GraphicsInit(u8 * state, struct SlidingBlocksSetupTaskD
             ShowBg(3);
             ShowBg(2);
             HideBg(1);
-            //InitReelButtonTileMem();
             BlendPalettes(PALETTES_ALL, 0x10, RGB_BLACK);
             BeginNormalPaletteFade(PALETTES_ALL, -1, 16, 0, RGB_BLACK);
             EnableInterrupts(INTR_FLAG_VBLANK | INTR_FLAG_HBLANK);
@@ -1180,22 +1061,5 @@ static void SlidingBlocks_DestroyYesNoMenu(void)
     {
         DestroyYesNoMenu();
         data->yesNoMenuActive = FALSE;
-    }
-}
-
-static void InitReelButtonTileMem(void)
-{
-    s32 i, j;
-    struct SlidingBlocksSetupTaskData * data = GetSlidingBlocksSetupTaskDataPtr();
-    u16 * buffer = GetBgTilemapBuffer(2);
-
-    for (i = 0; i < 3; i++)
-    {
-        for (j = 0; j < 4; j++)
-        {
-            u16 idx = sReelButtonMapTileIdxs[i][j];
-            data->buttonReleasedTiles[i][j] = buffer[idx];
-            data->buttonPressedTiles[i][j] = j + 0xC0;
-        }
     }
 }

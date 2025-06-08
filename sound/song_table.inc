@@ -266,7 +266,7 @@ gSongTable::
 	song mus_evolution, 0, 0
 	song mus_vs_gym_leader_last_mon, 0, 0
 	song mus_rs_vs_trainer, 0, 0
-	song mus_school, 0, 0
+	song mus_rowdy_rumble, 0, 0
 	song mus_slots_jackpot, 2, 2
 	song mus_slots_win, 2, 2
 	song mus_move_deleted, 2, 2

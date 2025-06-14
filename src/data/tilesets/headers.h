@@ -42,14 +42,14 @@ const struct Tileset gTileset_PewterCity =
     .callback = InitTilesetAnim_PewterCity,
 };
 
-const struct Tileset gTileset_CeruleanCity =
+const struct Tileset gTileset_AzaleaTown =
 {
     .isCompressed = TRUE,
     .isSecondary = TRUE,
-    .tiles = gTilesetTiles_CeruleanCity,
-    .palettes = gTilesetPalettes_CeruleanCity,
-    .metatiles = gMetatiles_CeruleanCity,
-    .metatileAttributes = gMetatileAttributes_CeruleanCity,
+    .tiles = gTilesetTiles_AzaleaTown,
+    .palettes = gTilesetPalettes_AzaleaTown,
+    .metatiles = gMetatiles_AzaleaTown,
+    .metatileAttributes = gMetatileAttributes_AzaleaTown,
     .callback = NULL,
 };
 
@@ -295,14 +295,14 @@ const struct Tileset gTileset_PewterGym =
     .callback = NULL,
 };
 
-const struct Tileset gTileset_CeruleanGym =
+const struct Tileset gTileset_AzaleaGym =
 {
     .isCompressed = TRUE,
     .isSecondary = TRUE,
-    .tiles = gTilesetTiles_CeruleanGym,
-    .palettes = gTilesetPalettes_CeruleanGym,
-    .metatiles = gMetatiles_CeruleanGym,
-    .metatileAttributes = gMetatileAttributes_CeruleanGym,
+    .tiles = gTilesetTiles_AzaleaGym,
+    .palettes = gTilesetPalettes_AzaleaGym,
+    .metatiles = gMetatiles_AzaleaGym,
+    .metatileAttributes = gMetatileAttributes_AzaleaGym,
     .callback = NULL,
 };
 

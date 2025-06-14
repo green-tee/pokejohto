@@ -1775,7 +1775,7 @@ bool8 DoesPlayerPartyContainSpecies(void)
 static const u8 sMartMaps[][3] = {
     {MAP(VIRIDIAN_CITY_MART),    1},
     {MAP(PEWTER_CITY_MART),      3},
-    {MAP(CERULEAN_CITY_MART),    1},
+    {MAP(AZALEA_TOWN_MART),      1},
     {MAP(LAVENDER_TOWN_MART),    1},
     {MAP(VERMILION_CITY_MART),   1},
     {MAP(FUCHSIA_CITY_MART),     1},
@@ -1820,8 +1820,8 @@ static const struct {
     [QL_LOCATION_PEWTER_GYM]         = {MAP(PEWTER_CITY_GYM),                       MAP(PEWTER_CITY)},
     [QL_LOCATION_MT_MOON_1]          = {MAP(MT_MOON_1F),                            MAP(ROUTE4)},
     [QL_LOCATION_MT_MOON_2]          = {MAP(MT_MOON_B1F),                           MAP(ROUTE4)},
-    [QL_LOCATION_CERULEAN_GYM]       = {MAP(CERULEAN_CITY_GYM),                     MAP(CERULEAN_CITY)},
-    [QL_LOCATION_BIKE_SHOP]          = {MAP(CERULEAN_CITY_BIKE_SHOP),               MAP(CERULEAN_CITY)},
+    [QL_LOCATION_AZALEA_GYM]        = {MAP(AZALEA_TOWN_GYM),                       MAP(AZALEA_TOWN)},
+    [QL_LOCATION_BIKE_SHOP]          = {MAP(AZALEA_TOWN_BIKE_SHOP),                 MAP(AZALEA_TOWN)},
     [QL_LOCATION_BILLS_HOUSE]        = {MAP(ROUTE25_SEA_COTTAGE),                   MAP(ROUTE25)},
     [QL_LOCATION_DAY_CARE]           = {MAP(ROUTE5_POKEMON_DAY_CARE),               MAP(ROUTE33)},
     [QL_LOCATION_UNDERGROUND_PATH_1] = {MAP(UNDERGROUND_PATH_NORTH_ENTRANCE),       MAP(ROUTE33)},
@@ -1859,7 +1859,7 @@ static const struct {
     [QL_LOCATION_VICTORY_ROAD_1]     = {MAP(VICTORY_ROAD_1F),                       MAP(ROUTE23)},
     [QL_LOCATION_VICTORY_ROAD_2]     = {MAP(VICTORY_ROAD_2F),                       MAP(ROUTE23)},
     [QL_LOCATION_PKMN_LEAGUE]        = {MAP(INDIGO_PLATEAU_POKEMON_CENTER_1F),      MAP(INDIGO_PLATEAU_EXTERIOR)},
-    [QL_LOCATION_CERULEAN_CAVE]      = {MAP(CERULEAN_CAVE_1F),                      MAP(CERULEAN_CITY)}
+    [QL_LOCATION_CERULEAN_CAVE]      = {MAP(CERULEAN_CAVE_1F),                      MAP(AZALEA_TOWN)}
 };
 
 void QuestLog_CheckDepartingIndoorsMap(void)
@@ -2016,7 +2016,7 @@ bool8 IsDestinationBoxFull(void)
 const u16 sPokeCenter1FMaps[] = {
     MAP_VIRIDIAN_CITY_POKEMON_CENTER_1F,
     MAP_PEWTER_CITY_POKEMON_CENTER_1F,
-    MAP_CERULEAN_CITY_POKEMON_CENTER_1F,
+    MAP_AZALEA_TOWN_POKEMON_CENTER,
     MAP_LAVENDER_TOWN_POKEMON_CENTER_1F,
     MAP_VERMILION_CITY_POKEMON_CENTER_1F,
     MAP_CELADON_CITY_POKEMON_CENTER_1F,

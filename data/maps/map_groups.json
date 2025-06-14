@@ -7,7 +7,7 @@
     "gMapGroup_IndoorPallet",
     "gMapGroup_IndoorViridian",
     "gMapGroup_IndoorPewter",
-    "gMapGroup_IndoorCerulean",
+    "gMapGroup_IndoorAzalea",
     "gMapGroup_IndoorLavender",
     "gMapGroup_IndoorVermilion",
     "gMapGroup_IndoorCeladon",
@@ -242,7 +242,7 @@
     "PalletTown",
     "ViridianCity",
     "PewterCity",
-    "CeruleanCity",
+    "AzaleaTown",
     "LavenderTown",
     "VermilionCity",
     "CeladonCity",
@@ -330,17 +330,17 @@
     "PewterCity_PokemonCenter_2F",
     "PewterCity_House2"
   ],
-  "gMapGroup_IndoorCerulean": [
-    "CeruleanCity_House1",
-    "CeruleanCity_House2",
-    "CeruleanCity_House3",
-    "CeruleanCity_PokemonCenter_1F",
-    "CeruleanCity_PokemonCenter_2F",
-    "CeruleanCity_Gym",
-    "CeruleanCity_BikeShop",
-    "CeruleanCity_Mart",
-    "CeruleanCity_House4",
-    "CeruleanCity_House5"
+  "gMapGroup_IndoorAzalea": [
+    "AzaleaTown_House1",
+    "AzaleaTown_House2",
+    "AzaleaTown_House3",
+    "AzaleaTown_PokemonCenter",
+    "AzaleaTown_PokemonCenter_2F",
+    "AzaleaTown_Gym",
+    "AzaleaTown_BikeShop",
+    "AzaleaTown_Mart",
+    "AzaleaTown_House4",
+    "AzaleaTown_House5"
   ],
   "gMapGroup_IndoorLavender": [
     "LavenderTown_PokemonCenter_1F",

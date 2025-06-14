@@ -50,7 +50,7 @@ static const u8 sDoorAnimTiles_Saffron[] = INCBIN_U8("graphics/door_anims/saffro
 static const u16 sDoorNullPalette8[16] = {};
 static const u8 sDoorAnimTiles_SilphCo[] = INCBIN_U8("graphics/door_anims/silph_co.4bpp");
 static const u16 sDoorNullPalette9[16] = {};
-static const u8 sDoorAnimTiles_Cerulean[] = INCBIN_U8("graphics/door_anims/cerulean.4bpp");
+static const u8 sDoorAnimTiles_Azalea[] = INCBIN_U8("graphics/door_anims/azalea.4bpp");
 static const u16 sDoorNullPalette10[16] = {};
 static const u8 sDoorAnimTiles_Lavender[] = INCBIN_U8("graphics/door_anims/lavender.4bpp");
 static const u16 sDoorNullPalette11[16] = {};
@@ -214,7 +214,7 @@ static const u8 sDoorAnimPalettes_Viridian[] = {8, 8, 8, 8, 8, 8, 8, 8};
 static const u8 sDoorAnimPalettes_Pewter[] = {9, 9, 9, 9, 9, 9, 9, 9};
 static const u8 sDoorAnimPalettes_Saffron[] = {8, 8, 8, 8, 8, 8, 8, 8};
 static const u8 sDoorAnimPalettes_SilphCo[] = {3, 3, 3, 3, 3, 3, 3, 3};
-static const u8 sDoorAnimPalettes_Cerulean[] = {10, 10, 10, 10, 10, 10, 10, 10};
+static const u8 sDoorAnimPalettes_Azalea[] = {10, 10, 10, 10, 10, 10, 10, 10};
 static const u8 sDoorAnimPalettes_Lavender[] = {9, 9, 9, 9, 9, 9, 9, 9};
 static const u8 sDoorAnimPalettes_Vermilion[] = {9, 9, 9, 9, 9, 9, 9, 9};
 static const u8 sDoorAnimPalettes_PokemonFanClub[] = {9, 9, 9, 9, 9, 9, 9, 9};
@@ -248,7 +248,7 @@ static const struct DoorGraphics sDoorGraphics[] = {
     {METATILE_PewterCity_Door,                             DOOR_SOUND_NORMAL,  0, sDoorAnimTiles_Pewter, sDoorAnimPalettes_Pewter},
     {METATILE_SaffronCity_Door,                            DOOR_SOUND_NORMAL,  0, sDoorAnimTiles_Saffron, sDoorAnimPalettes_Saffron},
     {METATILE_SaffronCity_SilphCoDoor,                     DOOR_SOUND_SLIDING, 0, sDoorAnimTiles_SilphCo, sDoorAnimPalettes_SilphCo},
-    {METATILE_CeruleanCity_Door,                           DOOR_SOUND_NORMAL,  0, sDoorAnimTiles_Cerulean, sDoorAnimPalettes_Cerulean},
+    {METATILE_AzaleaTown_Door,                             DOOR_SOUND_NORMAL,  0, sDoorAnimTiles_Azalea, sDoorAnimPalettes_Azalea},
     {METATILE_LavenderTown_Door,                           DOOR_SOUND_NORMAL,  0, sDoorAnimTiles_Lavender, sDoorAnimPalettes_Lavender},
     {METATILE_VermilionCity_Door,                          DOOR_SOUND_NORMAL,  0, sDoorAnimTiles_Vermilion, sDoorAnimPalettes_Vermilion},
     {METATILE_VermilionCity_PokemonFanClubDoor,            DOOR_SOUND_NORMAL,  0, sDoorAnimTiles_PokemonFanClub, sDoorAnimPalettes_PokemonFanClub},

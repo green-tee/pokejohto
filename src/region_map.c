@@ -825,7 +825,7 @@ static const u8 sMapFlyDestinations[][3] = {
     [MAPSEC_PALLET_TOWN         - MAPSECS_KANTO] = {MAP(PALLET_TOWN),                           SPAWN_PALLET_TOWN},
     [MAPSEC_VIRIDIAN_CITY       - MAPSECS_KANTO] = {MAP(VIRIDIAN_CITY),                         SPAWN_VIRIDIAN_CITY},
     [MAPSEC_PEWTER_CITY         - MAPSECS_KANTO] = {MAP(PEWTER_CITY),                           SPAWN_PEWTER_CITY},
-    [MAPSEC_CERULEAN_CITY       - MAPSECS_KANTO] = {MAP(CERULEAN_CITY),                         SPAWN_CERULEAN_CITY},
+    [MAPSEC_AZALEA_TOWN         - MAPSECS_KANTO] = {MAP(AZALEA_TOWN),                           SPAWN_AZALEA_TOWN},
     [MAPSEC_LAVENDER_TOWN       - MAPSECS_KANTO] = {MAP(LAVENDER_TOWN),                         SPAWN_LAVENDER_TOWN},
     [MAPSEC_VERMILION_CITY      - MAPSECS_KANTO] = {MAP(VERMILION_CITY),                        SPAWN_VERMILION_CITY},
     [MAPSEC_CELADON_CITY        - MAPSECS_KANTO] = {MAP(CELADON_CITY),                          SPAWN_CELADON_CITY},
@@ -2954,8 +2954,8 @@ static u8 GetMapsecType(u8 mapsec)
         return FlagGet(FLAG_WORLD_MAP_VIRIDIAN_CITY) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
     case MAPSEC_PEWTER_CITY:
         return FlagGet(FLAG_WORLD_MAP_PEWTER_CITY) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
-    case MAPSEC_CERULEAN_CITY:
-        return FlagGet(FLAG_WORLD_MAP_CERULEAN_CITY) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
+    case MAPSEC_AZALEA_TOWN:
+        return FlagGet(FLAG_WORLD_MAP_AZALEA_TOWN) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
     case MAPSEC_LAVENDER_TOWN:
         return FlagGet(FLAG_WORLD_MAP_LAVENDER_TOWN) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
     case MAPSEC_VERMILION_CITY:
@@ -3273,7 +3273,7 @@ static void GetPlayerPositionOnRegionMap_HandleOverrides(void)
             sMapCursor->x = 4;
             sMapCursor->y = 7;
         }
-        else if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(CERULEAN_CITY))
+        else if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(AZALEA_TOWN))
         {
             sMapCursor->x = 4;
             sMapCursor->y = 5;

@@ -1707,7 +1707,7 @@ static const u8 *const sLocationNameTexts[] =
         [QL_LOCATION_PEWTER_GYM]         = gText_QuestLog_Gym,
         [QL_LOCATION_MT_MOON_1]          = gText_QuestLog_MtMoon,
         [QL_LOCATION_MT_MOON_2]          = gText_QuestLog_MtMoon,
-        [QL_LOCATION_CERULEAN_GYM]       = gText_QuestLog_Gym,
+        [QL_LOCATION_AZALEA_GYM]        = gText_QuestLog_Gym,
         [QL_LOCATION_BIKE_SHOP]          = gText_QuestLog_BikeShop,
         [QL_LOCATION_BILLS_HOUSE]        = gText_QuestLog_BillsHouse,
         [QL_LOCATION_DAY_CARE]           = gText_QuestLog_DayCare,
@@ -1776,7 +1776,7 @@ static const u8 sLocationToDepartedTextId[] =
         [QL_LOCATION_PEWTER_GYM]         = QL_DEPARTED_GYM,
         [QL_LOCATION_MT_MOON_1]          = QL_DEPARTED_CAVE,
         [QL_LOCATION_MT_MOON_2]          = QL_DEPARTED_CAVE,
-        [QL_LOCATION_CERULEAN_GYM]       = QL_DEPARTED_GYM,
+        [QL_LOCATION_AZALEA_GYM]         = QL_DEPARTED_GYM,
         [QL_LOCATION_BIKE_SHOP]          = QL_DEPARTED_TOWN_BUILDING,
         [QL_LOCATION_BILLS_HOUSE]        = QL_DEPARTED_TOWN_BUILDING,
         [QL_LOCATION_DAY_CARE]           = QL_DEPARTED_TOWN_BUILDING,
@@ -1820,7 +1820,7 @@ static const u8 sLocationToDepartedTextId[] =
 
 static const u8 sGymCityMapSecs[] = {
     MAPSEC_PEWTER_CITY,
-    MAPSEC_CERULEAN_CITY,
+    MAPSEC_AZALEA_TOWN,
     MAPSEC_VERMILION_CITY,
     MAPSEC_CELADON_CITY,
     MAPSEC_FUCHSIA_CITY,
@@ -2059,7 +2059,7 @@ static const u16 sQuestLogWorldMapFlags[] =
     {
         FLAG_WORLD_MAP_VIRIDIAN_CITY,
         FLAG_WORLD_MAP_PEWTER_CITY,
-        FLAG_WORLD_MAP_CERULEAN_CITY,
+        FLAG_WORLD_MAP_AZALEA_TOWN,
         FLAG_WORLD_MAP_LAVENDER_TOWN,
         FLAG_WORLD_MAP_VERMILION_CITY,
         FLAG_WORLD_MAP_CELADON_CITY,

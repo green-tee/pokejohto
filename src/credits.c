@@ -121,7 +121,7 @@ enum CreditsMap
     CREDITS_MAP_ROUTE23 = 0,
     CREDITS_MAP_VIRIDIAN_CITY,
     CREDITS_MAP_PEWTER_CITY,
-    CREDITS_MAP_CERULEAN_CITY,
+    CREDITS_MAP_AZALEA_TOWN,
     CREDITS_MAP_ROUTE25,
     CREDITS_MAP_VERMILION_CITY,
     CREDITS_MAP_ROUTE10,
@@ -386,7 +386,7 @@ static const struct CreditsScrcmd sCreditsScript[] = {
     CREDITS_PRINT(MUSIC_COMPOSITION, 210),
     CREDITS_PRINT(SOUND_EFFECTS, 210),
     CREDITS_MON(CHARIZARD),
-    CREDITS_MAP(CERULEAN_CITY, 16),
+    CREDITS_MAP(AZALEA_TOWN, 16),
     CREDITS_PRINT(GAME_DESIGNERS, 211),
     CREDITS_PRINT(GAME_DESIGNERS_2, 210),
     CREDITS_PRINT(GAME_SCENARIO, 210),
@@ -577,8 +577,8 @@ static const struct CreditsOverworldCmd sOverworldCmd_PewterCity[] = {
     CREDITSOVWLDEND
 };
 
-static const struct CreditsOverworldCmd sOverworldCmd_CeruleanCity[] = {
-    CREDITSOVWLDLOADMAP(CERULEAN_CITY, 8, 6, 1),
+static const struct CreditsOverworldCmd sOverworldCmd_AzaleaTown[] = {
+    CREDITSOVWLDLOADMAP(AZALEA_TOWN, 8, 6, 1),
     CREDITSOVWLDSCROLL(1, 1, 0x0500), // Scroll right and down
     CREDITSOVWLDEND
 };
@@ -641,7 +641,7 @@ static const struct CreditsOverworldCmd *const sOverworldMapScenes[] = {
     sOverworldCmd_Route23,
     sOverworldCmd_ViridianCity,
     sOverworldCmd_PewterCity,
-    sOverworldCmd_CeruleanCity,
+    sOverworldCmd_AzaleaTown,
     sOverworldCmd_Route25,
     sOverworldCmd_VermilionCity,
     sOverworldCmd_Route10,

@@ -1,0 +1,70 @@
+AzaleaTown_Gym_MapScripts::
+	.byte 0
+
+AzaleaTown_Gym_EventScript_Misty::
+	famechecker FAMECHECKER_MISTY, FCPICKSTATE_COLORED, UpdatePickStateFromSpecialVar8005
+	trainerbattle_single TRAINER_LEADER_MISTY, AzaleaTown_Gym_Text_MistyIntro, AzaleaTown_Gym_Text_MistyDefeat, AzaleaTown_Gym_EventScript_MistyDefeated, NO_MUSIC
+	goto_if_unset FLAG_GOT_TM03_FROM_MISTY, AzaleaTown_Gym_EventScript_GiveTM03
+	msgbox AzaleaTown_Gym_Text_ExplainTM03
+	release
+	end
+
+AzaleaTown_Gym_EventScript_MistyDefeated::
+	famechecker FAMECHECKER_MISTY, 1
+	setflag FLAG_DEFEATED_MISTY
+	setflag FLAG_BADGE02_GET
+	setrespawn SPAWN_AZALEA_TOWN
+	set_gym_trainers 2
+	goto AzaleaTown_Gym_EventScript_GiveTM03
+	end
+
+AzaleaTown_Gym_EventScript_GiveTM03::
+	msgbox AzaleaTown_Gym_Text_ExplainCascadeBadge
+	checkitemspace ITEM_TM03
+	goto_if_eq VAR_RESULT, FALSE, AzaleaTown_Gym_EventScript_NoRoomForTM03
+	giveitem_msg AzaleaTown_Gym_Text_ReceivedTM03FromMisty, ITEM_TM03
+	setflag FLAG_GOT_TM03_FROM_MISTY
+	msgbox AzaleaTown_Gym_Text_ExplainTM03
+	release
+	end
+
+AzaleaTown_Gym_EventScript_NoRoomForTM03::
+	msgbox AzaleaTown_Gym_Text_BetterMakeRoomForThis
+	release
+	end
+
+AzaleaTown_Gym_EventScript_Diana::
+	trainerbattle_single TRAINER_PICNICKER_DIANA, AzaleaTown_Gym_Text_DianaIntro, AzaleaTown_Gym_Text_DianaDefeat
+	msgbox AzaleaTown_Gym_Text_DianaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+AzaleaTown_Gym_EventScript_Luis::
+	trainerbattle_single TRAINER_SWIMMER_MALE_LUIS, AzaleaTown_Gym_Text_LuisIntro, AzaleaTown_Gym_Text_LuisDefeat
+	famechecker FAMECHECKER_MISTY, 2
+	msgbox AzaleaTown_Gym_Text_LuisPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+AzaleaTown_Gym_EventScript_GymGuy::
+	lock
+	faceplayer
+	goto_if_set FLAG_DEFEATED_MISTY, AzaleaTown_Gym_EventScript_GymGuyPostVictory
+	msgbox AzaleaTown_Gym_Text_GymGuyAdvice
+	release
+	end
+
+AzaleaTown_Gym_EventScript_GymGuyPostVictory::
+	msgbox AzaleaTown_Gym_Text_WeMakePrettyGoodTeam
+	release
+	end
+
+AzaleaTown_Gym_EventScript_GymStatue::
+	lockall
+	goto_if_set FLAG_BADGE02_GET, AzaleaTown_Gym_EventScript_GymStatuePostVictory
+	msgbox AzaleaTown_Gym_Text_GymStatue
+	releaseall
+	end
+
+AzaleaTown_Gym_EventScript_GymStatuePostVictory::
+	msgbox AzaleaTown_Gym_Text_GymStatuePlayerWon
+	releaseall
+	end

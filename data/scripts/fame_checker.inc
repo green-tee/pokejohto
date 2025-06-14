@@ -75,7 +75,7 @@ Route25_EventScript_Beauty::
 	release
 	end
 
-CeruleanCity_PokemonCenter_1F_EventScript_PokemonJournalMisty::
+AzaleaTown_PokemonCenter_EventScript_PokemonJournalMisty::
 	lock
 	faceplayer
 	famechecker FAMECHECKER_MISTY, 5

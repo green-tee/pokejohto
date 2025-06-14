@@ -1402,7 +1402,7 @@
 #define FLAG_WORLD_MAP_PALLET_TOWN                                  (SYS_FLAGS + 0x90)
 #define FLAG_WORLD_MAP_VIRIDIAN_CITY                                (SYS_FLAGS + 0x91)
 #define FLAG_WORLD_MAP_PEWTER_CITY                                  (SYS_FLAGS + 0x92)
-#define FLAG_WORLD_MAP_CERULEAN_CITY                                (SYS_FLAGS + 0x93)
+#define FLAG_WORLD_MAP_AZALEA_TOWN                                  (SYS_FLAGS + 0x93)
 #define FLAG_WORLD_MAP_LAVENDER_TOWN                                (SYS_FLAGS + 0x94)
 #define FLAG_WORLD_MAP_VERMILION_CITY                               (SYS_FLAGS + 0x95)
 #define FLAG_WORLD_MAP_CELADON_CITY                                 (SYS_FLAGS + 0x96)

@@ -1,0 +1,85 @@
+.set LOCALID_WONDER_NEWS_BERRY_MAN, 1
+
+AzaleaTown_House4_MapScripts::
+	.byte 0
+
+AzaleaTown_House4_EventScript_WonderNewsBerryMan::
+	goto_if_questlog EventScript_ReleaseEnd
+	special QuestLog_CutRecording
+	lock
+	specialvar VAR_0x8004, GetMENewsJisanItemAndState
+	copyvar VAR_0x8008, VAR_RESULT
+	goto_if_eq VAR_0x8004, 0, AzaleaTown_House4_EventScript_NoNews
+	goto_if_eq VAR_0x8004, 1, AzaleaTown_House4_EventScript_News1
+	goto_if_eq VAR_0x8004, 2, AzaleaTown_House4_EventScript_News2
+	goto_if_eq VAR_0x8004, 3, AzaleaTown_House4_EventScript_NewsNotSpread
+	goto_if_eq VAR_0x8004, 4, AzaleaTown_House4_EventScript_NewsSpread1
+	goto_if_eq VAR_0x8004, 5, AzaleaTown_House4_EventScript_NewsSpread2
+	goto_if_eq VAR_0x8004, 6, AzaleaTown_House4_EventScript_NewsDone
+	end
+
+AzaleaTown_House4_EventScript_NoNews::
+	msgbox AzaleaTown_House4_Text_NothingEntertaining
+	release
+	end
+
+AzaleaTown_House4_EventScript_News1::
+	call AzaleaTown_House4_EventScript_MovementReactionToNews
+	msgbox AzaleaTown_House4_Text_NewNewsInformativeHaveThis
+	giveitem VAR_0x8008
+	goto_if_eq VAR_RESULT, FALSE, AzaleaTown_House4_EventScript_NoRoomForBerries
+	release
+	end
+
+AzaleaTown_House4_EventScript_News2::
+	call AzaleaTown_House4_EventScript_MovementReactionToNews
+	msgbox AzaleaTown_House4_Text_IncredibleNewsHaveBerries
+	giveitem VAR_0x8008, 4
+	goto_if_eq VAR_RESULT, FALSE, AzaleaTown_House4_EventScript_NoRoomForBerries
+	release
+	end
+
+AzaleaTown_House4_EventScript_NewsNotSpread::
+	applymovement LOCALID_WONDER_NEWS_BERRY_MAN, Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox AzaleaTown_House4_Text_WishCouldShareNewsWithOthers
+	release
+	end
+
+AzaleaTown_House4_EventScript_NewsSpread1::
+	call AzaleaTown_House4_EventScript_MovementReactionToNews
+	msgbox AzaleaTown_House4_Text_ThanksForSpreadingNewsTakeThis
+	giveitem VAR_0x8008
+	goto_if_eq VAR_RESULT, FALSE, AzaleaTown_House4_EventScript_NoRoomForBerries
+	release
+	end
+
+AzaleaTown_House4_EventScript_NewsSpread2::
+	call AzaleaTown_House4_EventScript_MovementReactionToNews
+	msgbox AzaleaTown_House4_Text_MagnificentNewsSpreadHaveBerries
+	giveitem VAR_0x8008, 4
+	goto_if_eq VAR_RESULT, FALSE, AzaleaTown_House4_EventScript_NoRoomForBerries
+	release
+	end
+
+AzaleaTown_House4_EventScript_NewsDone::
+	applymovement LOCALID_WONDER_NEWS_BERRY_MAN, Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox AzaleaTown_House4_Text_EnjoyingMyselfWithAllSortsOfNews
+	release
+	end
+
+AzaleaTown_House4_EventScript_MovementReactionToNews::
+	playse SE_PIN
+	applymovement LOCALID_WONDER_NEWS_BERRY_MAN, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_WONDER_NEWS_BERRY_MAN, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_WONDER_NEWS_BERRY_MAN, Common_Movement_Delay48
+	waitmovement 0
+	return
+
+AzaleaTown_House4_EventScript_NoRoomForBerries::
+	msgbox AzaleaTown_House4_Text_YourBerryPouchIsFull
+	release
+	end

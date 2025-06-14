@@ -64,26 +64,26 @@ const u16 gTilesetPalettes_PewterCity[][16] =
 	INCBIN_U16("data/tilesets/secondary/pewter_city/palettes/15.gbapal"),
 };
 
-const u32 gTilesetTiles_CeruleanCity[] = INCBIN_U32("data/tilesets/secondary/cerulean_city/tiles.4bpp.lz");
+const u32 gTilesetTiles_AzaleaTown[] = INCBIN_U32("data/tilesets/secondary/azalea_town/tiles.4bpp.lz");
 
-const u16 gTilesetPalettes_CeruleanCity[][16] =
+const u16 gTilesetPalettes_AzaleaTown[][16] =
 {
-	INCBIN_U16("data/tilesets/secondary/cerulean_city/palettes/00.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_city/palettes/01.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_city/palettes/02.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_city/palettes/03.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_city/palettes/04.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_city/palettes/05.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_city/palettes/06.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_city/palettes/07.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_city/palettes/08.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_city/palettes/09.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_city/palettes/10.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_city/palettes/11.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_city/palettes/12.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_city/palettes/13.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_city/palettes/14.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_city/palettes/15.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_town/palettes/00.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_town/palettes/01.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_town/palettes/02.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_town/palettes/03.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_town/palettes/04.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_town/palettes/05.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_town/palettes/06.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_town/palettes/07.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_town/palettes/08.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_town/palettes/09.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_town/palettes/10.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_town/palettes/11.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_town/palettes/12.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_town/palettes/13.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_town/palettes/14.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_town/palettes/15.gbapal"),
 };
 
 const u32 gTilesetTiles_LavenderTown[] = INCBIN_U32("data/tilesets/secondary/lavender_town/tiles.4bpp.lz");
@@ -504,26 +504,26 @@ const u16 gTilesetPalettes_PewterGym[][16] =
 	INCBIN_U16("data/tilesets/secondary/pewter_gym/palettes/15.gbapal"),
 };
 
-const u32 gTilesetTiles_CeruleanGym[] = INCBIN_U32("data/tilesets/secondary/cerulean_gym/tiles.4bpp.lz");
+const u32 gTilesetTiles_AzaleaGym[] = INCBIN_U32("data/tilesets/secondary/azalea_gym/tiles.4bpp.lz");
 
-const u16 gTilesetPalettes_CeruleanGym[][16] =
+const u16 gTilesetPalettes_AzaleaGym[][16] =
 {
-	INCBIN_U16("data/tilesets/secondary/cerulean_gym/palettes/00.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_gym/palettes/01.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_gym/palettes/02.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_gym/palettes/03.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_gym/palettes/04.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_gym/palettes/05.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_gym/palettes/06.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_gym/palettes/07.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_gym/palettes/08.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_gym/palettes/09.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_gym/palettes/10.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_gym/palettes/11.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_gym/palettes/12.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_gym/palettes/13.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_gym/palettes/14.gbapal"),
-	INCBIN_U16("data/tilesets/secondary/cerulean_gym/palettes/15.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_gym/palettes/00.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_gym/palettes/01.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_gym/palettes/02.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_gym/palettes/03.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_gym/palettes/04.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_gym/palettes/05.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_gym/palettes/06.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_gym/palettes/07.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_gym/palettes/08.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_gym/palettes/09.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_gym/palettes/10.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_gym/palettes/11.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_gym/palettes/12.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_gym/palettes/13.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_gym/palettes/14.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/azalea_gym/palettes/15.gbapal"),
 };
 
 const u32 gTilesetTiles_VermilionGym[] = INCBIN_U32("data/tilesets/secondary/vermilion_gym/tiles.4bpp.lz");

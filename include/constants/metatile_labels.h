@@ -16,8 +16,8 @@
 #define METATILE_CeladonCity_CyclingRoad_Mowed  0x33E
 #define METATILE_CeladonCity_DeptStoreDoor      0x294
 
-// gTileset_CeruleanCity
-#define METATILE_CeruleanCity_Door  0x298
+// gTileset_AzaleaTown
+#define METATILE_AzaleaTown_Door  0x298
 
 // gTileset_CinnabarGym
 #define METATILE_CinnabarGym_Floor                  0x281

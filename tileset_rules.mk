@@ -75,7 +75,7 @@ $(TILESETGFXDIR)/secondary/bike_shop/tiles.4bpp: %.4bpp: %.png
 $(TILESETGFXDIR)/secondary/viridian_gym/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 90
 
-$(TILESETGFXDIR)/secondary/cerulean_gym/tiles.4bpp: %.4bpp: %.png
+$(TILESETGFXDIR)/secondary/azalea_gym/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 119
 
 $(TILESETGFXDIR)/secondary/cinnabar_gym/tiles.4bpp: %.4bpp: %.png
@@ -156,7 +156,7 @@ $(TILESETGFXDIR)/secondary/tanoby_ruins/tiles.4bpp: %.4bpp: %.png
 $(TILESETGFXDIR)/secondary/trainer_tower/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 343
 
-$(TILESETGFXDIR)/secondary/cerulean_city/tiles.4bpp: %.4bpp: %.png
+$(TILESETGFXDIR)/secondary/azalea_town/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 158
 
 $(TILESETGFXDIR)/secondary/fuchsia_city/tiles.4bpp: %.4bpp: %.png

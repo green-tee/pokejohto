@@ -22667,8 +22667,8 @@
           }
         },
         {
-          "map": "MAP_CERULEAN_CITY",
-          "base_label": "sCeruleanCity_FireRed",
+          "map": "MAP_AZALEA_TOWN",
+          "base_label": "sAzaleaTown_FireRed",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -22756,8 +22756,8 @@
           }
         },
         {
-          "map": "MAP_CERULEAN_CITY",
-          "base_label": "sCeruleanCity_LeafGreen",
+          "map": "MAP_AZALEA_TOWN",
+          "base_label": "sAzaleaTown_LeafGreen",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [

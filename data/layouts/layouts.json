@@ -134,16 +134,16 @@
       "blockdata_filepath": "data/layouts/House3/map.bin"
     },
     {
-      "id": "LAYOUT_CERULEAN_CITY_GYM",
-      "name": "CeruleanCity_Gym_Layout",
+      "id": "LAYOUT_AZALEA_TOWN_GYM",
+      "name": "AzaleaTown_Gym_Layout",
       "width": 17,
       "height": 20,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_CeruleanGym",
-      "border_filepath": "data/layouts/CeruleanCity_Gym/border.bin",
-      "blockdata_filepath": "data/layouts/CeruleanCity_Gym/map.bin"
+      "secondary_tileset": "gTileset_AzaleaGym",
+      "border_filepath": "data/layouts/AzaleaTown_Gym/border.bin",
+      "blockdata_filepath": "data/layouts/AzaleaTown_Gym/map.bin"
     },
     {
       "id": "LAYOUT_HOUSE4",
@@ -278,16 +278,16 @@
       "blockdata_filepath": "data/layouts/VermilionCity_Gym/map.bin"
     },
     {
-      "id": "LAYOUT_CERULEAN_CITY_BIKE_SHOP",
-      "name": "CeruleanCity_BikeShop_Layout",
+      "id": "LAYOUT_AZALEA_TOWN_BIKE_SHOP",
+      "name": "AzaleaTown_BikeShop_Layout",
       "width": 11,
       "height": 10,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_BikeShop",
-      "border_filepath": "data/layouts/CeruleanCity_BikeShop/border.bin",
-      "blockdata_filepath": "data/layouts/CeruleanCity_BikeShop/map.bin"
+      "border_filepath": "data/layouts/AzaleaTown_BikeShop/border.bin",
+      "blockdata_filepath": "data/layouts/AzaleaTown_BikeShop/map.bin"
     },
     {
       "id": "LAYOUT_CELADON_CITY_GAME_CORNER",
@@ -758,16 +758,16 @@
       "blockdata_filepath": "data/layouts/PewterCity/map.bin"
     },
     {
-      "id": "LAYOUT_CERULEAN_CITY",
-      "name": "CeruleanCity_Layout",
+      "id": "LAYOUT_AZALEA_TOWN",
+      "name": "AzaleaTown_Layout",
       "width": 68,
       "height": 32,
       "border_width": 2,
       "border_height": 4,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_CeruleanCity",
-      "border_filepath": "data/layouts/CeruleanCity/border.bin",
-      "blockdata_filepath": "data/layouts/CeruleanCity/map.bin"
+      "secondary_tileset": "gTileset_AzaleaTown",
+      "border_filepath": "data/layouts/AzaleaTown/border.bin",
+      "blockdata_filepath": "data/layouts/AzaleaTown/map.bin"
     },
     {
       "id": "LAYOUT_LAVENDER_TOWN",
@@ -909,7 +909,7 @@
       "border_width": 2,
       "border_height": 4,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_CeruleanCity",
+      "secondary_tileset": "gTileset_AzaleaTown",
       "border_filepath": "data/layouts/Route33/border.bin",
       "blockdata_filepath": "data/layouts/Route33/map.bin"
     },
@@ -957,7 +957,7 @@
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_CeruleanCity",
+      "secondary_tileset": "gTileset_AzaleaTown",
       "border_filepath": "data/layouts/Route9/border.bin",
       "blockdata_filepath": "data/layouts/Route9/map.bin"
     },
@@ -1137,7 +1137,7 @@
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_CeruleanCity",
+      "secondary_tileset": "gTileset_AzaleaTown",
       "border_filepath": "data/layouts/Route24/border.bin",
       "blockdata_filepath": "data/layouts/Route24/map.bin"
     },
@@ -1149,7 +1149,7 @@
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_CeruleanCity",
+      "secondary_tileset": "gTileset_AzaleaTown",
       "border_filepath": "data/layouts/Route25/border.bin",
       "blockdata_filepath": "data/layouts/Route25/map.bin"
     },
@@ -1958,28 +1958,28 @@
       "blockdata_filepath": "data/layouts/PewterCity_Museum_2F/map.bin"
     },
     {
-      "id": "LAYOUT_CERULEAN_CITY_HOUSE2",
-      "name": "CeruleanCity_House2_Layout",
+      "id": "LAYOUT_AZALEA_TOWN_HOUSE2",
+      "name": "AzaleaTown_House2_Layout",
       "width": 10,
       "height": 9,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_BurgledHouse",
-      "border_filepath": "data/layouts/CeruleanCity_House2/border.bin",
-      "blockdata_filepath": "data/layouts/CeruleanCity_House2/map.bin"
+      "border_filepath": "data/layouts/AzaleaTown_House2/border.bin",
+      "blockdata_filepath": "data/layouts/AzaleaTown_House2/map.bin"
     },
     {
-      "id": "LAYOUT_CERULEAN_CITY_HOUSE1",
-      "name": "CeruleanCity_House1_Layout",
+      "id": "LAYOUT_AZALEA_TOWN_HOUSE1",
+      "name": "AzaleaTown_House1_Layout",
       "width": 10,
       "height": 10,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_GenericBuilding2",
-      "border_filepath": "data/layouts/CeruleanCity_House1/border.bin",
-      "blockdata_filepath": "data/layouts/CeruleanCity_House1/map.bin"
+      "border_filepath": "data/layouts/AzaleaTown_House1/border.bin",
+      "blockdata_filepath": "data/layouts/AzaleaTown_House1/map.bin"
     },
     {
       "id": "LAYOUT_CELADON_CITY_CONDOMINIUMS_1F",
@@ -3470,16 +3470,16 @@
       "blockdata_filepath": "data/layouts/TrainerTower_Elevator/map.bin"
     },
     {
-      "id": "LAYOUT_CERULEAN_CITY_HOUSE5",
-      "name": "CeruleanCity_House5_Layout",
+      "id": "LAYOUT_AZALEA_TOWN_HOUSE5",
+      "name": "AzaleaTown_House5_Layout",
       "width": 11,
       "height": 9,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_GenericBuilding2",
-      "border_filepath": "data/layouts/CeruleanCity_House5/border.bin",
-      "blockdata_filepath": "data/layouts/CeruleanCity_House5/map.bin"
+      "border_filepath": "data/layouts/AzaleaTown_House5/border.bin",
+      "blockdata_filepath": "data/layouts/AzaleaTown_House5/map.bin"
     },
     {
       "id": "LAYOUT_SIX_ISLAND_DOTTED_HOLE_1F",

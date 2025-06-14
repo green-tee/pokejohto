@@ -203,7 +203,7 @@
 #define MAP_PALLET_TOWN                          (0 | (3 << 8))
 #define MAP_VIRIDIAN_CITY                        (1 | (3 << 8))
 #define MAP_PEWTER_CITY                          (2 | (3 << 8))
-#define MAP_CERULEAN_CITY                        (3 | (3 << 8))
+#define MAP_AZALEA_TOWN                          (3 | (3 << 8))
 #define MAP_LAVENDER_TOWN                        (4 | (3 << 8))
 #define MAP_VERMILION_CITY                       (5 | (3 << 8))
 #define MAP_CELADON_CITY                         (6 | (3 << 8))
@@ -291,17 +291,17 @@
 #define MAP_PEWTER_CITY_POKEMON_CENTER_2F (6 | (6 << 8))
 #define MAP_PEWTER_CITY_HOUSE2            (7 | (6 << 8))
 
-// gMapGroup_IndoorCerulean
-#define MAP_CERULEAN_CITY_HOUSE1            (0 | (7 << 8))
-#define MAP_CERULEAN_CITY_HOUSE2            (1 | (7 << 8))
-#define MAP_CERULEAN_CITY_HOUSE3            (2 | (7 << 8))
-#define MAP_CERULEAN_CITY_POKEMON_CENTER_1F (3 | (7 << 8))
-#define MAP_CERULEAN_CITY_POKEMON_CENTER_2F (4 | (7 << 8))
-#define MAP_CERULEAN_CITY_GYM               (5 | (7 << 8))
-#define MAP_CERULEAN_CITY_BIKE_SHOP         (6 | (7 << 8))
-#define MAP_CERULEAN_CITY_MART              (7 | (7 << 8))
-#define MAP_CERULEAN_CITY_HOUSE4            (8 | (7 << 8))
-#define MAP_CERULEAN_CITY_HOUSE5            (9 | (7 << 8))
+// gMapGroup_IndoorAzalea
+#define MAP_AZALEA_TOWN_HOUSE1            (0 | (7 << 8))
+#define MAP_AZALEA_TOWN_HOUSE2            (1 | (7 << 8))
+#define MAP_AZALEA_TOWN_HOUSE3            (2 | (7 << 8))
+#define MAP_AZALEA_TOWN_POKEMON_CENTER    (3 | (7 << 8))
+#define MAP_AZALEA_TOWN_POKEMON_CENTER_2F (4 | (7 << 8))
+#define MAP_AZALEA_TOWN_GYM               (5 | (7 << 8))
+#define MAP_AZALEA_TOWN_BIKE_SHOP         (6 | (7 << 8))
+#define MAP_AZALEA_TOWN_MART              (7 | (7 << 8))
+#define MAP_AZALEA_TOWN_HOUSE4            (8 | (7 << 8))
+#define MAP_AZALEA_TOWN_HOUSE5            (9 | (7 << 8))
 
 // gMapGroup_IndoorLavender
 #define MAP_LAVENDER_TOWN_POKEMON_CENTER_1F       (0 | (8 << 8))

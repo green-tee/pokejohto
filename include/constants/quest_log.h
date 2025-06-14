@@ -65,18 +65,18 @@
 #define IS_LINK_QL_EVENT(event)((event) >= QL_EVENT_LINK_TRADED && (event) <= QL_EVENT_LINK_BATTLED_UNION)
 #define IS_VALID_QL_EVENT(event)((event) >= QL_EVENT_SWITCHED_PARTY_ORDER && (event) <= QL_EVENT_ARRIVED)
 
-#define QL_LOCATION_HOME                0
-#define QL_LOCATION_OAKS_LAB            1
-#define QL_LOCATION_VIRIDIAN_GYM        2
-#define QL_LOCATION_LEAGUE_GATE_1       3
-#define QL_LOCATION_LEAGUE_GATE_2       4
-#define QL_LOCATION_VIRIDIAN_FOREST_1   5
-#define QL_LOCATION_VIRIDIAN_FOREST_2   6
-#define QL_LOCATION_PEWTER_MUSEUM       7
-#define QL_LOCATION_PEWTER_GYM          8
-#define QL_LOCATION_MT_MOON_1           9
+#define QL_LOCATION_HOME                 0
+#define QL_LOCATION_OAKS_LAB             1
+#define QL_LOCATION_VIRIDIAN_GYM         2
+#define QL_LOCATION_LEAGUE_GATE_1        3
+#define QL_LOCATION_LEAGUE_GATE_2        4
+#define QL_LOCATION_VIRIDIAN_FOREST_1    5
+#define QL_LOCATION_VIRIDIAN_FOREST_2    6
+#define QL_LOCATION_PEWTER_MUSEUM        7
+#define QL_LOCATION_PEWTER_GYM           8
+#define QL_LOCATION_MT_MOON_1            9
 #define QL_LOCATION_MT_MOON_2           10
-#define QL_LOCATION_CERULEAN_GYM        11
+#define QL_LOCATION_AZALEA_GYM          11
 #define QL_LOCATION_BIKE_SHOP           12
 #define QL_LOCATION_BILLS_HOUSE         13
 #define QL_LOCATION_DAY_CARE            14

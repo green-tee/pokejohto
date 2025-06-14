@@ -31,7 +31,7 @@ static const u16 sDexAreas_Kanto[][2] = {
     { MAPSEC_PALLET_TOWN,          1 },
     { MAPSEC_VIRIDIAN_CITY,        2 },
     { MAPSEC_PEWTER_CITY,          3 },
-    { MAPSEC_CERULEAN_CITY,        4 },
+    { MAPSEC_AZALEA_TOWN,          4 },
     { MAPSEC_LAVENDER_TOWN,        5 },
     { MAPSEC_VERMILION_CITY,       6 },
     { MAPSEC_CELADON_CITY,         7 },

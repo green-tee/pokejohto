@@ -1743,7 +1743,7 @@ static const u16 sGymMaps[] = {
 };
 
 static const u8 sDungeonMaps[][3] = {
-    { MAP_GROUP(VIRIDIAN_FOREST), MAP_NUM(VIRIDIAN_FOREST), 1 },
+    { MAP_GROUP(ILEX_FOREST), MAP_NUM(ILEX_FOREST), 1 },
     { MAP_GROUP(MT_MOON_1F), MAP_NUM(MT_MOON_1F), 3 },
     { MAP_GROUP(ROCK_TUNNEL_1F), MAP_NUM(ROCK_TUNNEL_1F), 2 },
     { MAP_GROUP(DIGLETTS_CAVE_NORTH_ENTRANCE), MAP_NUM(DIGLETTS_CAVE_NORTH_ENTRANCE), 3 },
@@ -2060,7 +2060,7 @@ static bool8 IsHelpSystemSubmenuEnabled(u8 id)
             return FlagGet(FLAG_WORLD_MAP_VERMILION_CITY);
         case HELP_HOW_ARE_ROADS_FORESTS_DIFFERENT:
         case HELP_WHATS_A_TRAINER:
-            return FlagGet(FLAG_WORLD_MAP_VIRIDIAN_FOREST);
+            return FlagGet(FLAG_WORLD_MAP_ILEX_FOREST);
         case HELP_WHAT_HAPPENED_TO_ITEM_I_GOT:
         case HELP_WHEN_CAN_I_USE_ITEM:
         case HELP_HOW_DO_I_PROGRESS:
@@ -2216,7 +2216,7 @@ static bool8 IsHelpSystemSubmenuEnabled(u8 id)
         case HELP_TERM_MOVE_TYPE:
         case HELP_TERM_PP:
         case HELP_TERM_STATUS_PROBLEM:
-            return FlagGet(FLAG_WORLD_MAP_VIRIDIAN_FOREST);
+            return FlagGet(FLAG_WORLD_MAP_ILEX_FOREST);
         }
         return TRUE;
     }

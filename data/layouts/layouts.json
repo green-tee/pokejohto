@@ -1190,16 +1190,16 @@
       "blockdata_filepath": "data/layouts/MtMoon_B2F/map.bin"
     },
     {
-      "id": "LAYOUT_VIRIDIAN_FOREST",
-      "name": "ViridianForest_Layout",
+      "id": "LAYOUT_ILEX_FOREST",
+      "name": "IlexForest_Layout",
       "width": 54,
       "height": 69,
       "border_width": 3,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_ViridianForest",
-      "border_filepath": "data/layouts/ViridianForest/border.bin",
-      "blockdata_filepath": "data/layouts/ViridianForest/map.bin"
+      "secondary_tileset": "gTileset_IlexForest",
+      "border_filepath": "data/layouts/IlexForest/border.bin",
+      "blockdata_filepath": "data/layouts/IlexForest/map.bin"
     },
     {
       "id": "LAYOUT_SSANNE_EXTERIOR",
@@ -3585,7 +3585,7 @@
       "border_width": 3,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_ViridianForest",
+      "secondary_tileset": "gTileset_IlexForest",
       "border_filepath": "data/layouts/SixIsland_PatternBush/border.bin",
       "blockdata_filepath": "data/layouts/SixIsland_PatternBush/map.bin"
     },

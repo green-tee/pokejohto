@@ -635,9 +635,9 @@ static const union AnimCmd *const sAnims_SwitchMapCursor[] = {
 
 static const struct DungeonMapInfo sDungeonInfo[] = {
     {
-        .id = MAPSEC_VIRIDIAN_FOREST,
-        .name = sMapsecName_VIRIDIANFOREST,
-        .desc = gText_RegionMap_AreaDesc_ViridianForest
+        .id = MAPSEC_ILEX_FOREST,
+        .name = sMapsecName_IlexForest,
+        .desc = gText_RegionMap_AreaDesc_IlexForest
     }, {
         .id = MAPSEC_MT_MOON,
         .name = sMapsecName_MTMOON,
@@ -860,7 +860,7 @@ static const u8 sMapFlyDestinations[][3] = {
     [MAPSEC_ROUTE_23            - MAPSECS_KANTO] = {MAP(ROUTE23),                               0},
     [MAPSEC_ROUTE_24            - MAPSECS_KANTO] = {MAP(ROUTE24),                               0},
     [MAPSEC_ROUTE_25            - MAPSECS_KANTO] = {MAP(ROUTE25),                               0},
-    [MAPSEC_VIRIDIAN_FOREST     - MAPSECS_KANTO] = {MAP(PALLET_TOWN),                           0},
+    [MAPSEC_ILEX_FOREST     - MAPSECS_KANTO] = {MAP(PALLET_TOWN),                           0},
     [MAPSEC_MT_MOON             - MAPSECS_KANTO] = {MAP(PALLET_TOWN),                           0},
     [MAPSEC_S_S_ANNE            - MAPSECS_KANTO] = {MAP(PALLET_TOWN),                           0},
     [MAPSEC_UNDERGROUND_PATH    - MAPSECS_KANTO] = {MAP(PALLET_TOWN),                           0},
@@ -3003,8 +3003,8 @@ static u8 GetDungeonMapsecType(u8 mapsec)
     {
     case MAPSEC_NONE:
         return MAPSECTYPE_NONE;
-    case MAPSEC_VIRIDIAN_FOREST:
-        return FlagGet(FLAG_WORLD_MAP_VIRIDIAN_FOREST) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
+    case MAPSEC_ILEX_FOREST:
+        return FlagGet(FLAG_WORLD_MAP_ILEX_FOREST) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
     case MAPSEC_MT_MOON:
         return FlagGet(FLAG_WORLD_MAP_MT_MOON_1F) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
     case MAPSEC_S_S_ANNE:
@@ -3263,7 +3263,7 @@ static void GetPlayerPositionOnRegionMap_HandleOverrides(void)
         sMapCursor->x = 16;
         sMapCursor->y = 8;
         break;
-    case MAPSEC_VIRIDIAN_FOREST:
+    case MAPSEC_ILEX_FOREST:
         sMapCursor->x = 4;
         sMapCursor->y = 6;
         break;

@@ -1,0 +1,14 @@
+Route2_IlexForest_NorthEntrance_MapScripts::
+	.byte 0
+
+Route2_IlexForest_NorthEntrance_EventScript_Youngster::
+	msgbox Route2_IlexForest_NorthEntrance_Text_ManyMonsOnlyInForests, MSGBOX_NPC
+	end
+
+Route2_IlexForest_NorthEntrance_EventScript_OldMan::
+	msgbox Route2_IlexForest_NorthEntrance_Text_CanCutSkinnyTrees, MSGBOX_NPC
+	end
+
+Route2_IlexForest_NorthEntrance_EventScript_CooltrainerF::
+	msgbox Route2_IlexForest_NorthEntrance_Text_CanCancelEvolution, MSGBOX_NPC
+	end

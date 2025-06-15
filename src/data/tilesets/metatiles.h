@@ -94,8 +94,8 @@ const u32 gMetatileAttributes_SSAnne[] = INCBIN_U32("data/tilesets/secondary/ss_
 const u16 gMetatiles_Dummy2[] = INCBIN_U16("data/tilesets/secondary/dummy_2/metatiles.bin");
 const u32 gMetatileAttributes_Dummy2[] = INCBIN_U32("data/tilesets/secondary/dummy_2/metatile_attributes.bin");
 
-const u16 gMetatiles_ViridianForest[] = INCBIN_U16("data/tilesets/secondary/viridian_forest/metatiles.bin");
-const u32 gMetatileAttributes_ViridianForest[] = INCBIN_U32("data/tilesets/secondary/viridian_forest/metatile_attributes.bin");
+const u16 gMetatiles_IlexForest[] = INCBIN_U16("data/tilesets/secondary/ilex_forest/metatiles.bin");
+const u32 gMetatileAttributes_IlexForest[] = INCBIN_U32("data/tilesets/secondary/ilex_forest/metatile_attributes.bin");
 
 const u16 gMetatiles_UnusedGatehouse1[] = INCBIN_U16("data/tilesets/secondary/unused_gatehouse_1/metatiles.bin");
 const u32 gMetatileAttributes_UnusedGatehouse1[] = INCBIN_U32("data/tilesets/secondary/unused_gatehouse_1/metatile_attributes.bin");

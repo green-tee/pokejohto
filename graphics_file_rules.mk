@@ -669,7 +669,7 @@ $(MAPPREVIEWGFXDIR)/silph_co/tiles.4bpp: %.4bpp: %.png
 $(MAPPREVIEWGFXDIR)/victory_road/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 375
 
-$(MAPPREVIEWGFXDIR)/viridian_forest/tiles.4bpp: %.4bpp: %.png
+$(MAPPREVIEWGFXDIR)/ilex_forest/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 389
 
 $(NAMINGGFXDIR)/cursor.4bpp: %.4bpp: %.png

@@ -1,0 +1,64 @@
+IlexForest_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, IlexForest_OnTransition
+	.byte 0
+
+IlexForest_OnTransition::
+	setworldmapflag FLAG_WORLD_MAP_ILEX_FOREST
+	end
+
+IlexForest_EventScript_Youngster::
+	msgbox IlexForest_Text_FriendsItchingToBattle, MSGBOX_NPC
+	end
+
+IlexForest_EventScript_Boy::
+	msgbox IlexForest_Text_RanOutOfPokeBalls, MSGBOX_NPC
+	end
+
+IlexForest_EventScript_TrainerTips1::
+	msgbox IlexForest_Text_AvoidGrassyAreasWhenWeak, MSGBOX_SIGN
+	end
+
+IlexForest_EventScript_TrainerTips2::
+	msgbox IlexForest_Text_UseAntidoteForPoison, MSGBOX_SIGN
+	end
+
+IlexForest_EventScript_TrainerTips3::
+	msgbox IlexForest_Text_ContactOakViaPCToRatePokedex, MSGBOX_SIGN
+	end
+
+IlexForest_EventScript_TrainerTips4::
+	msgbox IlexForest_Text_CantCatchOwnedMons, MSGBOX_SIGN
+	end
+
+IlexForest_EventScript_TrainerTips5::
+	msgbox IlexForest_Text_WeakenMonsBeforeCapture, MSGBOX_SIGN
+	end
+
+IlexForest_EventScript_ExitSign::
+	msgbox IlexForest_Text_LeavingViridianForest, MSGBOX_SIGN
+	end
+
+IlexForest_EventScript_Rick::
+	trainerbattle_single TRAINER_BUG_CATCHER_RICK, IlexForest_Text_RickIntro, IlexForest_Text_RickDefeat
+	msgbox IlexForest_Text_RickPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+IlexForest_EventScript_Doug::
+	trainerbattle_single TRAINER_BUG_CATCHER_DOUG, IlexForest_Text_DougIntro, IlexForest_Text_DougDefeat
+	msgbox IlexForest_Text_DougPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+IlexForest_EventScript_Sammy::
+	trainerbattle_single TRAINER_BUG_CATCHER_SAMMY, IlexForest_Text_SammyIntro, IlexForest_Text_SammyDefeat
+	msgbox IlexForest_Text_SammyPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+IlexForest_EventScript_Anthony::
+	trainerbattle_single TRAINER_BUG_CATCHER_ANTHONY, IlexForest_Text_AnthonyIntro, IlexForest_Text_AnthonyDefeat
+	msgbox IlexForest_Text_AnthonyPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+IlexForest_EventScript_Charlie::
+	trainerbattle_single TRAINER_BUG_CATCHER_CHARLIE, IlexForest_Text_CharlieIntro, IlexForest_Text_CharlieDefeat
+	msgbox IlexForest_Text_CharliePostBattle, MSGBOX_AUTOCLOSE
+	end

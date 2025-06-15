@@ -60,8 +60,8 @@ static const u16 sCutGrassMetatileMapping[][2] = {
         METATILE_ID(FuchsiaCity, SafariZoneTreeTopRight_Grass),
         METATILE_ID(FuchsiaCity, SafariZoneTreeTopRight_Mowed)
     }, {
-        METATILE_ID(ViridianForest, HugeTreeTopMiddle_Grass),
-        METATILE_ID(ViridianForest, HugeTreeTopMiddle_Mowed)
+        METATILE_ID(IlexForest, HugeTreeTopMiddle_Grass),
+        METATILE_ID(IlexForest, HugeTreeTopMiddle_Mowed)
     }, {
         0xffff,
         0xffff

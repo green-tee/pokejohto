@@ -289,8 +289,8 @@
 // gTileset_ViridianCity
 #define METATILE_ViridianCity_Door  0x299
 
-// gTileset_ViridianForest
-#define METATILE_ViridianForest_HugeTreeTopMiddle_Grass  0x284
-#define METATILE_ViridianForest_HugeTreeTopMiddle_Mowed  0x281
+// gTileset_IlexForest
+#define METATILE_IlexForest_HugeTreeTopMiddle_Grass  0x284
+#define METATILE_IlexForest_HugeTreeTopMiddle_Mowed  0x281
 
 #endif // GUARD_METATILE_LABELS_H

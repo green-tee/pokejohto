@@ -66,7 +66,7 @@ static const u16 sDexAreas_Kanto[][2] = {
     { MAPSEC_ROUTE_23,            34 },
     { MAPSEC_ROUTE_24,            35 },
     { MAPSEC_ROUTE_25,            36 },
-    { MAPSEC_VIRIDIAN_FOREST,     37 },
+    { MAPSEC_ILEX_FOREST,         37 },
     { MAPSEC_MT_MOON,             39 },
     { MAPSEC_S_S_ANNE,             6 },
     { MAPSEC_UNDERGROUND_PATH,    11 },

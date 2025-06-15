@@ -372,14 +372,14 @@ const struct Tileset gTileset_Dummy2 =
     .callback = NULL,
 };
 
-const struct Tileset gTileset_ViridianForest =
+const struct Tileset gTileset_IlexForest =
 {
     .isCompressed = TRUE,
     .isSecondary = TRUE,
-    .tiles = gTilesetTiles_ViridianForest,
-    .palettes = gTilesetPalettes_ViridianForest,
-    .metatiles = gMetatiles_ViridianForest,
-    .metatileAttributes = gMetatileAttributes_ViridianForest,
+    .tiles = gTilesetTiles_IlexForest,
+    .palettes = gTilesetPalettes_IlexForest,
+    .metatiles = gMetatiles_IlexForest,
+    .metatileAttributes = gMetatileAttributes_IlexForest,
     .callback = NULL,
 };
 

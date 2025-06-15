@@ -17,9 +17,9 @@ static EWRAM_DATA bool8 sAllocedBg0TilemapBuffer = FALSE;
 
 static void Task_RunMapPreviewScreenForest(u8 taskId);
 
-static const u8 sViridianForestMapPreviewPalette[] = INCBIN_U8("graphics/map_preview/viridian_forest/pal.gbapal");
-static const u8 sViridianForestMapPreviewTiles[] = INCBIN_U8("graphics/map_preview/viridian_forest/tiles.4bpp.lz");
-static const u8 sViridianForestMapPreviewTilemap[] = INCBIN_U8("graphics/map_preview/viridian_forest/tilemap.bin.lz");
+static const u8 sIlexForestMapPreviewPalette[] = INCBIN_U8("graphics/map_preview/ilex_forest/pal.gbapal");
+static const u8 sIlexForestMapPreviewTiles[] = INCBIN_U8("graphics/map_preview/ilex_forest/tiles.4bpp.lz");
+static const u8 sIlexForestMapPreviewTilemap[] = INCBIN_U8("graphics/map_preview/ilex_forest/tilemap.bin.lz");
 static const u8 sRockTunnelMapPreviewPalette[] = INCBIN_U8("graphics/map_preview/rock_tunnel/pal.gbapal");
 static const u8 sRockTunnelMapPreviewTiles[] = INCBIN_U8("graphics/map_preview/rock_tunnel/tiles.4bpp.lz");
 static const u8 sRockTunnelMapPreviewTilemap[] = INCBIN_U8("graphics/map_preview/rock_tunnel/tilemap.bin.lz");
@@ -82,13 +82,13 @@ static const u8 sAlteringCaveMapPreviewTiles[] = INCBIN_U8("graphics/map_preview
 static const u8 sAlteringCaveMapPreviewTilemap[] = INCBIN_U8("graphics/map_preview/altering_cave/tilemap.bin.lz");
 
 static const struct MapPreviewScreen sMapPreviewScreenData[MPS_COUNT] = {
-    [MPS_VIRIDIAN_FOREST] = {
-        .mapsec = MAPSEC_VIRIDIAN_FOREST,
+    [MPS_ILEX_FOREST] = {
+        .mapsec = MAPSEC_ILEX_FOREST,
         .type = MPS_TYPE_FOREST,
-        .flagId = FLAG_WORLD_MAP_VIRIDIAN_FOREST,
-        .tilesptr = sViridianForestMapPreviewTiles,
-        .tilemapptr = sViridianForestMapPreviewTilemap,
-        .palptr = sViridianForestMapPreviewPalette
+        .flagId = FLAG_WORLD_MAP_ILEX_FOREST,
+        .tilesptr = sIlexForestMapPreviewTiles,
+        .tilemapptr = sIlexForestMapPreviewTilemap,
+        .palptr = sIlexForestMapPreviewPalette
     },
     [MPS_MT_MOON] = {
         .mapsec = MAPSEC_MT_MOON,
@@ -254,9 +254,9 @@ static const struct MapPreviewScreen sMapPreviewScreenData[MPS_COUNT] = {
         .mapsec = MAPSEC_PATTERN_BUSH,
         .type = MPS_TYPE_FOREST,
         .flagId = FLAG_WORLD_MAP_SIX_ISLAND_PATTERN_BUSH,
-        .tilesptr = sViridianForestMapPreviewTiles,
-        .tilemapptr = sViridianForestMapPreviewTilemap,
-        .palptr = sViridianForestMapPreviewPalette
+        .tilesptr = sIlexForestMapPreviewTiles,
+        .tilemapptr = sIlexForestMapPreviewTilemap,
+        .palptr = sIlexForestMapPreviewPalette
     },
     [MPS_LIPTOO_CHAMBER] = {
         .mapsec = MAPSEC_LIPTOO_CHAMBER,

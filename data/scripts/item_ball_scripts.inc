@@ -6,15 +6,15 @@ Route2_EventScript_ItemParalyzeHeal::
 	finditem ITEM_PARALYZE_HEAL
 	end
 
-ViridianForest_EventScript_ItemPokeBall::
+IlexForest_EventScript_ItemPokeBall::
 	finditem ITEM_POKE_BALL
 	end
 
-ViridianForest_EventScript_ItemAntidote::
+IlexForest_EventScript_ItemAntidote::
 	finditem ITEM_ANTIDOTE
 	end
 
-ViridianForest_EventScript_ItemPotion::
+IlexForest_EventScript_ItemPotion::
 	finditem ITEM_POTION
 	end
 
@@ -410,7 +410,7 @@ ThreeIsland_EventScript_ItemZinc::
 	finditem ITEM_ZINC
 	end
 
-ViridianForest_EventScript_ItemPotion2::
+IlexForest_EventScript_ItemPotion2::
 	finditem ITEM_POTION
 	end
 

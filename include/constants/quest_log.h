@@ -70,8 +70,8 @@
 #define QL_LOCATION_VIRIDIAN_GYM         2
 #define QL_LOCATION_LEAGUE_GATE_1        3
 #define QL_LOCATION_LEAGUE_GATE_2        4
-#define QL_LOCATION_VIRIDIAN_FOREST_1    5
-#define QL_LOCATION_VIRIDIAN_FOREST_2    6
+#define QL_LOCATION_ILEX_FOREST_1        5
+#define QL_LOCATION_ILEX_FOREST_2        6
 #define QL_LOCATION_PEWTER_MUSEUM        7
 #define QL_LOCATION_PEWTER_GYM           8
 #define QL_LOCATION_MT_MOON_1            9

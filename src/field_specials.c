@@ -1814,13 +1814,13 @@ static const struct {
     [QL_LOCATION_VIRIDIAN_GYM]       = {MAP(VIRIDIAN_CITY_GYM),                     MAP(VIRIDIAN_CITY)},
     [QL_LOCATION_LEAGUE_GATE_1]      = {MAP(ROUTE22_NORTH_ENTRANCE),                MAP(ROUTE22)},
     [QL_LOCATION_LEAGUE_GATE_2]      = {MAP(ROUTE22_NORTH_ENTRANCE),                MAP(ROUTE23)},
-    [QL_LOCATION_VIRIDIAN_FOREST_1]  = {MAP(VIRIDIAN_FOREST),                       MAP(ROUTE2_VIRIDIAN_FOREST_SOUTH_ENTRANCE)},
-    [QL_LOCATION_VIRIDIAN_FOREST_2]  = {MAP(VIRIDIAN_FOREST),                       MAP(ROUTE2_VIRIDIAN_FOREST_NORTH_ENTRANCE)},
+    [QL_LOCATION_ILEX_FOREST_1]      = {MAP(ILEX_FOREST),                           MAP(ROUTE2_ILEX_FOREST_SOUTH_ENTRANCE)},
+    [QL_LOCATION_ILEX_FOREST_2]      = {MAP(ILEX_FOREST),                           MAP(ROUTE2_ILEX_FOREST_NORTH_ENTRANCE)},
     [QL_LOCATION_PEWTER_MUSEUM]      = {MAP(PEWTER_CITY_MUSEUM_1F),                 MAP(PEWTER_CITY)},
     [QL_LOCATION_PEWTER_GYM]         = {MAP(PEWTER_CITY_GYM),                       MAP(PEWTER_CITY)},
     [QL_LOCATION_MT_MOON_1]          = {MAP(MT_MOON_1F),                            MAP(ROUTE4)},
     [QL_LOCATION_MT_MOON_2]          = {MAP(MT_MOON_B1F),                           MAP(ROUTE4)},
-    [QL_LOCATION_AZALEA_GYM]        = {MAP(AZALEA_TOWN_GYM),                       MAP(AZALEA_TOWN)},
+    [QL_LOCATION_AZALEA_GYM]         = {MAP(AZALEA_TOWN_GYM),                       MAP(AZALEA_TOWN)},
     [QL_LOCATION_BIKE_SHOP]          = {MAP(AZALEA_TOWN_BIKE_SHOP),                 MAP(AZALEA_TOWN)},
     [QL_LOCATION_BILLS_HOUSE]        = {MAP(ROUTE25_SEA_COTTAGE),                   MAP(ROUTE25)},
     [QL_LOCATION_DAY_CARE]           = {MAP(ROUTE5_POKEMON_DAY_CARE),               MAP(ROUTE33)},
@@ -1893,12 +1893,12 @@ void QuestLog_TryRecordDepartedLocation(void)
     event_buffer.entrance_id = 0;
     if (FlagGet(FLAG_SYS_QL_DEPARTED))
     {
-        if (ql_entrance_id == QL_LOCATION_VIRIDIAN_FOREST_1)
+        if (ql_entrance_id == QL_LOCATION_ILEX_FOREST_1)
         {
-            if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ROUTE2_VIRIDIAN_FOREST_SOUTH_ENTRANCE) && (gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE2_VIRIDIAN_FOREST_SOUTH_ENTRANCE) || gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE2_VIRIDIAN_FOREST_NORTH_ENTRANCE)))
+            if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ROUTE2_ILEX_FOREST_SOUTH_ENTRANCE) && (gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE2_ILEX_FOREST_SOUTH_ENTRANCE) || gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE2_ILEX_FOREST_NORTH_ENTRANCE)))
             {
                 event_buffer.map_section_id = MAPSEC_ROUTE_2;
-                if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE2_VIRIDIAN_FOREST_SOUTH_ENTRANCE))
+                if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE2_ILEX_FOREST_SOUTH_ENTRANCE))
                     event_buffer.entrance_id = ql_entrance_id;
                 else
                     event_buffer.entrance_id = ql_entrance_id + 1;

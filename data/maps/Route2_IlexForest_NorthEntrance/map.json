@@ -1,6 +1,6 @@
 {
-  "id": "MAP_ROUTE2_VIRIDIAN_FOREST_NORTH_ENTRANCE",
-  "name": "Route2_ViridianForest_NorthEntrance",
+  "id": "MAP_ROUTE2_ILEX_FOREST_NORTH_ENTRANCE",
+  "name": "Route2_IlexForest_NorthEntrance",
   "layout": "LAYOUT_ROUTE2_ENTRANCE",
   "music": "MUS_PEWTER",
   "region_map_section": "MAPSEC_ROUTE_2",
@@ -26,7 +26,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route2_ViridianForest_NorthEntrance_EventScript_Youngster",
+      "script": "Route2_IlexForest_NorthEntrance_EventScript_Youngster",
       "flag": "0"
     },
     {
@@ -40,7 +40,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route2_ViridianForest_NorthEntrance_EventScript_OldMan",
+      "script": "Route2_IlexForest_NorthEntrance_EventScript_OldMan",
       "flag": "0"
     },
     {
@@ -54,7 +54,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route2_ViridianForest_NorthEntrance_EventScript_CooltrainerF",
+      "script": "Route2_IlexForest_NorthEntrance_EventScript_CooltrainerF",
       "flag": "0"
     }
   ],
@@ -63,21 +63,21 @@
       "x": 6,
       "y": 10,
       "elevation": 3,
-      "dest_map": "MAP_VIRIDIAN_FOREST",
+      "dest_map": "MAP_ILEX_FOREST",
       "dest_warp_id": "2"
     },
     {
       "x": 7,
       "y": 10,
       "elevation": 3,
-      "dest_map": "MAP_VIRIDIAN_FOREST",
+      "dest_map": "MAP_ILEX_FOREST",
       "dest_warp_id": "2"
     },
     {
       "x": 8,
       "y": 10,
       "elevation": 3,
-      "dest_map": "MAP_VIRIDIAN_FOREST",
+      "dest_map": "MAP_ILEX_FOREST",
       "dest_warp_id": "2"
     },
     {

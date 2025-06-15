@@ -3,7 +3,7 @@
 
 enum MapPreviewScreenId
 {
-    MPS_VIRIDIAN_FOREST = 0u,
+    MPS_ILEX_FOREST = 0u,
     MPS_MT_MOON,
     MPS_DIGLETTS_CAVE,
     MPS_ROCK_TUNNEL,

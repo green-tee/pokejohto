@@ -30,7 +30,7 @@ $(TILESETGFXDIR)/secondary/pewter_gym/tiles.4bpp: %.4bpp: %.png
 $(TILESETGFXDIR)/secondary/saffron_gym/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 82
 
-$(TILESETGFXDIR)/secondary/viridian_forest/tiles.4bpp: %.4bpp: %.png
+$(TILESETGFXDIR)/secondary/ilex_forest/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 101
 
 $(TILESETGFXDIR)/secondary/seafoam_islands/tiles.4bpp: %.4bpp: %.png

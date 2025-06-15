@@ -1043,8 +1043,8 @@
           }
         },
         {
-          "map": "MAP_VIRIDIAN_FOREST",
-          "base_label": "sViridianForest_FireRed",
+          "map": "MAP_ILEX_FOREST",
+          "base_label": "sIlexForest_FireRed",
           "land_mons": {
             "encounter_rate": 14,
             "mons": [
@@ -1112,8 +1112,8 @@
           }
         },
         {
-          "map": "MAP_VIRIDIAN_FOREST",
-          "base_label": "sViridianForest_LeafGreen",
+          "map": "MAP_ILEX_FOREST",
+          "base_label": "sIlexForest_LeafGreen",
           "land_mons": {
             "encounter_rate": 14,
             "mons": [

@@ -13,7 +13,7 @@
 #define MAP_UNION_ROOM          (4 | (0 << 8))
 
 // gMapGroup_Dungeons
-#define MAP_VIRIDIAN_FOREST                      (0 | (1 << 8))
+#define MAP_ILEX_FOREST                          (0 | (1 << 8))
 #define MAP_MT_MOON_1F                           (1 | (1 << 8))
 #define MAP_MT_MOON_B1F                          (2 | (1 << 8))
 #define MAP_MT_MOON_B2F                          (3 | (1 << 8))
@@ -382,10 +382,10 @@
 #define MAP_SAFFRON_CITY_POKEMON_TRAINER_FAN_CLUB (9 | (14 << 8))
 
 // gMapGroup_IndoorRoute2
-#define MAP_ROUTE2_VIRIDIAN_FOREST_SOUTH_ENTRANCE (0 | (15 << 8))
-#define MAP_ROUTE2_HOUSE                          (1 | (15 << 8))
-#define MAP_ROUTE2_EAST_BUILDING                  (2 | (15 << 8))
-#define MAP_ROUTE2_VIRIDIAN_FOREST_NORTH_ENTRANCE (3 | (15 << 8))
+#define MAP_ROUTE2_ILEX_FOREST_SOUTH_ENTRANCE (0 | (15 << 8))
+#define MAP_ROUTE2_HOUSE                      (1 | (15 << 8))
+#define MAP_ROUTE2_EAST_BUILDING              (2 | (15 << 8))
+#define MAP_ROUTE2_ILEX_FOREST_NORTH_ENTRANCE (3 | (15 << 8))
 
 // gMapGroup_IndoorRoute4
 #define MAP_ROUTE4_POKEMON_CENTER_1F (0 | (16 << 8))

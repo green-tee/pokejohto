@@ -52,7 +52,7 @@
     "UnionRoom"
   ],
   "gMapGroup_Dungeons": [
-    "ViridianForest",
+    "IlexForest",
     "MtMoon_1F",
     "MtMoon_B1F",
     "MtMoon_B2F",
@@ -421,10 +421,10 @@
     "SaffronCity_PokemonTrainerFanClub"
   ],
   "gMapGroup_IndoorRoute2": [
-    "Route2_ViridianForest_SouthEntrance",
+    "Route2_IlexForest_SouthEntrance",
     "Route2_House",
     "Route2_EastBuilding",
-    "Route2_ViridianForest_NorthEntrance"
+    "Route2_IlexForest_NorthEntrance"
   ],
   "gMapGroup_IndoorRoute4": [
     "Route4_PokemonCenter_1F",
